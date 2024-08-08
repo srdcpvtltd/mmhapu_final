@@ -31,6 +31,7 @@ use App\Http\Controllers\Admin\SubjectController;
 use App\Http\Controllers\Admin\TeacherController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\DepartmentinfoController as AdminDepartmentinfoController;
+use App\Http\Controllers\Admin\FacilityController;
 use App\Http\Controllers\Admin\FacultyController;
 use App\Http\Controllers\Admin\FacultySubcategoryController;
 use App\Http\Controllers\Admin\GatewayDetailController;
@@ -57,6 +58,7 @@ use App\Http\Controllers\BoardController;
 use App\Http\Controllers\PassedexamController;
 use App\Http\Controllers\Admin\QuestionController;
 use App\Http\Controllers\Admin\QuicklinkController;
+use App\Http\Controllers\Admin\QuicklinktitleController;
 use App\Http\Controllers\Admin\QuizController;
 use App\Http\Controllers\Admin\TopbarController;
 use App\Http\Controllers\Admin\Web\AdministrationController;
@@ -270,12 +272,25 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
         Route::get('/faculty/subcategory/delete{id}',[FacultySubcategoryController::class,'delete'])->name('faculty.subcategory.delete');
 
         //Facility
-        
+        Route::get('/facility/list',[FacilityController::class,'list'])->name('facility.list');
+        Route::get('/facility/add',[FacilityController::class,'add'])->name('facility.add');
+        Route::post('/facility/store',[FacilityController::class,'store'])->name('facility.store');
+        Route::get('/facility/edit{id}',[FacilityController::class,'edit'])->name('facility.edit');
+        Route::post('/facility/update',[FacilityController::class,'update'])->name('facility.update');
+        Route::get('/facility/delete{id}',[FacilityController::class,'delete'])->name('facility.delete');
+
 
         //Media Path
         Route::get('media_path/list',[MediapathController::class,'list'])->name('Mediapath.list');
         Route::post('media_path/store',[MediapathController::class,'store'])->name('Mediapath.store');
         Route::get('media_path/delete/{id}',[MediapathController::class,'delete'])->name('Mediapath.delete');
+
+        //Quick-link-title
+        Route::get('/quicklink_title/list',[QuicklinktitleController::class,'list'])->name('qtitle.list');
+        Route::post('/quicklink_title/store',[QuicklinktitleController::class,'store'])->name('qtitle.store');
+        Route::get('/quicklink_title/edit/{id}',[QuicklinktitleController::class,'edit'])->name('qtitle.edit');
+        Route::post('/quicklink_title/update',[QuicklinktitleController::class,'update'])->name('qtitle.update');
+        Route::get('/quicklink_title/delete/{id}',[QuicklinktitleController::class,'delete'])->name('qtitle.delete');
 
         //Quick-links
         Route::get('/quick_link/list',[QuicklinkController::class,'list'])->name('Quicklink.list');

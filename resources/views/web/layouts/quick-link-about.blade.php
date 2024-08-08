@@ -6,13 +6,11 @@
         <div class="desc-wrap marquee_text">
             <ul class="custom-list-style">
                 @foreach (App\Models\Quicklink::all() as $quicklink)
-
-                <li>
-                    <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
-                    <a href="{{ url($quicklink->url) }}"> {{$quicklink->title}} </a>
-                </li>
-                <hr>
-
+                    <li>
+                        <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
+                        <a href="{{ url($quicklink->url) }}"> {{ $quicklink->title }} </a>
+                    </li>
+                    <hr>
                 @endforeach
             </ul>
         </div>
