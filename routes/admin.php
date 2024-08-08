@@ -269,6 +269,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
         Route::post('/faculty/subcategory/update',[FacultySubcategoryController::class,'update'])->name('faculty.subcategory.update');
         Route::get('/faculty/subcategory/delete{id}',[FacultySubcategoryController::class,'delete'])->name('faculty.subcategory.delete');
 
+        //Facility
+        
+
         //Media Path
         Route::get('media_path/list',[MediapathController::class,'list'])->name('Mediapath.list');
         Route::post('media_path/store',[MediapathController::class,'store'])->name('Mediapath.store');

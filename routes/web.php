@@ -82,8 +82,6 @@ Route::middleware(['XSS'])->namespace('Web')->group(function () {
   Route::get('/university_officers', [AdministrationController::class,'universityOfficers'])->name('universityOfficers');
   Route::get('/directory', [AdministrationController::class,'directory'])->name('directory');
 
-  //Notifications
-  //Route::get('/notifications', [NotificationsController::class,'notifications'])->name('notification');
 
   //Latest Notice
   Route::get('/latest', [NotificationsController::class,'latest'])->name('latest');
@@ -91,7 +89,6 @@ Route::middleware(['XSS'])->namespace('Web')->group(function () {
   Route::get('/events', [NotificationsController::class,'events'])->name('events');
 
   //Team
-//   Route::get('/team',[TeamController::class,'team'])->name('team');
   Route::get('/view-team/{id}',[TeamController::class,'viewTeam'])->name('viewTeam');
 
   //faculty
@@ -110,8 +107,6 @@ Route::middleware(['XSS'])->namespace('Web')->group(function () {
 
   //fit-india-movement
   Route::get('/fit_india_movement',[IndexController::class,'fitIndia'])->name('fitIndia');
-
-
 
 
   // Course Route
