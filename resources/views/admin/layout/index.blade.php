@@ -221,6 +221,21 @@
                             </ul>
                         </li>
 
+                        <li class="nav-item nav-item-submenu {{ Request::is('admin/web/iqac_eventtitle*') || Request::is('admin/web/iqac_event*') ? 'nav-item-open' : '' }}">
+                            <a href="#" class="nav-link"><i class="fa fa-certificate"></i> <span>IQAC Event</span></a>
+
+                            <ul class="nav nav-group-sub" data-submenu-title="Layouts"
+                                style="{{ Request::is('admin/web/iqac_eventtitle*') || Request::is('admin/web/iqac_event*') ? 'display:block' : '' }}">
+
+                                <li class="nav-item"><a href="{{ route('admin.IqacEventTitle.list') }}"
+                                        class="nav-link {{ Request::is('admin/web/iqac_eventtitle*') ? 'active' : '' }}">Title</a></li>
+
+                                <li class="nav-item"><a href="{{ route('admin.IqacEvent.list') }}"
+                                        class="nav-link {{ Request::is('admin/web/iqac_event*') ? 'active' : '' }}">Event</a>
+                                </li>
+                            </ul>
+                        </li>
+
                         <li class="nav-item">
                             <a href="{{ route('admin.topbar-setting.index') }}"
                                 class="nav-link {{ Request::is('admin/web/topbar-setting') ? 'active' : '' }}">

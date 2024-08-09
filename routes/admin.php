@@ -35,6 +35,8 @@ use App\Http\Controllers\Admin\FacilityController;
 use App\Http\Controllers\Admin\FacultyController;
 use App\Http\Controllers\Admin\FacultySubcategoryController;
 use App\Http\Controllers\Admin\GatewayDetailController;
+use App\Http\Controllers\Admin\IqaceventController;
+use App\Http\Controllers\Admin\IqaceventTitleController;
 use App\Http\Controllers\Admin\OverviewController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ShiftController;
@@ -299,6 +301,21 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
         Route::get('/quick_link/edit{id}',[QuicklinkController::class,'edit'])->name('Quicklink.edit');
         Route::post('/quick_link/update',[QuicklinkController::class,'update'])->name('Quicklink.update');
         Route::get('/quick_link/delete{id}',[QuicklinkController::class,'delete'])->name('Quicklink.delete');
+
+        //iqac event title
+        Route::get('iqac_eventtitle/list',[IqaceventTitleController::class,'list'])->name('IqacEventTitle.list');
+        Route::get('iqac_eventtitle/add',[IqaceventTitleController::class,'add'])->name('IqacEventTitle.add');
+        Route::post('iqac_eventtitle/store',[IqaceventTitleController::class,'store'])->name('IqacEventTitle.store');
+        Route::get('iqac_eventtitle/edit{id}',[IqaceventTitleController::class,'edit'])->name('IqacEventTitle.edit');
+        Route::post('iqac_eventtitle/update',[IqaceventTitleController::class,'update'])->name('IqacEventTitle.update');
+        Route::get('iqac_eventtitle/delete{id}',[IqaceventTitleController::class,'delete'])->name('IqacEventTitle.delete');
+
+        //iqac event
+        Route::get('iqac_event/list',[IqaceventController::class,'list'])->name('IqacEvent.list');
+        Route::post('iqac_event/store',[IqaceventController::class,'store'])->name('IqacEvent.store');
+        Route::get('iqac_event/edit{id}',[IqaceventController::class,'edit'])->name('IqacEvent.edit');
+        Route::post('iqac_event/update',[IqaceventController::class,'update'])->name('IqacEvent.update');
+        Route::get('iqac_event/delete{id}',[IqaceventController::class,'delete'])->name('IqacEvent.delete');
 
         //Top Bar
         Route::get('/top_bar/list',[TopbarController::class,'list'])->name('Topbar.list');
