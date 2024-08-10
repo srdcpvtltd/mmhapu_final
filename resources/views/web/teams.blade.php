@@ -218,7 +218,7 @@
                         <div class="desc-wrap marquee_text">
                             <div class="whiteBox" style="float: none;">
                                 <div class="vcBox-content text-justify">
-                                    <p class="text-justify">{{ $subcategory->description }}</p>
+                                    <p class="text-justify">{!! $subcategory->description !!}</p>
                                 </div>
                             </div>
                         </div>

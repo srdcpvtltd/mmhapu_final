@@ -5,14 +5,15 @@
         </div>
         <div class="desc-wrap marquee_text">
             <ul class="custom-list-style">
-                <li><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> <a href="{{route('contact_us')}}">
-                        Contact Us</a></li>
+
+                <li><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> <a href="{{ route('contact_us') }}">Contact Us</a></li>
                 <hr>
                 <li><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> <a href="{{route('address')}}">
                         Address</a></li>
                 <hr>
                 <li><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> <a href="{{route('howtoReach')}}"> How to
                         reach</a></li>
+
             </ul>
         </div>
     </div>

@@ -13,11 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('iqac_event_title', function (Blueprint $table) {
+        Schema::create('collabrations', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->nullable();
-            $table->integer('year_id')->nullable();
-            $table->string('image')->nullable();
+            $table->string('designation');
+            $table->string('name');
+            $table->string('email');
+            $table->string('contact');
+            $table->string('resume');
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('iqac_event_title');
+        Schema::dropIfExists('collabrations');
     }
 };

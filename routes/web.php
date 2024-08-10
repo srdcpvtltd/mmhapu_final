@@ -25,6 +25,7 @@ use App\Http\Controllers\Web\AcademicsController;
 use App\Http\Controllers\Web\ActStatuesController;
 use App\Http\Controllers\Web\AdministrationController;
 use App\Http\Controllers\Web\ChancellorController;
+use App\Http\Controllers\Web\CollabrationController;
 use App\Http\Controllers\Web\ContactusController;
 use App\Http\Controllers\Web\LegacyController;
 use App\Http\Controllers\Web\LogoController;
@@ -88,6 +89,15 @@ Route::middleware(['XSS'])->namespace('Web')->group(function () {
 
   Route::get('/events', [NotificationsController::class,'events'])->name('events');
 
+  //IQAC
+  Route::get('/iqac_event',[EventController::class,'iqac_event'])->name('iqac_event');
+  Route::get('/events_view/{id}',[EventController::class,'viewEvent'])->name('viewEvent');
+  Route::post('/get_title',[EventController::class,'viewTitle'])->name('viewTitle');
+  Route::post('/iqac_event_filter',[EventController::class,'iqac_event_filter'])->name('iqac_event_filter');
+
+  //collabration
+  Route::get('/collabration',[CollabrationController::class,'collabration'])->name('collabration');
+
   //Team
   Route::get('/view-team/{id}',[TeamController::class,'viewTeam'])->name('viewTeam');
 
@@ -104,6 +114,9 @@ Route::middleware(['XSS'])->namespace('Web')->group(function () {
   Route::get('/contact_us', [ContactusController::class,'contactUs'])->name('contact_us');
   Route::get('/address', [ContactusController::class,'address'])->name('address');
   Route::get('/how_to_reach', [ContactusController::class,'howtoReach'])->name('howtoReach');
+
+  //quicklink
+  Route::get('/quicklink',[ContactusController::class,'quicklink'])->name('quicklink');
 
   //fit-india-movement
   Route::get('/fit_india_movement',[IndexController::class,'fitIndia'])->name('fitIndia');

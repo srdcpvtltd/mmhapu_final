@@ -1,17 +1,16 @@
 @extends('admin.layout.index')
 
 @section('title')
-    IQAC EVENT TITLE
+    COLLABRATION
 @endsection
 
 @section('content')
     <div class="card">
         <div class="card-header header-elements-inline">
-            <h5 class="card-title">Manage IQAC Event Title</h5>
+            <h5 class="card-title">Manage IQAC Collabration</h5>
             <div class="header-elements">
                 <div class="list-icons">
-                    <a class="btn btn-primary" href="{{ route('admin.IqacEventTitle.add') }}">Add New Event Title</a>
-
+                    <a class="btn btn-primary" href="{{ route('admin.Collabration.add') }}">Add New Collabration</a>
                 </div>
             </div>
         </div>
@@ -19,9 +18,11 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Title</th>
-                    <th>Year</th>
-                    <th>Image</th>
+                    <th>Designation</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Contact</th>
+                    <th>Resume</th>
                     <th>Action</th>
                     <th>Action</th>
                 </tr>
@@ -30,23 +31,23 @@
                 @php
                     $i = 1;
                 @endphp
-                @foreach ($Titles as $title)
+                @foreach ($collabrations as $data)
                     <tr>
                         <td>{{ $i }}</td>
-                        <td>{{ $title->title }}</td>
+                        <td>{{ $data->designation }}</td>
+                        <td>{{ $data->name }}</td>
+                        <td>{{ $data->email }}</td>
+                        <td>{{ $data->contact }}</td>
                         <td>
-                            @if ($title->year)
-                            {{ $title->year->year }}
-                            @endif
+                            <embed src="{{ asset('uploads/collabration/' . $data->resume) }}" type="application/pdf" width="100" height="80">
                         </td>
-                        <td><img src="{{ asset('IQAC Event/'. $title->image) }}" alt="" width="100"></td>
                         <td>
-                            <a class="btn btn-icon btn-primary btn-sm" href="{{ route('admin.IqacEventTitle.edit', $title->id) }}"><i
-                                    class="far fa-edit"></i></a>
+                            <a class="btn btn-icon btn-primary btn-sm"
+                                href="{{ route('admin.Collabration.edit', $data->id) }}"><i class="far fa-edit"></i></a>
                         </td>
                         <td>
                             <a class="btn btn-icon btn-danger btn-sm"
-                                onclick="confirmDelete('{{ route('admin.IqacEventTitle.delete', $title->id) }}')"><i
+                                onclick="confirmDelete('{{ route('admin.Collabration.delete', $data->id) }}')"><i
                                     class="fas fa-trash-alt"></i></a>
                         </td>
                     </tr>

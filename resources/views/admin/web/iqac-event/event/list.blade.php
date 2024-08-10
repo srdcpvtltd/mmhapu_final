@@ -9,7 +9,8 @@
         <div class="page-wrapper">
             <div class="row">
                 <div class="col-md-5">
-                    <form class="needs-validation" action="{{ route('admin.IqacEvent.store') }}" method="post" enctype="multipart/form-data">
+                    <form class="needs-validation" action="{{ route('admin.IqacEvent.store') }}" method="post"
+                        enctype="multipart/form-data">
                         @csrf
                         <div class="card">
                             <div class="card-header">
@@ -22,13 +23,13 @@
                                     <select class="form-control" name="title_id">
                                         <option value="">Select Title</option>
                                         @foreach ($title as $data)
-                                        <option value="{{ $data->id }}"> {{ $data->title }} </option>
+                                            <option value="{{ $data->id }}"> {{ $data->title }} </option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="image" class="form-label">Image<span>*</span></label>
-                                    <input type="file" class="form-control" name="image" accept="image/*" required>
+                                    <input type="file" class="form-control" name="image[]" accept="image/*" multiple required>
                                 </div>
                             </div>
                             <div class="card-footer">
@@ -65,12 +66,27 @@
                                                 <td>{{ $i }}</td>
                                                 <td>
                                                     @if ($data->IqacTitle)
-                                                    {{ $data->IqacTitle->title }}
+                                                        {{ $data->IqacTitle->title }}
                                                     @endif
                                                 </td>
-                                                <td><img src="{{ asset('IQAC Event/' . $data->image) }}" alt="" width="80"></td>
                                                 <td>
-                                                    <a class="btn btn-sm btn-primary" href="{{ route('admin.IqacEvent.edit',$data->id)}}">Edit</a>
+                                                    @if ($data->image)
+                                                        @php
+                                                            $images = json_decode($data->image);
+                                                            $imagesToShow = array_slice($images, 0, 3);
+                                                        @endphp
+
+                                                        @foreach ($imagesToShow as $image)
+                                                            <img src="{{ asset('IQAC Event/' . $image) }}" alt="Image"
+                                                                width="80" style="margin: 5px;">
+                                                        @endforeach
+                                                    @else
+                                                        No images available
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    <a class="btn btn-sm btn-primary"
+                                                        href="{{ route('admin.IqacEvent.edit', $data->id) }}">Edit</a>
                                                 </td>
                                                 <td>
                                                     <a class="btn btn-danger btn-sm"

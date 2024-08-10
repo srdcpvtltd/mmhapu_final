@@ -33,7 +33,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 col-sm-12 header-top-right no-padding">
-                        <a href="https://mmhapu.ac.in/page/admission-2023-24">Admission <img src="{{ asset('web/images/new.gif') }}" /></a>&nbsp;|&nbsp;
+                        <a href="https://mmhapu.ac.in/page/admission-2023-24">Admission <img
+                                src="{{ asset('web/images/new.gif') }}" /></a>&nbsp;|&nbsp;
                         @foreach (App\Models\Topbar::all() as $topbar)
                             <a href="{{ url($topbar->url) }}"> {{ $topbar->title }} </a> &nbsp;|&nbsp;
                         @endforeach
@@ -50,10 +51,12 @@
                             <a href="https://mmhapu.in/">
                                 <img class="rotate-image" src="{{ asset('web/images/logo.jpeg') }}"
                                     alt="rotate logo" />
-                                <h4 class="text-logo orange-text"> मौलाना मज़हरुल हक़ अरबी एवं फ़ारसी विश्वविद्यालय</h4><br>
-                                <img src="https://mmhapu.in/web/media_path/1721394861_urdu_final.png"
-                                    alt="rotate logo" style="width:300px;height:30px;margin-left:20px;margin-top:-3px;margin-bottom:3px;"/><br>
-                                <h4 class="text-logo orange-text">MAULANA MAZHARUL HAQUE ARABIC & PERSIAN UNIVERSITY</h4>
+                                <h4 class="text-logo orange-text"> मौलाना मज़हरुल हक़ अरबी एवं फ़ारसी विश्वविद्यालय</h4>
+                                <br>
+                                <img src="https://mmhapu.in/web/media_path/1721394861_urdu_final.png" alt="rotate logo"
+                                    style="width:300px;height:30px;margin-left:20px;margin-top:-3px;margin-bottom:3px;" /><br>
+                                <h4 class="text-logo orange-text">MAULANA MAZHARUL HAQUE ARABIC & PERSIAN UNIVERSITY
+                                </h4>
                                 <h6 class="text-logo">A State University established by an Act of Bihar State
                                     Universities</h6>
                             </a>
@@ -133,7 +136,16 @@
                             <li class=" menu-has-children {{ Request::is('contact*') ? 'current' : '' }}"
                                 style="margin-left:20px"><a href="#">Contact Us</a>
                                 <ul class="dropdown">
-                                    <li style="margin-left:0px;">
+                                        <li style="margin-left:0px;">
+                                            <a href="{{ route('contact_us') }}">Contact Us</a>
+                                        </li>
+                                        <li style="margin-left:0px;">
+                                            <a href="{{ route('address') }}">Address</a>
+                                        </li>
+                                        <li style="margin-left:0px;">
+                                            <a href="{{ route('howtoReach') }}">How to Reach</a>
+                                        </li>
+                                    {{-- <li style="margin-left:0px;">
                                         <a href="{{ route('contact_us') }}">Contact Us</a>
                                     </li>
                                     <li style="margin-left:0px;">
@@ -141,7 +153,7 @@
                                     </li>
                                     <li style="margin-left:0px;">
                                         <a href="{{ route('howtoReach') }}">How to Reach</a>
-                                    </li>
+                                    </li> --}}
                                 </ul>
                             </li>
                             <li class="active">

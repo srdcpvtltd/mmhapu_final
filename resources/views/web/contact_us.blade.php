@@ -36,7 +36,7 @@
                     <div class="container">
                         <div class="row">
 
-                             <div class="single-popular-carusel col-lg-3 col-md-6">
+                            <div class="single-popular-carusel col-lg-3 col-md-6">
                                 <div class="thumb-wrap relative">
                                     <div class="thumb relative">
                                         <div class="overlay overlay-bg"></div>
@@ -51,9 +51,10 @@
                                     </h5>
                                     <ul>
                                         <li>Assistant Professor (MJMC)</li>
-                                         <li>For Media Related Queries</li>
-                                        <li class="break-line"><i class="fa fa-envelope"></i> nikhilanandgiri@gmail.com</li>
-                                           <li><i class="fa fa-phone"></i> 9717600960</li>
+                                        <li>For Media Related Queries</li>
+                                        <li class="break-line"><i class="fa fa-envelope"></i> nikhilanandgiri@gmail.com
+                                        </li>
+                                        <li><i class="fa fa-phone"></i> 9717600960</li>
 
                                     </ul>
                                 </div>
@@ -63,7 +64,8 @@
                                 <div class="thumb-wrap relative">
                                     <div class="thumb relative">
                                         <div class="overlay overlay-bg"></div>
-                                        <img class="img-fluid" src="{{ asset('web/images/faculty/Er. Md. Sanaullah Khan.jpg') }}"
+                                        <img class="img-fluid"
+                                            src="{{ asset('web/images/faculty/Er. Md. Sanaullah Khan.jpg') }}"
                                             style="height: 280px;">
                                     </div>
                                 </div>
@@ -73,8 +75,9 @@
                                     </h5>
                                     <ul>
                                         <li>Assistant Registrar (Gen. & Exam.)</li>
-                                         <li>For Result Related Queries</li>
-                                        <li class="break-line"><i class="fa fa-envelope"></i> sanaullah783@yahoo.co.in</li>
+                                        <li>For Result Related Queries</li>
+                                        <li class="break-line"><i class="fa fa-envelope"></i> sanaullah783@yahoo.co.in
+                                        </li>
                                         <li><i class="fa fa-phone"></i> 9304509534</li>
                                     </ul>
                                 </div>
@@ -85,7 +88,8 @@
                                 <div class="thumb-wrap relative">
                                     <div class="thumb relative">
                                         <div class="overlay overlay-bg"></div>
-                                        <img class="img-fluid" src="{{ asset('web/images/faculty/Dr. Pankaj Kumar.jpg') }}"
+                                        <img class="img-fluid"
+                                            src="{{ asset('web/images/faculty/Dr. Pankaj Kumar.jpg') }}"
                                             alt="Dr. Pankaj Kumar" style="height: 280px;">
                                     </div>
                                 </div>
@@ -95,15 +99,15 @@
                                     </h5>
                                     <ul>
                                         <li>Section Officer (Gen. & Estab.)</li>
-                                         <li>For General Related Queries</li>
+                                        <li>For General Related Queries</li>
                                         <li class="break-line"><i class="fa fa-envelope"></i> pankaj.mmhu@gmail.com
                                         </li>
-                                           <li><i class="fa fa-phone"></i> 9431049853</li>
+                                        <li><i class="fa fa-phone"></i> 9431049853</li>
                                     </ul>
                                 </div>
                             </div>
 
-                             <div class="single-popular-carusel col-lg-3 col-md-6">
+                            <div class="single-popular-carusel col-lg-3 col-md-6">
                                 <div class="thumb-wrap relative">
                                     <div class="thumb relative">
                                         <div class="overlay overlay-bg"></div>
@@ -117,17 +121,13 @@
                                     </h5>
                                     <ul>
                                         <li>Section Officer (Addmission & RTI)</li>
-                                         <li>For Addmission Related Queries</li>
+                                        <li>For Addmission Related Queries</li>
                                         <li class="break-line"><i class="fa fa-envelope"></i> kamleshpat2006@gmail.com
                                         </li>
-                                           <li><i class="fa fa-phone"></i> 9934022203</li>
+                                        <li><i class="fa fa-phone"></i> 9934022203</li>
                                     </ul>
                                 </div>
                             </div>
-
-
-                           
-
                         </div>
                     </div>
                 </section>

@@ -19,7 +19,13 @@
                     </div>
                     <div class="col-lg-6 mb-3">
                         <label for="year" class="form-label">Year<span style="color: red">*</span></label>
-                        <input type="number" class="form-control" name="year" placeholder="Enter Year" min="2000" max="2200" step="1" required>
+                        {{-- <input type="number" class="form-control" name="year" placeholder="Enter Year" min="2000" max="2200" step="1" required> --}}
+                        <select name="year_id" class="form-control" required>
+                            <option value="">Select Year</option>
+                            @foreach ($years as $year)
+                                <option value=" {{ $year->id }} "> {{ $year->year }} </option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="col-lg-6 mb-3">
                         <label for="image" class="form-label">Image<span style="color: red">*</span></label>
@@ -32,5 +38,4 @@
             </form>
         </div>
     </div>
-
 @endsection

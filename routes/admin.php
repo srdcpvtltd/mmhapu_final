@@ -35,6 +35,7 @@ use App\Http\Controllers\Admin\FacilityController;
 use App\Http\Controllers\Admin\FacultyController;
 use App\Http\Controllers\Admin\FacultySubcategoryController;
 use App\Http\Controllers\Admin\GatewayDetailController;
+use App\Http\Controllers\Admin\IqacCollabrationController;
 use App\Http\Controllers\Admin\IqaceventController;
 use App\Http\Controllers\Admin\IqaceventTitleController;
 use App\Http\Controllers\Admin\OverviewController;
@@ -316,6 +317,14 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
         Route::get('iqac_event/edit{id}',[IqaceventController::class,'edit'])->name('IqacEvent.edit');
         Route::post('iqac_event/update',[IqaceventController::class,'update'])->name('IqacEvent.update');
         Route::get('iqac_event/delete{id}',[IqaceventController::class,'delete'])->name('IqacEvent.delete');
+
+        //iqac Collabration
+        Route::get('/collabration/list',[IqacCollabrationController::class,'list'])->name('Collabration.list');
+        Route::get('/collabration/add',[IqacCollabrationController::class,'add'])->name('Collabration.add');
+        Route::post('/collabration/store',[IqacCollabrationController::class,'store'])->name('Collabration.store');
+        Route::get('/collabration/edit/{id}',[IqacCollabrationController::class,'edit'])->name('Collabration.edit');
+        Route::post('/collabration/update',[IqacCollabrationController::class,'update'])->name('Collabration.update');
+        Route::get('/collabration/delete/{id}',[IqacCollabrationController::class,'delete'])->name('Collabration.delete');
 
         //Top Bar
         Route::get('/top_bar/list',[TopbarController::class,'list'])->name('Topbar.list');

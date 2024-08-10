@@ -237,6 +237,14 @@
                         </li>
 
                         <li class="nav-item">
+                            <a href="{{ route('admin.Collabration.list') }}"
+                                class="nav-link {{ Request::is('admin/web/collabration*') ? 'active' : '' }}">
+                                <i class="fas fa-envelope"></i>
+                                <span>IQAC Collabration</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
                             <a href="{{ route('admin.topbar-setting.index') }}"
                                 class="nav-link {{ Request::is('admin/web/topbar-setting') ? 'active' : '' }}">
                                 <i class="fas fa-envelope"></i>

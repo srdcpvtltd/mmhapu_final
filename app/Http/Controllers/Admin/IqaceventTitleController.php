@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\IqacEvent;
 use App\Models\IqaceventTitle;
+use App\Models\Year;
 use Illuminate\Http\Request;
 
 class IqaceventTitleController extends Controller
@@ -16,13 +17,14 @@ class IqaceventTitleController extends Controller
     }
     public function add()
     {
-        return view('admin.web.iqac-event.title.add');
+        $years = Year::all();
+        return view('admin.web.iqac-event.title.add', compact('years'));
     }
     public function store(Request $request)
     {
         $store = new IqaceventTitle();
         $store->title = $request->title;
-        $store->year = $request->year;
+        $store->year_id = $request->year_id;
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $imageName = time() . '_' . $image->getClientOriginalName();
@@ -36,13 +38,14 @@ class IqaceventTitleController extends Controller
     public function edit($id)
     {
         $edit = IqaceventTitle::find($id);
-        return view('admin.web.iqac-event.title.edit', compact('edit'));
+        $years = Year::all();
+        return view('admin.web.iqac-event.title.edit', compact('edit','years'));
     }
     public function update(Request $request)
     {
         $update = IqaceventTitle::find($request->id);
         $update->title = $request->title;
-        $update->year = $request->year;
+        $update->year_id = $request->year_id;
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $imageName = time() . '_' . $image->getClientOriginalName();

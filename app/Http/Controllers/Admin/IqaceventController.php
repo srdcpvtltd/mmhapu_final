@@ -20,10 +20,17 @@ class IqaceventController extends Controller
         $store = new IqacEvent;
         $store->title_id = $request->title_id;
         if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $imageName = time() . '_' . $image->getClientOriginalName();
-            $image->move(public_path('IQAC Event'), $imageName);
-            $store->image = $imageName;
+            $images = $request->file('image');
+
+            $imageNames = [];
+
+            foreach ($images as $image) {
+                $imageName = time() . '_' . $image->getClientOriginalName();
+                $image->move(public_path('IQAC Event'), $imageName);
+                $imageNames[] = $imageName;
+            }
+
+            $store->image = json_encode($imageNames);
         }
         $store->save();
         toastr()->success('IQAC Event Added Successfully');
@@ -40,13 +47,22 @@ class IqaceventController extends Controller
         $update = IqacEvent::find($request->id);
         $update->title_id = $request->title_id;
         if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $imageName = time() . '_' . $image->getClientOriginalName();
-            if ($update->image && file_exists(public_path('IQAC Event/' . $update->image))) {
-                unlink(public_path('IQAC Event/' . $update->image));
+            $images = $request->file('image');
+
+            $imageNames = [];
+
+            foreach ($images as $image) {
+                $imageName = time() . '_' . $image->getClientOriginalName();
+
+                if ($update->image && file_exists(public_path('IQAC Event/' . $update->image))) {
+                    unlink(public_path('IQAC Event/' . $update->image));
+                }
+
+                $image->move(public_path('IQAC Event'), $imageName);
+                $imageNames[] = $imageName;
             }
-            $image->move(public_path('IQAC Event'), $imageName);
-            $update->image = $imageName;
+
+            $update->image = json_encode($imageNames);
         }
         $update->save();
         toastr()->success('IQAC Event Updated Successfully');
@@ -56,14 +72,23 @@ class IqaceventController extends Controller
     {
         $delete = IqacEvent::find($id);
         if ($delete) {
-            if ($delete->image && file_exists(public_path('IQAC Event/' . $delete->image))) {
-                unlink(public_path('IQAC Event/' . $delete->image));
+            if ($delete->image) {
+                $images = json_decode($delete->image);
+
+                if (is_array($images)) {
+                    foreach ($images as $image) {
+                        if (file_exists(public_path('IQAC Event/' . $image))) {
+                            unlink(public_path('IQAC Event/' . $image));
+                        }
+                    }
+                }
             }
+
             $delete->delete();
             toastr()->success('Deleted Successfully');
             return redirect()->back();
         }
-        toastr()->error('Deleted Successfully');
+        toastr()->error('Something Wents Wrong.');
         return redirect()->back();
     }
 }
