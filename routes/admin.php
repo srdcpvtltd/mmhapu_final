@@ -38,6 +38,7 @@ use App\Http\Controllers\Admin\GatewayDetailController;
 use App\Http\Controllers\Admin\IqacCollabrationController;
 use App\Http\Controllers\Admin\IqaceventController;
 use App\Http\Controllers\Admin\IqaceventTitleController;
+use App\Http\Controllers\Admin\IqacFeedbackController;
 use App\Http\Controllers\Admin\OverviewController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ShiftController;
@@ -325,6 +326,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
         Route::get('/collabration/edit/{id}',[IqacCollabrationController::class,'edit'])->name('Collabration.edit');
         Route::post('/collabration/update',[IqacCollabrationController::class,'update'])->name('Collabration.update');
         Route::get('/collabration/delete/{id}',[IqacCollabrationController::class,'delete'])->name('Collabration.delete');
+
+        //Feedback
+        Route::get('/feedback/index',[IqacFeedbackController::class,'index'])->name('Feedback.index');
+        Route::post('/feedback/store',[IqacFeedbackController::class,'store'])->name('Feedback.store');
+        Route::get('/feedback/edit/{id}',[IqacFeedbackController::class,'edit'])->name('Feedback.edit');
+        Route::post('/feedback/update',[IqacFeedbackController::class,'update'])->name('Feedback.update');
+        Route::get('/feedback/delete/{id}',[IqacFeedbackController::class,'delete'])->name('Feedback.delete');
 
         //Top Bar
         Route::get('/top_bar/list',[TopbarController::class,'list'])->name('Topbar.list');

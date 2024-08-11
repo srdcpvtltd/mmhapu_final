@@ -245,6 +245,14 @@
                         </li>
 
                         <li class="nav-item">
+                            <a href="{{ route('admin.Feedback.index') }}"
+                                class="nav-link {{ Request::is('admin/web/feedback*') ? 'active' : '' }}">
+                                <i class="fas fa-envelope"></i>
+                                <span>IQAC Feedback</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
                             <a href="{{ route('admin.topbar-setting.index') }}"
                                 class="nav-link {{ Request::is('admin/web/topbar-setting') ? 'active' : '' }}">
                                 <i class="fas fa-envelope"></i>

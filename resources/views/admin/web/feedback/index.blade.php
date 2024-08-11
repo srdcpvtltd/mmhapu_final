@@ -1,7 +1,7 @@
 @extends('admin.layout.index')
 
 @section('title')
-    IQAC EVENT
+    IQAC FEEDBACK
 @endsection
 
 @section('content')
@@ -9,27 +9,21 @@
         <div class="page-wrapper">
             <div class="row">
                 <div class="col-md-5">
-                    <form class="needs-validation" action="{{ route('admin.IqacEvent.store') }}" method="post"
-                        enctype="multipart/form-data">
+                    <form class="needs-validation" action="{{ route('admin.Feedback.store') }}" method="post">
                         @csrf
                         <div class="card">
                             <div class="card-header">
-                                <h5>Add New IQAC Event</h5>
+                                <h5>Add New IQAC Feedback</h5>
                             </div>
                             <div class="card-block pdng">
                                 <!-- Form Start -->
                                 <div class="form-group">
-                                    <label for="title" class="form-label">Title<span>*</span></label>
-                                    <select class="form-control" name="title_id">
-                                        <option value="">Select Title</option>
-                                        @foreach ($title as $data)
-                                            <option value="{{ $data->id }}"> {{ $data->title }} </option>
-                                        @endforeach
-                                    </select>
+                                    <label for="subject" class="form-label">Subject <span style="color: red">*</span></label>
+                                    <input type="text" class="form-control" name="subject" placeholder="Enter Subject" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="image" class="form-label">Image<span>*</span></label>
-                                    <input type="file" class="form-control" name="image[]" accept="image/*" multiple required>
+                                    <label for="url" class="form-label">URL<span style="color: red">*</span></label>
+                                    <input type="text" class="form-control" name="url" placeholder="Enter Your Form link" required>
                                 </div>
                             </div>
                             <div class="card-footer">
@@ -42,7 +36,7 @@
                 <div class="col-md-7">
                     <div class="card">
                         <div class="card-header">
-                            <h5>Manage IQAC Event</h5>
+                            <h5>Manage IQAC Feedback</h5>
                         </div>
                         <div class="card-block pdng">
                             <div class="table-responsive">
@@ -51,8 +45,8 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>title</th>
-                                            <th>Image</th>
+                                            <th>Subject</th>
+                                            <th>URL</th>
                                             <th>Action</th>
                                             <th>Action</th>
                                         </tr>
@@ -61,40 +55,18 @@
                                         @php
                                             $i = 1;
                                         @endphp
-                                        @foreach ($events as $data)
+                                        @foreach ($feedbacks as $data)
                                             <tr>
                                                 <td>{{ $i }}</td>
-                                                <td>
-                                                    @if ($data->IqacTitle)
-                                                        {{ $data->IqacTitle->title }}
-                                                    @endif
-                                                </td>
-                                                <td>
-                                                    @if ($data->image)
-                                                        @php
-                                                            $images = json_decode($data->image);
-                                                            $imagesToShow = is_array($images) ? array_slice($images, 0, 3) : [];
-                                                        @endphp
-
-                                                        @if (!empty($imagesToShow))
-                                                            @foreach ($imagesToShow as $image)
-                                                                <img src="{{ asset('IQAC Event/' . $image) }}" alt="Image"
-                                                                    width="80" style="margin: 5px;">
-                                                            @endforeach
-                                                        @else
-                                                            No images available
-                                                        @endif
-                                                    @else
-                                                        No images available
-                                                    @endif
-                                                </td>
+                                                <td> {{ $data->subject }} </td>
+                                                <td> <a class="btn btn-sm btn-success" target="_blank" href="{{ $data->url }}">View</a> </td>
                                                 <td>
                                                     <a class="btn btn-sm btn-primary"
-                                                        href="{{ route('admin.IqacEvent.edit', $data->id) }}">Edit</a>
+                                                        href="{{ route('admin.Feedback.edit', $data->id) }}">Edit</a>
                                                 </td>
                                                 <td>
                                                     <a class="btn btn-danger btn-sm"
-                                                        onclick="confirmDelete('{{ route('admin.IqacEvent.delete', $data->id) }}')">Delete</a>
+                                                        onclick="confirmDelete('{{ route('admin.Feedback.delete', $data->id) }}')">Delete</a>
                                                 </td>
                                             </tr>
                                             @php

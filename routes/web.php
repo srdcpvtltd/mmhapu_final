@@ -27,6 +27,7 @@ use App\Http\Controllers\Web\AdministrationController;
 use App\Http\Controllers\Web\ChancellorController;
 use App\Http\Controllers\Web\CollabrationController;
 use App\Http\Controllers\Web\ContactusController;
+use App\Http\Controllers\Web\IqacController;
 use App\Http\Controllers\Web\LegacyController;
 use App\Http\Controllers\Web\LogoController;
 use App\Http\Controllers\Web\MissionVisionController;
@@ -97,6 +98,9 @@ Route::middleware(['XSS'])->namespace('Web')->group(function () {
 
   //collabration
   Route::get('/collabration',[CollabrationController::class,'collabration'])->name('collabration');
+
+  //Feedback
+  Route::get('/feedback',[IqacController::class,'Feedback'])->name('feedback');
 
   //Team
   Route::get('/view-team/{id}',[TeamController::class,'viewTeam'])->name('viewTeam');
