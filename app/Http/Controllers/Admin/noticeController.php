@@ -18,10 +18,13 @@ class noticeController extends Controller
         return view('admin.noticeboard.notice.add',compact('add_notice'));
     }
     public function store(Request $request){
+
         date_default_timezone_set('Asia/Kolkata');
         $store_notice = new notice;
         $store_notice->title = $request->title;
         $store_notice->description = $request->description;
+        $store_notice->type = $request->type;
+        $store_notice->url = $request->url;
         if($request->hasFile('file')){
             $file = $request->file('file');
             $fileName = time(). '_' . $file->getClientOriginalName();
@@ -44,6 +47,8 @@ class noticeController extends Controller
         $update_notice =notice::find($request->id);
         $update_notice->title = $request->title;
         $update_notice->description = $request->description;
+        $update_notice->type = $request->type;
+        $update_notice->url = $request->url;
         if($request->hasFile('file')){
             $file = $request->file('file');
             $fileName = time(). '_' . $file->getClientOriginalName();

@@ -31,6 +31,7 @@ use App\Http\Controllers\Admin\SubjectController;
 use App\Http\Controllers\Admin\TeacherController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\DepartmentinfoController as AdminDepartmentinfoController;
+use App\Http\Controllers\Admin\EvaluationController;
 use App\Http\Controllers\Admin\FacilityController;
 use App\Http\Controllers\Admin\FacultyController;
 use App\Http\Controllers\Admin\FacultySubcategoryController;
@@ -333,6 +334,16 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
         Route::get('/feedback/edit/{id}',[IqacFeedbackController::class,'edit'])->name('Feedback.edit');
         Route::post('/feedback/update',[IqacFeedbackController::class,'update'])->name('Feedback.update');
         Route::get('/feedback/delete/{id}',[IqacFeedbackController::class,'delete'])->name('Feedback.delete');
+
+        //Evalutions-title
+        Route::get('/evaluation_title/index',[EvaluationController::class,'index'])->name('Evaluation.index');
+        Route::post('/evaluation_title/store',[EvaluationController::class,'store'])->name('Evaluation.store');
+        Route::post('/evaluation_title/update',[EvaluationController::class,'update'])->name('Evaluation.update');
+        Route::get('/evaluation_title/delete/{id}',[EvaluationController::class,'delete'])->name('Evaluation.delete');
+
+        //Evalutions
+        Route::get('/evaluation_report/list',[EvaluationController::class,'list'])->name('evaluation_report.list');
+        Route::get('/evaluation_report/add',[EvaluationController::class,'add'])->name('evaluation_report.add');
 
         //Top Bar
         Route::get('/top_bar/list',[TopbarController::class,'list'])->name('Topbar.list');

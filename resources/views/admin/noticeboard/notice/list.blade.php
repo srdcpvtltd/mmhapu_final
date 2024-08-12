@@ -23,7 +23,7 @@
                         <th>#</th>
                         <th>Title</th>
                         <th>Description</th>
-                        <th>File</th>
+                        <th>File/Link</th>
                         <th>Notice Type</th>
                         <th>Action</th>
                         <th>Action</th>
@@ -38,14 +38,21 @@
                             <td>{{ $i }}</td>
                             <td><b>{{ $notice->title }}</b></td>
                             <td>
-                                @if(strlen($notice->description) > 300)
+                                @if (strlen($notice->description) > 300)
                                     {!! substr($notice->description, 0, 300) !!}...
                                 @else
                                     {!! $notice->description !!}
                                 @endif
                             </td>
-                            <td><a target="blank" class="btn btn-success btn-sm"
-                                    href="{{ asset('file/' . $notice->file) }}">View</a></td>
+                            <td>
+                                @if ($notice->type == 'file')
+                                    <a target="blank" class="btn btn-success btn-sm"
+                                        href="{{ asset('file/' . $notice->file) }}">File</a>
+                                @elseif ($notice->type == 'link')
+                                    <a target="blank" class="btn btn-info btn-sm"
+                                        href="{{  $notice->url }}">Link</a>
+                                @endif
+                            </td>
                             <td>{{ $notice->notice_type }}</td>
                             <td>
                                 <a class="btn btn-primary"

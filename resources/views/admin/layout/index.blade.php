@@ -236,6 +236,21 @@
                             </ul>
                         </li>
 
+                        <li class="nav-item nav-item-submenu {{ Request::is('admin/web/evaluation_title*') || Request::is('admin/web/evaluation_report*') ? 'nav-item-open' : '' }}">
+                            <a href="#" class="nav-link"> <i class="fas fa-clipboard-check"></i> <span>IQAC Evaluation Report</span></a>
+
+                            <ul class="nav nav-group-sub" data-submenu-title="Layouts"
+                                style="{{ Request::is('admin/web/evaluation_title*') || Request::is('admin/web/evaluation_report*') ? 'display:block' : '' }}">
+
+                                <li class="nav-item"><a href="{{ route('admin.Evaluation.index') }}"
+                                        class="nav-link {{ Request::is('admin/web/evaluation_title*') ? 'active' : '' }}">Title</a></li>
+
+                                <li class="nav-item"><a href="{{ route('admin.evaluation_report.list') }}"
+                                        class="nav-link {{ Request::is('admin/web/evaluation_report*') ? 'active' : '' }}">Evaluation Report</a>
+                                </li>
+                            </ul>
+                        </li>
+
                         <li class="nav-item">
                             <a href="{{ route('admin.Collabration.list') }}"
                                 class="nav-link {{ Request::is('admin/web/collabration*') ? 'active' : '' }}">
@@ -247,7 +262,7 @@
                         <li class="nav-item">
                             <a href="{{ route('admin.Feedback.index') }}"
                                 class="nav-link {{ Request::is('admin/web/feedback*') ? 'active' : '' }}">
-                                <i class="fas fa-envelope"></i>
+                                <i class="fas fa-comments"></i>
                                 <span>IQAC Feedback</span>
                             </a>
                         </li>

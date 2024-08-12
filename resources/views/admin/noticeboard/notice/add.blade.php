@@ -18,14 +18,36 @@
                 </div>
                 <div class="mb-3">
                     <label for="notice_type" class="form-label">Description<span style="color: red">*</span></label>
-                    {{-- <input type="text" class="form-control" name="description" placeholder="Enter Notice Type"> --}}
                     <textarea class="form-control texteditor" name="description"cols="30" rows="4" placeholder="Enter Description"></textarea>
 
                 </div>
+
                 <div class="mb-3">
-                    <label for="notice_type" class="form-label">File</label>
-                    <input type="file" class="form-control" name="file" placeholder="Enter Notice Type">
+                    <label for="uploadOption" class="form-label">Type:</label>
+                    <div class="d-flex">
+                        <div class="form-check me-3">
+                            <input class="form-check-input" type="radio" name="type" id="fileOption"
+                                value="file" checked>
+                            <label class="form-check-label" for="fileOption">File</label>
+                        </div>
+                        <div class="form-check ml-5">
+                            <input class="form-check-input" type="radio" name="type" id="linkOption"
+                                value="link">
+                            <label class="form-check-label" for="linkOption">Link</label>
+                        </div>
+                    </div>
                 </div>
+
+                <div class="mb-3" id="fileField">
+                    <label for="notice_type" class="form-label">File</label>
+                    <input type="file" class="form-control" name="file">
+                </div>
+
+                <div class="mb-3" id="urlField" style="display:none;">
+                    <label for="notice_type" class="form-label">Url</label>
+                    <input type="text" class="form-control" name="url" placeholder="Enter URL">
+                </div>
+
                 <div class="mb-3">
                     <label for="notice_type" class="form-label">Notice Type<span style="color: red">*</span></label>
                     <select class="form-control" name="notice_type" required>
@@ -42,4 +64,19 @@
             </form>
         </div>
     </div>
+@endsection
+@section('scripts')
+<script>
+    $(document).ready(function() {
+        $('input[name="type"]').change(function() {
+            if ($(this).val() === 'file') {
+                $('#fileField').show();
+                $('#urlField').hide();
+            } else if ($(this).val() === 'link') {
+                $('#fileField').hide();
+                $('#urlField').show();
+            }
+        });
+    });
+</script>
 @endsection

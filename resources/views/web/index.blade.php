@@ -9,9 +9,16 @@
                         onmouseout="this.start();">
                         @foreach ($notices as $notice)
                             <i class="fa fa-arrow-circle-right orange-text" aria-hidden="true"></i>
-                            <a href="{{ asset('file/' . $notice->file) }}" target="blank">
-                                {{ $notice->title }} |
-                            </a>
+                            
+                            @if ($notice->type == 'file')
+                                <a href="{{ asset('file/' . $notice->file) }}" target="_blank">
+                                    {{ $notice->title }} |
+                                </a>
+                            @elseif ($notice->type == 'link')
+                                <a href="{{ $notice->url }}" target="_blank">
+                                    {{ $notice->title }} |
+                                </a>
+                            @endif
                         @endforeach
                     </marquee>
                 </div>
@@ -68,23 +75,23 @@
                     </div>
                     <div class="desc-wrap marquee_text notifBox">
                         @if (count($office_orders_notice) > 0)
-                        <marquee direction="up" scrollamount="3" scrolldelay="200" behavior="scroll"
-                            onmouseover="this.stop();" onmouseout="this.start();" height="255">
-                            <ul>
-                                @foreach ($office_orders_notice as $noticetype)
-                                    <li>
-                                        <i class="fa fa-caret-right"></i>
-                                        <a target="blank" href="{{ asset('file/' . $noticetype->file) }}">
-                                            <span>{{ $noticetype->title }} (Dated 05.06.2024)</span>
-                                        </a>
-                                        <img src="{{ asset('web/images/new.gif') }}" alt="new image" />
-                                    </li>
-                                    <hr>
-                                @endforeach
-                            </ul>
-                        </marquee>
-                        <a href="{{ route('web.noticeList', $noticetype->notice_type) }}" class="viewAll-btn">View
-                            all</a>
+                            <marquee direction="up" scrollamount="3" scrolldelay="200" behavior="scroll"
+                                onmouseover="this.stop();" onmouseout="this.start();" height="255">
+                                <ul>
+                                    @foreach ($office_orders_notice as $noticetype)
+                                        <li>
+                                            <i class="fa fa-caret-right"></i>
+                                            <a target="blank" href="{{ asset('file/' . $noticetype->file) }}">
+                                                <span>{{ $noticetype->title }} (Dated 05.06.2024)</span>
+                                            </a>
+                                            <img src="{{ asset('web/images/new.gif') }}" alt="new image" />
+                                        </li>
+                                        <hr>
+                                    @endforeach
+                                </ul>
+                            </marquee>
+                            <a href="{{ route('web.noticeList', $noticetype->notice_type) }}" class="viewAll-btn">View
+                                all</a>
 
                         @endif
                     </div>
@@ -191,7 +198,8 @@
                                     <div class="vcBox-content">
                                         <h5>Shri Rajendra Vishwanath Arlekar</h5>
                                         <h6>The Governor of Bihar, Hon'ble Chancellor</h6>
-                                        <a href="https://governor.bih.nic.in/h-e-s-profile/" target="_blank"style="background-color:#0b416f">Read
+                                        <a href="https://governor.bih.nic.in/h-e-s-profile/"
+                                            target="_blank"style="background-color:#0b416f">Read
                                             more</a>
                                     </div>
                                 </div>
@@ -211,7 +219,8 @@
                                         <div class="vcBox-content">
                                             <h5> {{ $team->name }} </h5>
                                             <h6> {{ $team->designation }} </h6>
-                                            <a href="{{ route('viewTeam', $team->id) }}" style="background-color:#0b416f">Read
+                                            <a href="{{ route('viewTeam', $team->id) }}"
+                                                style="background-color:#0b416f">Read
                                                 more</a>
                                         </div>
                                     </div>
@@ -304,24 +313,25 @@
                                 <h4>Examination / Result</h4>
                             </div>
                             <div class="desc-wrap marquee_text resultBox">
-                                @if (count($exam_notice)>0)
-                                <marquee direction="up" scrollamount="3" scrolldelay="200" behavior="scroll"
-                                    onmouseover="this.stop();" onmouseout="this.start();">
-                                    <ul>
-                                        @foreach ($exam_notice as $exam)
-                                            <li>
-                                                <i class="fa fa-caret-right"></i>
-                                                <a target="blank" href="{{ asset('file/' . $exam->file) }}">
-                                                    <span>{{ $exam->title }}</span>
-                                                </a>
-                                                <img src="{{ asset('web/images/new.gif') }}" alt="new image" />
-                                            </li>
-                                            <hr>
-                                        @endforeach
-                                    </ul>
-                                </marquee>
-                                <a href="{{ route('web.noticeList', $exam_notice[0]->notice_type) }}" class="viewAll-btn">View
-                                    all</a>
+                                @if (count($exam_notice) > 0)
+                                    <marquee direction="up" scrollamount="3" scrolldelay="200" behavior="scroll"
+                                        onmouseover="this.stop();" onmouseout="this.start();">
+                                        <ul>
+                                            @foreach ($exam_notice as $exam)
+                                                <li>
+                                                    <i class="fa fa-caret-right"></i>
+                                                    <a target="blank" href="{{ asset('file/' . $exam->file) }}">
+                                                        <span>{{ $exam->title }}</span>
+                                                    </a>
+                                                    <img src="{{ asset('web/images/new.gif') }}" alt="new image" />
+                                                </li>
+                                                <hr>
+                                            @endforeach
+                                        </ul>
+                                    </marquee>
+                                    <a href="{{ route('web.noticeList', $exam_notice[0]->notice_type) }}"
+                                        class="viewAll-btn">View
+                                        all</a>
                                 @endif
                             </div>
                         </div>
@@ -632,8 +642,10 @@
                     </div>
                     <div class="desc-wrap newsImg_box vcBox-content">
                         <!--<h5>text to be added</h5>-->
-                        <img src="{{ asset('uploads/news/' . $viewNews->image) }}" class="img-responsive" style="width:100%">
-                        <a href="{{ route('news') }}" class="newsall-btn" style="background-color:#0b416f !important;">View all</a>
+                        <img src="{{ asset('uploads/news/' . $viewNews->image) }}" class="img-responsive"
+                            style="width:100%">
+                        <a href="{{ route('news') }}" class="newsall-btn"
+                            style="background-color:#0b416f !important;">View all</a>
                     </div>
                 </div>
             </div>
@@ -646,7 +658,10 @@
                         </h4>
                     </div>
                     <div class="desc-wrap" style="padding: 0px !important;">
-                        <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D61562943564042&tabs=timeline&width=400&height=350&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="100%" height="350" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+                        <iframe
+                            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D61562943564042&tabs=timeline&width=400&height=350&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
+                            width="100%" height="350" style="border:none;overflow:hidden" scrolling="no"
+                            frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
                     </div>
                 </div>
             </div>
@@ -672,8 +687,7 @@
                         </h4>
                     </div>
                     <div class="desc-wrap" style="padding: 0px !important;">
-                        <iframe width="100%" height="350"
-                            src="https://www.youtube.com/embed/kgPj7BpmvRQ"
+                        <iframe width="100%" height="350" src="https://www.youtube.com/embed/kgPj7BpmvRQ"
                             frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                     </div>
                 </div>

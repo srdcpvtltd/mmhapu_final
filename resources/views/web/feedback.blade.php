@@ -50,7 +50,7 @@
                                             <td style="padding-top: 15px;"> <center>{{ $i }}</center> </td>
                                             <td style="padding-top: 15px;"> {{ $data->subject }} </td>
                                             <td>
-                                                <center><a class="btn btn-sm btn-info" href=" {{$data->url}} " target="_blank"> View</a></center>
+                                                <center><a class="btn btn-sm btn-info" href=" {{$data->url}} " target="_blank"> Click Here</a></center>
                                             </td>
                                         </tr>
                                         @php
