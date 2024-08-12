@@ -9,7 +9,7 @@
                         onmouseout="this.start();">
                         @foreach ($notices as $notice)
                             <i class="fa fa-arrow-circle-right orange-text" aria-hidden="true"></i>
-                            
+
                             @if ($notice->type == 'file')
                                 <a href="{{ asset('file/' . $notice->file) }}" target="_blank">
                                     {{ $notice->title }} |
@@ -81,9 +81,17 @@
                                     @foreach ($office_orders_notice as $noticetype)
                                         <li>
                                             <i class="fa fa-caret-right"></i>
-                                            <a target="blank" href="{{ asset('file/' . $noticetype->file) }}">
-                                                <span>{{ $noticetype->title }} (Dated 05.06.2024)</span>
-                                            </a>
+                                            @if ($noticetype->type == 'file')
+                                                <a target="blank" href="{{ asset('file/' . $noticetype->file) }}">
+                                                    <span>{{ $noticetype->title }} (Dated 05.06.2024)</span>
+                                                </a>
+                                            @elseif ($noticetype->type == 'link')
+                                                <a target="blank" href="{{ $noticetype->url }}">
+                                                    <span>{{ $noticetype->title }} (Dated 05.06.2024)</span>
+                                                </a>
+                                            @endif
+
+
                                             <img src="{{ asset('web/images/new.gif') }}" alt="new image" />
                                         </li>
                                         <hr>
@@ -141,8 +149,15 @@
                                 @foreach ($notices as $notice)
                                     <li>
                                         <i class="fa fa-caret-right"></i>
-                                        <a target="blank" href="{{ asset('file/' . $notice->file) }}">
-                                            <span>{{ $notice->title }}</span>
+                                        @if ($notice->type == 'file')
+                                            <a target="blank" href="{{ asset('file/' . $notice->file) }}">
+                                                <span>{{ $notice->title }}</span>
+                                            @elseif ($notice->type == 'link')
+                                                <a target="blank" href="{{ $notice->url }}">
+                                                    <span>{{ $notice->title }}</span>
+                                                </a>
+                                        @endif
+
                                         </a>
                                         <img src="{{ asset('web/images/new.gif') }}" alt="new image" />
                                     </li>
@@ -292,9 +307,17 @@
                                             @foreach ($admission_notice as $admission)
                                                 <li>
                                                     <i class="fa fa-caret-right"></i>
-                                                    <a target="blank" href="{{ asset('file/' . $admission->file) }}">
-                                                        <span>{{ $admission->title }}</span>
-                                                    </a>
+                                                    @if ($admission->type == 'file')
+                                                        <a target="blank"
+                                                            href="{{ asset('file/' . $admission->file) }}">
+                                                            <span>{{ $admission->title }}</span>
+                                                        </a>
+                                                    @elseif ($admission->type == 'link')
+                                                        <a target="blank" href="{{ $admission->url }}">
+                                                            <span>{{ $admission->title }}</span>
+                                                        </a>
+                                                    @endif
+
                                                     <img src="{{ asset('web/images/new.gif') }}" alt="new image" />
                                                 </li>
                                                 <hr>
@@ -320,9 +343,15 @@
                                             @foreach ($exam_notice as $exam)
                                                 <li>
                                                     <i class="fa fa-caret-right"></i>
-                                                    <a target="blank" href="{{ asset('file/' . $exam->file) }}">
-                                                        <span>{{ $exam->title }}</span>
-                                                    </a>
+                                                    @if ($exam->type == 'file')
+                                                        <a target="blank" href="{{ asset('file/' . $exam->file) }}">
+                                                            <span>{{ $exam->title }}</span>
+                                                        </a>
+                                                    @elseif ($exam->type == 'link')
+                                                        <a target="blank" href="{{ $exam->url }}">
+                                                            <span>{{ $exam->title }}</span>
+                                                        </a>
+                                                    @endif
                                                     <img src="{{ asset('web/images/new.gif') }}" alt="new image" />
                                                 </li>
                                                 <hr>

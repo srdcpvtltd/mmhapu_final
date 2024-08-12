@@ -11,8 +11,6 @@
             <div class="header-elements">
                 <div class="list-icons">
                     <a class="btn btn-primary" href="{{ route('admin.Notice.add') }}">Add New Notice</a>
-                    {{-- <a class="list-icons-item" data-action="collapse"></a>
-        <a class="list-icons-item" data-action="remove"></a> --}}
                 </div>
             </div>
         </div>

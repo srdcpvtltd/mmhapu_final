@@ -6,9 +6,10 @@
         <div class="row d-flex align-items-center justify-content-center">
             <div class="about-content col-lg-12">
                 <h1 class="text-white">
-                    Notifications/Office Orders
+                    Notifications
                 </h1>
-                <p class="text-white link-nav"><a>Home </a> <span class="lnr lnr-arrow-right"></span><a class="orange-text">Notice</a></p>
+                <p class="text-white link-nav"><a>Home </a> <span class="lnr lnr-arrow-right"></span><a
+                        class="orange-text">Notice</a></p>
             </div>
         </div>
     </div>
@@ -27,13 +28,18 @@
                         <h6 class="text-rigth mb-10"><a href="admission_archive.php">Archives</a></h6>
                         <ul class="text-justify">
                             @foreach ($notice as $notification)
-
-                            <li class="text-justify mb-10">
-                                <i class="fa fa-arrow-circle-right orange-text" aria-hidden="true"></i>
-                                <a href="{{asset('file/' . $notification->file)}}" target="_blank"> {{$notification->title}} </a>
-                                <img src="{{asset('web/images/new.gif')}}" alt="new image"/>
-                            </li>
-
+                                <li class="text-justify mb-10">
+                                    <i class="fa fa-arrow-circle-right orange-text" aria-hidden="true"></i>
+                                    @if ($notification->type == 'file')
+                                    <a href="{{ asset('file/' . $notification->file) }}" target="_blank">
+                                        {{ $notification->title }} </a>
+                                    @elseif ($notification->type == 'link')
+                                        <a target="blank" href="{{ $notification->url }}">
+                                            <span>{{ $notification->title }}</span>
+                                        </a>
+                                    @endif
+                                    <img src="{{ asset('web/images/new.gif') }}" alt="new image" />
+                                </li>
                             @endforeach
                         </ul>
                     </div>
@@ -46,11 +52,11 @@
                     </div>
                     <div class="desc-wrap marquee_text">
                         <ul class="custom-list-style">
-                            <li><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> <a
-                                    href="admission.php"> Admission</a></li>
+                            <li><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> <a href="admission.php">
+                                    Admission</a></li>
                             <hr>
-                            <li><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> <a
-                                    href="examination.php"> Examination</a></li>
+                            <li><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> <a href="examination.php">
+                                    Examination</a></li>
                             <hr>
                             <li><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> <a href="syllabus.php">
                                     Syllabus</a></li>
@@ -64,14 +70,14 @@
                             <li><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> <a href="">
                                     Initiative</a></li>
                             <hr>
-                            <li><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> <a
-                                    href="attendance.php"> Attendance</a></li>
+                            <li><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> <a href="attendance.php">
+                                    Attendance</a></li>
                             <hr>
                             <li><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> <a href="">
                                     Evaluation</a></li>
                             <hr>
-                            <li><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> <a
-                                    href="eResources.php"> Resources</a></li>
+                            <li><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> <a href="eResources.php">
+                                    Resources</a></li>
                             <hr>
                             <li><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> <a href="">
                                     Anti-Ragging</a></li>
