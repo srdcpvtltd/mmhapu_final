@@ -18,11 +18,11 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Designation</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Contact</th>
-                    <th>Resume</th>
+                    <th>Intitution</th>
+                    <th>Description</th>
+                    {{-- <th>Email</th>
+                    <th>Contact</th> --}}
+                    <th>Document</th>
                     <th>Action</th>
                     <th>Action</th>
                 </tr>
@@ -34,12 +34,10 @@
                 @foreach ($collabrations as $data)
                     <tr>
                         <td>{{ $i }}</td>
-                        <td>{{ $data->designation }}</td>
-                        <td>{{ $data->name }}</td>
-                        <td>{{ $data->email }}</td>
-                        <td>{{ $data->contact }}</td>
+                        <td>{{ $data->intitution }}</td>
+                        <td>{!! $data->description !!}</td>
                         <td>
-                            <embed src="{{ asset('uploads/collabration/' . $data->resume) }}" type="application/pdf" width="100" height="80">
+                            <embed src="{{ asset('uploads/collabration/' . $data->document) }}" type="application/pdf" width="100" height="80">
                         </td>
                         <td>
                             <a class="btn btn-icon btn-primary btn-sm"

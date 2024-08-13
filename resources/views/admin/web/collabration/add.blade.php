@@ -14,24 +14,16 @@
                 @csrf
                 <div class="row">
                     <div class="col-lg-6 mb-3">
-                        <label for="designation" class="form-label">Designation<span style="color: red">*</span></label>
-                        <input type="text" class="form-control" name="designation" placeholder="Enter Designation" required>
+                        <label for="intitution" class="form-label">Intitution<span style="color: red">*</span></label>
+                        <input type="text" class="form-control" name="intitution" placeholder="Enter Intitution" required>
                     </div>
                     <div class="col-lg-6 mb-3">
-                        <label for="name" class="form-label">Name<span style="color: red">*</span></label>
-                        <input type="text" class="form-control" name="name" placeholder="Enter Name" required>
+                        <label for="document" class="form-label">Document<span style="color: red">*</span></label>
+                        <input type="file" class="form-control" name="document" placeholder="Enter Document" accept=".pdf" required>
                     </div>
-                    <div class="col-lg-6 mb-3">
-                        <label for="email" class="form-label">Email<span style="color: red">*</span></label>
-                        <input type="email" class="form-control" name="email" placeholder="Enter Email" required>
-                    </div>
-                    <div class="col-lg-6 mb-3">
-                        <label for="contact" class="form-label">Contact<span style="color: red">*</span></label>
-                        <input type="text" class="form-control" name="contact" placeholder="Enter Contact" required>
-                    </div>
-                    <div class="col-lg-6 mb-3">
-                        <label for="resume" class="form-label">Resume<span style="color: red">*</span></label>
-                        <input type="file" class="form-control" name="resume" placeholder="Enter Resume" accept=".pdf" required>
+                    <div class="col-lg-12 mb-3">
+                        <label for="description" class="form-label">Description<span style="color: red">*</span></label>
+                        <textarea class="form-control texteditor" name="description" cols="30" rows="10" placeholder="Enter Description" arequired></textarea>
                     </div>
                 </div>
                 <div class="mb-3">

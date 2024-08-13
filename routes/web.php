@@ -101,6 +101,7 @@ Route::middleware(['XSS'])->namespace('Web')->group(function () {
 
   //Feedback
   Route::get('/feedback',[IqacController::class,'Feedback'])->name('feedback');
+  Route::get('/evaluation_report',[IqacController::class,'Evaluation'])->name('evaluation_report');
 
   //Team
   Route::get('/view-team/{id}',[TeamController::class,'viewTeam'])->name('viewTeam');

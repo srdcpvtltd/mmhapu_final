@@ -17,15 +17,13 @@ class IqacCollabrationController extends Controller
     }
     public function store(Request $request){
         $store = new Collabration();
-        $store->designation = $request->designation;
-        $store->name = $request->name;
-        $store->email = $request->email;
-        $store->contact = $request->contact;
-        if($request->hasFile('resume')){
-            $resume = $request->file('resume');
-            $resumeName = time() . '_' . $resume->getClientOriginalName();
-            $resume->move(public_path('uploads/collabration'), $resumeName);
-            $store->resume = $resumeName;
+        $store->intitution = $request->intitution;
+        $store->description = $request->description;
+        if($request->hasFile('document')){
+            $document = $request->file('document');
+            $documentName = time() . '_' . $document->getClientOriginalName();
+            $document->move(public_path('uploads/collabration'), $documentName);
+            $store->document = $documentName;
         }
         $store->save();
         toastr()->success('New Collabration Added Successfully.');
@@ -37,20 +35,18 @@ class IqacCollabrationController extends Controller
     }
     public function update(Request $request){
         $update = Collabration::find($request->id);
-        $update->designation = $request->designation;
-        $update->name = $request->name;
-        $update->email = $request->email;
-        $update->contact = $request->contact;
-        if($request->hasFile('resume')){
-            if ($update->resume && file_exists(public_path('uploads/collabration/' . $update->resume))) {
-                unlink(public_path('uploads/collrabration/' . $update->resume));
+        $update->intitution = $request->intitution;
+        $update->description = $request->description;
+        if($request->hasFile('document')){
+            if ($update->document && file_exists(public_path('uploads/collabration/' . $update->document))) {
+                unlink(public_path('uploads/collabration/' . $update->document));
             }
 
-            $resume = $request->file('resume');
-            $resumeName = time() . '_' . $resume->getClientOriginalName();
-            $resume->move(public_path('uploads/collrabration'), $resumeName);
+            $document = $request->file('document');
+            $documentName = time() . '_' . $document->getClientOriginalName();
+            $document->move(public_path('uploads/collabration'), $documentName);
 
-            $update->resume = $resumeName;
+            $update->document = $documentName;
         }
         $update->save();
         toastr()->success('Collabration Updated Successfully');
@@ -59,8 +55,8 @@ class IqacCollabrationController extends Controller
     public function delete($id){
         $delete = Collabration::find($id);
         if($delete){
-            if($delete->resume && file_exists(public_path('uploads/collabration/' . $delete->resume))){
-                unlink(public_path('uploads/collabration/' . $delete->resume));
+            if($delete->document && file_exists(public_path('uploads/collabration/' . $delete->document))){
+                unlink(public_path('uploads/collabration/' . $delete->document));
             }
             $delete->delete();
             toastr()->success('Collabration Deleted Successfully.');

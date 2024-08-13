@@ -26,24 +26,25 @@
                     <th>Action</th>
                 </tr>
             </thead>
-            {{-- <tbody>
+            <tbody>
                 @php
                     $i = 1;
                 @endphp
-                @foreach ($subcategories as $subcategory)
+                @foreach ($evaluation as $data)
                     <tr>
                         <td>{{ $i }}</td>
-                        <td>{{ $subcategory->FacultyCategory->name }}</td>
-                        <td>{{ $subcategory->name }}</td>
-                        <td>{{ $subcategory->phone }}</td>
-                        <td>{{ $subcategory->email }}</td>
+                        <td>{{ $data->title->title }}</td>
+                        <td>{{ $data->name }}</td>
                         <td>
-                            <a class="btn btn-icon btn-primary" href="{{ route('admin.faculty.subcategory.edit', $subcategory->id) }}"><i
+                            <embed src="{{ asset('uploads/evaluation/' . $data->file) }}" type="application/pdf" width="100" height="80">
+                        </td>
+                        <td>
+                            <a class="btn btn-icon btn-primary" href="{{ route('admin.evaluation_report.edit', $data->id) }}"><i
                                     class="far fa-edit"></i> Edit</a>
                         </td>
                         <td>
                             <a class="btn btn-icon btn-danger"
-                                onclick="confirmDelete('{{ route('admin.faculty.subcategory.delete', $subcategory->id) }}')"><i
+                                onclick="confirmDelete('{{ route('admin.evaluation_report.destory', $data->id) }}')"><i
                                     class="fas fa-trash-alt"></i> Delete</a>
                         </td>
                     </tr>
@@ -51,7 +52,7 @@
                         $i++;
                     @endphp
                 @endforeach
-            </tbody> --}}
+            </tbody>
         </table>
     </div>
 

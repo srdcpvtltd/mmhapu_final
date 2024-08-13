@@ -1,5 +1,12 @@
 @include('web.layouts.header')
 
+<style>
+    .table thead tr th {
+        background-color: #0B416F;
+        color: white;
+    }
+</style>
+
 <section class="banner-area relative about-banner" id="home">
     <div class="overlay overlay-bg"></div>
     <div class="container">
@@ -21,7 +28,7 @@
         <div class="row">
             <div class="col-sm-9 col-md-9 col-xs-12">
                 <div class="page-title">
-                    <h2><span>Collabration </span></h2>
+                    <h2><span>Collabration</span></h2>
                 </div>
                 <div class="desc-wrap marquee_text">
                     <div class="executive-table">
@@ -29,22 +36,18 @@
                             <table class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th class="text-center">Designation</th>
-                                        <th class="text-center">Name</th>
-                                        <th class="text-center">Email</th>
-                                        <th class="text-center">Contact</th>
-                                        <th class="text-center">Resume</th>
+                                        <th class="text-center">Intitution</th>
+                                        <th class="text-center">Description</th>
+                                        <th class="text-center">Document</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($collabrations as $collabration)
                                         <tr>
-                                            <td> {{ $collabration->designation }} </td>
-                                            <td> {{ $collabration->name }} </td>
-                                            <td><a href="mailto:{{ $collabration->email }}"> {{ $collabration->email }} </a></td>
-                                            <td> {{ $collabration->contact }} </td>
-                                            <td>
-                                                <center><a href=" {{ asset('uploads/collabration/' . $collabration->resume) }} " target="_blank"  class="resume-icon"> <i class="fa fa-file-pdf-o"></i></a></center>
+                                            <td> {{ $collabration->intitution }} </td>
+                                            <td> {!! $collabration->description !!} </td>
+                                            <td style="padding: 15px">
+                                                <center><a href=" {{ asset('uploads/collabration/' . $collabration->document) }} " target="_blank"  class="resume-icon"> <i class="fa fa-file-pdf-o"></i></a></center>
                                             </td>
                                         </tr>
                                     @endforeach

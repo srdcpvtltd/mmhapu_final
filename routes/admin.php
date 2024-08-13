@@ -344,6 +344,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
         //Evalutions
         Route::get('/evaluation_report/list',[EvaluationController::class,'list'])->name('evaluation_report.list');
         Route::get('/evaluation_report/add',[EvaluationController::class,'add'])->name('evaluation_report.add');
+        Route::post('/evaluation_report/insert',[EvaluationController::class,'insert'])->name('evaluation_report.insert');
+        Route::get('/evaluation_report/edit/{id}',[EvaluationController::class,'edit'])->name('evaluation_report.edit');
+        Route::post('/evaluation_report/update',[EvaluationController::class,'Eupdate'])->name('evaluation_report.update');
+        Route::get('/evaluation_report/destory/{id}',[EvaluationController::class,'destory'])->name('evaluation_report.destory');
 
         //Top Bar
         Route::get('/top_bar/list',[TopbarController::class,'list'])->name('Topbar.list');

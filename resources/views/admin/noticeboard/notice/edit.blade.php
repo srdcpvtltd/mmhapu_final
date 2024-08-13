@@ -19,8 +19,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="notice_type" class="form-label">Description<span style="color: red">*</span></label>
-                    <textarea class="form-control texteditor" name="description"cols="30" rows="4" placeholder="Enter Description">{{ $edit_notice->description }}</textarea>
-
+                    <textarea class="form-control texteditor" name="description" cols="30" rows="4" placeholder="Enter Description">{{ $edit_notice->description }}</textarea>
                 </div>
 
                 <div class="mb-3">

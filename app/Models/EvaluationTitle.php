@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class EvaluationTitle extends Model
 {
     use HasFactory;
+
 }

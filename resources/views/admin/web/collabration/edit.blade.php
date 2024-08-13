@@ -15,27 +15,16 @@
                 <input type="hidden" name="id" value="{{ $edit->id }}">
                 <div class="row">
                     <div class="col-lg-6 mb-3">
-                        <label for="designation" class="form-label">Designation<span style="color: red">*</span></label>
-                        <input type="text" class="form-control" name="designation" value="{{ $edit->designation }}" required>
+                        <label for="intitution" class="form-label">Intitution<span style="color: red">*</span></label>
+                        <input type="text" class="form-control" name="intitution" value=" {{ $edit->intitution }} " required>
                     </div>
                     <div class="col-lg-6 mb-3">
-                        <label for="name" class="form-label">Name<span style="color: red">*</span></label>
-                        <input type="text" class="form-control" name="name" value="{{ $edit->name }}" required>
+                        <label for="document" class="form-label">Document<span style="color: red">*</span></label>
+                        <input type="file" class="form-control" name="document" accept=".pdf">
                     </div>
-                    <div class="col-lg-6 mb-3">
-                        <label for="email" class="form-label">Email<span style="color: red">*</span></label>
-                        <input type="email" class="form-control" name="email" value="{{ $edit->email }}" required>
-                    </div>
-                    <div class="col-lg-6 mb-3">
-                        <label for="contact" class="form-label">Contact<span style="color: red">*</span></label>
-                        <input type="text" class="form-control" name="contact" value="{{ $edit->contact }}" required>
-                    </div>
-                    <div class="col-lg-6 mb-3">
-                        <label for="resume" class="form-label">Resume<span style="color: red">*</span></label>
-                        <input type="file" class="form-control" name="resume" placeholder="Enter Resume" accept=".pdf">
-                    </div>
-                    <div class="col-lg-6 mb-3">
-                        <embed src="{{ asset('uploads/collabration/' . $edit->resume) }}" type="application/pdf"  height="100">
+                    <div class="col-lg-12 mb-3">
+                        <label for="description" class="form-label">Description<span style="color: red">*</span></label>
+                        <textarea class="form-control texteditor" name="description" cols="30" rows="10" placeholder="Enter Description" arequired> {{ $edit->description }} </textarea>
                     </div>
                 </div>
                 <div class="mb-3">

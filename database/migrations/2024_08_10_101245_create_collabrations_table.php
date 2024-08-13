@@ -15,11 +15,9 @@ return new class extends Migration
     {
         Schema::create('collabrations', function (Blueprint $table) {
             $table->id();
-            $table->string('designation');
-            $table->string('name');
-            $table->string('email');
-            $table->string('contact');
-            $table->string('resume');
+            $table->string('intitution')->nullable();
+            $table->string('document')->nullable();
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }
