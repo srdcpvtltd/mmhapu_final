@@ -101,7 +101,17 @@ Route::middleware(['XSS'])->namespace('Web')->group(function () {
 
   //Feedback
   Route::get('/feedback',[IqacController::class,'Feedback'])->name('feedback');
+
   Route::get('/evaluation_report',[IqacController::class,'Evaluation'])->name('evaluation_report');
+
+  //committees
+  Route::get('/committees',[IqacController::class,'committees'])->name('committees');
+
+  //policy
+  Route::get('/policies',[IqacController::class,'policy'])->name('policies');
+
+  //Minutes
+  Route::get('/minutes',[IqacController::class,'minutes'])->name('minutes');
 
   //Team
   Route::get('/view-team/{id}',[TeamController::class,'viewTeam'])->name('viewTeam');

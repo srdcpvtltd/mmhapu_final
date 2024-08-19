@@ -37,9 +37,13 @@ use App\Http\Controllers\Admin\FacultyController;
 use App\Http\Controllers\Admin\FacultySubcategoryController;
 use App\Http\Controllers\Admin\GatewayDetailController;
 use App\Http\Controllers\Admin\IqacCollabrationController;
+use App\Http\Controllers\Admin\IqacCommitteesController;
 use App\Http\Controllers\Admin\IqaceventController;
 use App\Http\Controllers\Admin\IqaceventTitleController;
 use App\Http\Controllers\Admin\IqacFeedbackController;
+use App\Http\Controllers\Admin\IqacPolicyController;
+use App\Http\Controllers\Admin\IqacMinutesController;
+use App\Http\Controllers\Admin\CommitteesCellsController;
 use App\Http\Controllers\Admin\OverviewController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ShiftController;
@@ -348,6 +352,36 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
         Route::get('/evaluation_report/edit/{id}',[EvaluationController::class,'edit'])->name('evaluation_report.edit');
         Route::post('/evaluation_report/update',[EvaluationController::class,'Eupdate'])->name('evaluation_report.update');
         Route::get('/evaluation_report/destory/{id}',[EvaluationController::class,'destory'])->name('evaluation_report.destory');
+
+        //Committees
+        Route::get('/committees/list',[IqacCommitteesController::class,'list'])->name('committees.list');
+        Route::get('/committees/add',[IqacCommitteesController::class,'add'])->name('committees.add');
+        Route::post('/committees/store',[IqacCommitteesController::class,'store'])->name('committees.store');
+        Route::get('/committees/edit/{id}',[IqacCommitteesController::class,'edit'])->name('committees.edit');
+        Route::post('/committees/update',[IqacCommitteesController::class,'update'])->name('committees.update');
+        Route::get('/committees/delete/{id}',[IqacCommitteesController::class,'delete'])->name('committees.delete');
+
+        //Policy
+        Route::get('/policies/list',[IqacPolicyController::class,'list'])->name('policies.list');
+        Route::get('/policies/add',[IqacPolicyController::class,'add'])->name('policies.add');
+        Route::post('/policies/store',[IqacPolicyController::class,'store'])->name('policies.store');
+        Route::get('/policies/edit/{id}',[IqacPolicyController::class,'edit'])->name('policies.edit');
+        Route::post('/policies/update',[IqacPolicyController::class,'update'])->name('policies.update');
+        Route::get('/policies/delete/{id}',[IqacPolicyController::class,'delete'])->name('policies.delete');
+
+        //minutes
+        Route::get('/minutes/list',[IqacMinutesController::class,'list'])->name('minutes.list');
+        Route::get('/minutes/add',[IqacMinutesController::class,'add'])->name('minutes.add');
+        Route::post('/minutes/store',[IqacMinutesController::class,'store'])->name('minutes.store');
+        Route::get('/minutes/edit/{id}',[IqacMinutesController::class,'edit'])->name('minutes.edit');
+        Route::post('/minutes/update',[IqacMinutesController::class,'update'])->name('minutes.update');
+        Route::get('/minutes/delete/{id}',[IqacMinutesController::class,'delete'])->name('minutes.delete');
+
+        //committees & cells title
+        Route::get('/committes_title/list',[CommitteesCellsController::class,'index'])->name('CommitteesCellsTitle.list');
+        Route::post('/committes_title/store',[CommitteesCellsController::class,'storeTitle'])->name('CommitteesCellsTitle.store');
+        Route::post('/committes_title/update',[CommitteesCellsController::class,'update'])->name('CommitteesCellsTitle.update');
+        Route::get('/committes_title/delete/{id}',[CommitteesCellsController::class,'delete'])->name('CommitteesCellsTitle.delete');
 
         //Top Bar
         Route::get('/top_bar/list',[TopbarController::class,'list'])->name('Topbar.list');

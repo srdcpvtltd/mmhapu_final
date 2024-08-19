@@ -251,6 +251,45 @@
                             </ul>
                         </li>
 
+                        <li class="nav-item nav-item-submenu {{ Request::is('admin/web/committes_title*') || Request::is('admin/web/evaluation_report*') ? 'nav-item-open' : '' }}">
+                            <a href="#" class="nav-link"> <i class="fas fa-check-circle"></i> <span>IQAC Committees & Cells</span></a>
+
+                            <ul class="nav nav-group-sub" data-submenu-title="Layouts"
+                                style="{{ Request::is('admin/web/committes_title*') || Request::is('admin/web/evaluation_report*') ? 'display:block' : '' }}">
+
+                                <li class="nav-item"><a href="{{ route('admin.CommitteesCellsTitle.list') }}"
+                                        class="nav-link {{ Request::is('admin/web/committes_title*') ? 'active' : '' }}">Title</a></li>
+
+                                <li class="nav-item"><a href="{{ route('admin.evaluation_report.list') }}"
+                                        class="nav-link {{ Request::is('admin/web/evaluation_report*') ? 'active' : '' }}">Committees & Cells</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ route('admin.committees.list') }}"
+                                class="nav-link {{ Request::is('admin/web/committees*') ? 'active' : '' }}">
+                                <i class="fas fa-handshake"></i>
+                                <span>IQAC Committees</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ route('admin.policies.list') }}"
+                                class="nav-link {{ Request::is('admin/web/policies*') ? 'active' : '' }}">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>IQAC Policies</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ route('admin.minutes.list') }}"
+                                class="nav-link {{ Request::is('admin/web/minutes*') ? 'active' : '' }}">
+                                <i class="fas fa-book"></i>
+                                <span>IQAC Minutes</span>
+                            </a>
+                        </li>
+
                         <li class="nav-item">
                             <a href="{{ route('admin.Collabration.list') }}"
                                 class="nav-link {{ Request::is('admin/web/collabration*') ? 'active' : '' }}">
