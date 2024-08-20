@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Models\Committee;
+use App\Models\CommitteesCellsTitle;
+use App\Models\CommittesCell;
 use App\Models\Evaluation;
 use App\Models\EvaluationTitle;
 use App\Models\Feedback;
@@ -32,5 +34,18 @@ class IqacController extends Controller
     public function minutes(){
         $minute = Minute::all();
         return view('web.iqac_minutes', compact('minute'));
+    }
+    public function committeesCells(){
+
+        $committeesTitles  = CommitteesCellsTitle::where('type', 'committees')->get();
+        $cellsTitles = CommitteesCellsTitle::where('type', 'cells')->get();
+
+        $committeesCells = CommittesCell::whereIn('title_id', $committeesTitles->pluck('id'))
+                                        ->get()
+                                        ->groupBy('title_id');
+        $cells = CommittesCell::whereIn('title_id', $cellsTitles->pluck('id'))
+                                ->get()
+                                ->groupBy('title_id');
+        return view('web.committees', compact('committeesTitles','cellsTitles', 'committeesCells','cells'));
     }
 }

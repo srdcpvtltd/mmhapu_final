@@ -251,17 +251,17 @@
                             </ul>
                         </li>
 
-                        <li class="nav-item nav-item-submenu {{ Request::is('admin/web/committes_title*') || Request::is('admin/web/evaluation_report*') ? 'nav-item-open' : '' }}">
+                        <li class="nav-item nav-item-submenu {{ Request::is('admin/web/committes_title*') || Request::is('admin/web/committes_cells*') ? 'nav-item-open' : '' }}">
                             <a href="#" class="nav-link"> <i class="fas fa-check-circle"></i> <span>IQAC Committees & Cells</span></a>
 
                             <ul class="nav nav-group-sub" data-submenu-title="Layouts"
-                                style="{{ Request::is('admin/web/committes_title*') || Request::is('admin/web/evaluation_report*') ? 'display:block' : '' }}">
+                                style="{{ Request::is('admin/web/committes_title*') || Request::is('admin/web/committes_cells*') ? 'display:block' : '' }}">
 
                                 <li class="nav-item"><a href="{{ route('admin.CommitteesCellsTitle.list') }}"
                                         class="nav-link {{ Request::is('admin/web/committes_title*') ? 'active' : '' }}">Title</a></li>
 
-                                <li class="nav-item"><a href="{{ route('admin.evaluation_report.list') }}"
-                                        class="nav-link {{ Request::is('admin/web/evaluation_report*') ? 'active' : '' }}">Committees & Cells</a>
+                                <li class="nav-item"><a href="{{ route('admin.committesCells.list') }}"
+                                        class="nav-link {{ Request::is('admin/web/committes_cells*') ? 'active' : '' }}">Committees & Cells</a>
                                 </li>
                             </ul>
                         </li>
@@ -303,6 +303,14 @@
                                 class="nav-link {{ Request::is('admin/web/feedback*') ? 'active' : '' }}">
                                 <i class="fas fa-comments"></i>
                                 <span>IQAC Feedback</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ route('admin.mous.list') }}"
+                                class="nav-link {{ Request::is('admin/web/mous*') ? 'active' : '' }}">
+                                <i class="fas fa-file-signature"></i>
+                                <span>MOUs</span>
                             </a>
                         </li>
 

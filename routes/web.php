@@ -113,6 +113,9 @@ Route::middleware(['XSS'])->namespace('Web')->group(function () {
   //Minutes
   Route::get('/minutes',[IqacController::class,'minutes'])->name('minutes');
 
+  //Minutes
+  Route::get('/committees_cells',[IqacController::class,'committeesCells'])->name('committeesCells');
+
   //Team
   Route::get('/view-team/{id}',[TeamController::class,'viewTeam'])->name('viewTeam');
 

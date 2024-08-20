@@ -44,6 +44,7 @@ use App\Http\Controllers\Admin\IqacFeedbackController;
 use App\Http\Controllers\Admin\IqacPolicyController;
 use App\Http\Controllers\Admin\IqacMinutesController;
 use App\Http\Controllers\Admin\CommitteesCellsController;
+use App\Http\Controllers\Admin\MouController;
 use App\Http\Controllers\Admin\OverviewController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ShiftController;
@@ -382,6 +383,21 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
         Route::post('/committes_title/store',[CommitteesCellsController::class,'storeTitle'])->name('CommitteesCellsTitle.store');
         Route::post('/committes_title/update',[CommitteesCellsController::class,'update'])->name('CommitteesCellsTitle.update');
         Route::get('/committes_title/delete/{id}',[CommitteesCellsController::class,'delete'])->name('CommitteesCellsTitle.delete');
+
+        //committees & cells
+        Route::get('/committes_cells/list',[CommitteesCellsController::class,'list'])->name('committesCells.list');
+        Route::get('/committes_cells/add',[CommitteesCellsController::class,'add'])->name('committesCells.add');
+        Route::post('/committes_cells/store',[CommitteesCellsController::class,'store'])->name('committesCells.store');
+        Route::get('/committes_cells/edit/{id}',[CommitteesCellsController::class,'edit'])->name('committesCells.edit');
+        Route::post('/committes_cells/update',[CommitteesCellsController::class,'updateCommittee'])->name('committesCells.update');
+        Route::get('/committes_cells/delete/{id}',[CommitteesCellsController::class,'deleteCommittee'])->name('committesCells.delete');
+        Route::post('/gettitle',[CommitteesCellsController::class,'getTitle'])->name('getTitle');
+
+        //MOUs
+        Route::get('/mous/list',[MouController::class,'list'])->name('mous.list');
+        Route::get('/mous/add',[MouController::class,'add'])->name('mous.add');
+        Route::post('/mous/store',[MouController::class,'store'])->name('mous.store');
+        Route::get('/mous/edit/{id}',[MouController::class,'edit'])->name('mous.edit');
 
         //Top Bar
         Route::get('/top_bar/list',[TopbarController::class,'list'])->name('Topbar.list');

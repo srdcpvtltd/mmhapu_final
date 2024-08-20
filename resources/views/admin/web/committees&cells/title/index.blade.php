@@ -74,7 +74,7 @@
                                                 </td>
                                                 <td>
                                                     <a class="btn btn-danger btn-sm"
-                                                        onclick="confirmDelete('{{ route('admin.Evaluation.delete', $data->id) }}')">Delete</a>
+                                                        onclick="confirmDelete('{{ route('admin.CommitteesCellsTitle.delete', $data->id) }}')">Delete</a>
                                                 </td>
                                             </tr>
 
