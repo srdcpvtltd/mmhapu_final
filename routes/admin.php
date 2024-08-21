@@ -45,6 +45,7 @@ use App\Http\Controllers\Admin\IqacPolicyController;
 use App\Http\Controllers\Admin\IqacMinutesController;
 use App\Http\Controllers\Admin\CommitteesCellsController;
 use App\Http\Controllers\Admin\MouController;
+use App\Http\Controllers\Admin\AttendanceController;
 use App\Http\Controllers\Admin\OverviewController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ShiftController;
@@ -398,6 +399,22 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
         Route::get('/mous/add',[MouController::class,'add'])->name('mous.add');
         Route::post('/mous/store',[MouController::class,'store'])->name('mous.store');
         Route::get('/mous/edit/{id}',[MouController::class,'edit'])->name('mous.edit');
+        Route::post('/mous/update',[MouController::class,'update'])->name('mous.update');
+        Route::get('/mous/delete/{id}',[MouController::class,'delete'])->name('mous.delete');
+
+        //Attendance Title
+        Route::get('/attendance_title/list',[AttendanceController::class,'title'])->name('attendanceTitle.list');
+        Route::post('/attendance_title/store',[AttendanceController::class,'storeTitle'])->name('attendanceTitle.store');
+        Route::post('/attendance_title/update',[AttendanceController::class,'updateTitle'])->name('attendanceTitle.update');
+        Route::get('/attendance_title/delete/{id}',[AttendanceController::class,'deleteTitle'])->name('attendanceTitle.delete');
+
+        //Attendance
+        Route::get('/attendance/list',[AttendanceController::class,'list'])->name('attendance.list');
+        Route::get('/attendance/add',[AttendanceController::class,'add'])->name('attendance.add');
+        Route::post('/attendance/store',[AttendanceController::class,'store'])->name('attendance.store');
+        Route::get('/attendance/edit/{id}',[AttendanceController::class,'edit'])->name('attendance.edit');
+        Route::post('/attendance/update',[AttendanceController::class,'update'])->name('attendance.update');
+        Route::get('/attendance/delete/{id}',[AttendanceController::class,'delete'])->name('attendance.delete');
 
         //Top Bar
         Route::get('/top_bar/list',[TopbarController::class,'list'])->name('Topbar.list');

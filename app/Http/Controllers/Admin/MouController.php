@@ -30,4 +30,26 @@ class MouController extends Controller
         $edit = Mou::find($id);
         return view('admin.web.mous.edit', compact('edit'));
     }
+    public function update(Request $request){
+        $update = Mou::find($request->id);
+
+        $update->institute = $request->institute;
+        $update->collaborative = $request->collaborative;
+        $update->country = $request->country;
+        $update->dated = $request->dated;
+
+        $update->save();
+        toastr()->success('MOUs Updated Successfully');
+        return redirect()->route('admin.mous.list');
+    }
+    public function delete($id){
+        $delete = Mou::find($id);
+        if($delete){
+            $delete->delete();
+            toastr()->success('Deleted Successfully');
+            return redirect()->back();
+        }
+        toastr()->error('Something Wents Wrong.');
+        return redirect()->back();
+    }
 }

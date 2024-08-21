@@ -206,6 +206,21 @@
                             </ul>
                         </li>
 
+                        <li class="nav-item nav-item-submenu {{ Request::is('admin/web/attendance*') || Request::is('admin/web/attendance_title*') ? 'nav-item-open' : '' }}">
+                            <a href="#" class="nav-link"><i class="fa fa-calendar-check"></i> <span>Attendance</span></a>
+
+                            <ul class="nav nav-group-sub" data-submenu-title="Layouts"
+                                style="{{ Request::is('admin/web/attendance*') || Request::is('admin/web/attendance_title*') ? 'display:block' : '' }}">
+
+                                <li class="nav-item"><a href="{{ route('admin.attendanceTitle.list') }}"
+                                        class="nav-link {{ Request::is('admin/web/attendance_title*') ? 'active' : '' }}">Title</a></li>
+
+                                <li class="nav-item"><a href="{{ route('admin.attendance.list') }}"
+                                        class="nav-link {{ Request::is('admin/web/attendance*') ? 'active' : '' }}">Attendance</a>
+                                </li>
+                            </ul>
+                        </li>
+
                         <li class="nav-item nav-item-submenu {{ Request::is('admin/web/quick_link*') || Request::is('admin/web/quicklink_title*') ? 'nav-item-open' : '' }}">
                             <a href="#" class="nav-link"><i class="fa fa-external-link"></i> <span>Quick Link</span></a>
 

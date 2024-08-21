@@ -10,9 +10,10 @@
             <h5 class="card-title">Edit MOUs</h5>
         </div>
         <div class="col-lg-12">
-            <form action="{{ route('admin.mous.store') }}" method="post">
+            <form action="{{ route('admin.mous.update') }}" method="post">
                 @csrf
                 <div class="row">
+                    <input type="hidden" name="id" value="{{ $edit->id }}">
                     <div class="col-lg-12 mb-3">
                         <label for="intitution" class="form-label">Name Of The Institute<span style="color: red">*</span></label>
                         <input type="text" class="form-control" name="institute" value=" {{ $edit->institute }} " required>

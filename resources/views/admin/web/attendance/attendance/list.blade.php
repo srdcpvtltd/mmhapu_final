@@ -1,16 +1,17 @@
 @extends('admin.layout.index')
 
 @section('title')
-    MOUs
+    ATTENDANCE
 @endsection
 
 @section('content')
     <div class="card">
         <div class="card-header header-elements-inline">
-            <h5 class="card-title">Manage MOUs</h5>
+            <h5 class="card-title">Manage Attendance</h5>
             <div class="header-elements">
                 <div class="list-icons">
-                    <a class="btn btn-primary" href="{{ route('admin.mous.add') }}">Add New MOUs</a>
+                    <a class="btn btn-primary" href="{{ route('admin.attendance.add') }}">Add Attendance</a>
+
                 </div>
             </div>
         </div>
@@ -18,10 +19,9 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Name Of The Institute</th>
-                    <th>Collaborative Department In The University</th>
-                    <th>Country</th>
-                    <th>Dated/ Year</th>
+                    <th>Title</th>
+                    <th>Name</th>
+                    <th>File</th>
                     <th>Action</th>
                     <th>Action</th>
                 </tr>
@@ -30,20 +30,22 @@
                 @php
                     $i = 1;
                 @endphp
-                @foreach ($mous as $data)
+                @foreach ($attendance as $data)
                     <tr>
                         <td>{{ $i }}</td>
-                        <td>{{ $data->institute }}</td>
-                        <td>{{ $data->collaborative }}</td>
-                        <td>{{ $data->country }}</td>
-                        <td>{{ $data->dated }}</td>
+                        <td>{{ $data->getTitle->title }}</td>
+                        <td>{{ $data->name }}</td>
                         <td>
-                            <a class="btn btn-icon btn-primary"
-                                href="{{ route('admin.mous.edit', $data->id) }}">Edit</a>
+                            <embed src="{{ asset('uploads/attendance/' . $data->file) }}" type="application/pdf" width="100" height="80">
+                        </td>
+                        <td>
+                            <a class="btn btn-icon btn-primary" href="{{ route('admin.attendance.edit', $data->id) }}"><i
+                                    class="far fa-edit"></i> Edit</a>
                         </td>
                         <td>
                             <a class="btn btn-icon btn-danger"
-                                onclick="confirmDelete('{{ route('admin.mous.delete', $data->id) }}')">Delete</a>
+                                onclick="confirmDelete('{{ route('admin.attendance.delete', $data->id) }}')"><i
+                                    class="fas fa-trash-alt"></i> Delete</a>
                         </td>
                     </tr>
                     @php
@@ -56,7 +58,7 @@
 
     <script>
         function confirmDelete(deleteUrl) {
-            var isConfirmed = confirm("Are you sure you want to delete this item?");
+            var isConfirmed = confirm("Are you sure you want to delete Faculty Subcategory?");
             if (isConfirmed) {
                 window.location.href = deleteUrl;
             } else {
