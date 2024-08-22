@@ -79,6 +79,7 @@
         <div class="main-menu">
             <div class="container">
                 <div class="row align-items-center justify-content-between d-flex">
+
                     <nav id="nav-menu-container">
                         <ul class="nav-menu">
                             <li class="active">
@@ -136,15 +137,15 @@
                             <li class=" menu-has-children {{ Request::is('contact*') ? 'current' : '' }}"
                                 style="margin-left:20px"><a href="#">Contact Us</a>
                                 <ul class="dropdown">
-                                        <li style="margin-left:0px;">
-                                            <a href="{{ route('contact_us') }}">Contact Us</a>
-                                        </li>
-                                        <li style="margin-left:0px;">
-                                            <a href="{{ route('address') }}">Address</a>
-                                        </li>
-                                        <li style="margin-left:0px;">
-                                            <a href="{{ route('howtoReach') }}">How to Reach</a>
-                                        </li>
+                                    <li style="margin-left:0px;">
+                                        <a href="{{ route('contact_us') }}">Contact Us</a>
+                                    </li>
+                                    <li style="margin-left:0px;">
+                                        <a href="{{ route('address') }}">Address</a>
+                                    </li>
+                                    <li style="margin-left:0px;">
+                                        <a href="{{ route('howtoReach') }}">How to Reach</a>
+                                    </li>
                                     {{-- <li style="margin-left:0px;">
                                         <a href="{{ route('contact_us') }}">Contact Us</a>
                                     </li>

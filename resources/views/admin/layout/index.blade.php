@@ -221,6 +221,21 @@
                             </ul>
                         </li>
 
+                        <li class="nav-item nav-item-submenu {{ Request::is('admin/web/elearning*') || Request::is('admin/web/elearning_title*') ? 'nav-item-open' : '' }}">
+                            <a href="#" class="nav-link"><i class="fa fa-calendar-check"></i> <span>e-Learning</span></a>
+
+                            <ul class="nav nav-group-sub" data-submenu-title="Layouts"
+                                style="{{ Request::is('admin/web/elearning*') || Request::is('admin/web/elearning_title*') ? 'display:block' : '' }}">
+
+                                <li class="nav-item"><a href="{{ route('admin.elearningTitle.list') }}"
+                                        class="nav-link {{ Request::is('admin/web/elearning_title*') ? 'active' : '' }}">Title</a></li>
+
+                                <li class="nav-item"><a href="{{ route('admin.elearning.list') }}"
+                                        class="nav-link {{ Request::is('admin/web/elearning*') ? 'active' : '' }}">e-Learning</a>
+                                </li>
+                            </ul>
+                        </li>
+
                         <li class="nav-item nav-item-submenu {{ Request::is('admin/web/quick_link*') || Request::is('admin/web/quicklink_title*') ? 'nav-item-open' : '' }}">
                             <a href="#" class="nav-link"><i class="fa fa-external-link"></i> <span>Quick Link</span></a>
 
@@ -279,6 +294,14 @@
                                         class="nav-link {{ Request::is('admin/web/committes_cells*') ? 'active' : '' }}">Committees & Cells</a>
                                 </li>
                             </ul>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ route('admin.studentGrievance.list') }}"
+                                class="nav-link {{ Request::is('admin/web/student_grievance*') ? 'active' : '' }}">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <span>Student Grievance Redressal Committee</span>
+                            </a>
                         </li>
 
                         <li class="nav-item">

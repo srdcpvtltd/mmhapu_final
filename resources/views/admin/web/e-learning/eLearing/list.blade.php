@@ -1,16 +1,16 @@
 @extends('admin.layout.index')
 
 @section('title')
-    ATTENDANCE
+    E-LEARNING
 @endsection
 
 @section('content')
     <div class="card">
         <div class="card-header header-elements-inline">
-            <h5 class="card-title">Manage Attendance</h5>
+            <h5 class="card-title">Manage e-Learning</h5>
             <div class="header-elements">
                 <div class="list-icons">
-                    <a class="btn btn-primary" href="{{ route('admin.attendance.add') }}">Add Attendance</a>
+                    <a class="btn btn-primary" href="{{ route('admin.elearning.add') }}">Add e-Learning</a>
 
                 </div>
             </div>
@@ -30,25 +30,25 @@
                 @php
                     $i = 1;
                 @endphp
-                @foreach ($attendance as $data)
+                @foreach ($eLearning as $data)
                     <tr>
                         <td>{{ $i }}</td>
                         <td>
-                            @if ($data->getTitle)
-                                {{ $data->getTitle->title }}
+                            @if ($data->titles)
+                                {{ $data->titles->title }}
                             @endif
                         </td>
                         <td>{{ $data->name }}</td>
                         <td>
-                            <embed src="{{ asset('uploads/attendance/' . $data->file) }}" type="application/pdf" width="100" height="80">
+                            <embed src="{{ asset('uploads/eLearning/' . $data->file) }}" type="application/pdf" width="100" height="80">
                         </td>
                         <td>
-                            <a class="btn btn-icon btn-primary" href="{{ route('admin.attendance.edit', $data->id) }}"><i
+                            <a class="btn btn-icon btn-primary" href="{{ route('admin.elearning.edit', $data->id) }}"><i
                                     class="far fa-edit"></i> Edit</a>
                         </td>
                         <td>
                             <a class="btn btn-icon btn-danger"
-                                onclick="confirmDelete('{{ route('admin.attendance.delete', $data->id) }}')"><i
+                                onclick="confirmDelete('{{ route('admin.elearning.delete', $data->id) }}')"><i
                                     class="fas fa-trash-alt"></i> Delete</a>
                         </td>
                     </tr>
@@ -62,7 +62,7 @@
 
     <script>
         function confirmDelete(deleteUrl) {
-            var isConfirmed = confirm("Are you sure you want to delete ?");
+            var isConfirmed = confirm("Are you sure you want to delete Faculty Subcategory?");
             if (isConfirmed) {
                 window.location.href = deleteUrl;
             } else {

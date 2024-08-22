@@ -41,14 +41,14 @@
                                         style="text-decoration: underline;">Youtube Link</a></p>
                             </div>
                             <div class="col-md-1">
-                                <a href="elerning.php"><img src="{{ asset('web/images/PowerPoint-icon.png') }}"
+                                <a href="{{ route('eResource') }}"><img src="{{ asset('web/images/PowerPoint-icon.png') }}"
                                         alt="ppt"></a>
                             </div>
                             <div class="col-md-11">
                                 <p class="text-justify"><strong class="orange-text">PPT Presentation of
                                         Faculties:</strong> PowerPoint can be a highly effective tool to aid learning.
                                     Department wise PPTs submitted by faculties on relevant topics related their subject
-                                    has been uploaded. <a href="elerning.php" class="round-rectangle">View More</a></p>
+                                    has been uploaded. <a href="{{ route('eResource') }}" class="round-rectangle">View More</a></p>
                             </div>
                         </div>
                         <br />

@@ -124,6 +124,12 @@ Route::middleware(['XSS'])->namespace('Web')->group(function () {
 
   //eLearning
   Route::get('/eLearning',[IqacController::class,'eLearning'])->name('eLearning');
+  Route::get('/eResource',[IqacController::class,'eResource'])->name('eResource');
+
+  //Student Grievance Redressal Committee
+  Route::get('/grievance_redressal',[IqacController::class,'grievanceRedressal'])->name('grievance_redressal');
+
+
 
   //Team
   Route::get('/view-team/{id}',[TeamController::class,'viewTeam'])->name('viewTeam');

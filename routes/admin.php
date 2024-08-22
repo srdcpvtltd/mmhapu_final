@@ -46,6 +46,8 @@ use App\Http\Controllers\Admin\IqacMinutesController;
 use App\Http\Controllers\Admin\CommitteesCellsController;
 use App\Http\Controllers\Admin\MouController;
 use App\Http\Controllers\Admin\AttendanceController;
+use App\Http\Controllers\Admin\ElearningController;
+use App\Http\Controllers\Admin\StudentGrievanceController;
 use App\Http\Controllers\Admin\OverviewController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ShiftController;
@@ -415,6 +417,28 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
         Route::get('/attendance/edit/{id}',[AttendanceController::class,'edit'])->name('attendance.edit');
         Route::post('/attendance/update',[AttendanceController::class,'update'])->name('attendance.update');
         Route::get('/attendance/delete/{id}',[AttendanceController::class,'delete'])->name('attendance.delete');
+
+        //e-Learning Title
+        Route::get('/elearning_title/list',[ElearningController::class,'title'])->name('elearningTitle.list');
+        Route::post('/elearning_title/store',[ElearningController::class,'storeTitle'])->name('elearningTitle.store');
+        Route::post('/elearning_title/update',[ElearningController::class,'updateTitle'])->name('elearningTitle.update');
+        Route::get('/elearning_title/delete/{id}',[ElearningController::class,'deleteTitle'])->name('elearningTitle.delete');
+
+        //e-Learning
+        Route::get('/elearning/list',[ElearningController::class,'list'])->name('elearning.list');
+        Route::get('/elearning/add',[ElearningController::class,'add'])->name('elearning.add');
+        Route::post('/elearning/store',[ElearningController::class,'store'])->name('elearning.store');
+        Route::get('/elearning/edit/{id}',[ElearningController::class,'edit'])->name('elearning.edit');
+        Route::post('/elearning/update',[ElearningController::class,'update'])->name('elearning.update');
+        Route::get('/elearning/delete/{id}',[ElearningController::class,'delete'])->name('elearning.delete');
+
+        //Student Grievance Redressal Committee
+        Route::get('/student_grievance/list',[StudentGrievanceController::class,'list'])->name('studentGrievance.list');
+        Route::get('/student_grievance/add',[StudentGrievanceController::class,'add'])->name('studentGrievance.add');
+        Route::post('/student_grievance/store',[StudentGrievanceController::class,'store'])->name('studentGrievance.store');
+        Route::get('/student_grievance/edit/{id}',[StudentGrievanceController::class,'edit'])->name('studentGrievance.edit');
+        Route::post('/student_grievance/update',[StudentGrievanceController::class,'update'])->name('studentGrievance.update');
+        Route::get('/student_grievance/delete/{id}',[StudentGrievanceController::class,'delete'])->name('studentGrievance.delete');
 
         //Top Bar
         Route::get('/top_bar/list',[TopbarController::class,'list'])->name('Topbar.list');

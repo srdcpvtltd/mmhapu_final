@@ -1,14 +1,50 @@
-<?php $this->load->view("frontend/header.php");?>
+@include('web.layouts.header')
 
+<style type="text/css">
+    .fancy-collapse-panel .panel-default>.panel-heading {
+        padding: 0;
+
+    }
+
+    .fancy-collapse-panel .panel-heading a {
+        padding: 12px 35px 12px 15px;
+        display: inline-block;
+        width: 100%;
+        font-size: 13px;
+        background-color: #eeeeee;
+        color: #000000;
+        position: relative;
+        text-decoration: none;
+        margin-bottom: 5px;
+    }
+
+    .fancy-collapse-panel .panel-heading a:after {
+        font-family: "FontAwesome";
+        content: "\f147";
+        position: absolute;
+        right: 20px;
+        font-size: 13px;
+        font-weight: 400;
+        top: 50%;
+        line-height: 1;
+        margin-top: -10px;
+    }
+
+    .fancy-collapse-panel .panel-heading a.collapsed:after {
+        content: "\f196";
+    }
+</style>
 <section class="banner-area relative about-banner" id="home">
     <div class="overlay overlay-bg"></div>
     <div class="container">
         <div class="row d-flex align-items-center justify-content-center">
             <div class="about-content col-lg-12">
-                <h1 class="text-white" style="text-transform: unset;">
-                eResources
+                <h1 class="text-white">
+                    e-Learning : An ICT initiative for E-learning - PPT Presentations
                 </h1>
-                <p class="text-white link-nav"><a href="index.php">Home </a> <span class="lnr lnr-arrow-right"></span> <a class="orange-text">eResources : An ICT initiative for E-learning</a></p>
+                <p class="text-white link-nav"><a href="index.php">Home </a> <span class="lnr lnr-arrow-right"></span> <a
+                        href=""> Student Section</a> <span class="lnr lnr-arrow-right"></span> <a
+                        class="orange-text">eLearning / eResource</a></p>
             </div>
         </div>
     </div>
@@ -19,38 +55,60 @@
         <div class="row">
             <div class="col-sm-12 col-md-12 col-xs-12">
                 <div class="page-title">
-                    <h2 style="text-transform: unset;"><span>eResources: </span>An ICT initiative for E-learning</h2>
+                    <h2><span>e-Learning : </span>An ICT initiative for E-learning - PPT Presentations</h2>
                 </div>
-                <div class="mb-20">
-                    <div class="detials">                        
-                        <div class="row">
-                            <div class="col-md-1">
-                                <a href="https://www.youtube.com/channel/UCX35-ZgGBrtFKwZ131_Su1Q/videos" ><img src="<?php echo base_url(); ?>images/youtube.png" alt="youtube"></a>
-                            </div>
-                            <div class="col-md-11">
-                                <p class="text-justify"><strong class="orange-text">Online Video lectures:</strong> lectures: An Online lecture series by eminent speakers of the University. See MGCU’s YouTube channel for video lecture. <a href="https://www.youtube.com/channel/UCX35-ZgGBrtFKwZ131_Su1Q/videos"  style="text-decoration: underline;">Youtube Link</a></p>
-                            </div>
-                             <div class="col-md-1">
-                                 <a href="elerning.php"><img src="<?php echo base_url(); ?>images/PowerPoint-icon.png"></a>
-                            </div>
-                            <div class="col-md-11">
-                                <p class="text-justify"><strong class="orange-text">PPT Presentation of Faculties:</strong> Faculties: PowerPoint can be a highly effective tool to aid learning. Department wise PPTs submitted by faculties on relevant topics related their subject has been uploaded. <a href="elerning.php" class="round-rectangle">View More</a></p>
+                <div class="desc-wrap marquee_text">
+                    <div class="row">
+                        <div class="container">
+                            <div class="row">
+                                @foreach ($titles as $title)
+                                    <div class="col-md-6 col-md-offset-6 col-sm-6 col-sm-offset-6">
+                                        <div class="accordion" id="accordionExample">
+                                            <div class="accordion-item">
+                                                <h2 class="accordion-header">
+                                                    <button class="accordion-button collapsed" type="button"
+                                                        data-bs-toggle="collapse"
+                                                        data-bs-target="#collapse{{ $title->id }}"
+                                                        aria-expanded="false"
+                                                        aria-controls="collapse{{ $title->id }}">
+                                                        {{ $title->title }}
+                                                    </button>
+                                                </h2>
+                                                <div id="collapse{{ $title->id }}"
+                                                    class="accordion-collapse collapse"
+                                                    data-bs-parent="#accordionExample">
+                                                    <div class="accordion-body">
+                                                        <ul>
+                                                            @foreach ($eLearning->where('title_id', $title->id) as $record)
+                                                                <li><i class="fa fa-arrow-circle-right orange-text"
+                                                                        aria-hidden="true"></i>
+                                                                    <a
+                                                                        href="{{ asset('uploads/eLearning/' . $record->file) }}">
+                                                                        {{ $record->name }} </a>
+                                                                </li>
+                                                            @endforeach
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>           
+            </div>
         </div>
     </div>
 </section>
 
 
+@include('web.layouts.footer')
 
- <?php $this->load->view("frontend/footer.php");?>
 
-
- <script type="text/javascript">
-    $(document).ready(function () {
-        document.title = "eResources : An ICT initiative for E-learning- Mahatma Gandhi Central University, Motihari (Bihar)";
+<script type="text/javascript">
+    $(document).ready(function() {
+        document.title = "Attendance - MAULANA MAZHARUL HAQUE ARABIC AND PERSIAN UNIVERSITY (Bihar)";
     });
 </script>

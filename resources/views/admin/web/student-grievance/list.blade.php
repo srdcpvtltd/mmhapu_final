@@ -1,17 +1,16 @@
 @extends('admin.layout.index')
 
 @section('title')
-    ATTENDANCE
+    Student Grievance Redressal Committee
 @endsection
 
 @section('content')
     <div class="card">
         <div class="card-header header-elements-inline">
-            <h5 class="card-title">Manage Attendance</h5>
+            <h5 class="card-title">Manage Student Grievance Redressal Committee</h5>
             <div class="header-elements">
                 <div class="list-icons">
-                    <a class="btn btn-primary" href="{{ route('admin.attendance.add') }}">Add Attendance</a>
-
+                    <a class="btn btn-primary" href="{{ route('admin.studentGrievance.add') }}">Add Student Grievance Redressal</a>
                 </div>
             </div>
         </div>
@@ -19,9 +18,10 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Title</th>
+                    <th>Designation</th>
                     <th>Name</th>
-                    <th>File</th>
+                    <th>Email</th>
+                    <th>Contact</th>
                     <th>Action</th>
                     <th>Action</th>
                 </tr>
@@ -30,26 +30,20 @@
                 @php
                     $i = 1;
                 @endphp
-                @foreach ($attendance as $data)
+                @foreach ($StudentGrievance as $data)
                     <tr>
                         <td>{{ $i }}</td>
-                        <td>
-                            @if ($data->getTitle)
-                                {{ $data->getTitle->title }}
-                            @endif
-                        </td>
+                        <td>{{ $data->designation }}</td>
                         <td>{{ $data->name }}</td>
+                        <td>{{ $data->email }}</td>
+                        <td>{{ $data->contact }}</td>
                         <td>
-                            <embed src="{{ asset('uploads/attendance/' . $data->file) }}" type="application/pdf" width="100" height="80">
-                        </td>
-                        <td>
-                            <a class="btn btn-icon btn-primary" href="{{ route('admin.attendance.edit', $data->id) }}"><i
-                                    class="far fa-edit"></i> Edit</a>
+                            <a class="btn btn-icon btn-primary"
+                                href="{{ route('admin.studentGrievance.edit', $data->id) }}">Edit</a>
                         </td>
                         <td>
                             <a class="btn btn-icon btn-danger"
-                                onclick="confirmDelete('{{ route('admin.attendance.delete', $data->id) }}')"><i
-                                    class="fas fa-trash-alt"></i> Delete</a>
+                                onclick="confirmDelete('{{ route('admin.studentGrievance.delete', $data->id) }}')">Delete</a>
                         </td>
                     </tr>
                     @php
@@ -62,7 +56,7 @@
 
     <script>
         function confirmDelete(deleteUrl) {
-            var isConfirmed = confirm("Are you sure you want to delete ?");
+            var isConfirmed = confirm("Are you sure you want to delete this item?");
             if (isConfirmed) {
                 window.location.href = deleteUrl;
             } else {

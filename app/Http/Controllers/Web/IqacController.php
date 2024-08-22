@@ -8,12 +8,15 @@ use App\Models\AttendanceTitle;
 use App\Models\Committee;
 use App\Models\CommitteesCellsTitle;
 use App\Models\CommittesCell;
+use App\Models\Elearning;
+use App\Models\ElearningTitle;
 use App\Models\Evaluation;
 use App\Models\EvaluationTitle;
 use App\Models\Feedback;
 use App\Models\Minute;
 use App\Models\Mou;
 use App\Models\Policy;
+use App\Models\StudentGrievance;
 use Illuminate\Http\Request;
 
 class IqacController extends Controller
@@ -63,5 +66,14 @@ class IqacController extends Controller
     }
     public function eLearning(){
         return view('web.eLearning');
+    }
+    public function eResource(){
+        $titles = ElearningTitle::all();
+        $eLearning = Elearning::all();
+        return view('web.eResources', compact('titles','eLearning'));
+    }
+    public function grievanceRedressal(){
+        $grievanceRedressal = StudentGrievance::all();
+        return view('web.student_grievance', compact('grievanceRedressal'));
     }
 }

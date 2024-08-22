@@ -446,7 +446,7 @@
                 <a href="Viksit_Bharat">Viksit Bharat</a>
             </div>
             <div class="col-md-3 col-sm-3 col-xs-12">
-                <a href="pdf/icc_commite_new.pdf" target="_blank">Student Grievance Redressal Committee</a>
+                <a href="{{ route('grievance_redressal') }}">Student Grievance Redressal Committee</a>
             </div>
             <div class="col-md-3 col-sm-3 col-xs-12">
                 <a href="https://www.abc.gov.in/" target="_blank">Academic Bank of Credits</a>
