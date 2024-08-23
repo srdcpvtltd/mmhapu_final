@@ -76,19 +76,6 @@
                         </div>
 
                         <div class="form-group">
-                            <label>URL Type (External/Internal)</label>
-                            <div>
-                                <label class="radio-inline">
-                                    <input type="radio" name="url_type" value="0" checked> Internal
-                                </label>
-
-                                <label class="radio-inline">
-                                    <input type="radio" name="url_type" value="1"> External
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
                             <label>Menu Url Name<small>(Example : /home)</small></label>
                             <input name="url" type="text" class="form-control" placeholder="E.g. /url-name" required>
                         </div>

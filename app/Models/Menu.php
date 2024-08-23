@@ -10,7 +10,7 @@ class Menu extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name','url_type','url','display_order','meta_title','meta_tags','meta_description','menu_id','submenu_id','is_footer' ];
+        'name','url','display_order','meta_title','meta_tags','meta_description','menu_id','submenu_id','is_footer' ];
 
     public function parentMenu()
     {

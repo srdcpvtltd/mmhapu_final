@@ -76,4 +76,5 @@ class IqacController extends Controller
         $grievanceRedressal = StudentGrievance::all();
         return view('web.student_grievance', compact('grievanceRedressal'));
     }
+    
 }

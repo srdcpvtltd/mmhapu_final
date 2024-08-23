@@ -27,6 +27,7 @@ use App\Http\Controllers\Web\AdministrationController;
 use App\Http\Controllers\Web\ChancellorController;
 use App\Http\Controllers\Web\CollabrationController;
 use App\Http\Controllers\Web\ContactusController;
+use App\Http\Controllers\Web\GrievancesController;
 use App\Http\Controllers\Web\IqacController;
 use App\Http\Controllers\Web\LegacyController;
 use App\Http\Controllers\Web\LogoController;
@@ -52,145 +53,147 @@ use App\Http\Controllers\Web\WebFacultyController;
 // Web Routes
 Route::middleware(['XSS'])->namespace('Web')->group(function () {
 
-  // Home Route
-  Route::get('/', [IndexController::class, 'index'])->name('index');
+    // Home Route
+    Route::get('/', [IndexController::class, 'index'])->name('index');
 
-  //about
-  Route::get('/about', [AboutController::class,'about'])->name('about');
+    //about
+    Route::get('/about', [AboutController::class, 'about'])->name('about');
 
-  //mission & vision
-  Route::get('/vision_mission', [MissionVisionController::class,'missionVision'])->name('missionVision');
+    //mission & vision
+    Route::get('/vision_mission', [MissionVisionController::class, 'missionVision'])->name('missionVision');
 
-  //Chancellor
-  Route::get('/chancellor', [ChancellorController::class, 'chancellor'])->name('chancellor');
+    //Chancellor
+    Route::get('/chancellor', [ChancellorController::class, 'chancellor'])->name('chancellor');
 
-  //legacy
-  Route::get('/legacy',[LegacyController::class,'legacy'])->name('legacy');
+    //legacy
+    Route::get('/legacy', [LegacyController::class, 'legacy'])->name('legacy');
 
-  //Logo
-  Route::get('/logo',[LogoController::class,'logo'])->name('logo');
+    //Logo
+    Route::get('/logo', [LogoController::class, 'logo'])->name('logo');
 
-  //act_statutes
-  Route::get('/act_statutes',[ActStatuesController::class,'actStatutes'])->name('actStatutes');
+    //act_statutes
+    Route::get('/act_statutes', [ActStatuesController::class, 'actStatutes'])->name('actStatutes');
 
-  //ordinances
-  Route::get('/ordinances',[OrdinancesController::class,'ordinances'])->name('ordinances');
+    //ordinances
+    Route::get('/ordinances', [OrdinancesController::class, 'ordinances'])->name('ordinances');
 
-  //Administration
-  Route::get('/chancellor_1', [AdministrationController::class,'chancellor_1'])->name('chancellor_1');
-  Route::get('/vc', [AdministrationController::class,'vc'])->name('vc');
-  Route::get('/university_authority', [AdministrationController::class,'universityAuthority'])->name('universityAuthority');
-  Route::get('/statutory_bodies', [AdministrationController::class,'statutoryBodies'])->name('statutoryBodies');
-  Route::get('/university_officers', [AdministrationController::class,'universityOfficers'])->name('universityOfficers');
-  Route::get('/directory', [AdministrationController::class,'directory'])->name('directory');
-
-
-  //Latest Notice
-  Route::get('/latest', [NotificationsController::class,'latest'])->name('latest');
-
-  Route::get('/events', [NotificationsController::class,'events'])->name('events');
-
-  //IQAC
-  Route::get('/iqac_event',[EventController::class,'iqac_event'])->name('iqac_event');
-  Route::get('/events_view/{id}',[EventController::class,'viewEvent'])->name('viewEvent');
-  Route::post('/get_title',[EventController::class,'viewTitle'])->name('viewTitle');
-  Route::post('/iqac_event_filter',[EventController::class,'iqac_event_filter'])->name('iqac_event_filter');
-
-  //collabration
-  Route::get('/collabration',[CollabrationController::class,'collabration'])->name('collabration');
-
-  //Feedback
-  Route::get('/feedback',[IqacController::class,'Feedback'])->name('feedback');
-
-  Route::get('/evaluation_report',[IqacController::class,'Evaluation'])->name('evaluation_report');
-
-  //committees
-  Route::get('/committees',[IqacController::class,'committees'])->name('committees');
-
-  //policy
-  Route::get('/policies',[IqacController::class,'policy'])->name('policies');
-
-  //Minutes
-  Route::get('/minutes',[IqacController::class,'minutes'])->name('minutes');
-
-  //committees&cells
-  Route::get('/committees_cells',[IqacController::class,'committeesCells'])->name('committeesCells');
-
-  //MOUs
-  Route::get('/mou',[IqacController::class,'mou'])->name('Mous');
-
-  //Attendance
-  Route::get('/attendance',[IqacController::class,'attendance'])->name('attendance');
-
-  //eLearning
-  Route::get('/eLearning',[IqacController::class,'eLearning'])->name('eLearning');
-  Route::get('/eResource',[IqacController::class,'eResource'])->name('eResource');
-
-  //Student Grievance Redressal Committee
-  Route::get('/grievance_redressal',[IqacController::class,'grievanceRedressal'])->name('grievance_redressal');
+    //Administration
+    Route::get('/chancellor_1', [AdministrationController::class, 'chancellor_1'])->name('chancellor_1');
+    Route::get('/vc', [AdministrationController::class, 'vc'])->name('vc');
+    Route::get('/university_authority', [AdministrationController::class, 'universityAuthority'])->name('universityAuthority');
+    Route::get('/statutory_bodies', [AdministrationController::class, 'statutoryBodies'])->name('statutoryBodies');
+    Route::get('/university_officers', [AdministrationController::class, 'universityOfficers'])->name('universityOfficers');
+    Route::get('/directory', [AdministrationController::class, 'directory'])->name('directory');
 
 
+    //Latest Notice
+    Route::get('/latest', [NotificationsController::class, 'latest'])->name('latest');
 
-  //Team
-  Route::get('/view-team/{id}',[TeamController::class,'viewTeam'])->name('viewTeam');
+    Route::get('/events', [NotificationsController::class, 'events'])->name('events');
 
-  //faculty
-  Route::get('/faculty',[WebFacultyController::class,'faculty'])->name('faculty');
-  Route::get('/viewfaculties/{id}',[WebFacultyController::class,'viewfaculties'])->name('viewfaculties');
-  Route::get('/teams/{id}',[WebFacultyController::class,'teams'])->name('faculty.team');
-  Route::get('/view-faculty/{id}',[WebFacultyController::class,'viewfaculty'])->name('faculty.viewfaculty');
+    //IQAC
+    Route::get('/iqac_event', [EventController::class, 'iqac_event'])->name('iqac_event');
+    Route::get('/events_view/{id}', [EventController::class, 'viewEvent'])->name('viewEvent');
+    Route::post('/get_title', [EventController::class, 'viewTitle'])->name('viewTitle');
+    Route::post('/iqac_event_filter', [EventController::class, 'iqac_event_filter'])->name('iqac_event_filter');
 
-  //Academics
-  Route::get('/department_arabic', [AcademicsController::class,'departmentArabic'])->name('departmentArabic');
+    //collabration
+    Route::get('/collabration', [CollabrationController::class, 'collabration'])->name('collabration');
 
-  //Contact Us
-  Route::get('/contact_us', [ContactusController::class,'contactUs'])->name('contact_us');
-  Route::get('/address', [ContactusController::class,'address'])->name('address');
-  Route::get('/how_to_reach', [ContactusController::class,'howtoReach'])->name('howtoReach');
+    //Feedback
+    Route::get('/feedback', [IqacController::class, 'Feedback'])->name('feedback');
 
-  //quicklink
-  Route::get('/quicklink',[ContactusController::class,'quicklink'])->name('quicklink');
+    Route::get('/evaluation_report', [IqacController::class, 'Evaluation'])->name('evaluation_report');
 
-  //fit-india-movement
-  Route::get('/fit_india_movement',[IndexController::class,'fitIndia'])->name('fitIndia');
+    //committees
+    Route::get('/committees', [IqacController::class, 'committees'])->name('committees');
+
+    //policy
+    Route::get('/policies', [IqacController::class, 'policy'])->name('policies');
+
+    //Minutes
+    Route::get('/minutes', [IqacController::class, 'minutes'])->name('minutes');
+
+    //committees&cells
+    Route::get('/committees_cells', [IqacController::class, 'committeesCells'])->name('committeesCells');
+
+    //MOUs
+    Route::get('/mou', [IqacController::class, 'mou'])->name('Mous');
+
+    //Attendance
+    Route::get('/attendance', [IqacController::class, 'attendance'])->name('attendance');
+
+    //eLearning
+    Route::get('/eLearning', [IqacController::class, 'eLearning'])->name('eLearning');
+    Route::get('/eResource', [IqacController::class, 'eResource'])->name('eResource');
+
+    //Student Grievance Redressal Committee
+    Route::get('/grievance_redressal', [IqacController::class, 'grievanceRedressal'])->name('grievance_redressal');
+
+    //Grievance
+    Route::get('/grievances', [GrievancesController::class, 'grievances'])->name('grievances');
+    Route::get('/reload-captcha', [GrievancesController::class, 'reloadCaptcha'])->name('reloadCaptcha');
+
+    //Team
+    Route::get('/view-team/{id}', [TeamController::class, 'viewTeam'])->name('viewTeam');
+
+    //faculty
+    Route::get('/faculty', [WebFacultyController::class, 'faculty'])->name('faculty');
+    Route::get('/viewfaculties/{id}', [WebFacultyController::class, 'viewfaculties'])->name('viewfaculties');
+    Route::get('/teams/{id}', [WebFacultyController::class, 'teams'])->name('faculty.team');
+    Route::get('/view-faculty/{id}', [WebFacultyController::class, 'viewfaculty'])->name('faculty.viewfaculty');
+
+    //Academics
+    Route::get('/department_arabic', [AcademicsController::class, 'departmentArabic'])->name('departmentArabic');
+
+    //Contact Us
+    Route::get('/contact_us', [ContactusController::class, 'contactUs'])->name('contact_us');
+    Route::get('/address', [ContactusController::class, 'address'])->name('address');
+    Route::get('/how_to_reach', [ContactusController::class, 'howtoReach'])->name('howtoReach');
+
+    //quicklink
+    Route::get('/quicklink', [ContactusController::class, 'quicklink'])->name('quicklink');
+
+    //fit-india-movement
+    Route::get('/fit_india_movement', [IndexController::class, 'fitIndia'])->name('fitIndia');
 
 
-  // Course Route
-  Route::get('/course', [CourseController::class, 'index'])->name('course');
-  Route::get('/course/{slug}', [CourseController::class, 'show'])->name('course.single');
-  // Event Route
-  Route::get('/event', [EventController::class, 'index'])->name('event');
-  Route::get('/event/{id}/{slug}', [EventController::class, 'show'])->name('event.single');
-  // Faq Route
-  Route::get('/faq', [FaqController::class, 'index'])->name('faq');
-  // Gallery Route
-  Route::get('/gallery_thum', [GalleryController::class, 'index'])->name('galleryThum');
-  Route::get('/view_gallery/{id}', [GalleryController::class, 'viewGallery'])->name('viewGallery');
-  // News Route
-  Route::get('/news', [NewsController::class, 'index'])->name('news');
-  Route::get('/newspaper/{id}', [NewsController::class, 'show'])->name('news.single');
-  // Page Route
-  Route::get('/page/{slug}', [PageController::class, 'show'])->name('page.single');
+    // Course Route
+    Route::get('/course', [CourseController::class, 'index'])->name('course');
+    Route::get('/course/{slug}', [CourseController::class, 'show'])->name('course.single');
+    // Event Route
+    Route::get('/event', [EventController::class, 'index'])->name('event');
+    Route::get('/event/{id}/{slug}', [EventController::class, 'show'])->name('event.single');
+    // Faq Route
+    Route::get('/faq', [FaqController::class, 'index'])->name('faq');
+    // Gallery Route
+    Route::get('/gallery_thum', [GalleryController::class, 'index'])->name('galleryThum');
+    Route::get('/view_gallery/{id}', [GalleryController::class, 'viewGallery'])->name('viewGallery');
+    // News Route
+    Route::get('/news', [NewsController::class, 'index'])->name('news');
+    Route::get('/newspaper/{id}', [NewsController::class, 'show'])->name('news.single');
+    // Page Route
+    Route::get('/page/{slug}', [PageController::class, 'show'])->name('page.single');
 
-  // Application Route
-  Route::resource('application', ApplicationController::class);
+    // Application Route
+    Route::resource('application', ApplicationController::class);
 
-  //Notice-list
-  Route::get('/view-notice-list/{type}',[NoticeListController::class,'noticeList'])->name('web.noticeList');
-  Route::get('/noticelist-single{id}',[NoticeListController::class,'viewNotice'])->name('web.viewNotice');
+    //Notice-list
+    Route::get('/view-notice-list/{type}', [NoticeListController::class, 'noticeList'])->name('web.noticeList');
+    Route::get('/noticelist-single{id}', [NoticeListController::class, 'viewNotice'])->name('web.viewNotice');
 
-  // SetCookie Route
-  Route::get('/set-cookie', [IndexController::class, 'setCookie'])->name('setCookie');
+    // SetCookie Route
+    Route::get('/set-cookie', [IndexController::class, 'setCookie'])->name('setCookie');
 });
 
 // Set Lang Version
 Route::get('locale/language/{locale}', function ($locale) {
 
-  \Session::put('locale', $locale);
+    \Session::put('locale', $locale);
 
-  \App::setLocale($locale);
+    \App::setLocale($locale);
 
-  return redirect()->back();
+    return redirect()->back();
 })->name('version');
 
 
@@ -241,47 +244,42 @@ include __DIR__ . '/prospect.php';
 /*******************Prospect ROUTE END*************/
 /******************FUNCTIONALITY ROUTES****************/
 Route::get('cd', function () {
-  Artisan::call('config:cache');
-  Artisan::call('migrate:refresh');
-  Artisan::call('db:seed', ['--class' => DatabaseSeeder::class]);
-  Artisan::call('view:clear');
-  return 'DONE';
+    Artisan::call('config:cache');
+    Artisan::call('migrate:refresh');
+    Artisan::call('db:seed', ['--class' => DatabaseSeeder::class]);
+    Artisan::call('view:clear');
+    return 'DONE';
 });
 Route::get('migrate', function () {
-  Artisan::call('config:cache');
-  Artisan::call('migrate');
-  Artisan::call('view:clear');
-  return 'DONE';
+    Artisan::call('config:cache');
+    Artisan::call('migrate');
+    Artisan::call('view:clear');
+    return 'DONE';
 });
 Route::get('cache_clear', function () {
-  Artisan::call('config:cache');
-  Artisan::call('cache:clear');
-  Artisan::call('view:clear');
-  return 'DONE';
+    Artisan::call('config:cache');
+    Artisan::call('cache:clear');
+    Artisan::call('view:clear');
+    return 'DONE';
 });
 Route::get('test', function () {
-  dd(config('services.razor_pay'));
-  // PaymentGateway::proccess();
+    dd(config('services.razor_pay'));
+    // PaymentGateway::proccess();
 });
 Route::get('add_categories', function () {
 
-  DB::table('document_categories')->insert([
-    ['name' => 'Passport Size Photograph'],
-    ['name' => 'Full Signatue of the Candidate'],
-    ['name' => 'Full Signatue of the Father'],
-    ['name' => 'Full Signatue of the Mother'],
-    ['name' => 'Full Signatue of the Guradian'],
-    ['name' => 'Aadhar Card'],
-    ['name' => 'Citizen Certificate'],
-    ['name' => 'Caste Certificate From the Appropriate Authority'],
-    ['name' => 'Physically Handicapped Ceertificate with Percentage of Disability from the Appropriate'],
-    ['name' => 'Ex-Serviceman Certificate'],
-    ['name' => '10th or Equivalent Certificate'],
-    ['name' => '10th or Equivalent Martsheet'],
-  ]);
+    DB::table('document_categories')->insert([
+        ['name' => 'Passport Size Photograph'],
+        ['name' => 'Full Signatue of the Candidate'],
+        ['name' => 'Full Signatue of the Father'],
+        ['name' => 'Full Signatue of the Mother'],
+        ['name' => 'Full Signatue of the Guradian'],
+        ['name' => 'Aadhar Card'],
+        ['name' => 'Citizen Certificate'],
+        ['name' => 'Caste Certificate From the Appropriate Authority'],
+        ['name' => 'Physically Handicapped Ceertificate with Percentage of Disability from the Appropriate'],
+        ['name' => 'Ex-Serviceman Certificate'],
+        ['name' => '10th or Equivalent Certificate'],
+        ['name' => '10th or Equivalent Martsheet'],
+    ]);
 });
-
-
-
-
-

@@ -33,6 +33,7 @@ class ComposerStaticInit82db1da0ac2180b77f0583029e904a94
         'c7a3c339e7e14b60e06a2d7fcce9476b' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Events/functions.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
+        '5e8fe2a5ffaded85af682684fe3bbf5a' => __DIR__ . '/..' . '/mews/captcha/src/helpers.php',
         'c72349b1fe8d0deeedd3a52e8aa814d8' => __DIR__ . '/..' . '/mockery/mockery/library/helpers.php',
         'ce9671a430e4846b44e1c68c7611f9f5' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery.php',
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
@@ -130,6 +131,7 @@ class ComposerStaticInit82db1da0ac2180b77f0583029e904a94
         array (
             'Monolog\\' => 8,
             'Mockery\\' => 8,
+            'Mews\\Captcha\\' => 13,
             'Masterminds\\' => 12,
         ),
         'L' => 
@@ -447,6 +449,10 @@ class ComposerStaticInit82db1da0ac2180b77f0583029e904a94
         array (
             0 => __DIR__ . '/..' . '/mockery/mockery/library/Mockery',
         ),
+        'Mews\\Captcha\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/mews/captcha/src',
+        ),
         'Masterminds\\' => 
         array (
             0 => __DIR__ . '/..' . '/masterminds/html5/src',
@@ -672,6 +678,7 @@ class ComposerStaticInit82db1da0ac2180b77f0583029e904a94
         'App\\Http\\Controllers\\Admin\\StateController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/StateController.php',
         'App\\Http\\Controllers\\Admin\\StudentAttendanceController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/StudentAttendanceController.php',
         'App\\Http\\Controllers\\Admin\\StudentController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/StudentController.php',
+        'App\\Http\\Controllers\\Admin\\StudentGrievanceController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/StudentGrievanceController.php',
         'App\\Http\\Controllers\\Admin\\StudentProfileController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/StudentProfileController.php',
         'App\\Http\\Controllers\\Admin\\SubjectController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/SubjectController.php',
         'App\\Http\\Controllers\\Admin\\TeacherController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/TeacherController.php',
@@ -840,6 +847,7 @@ class ComposerStaticInit82db1da0ac2180b77f0583029e904a94
         'App\\Models\\StudentAcademicQualification' => __DIR__ . '/../..' . '/app/Models/StudentAcademicQualification.php',
         'App\\Models\\StudentAttendance' => __DIR__ . '/../..' . '/app/Models/StudentAttendance.php',
         'App\\Models\\StudentDocument' => __DIR__ . '/../..' . '/app/Models/StudentDocument.php',
+        'App\\Models\\StudentGrievance' => __DIR__ . '/../..' . '/app/Models/StudentGrievance.php',
         'App\\Models\\StudentProfile' => __DIR__ . '/../..' . '/app/Models/StudentProfile.php',
         'App\\Models\\StudentProfileAddress' => __DIR__ . '/../..' . '/app/Models/StudentProfileAddress.php',
         'App\\Models\\Subject' => __DIR__ . '/../..' . '/app/Models/Subject.php',
@@ -4136,6 +4144,11 @@ class ComposerStaticInit82db1da0ac2180b77f0583029e904a94
         'Masterminds\\HTML5\\Serializer\\OutputRules' => __DIR__ . '/..' . '/masterminds/html5/src/HTML5/Serializer/OutputRules.php',
         'Masterminds\\HTML5\\Serializer\\RulesInterface' => __DIR__ . '/..' . '/masterminds/html5/src/HTML5/Serializer/RulesInterface.php',
         'Masterminds\\HTML5\\Serializer\\Traverser' => __DIR__ . '/..' . '/masterminds/html5/src/HTML5/Serializer/Traverser.php',
+        'Mews\\Captcha\\Captcha' => __DIR__ . '/..' . '/mews/captcha/src/Captcha.php',
+        'Mews\\Captcha\\CaptchaController' => __DIR__ . '/..' . '/mews/captcha/src/CaptchaController.php',
+        'Mews\\Captcha\\CaptchaServiceProvider' => __DIR__ . '/..' . '/mews/captcha/src/CaptchaServiceProvider.php',
+        'Mews\\Captcha\\Facades\\Captcha' => __DIR__ . '/..' . '/mews/captcha/src/Facades/Captcha.php',
+        'Mews\\Captcha\\LumenCaptchaController' => __DIR__ . '/..' . '/mews/captcha/src/LumenCaptchaController.php',
         'Mockery\\Adapter\\Phpunit\\MockeryPHPUnitIntegration' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryPHPUnitIntegration.php',
         'Mockery\\Adapter\\Phpunit\\MockeryPHPUnitIntegrationAssertPostConditions' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryPHPUnitIntegrationAssertPostConditions.php',
         'Mockery\\Adapter\\Phpunit\\MockeryTestCase' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryTestCase.php',
