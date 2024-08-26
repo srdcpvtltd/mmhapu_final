@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Grievance;
 use App\Models\StudentGrievance;
 use Illuminate\Http\Request;
 
@@ -60,5 +61,14 @@ class StudentGrievanceController extends Controller
         }
         toastr()->error('Something Wents Wrong');
         return redirect()->back();
+    }
+
+    public function grievances(){
+        $allData = Grievance::orderBy('id', 'desc')->get();
+        return view('admin.web.student-grievance.form-list', compact('allData'));
+    }
+    public function viewGrievances($id){
+        $viewGrievances = Grievance::find($id);
+        return view('admin.web.student-grievance.form-view', compact('viewGrievances'));
     }
 }

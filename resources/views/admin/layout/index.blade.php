@@ -296,6 +296,52 @@
                             </ul>
                         </li>
 
+                        <li class="nav-item nav-item-submenu {{ Request::is('admin/web/syllabus_title*') || Request::is('admin/web/syllabus*') ? 'nav-item-open' : '' }}">
+                            <a href="#" class="nav-link"> <i class="fas fa-check-circle"></i> <span>Syllabus</span></a>
+
+                            <ul class="nav nav-group-sub" data-submenu-title="Layouts"
+                                style="{{ Request::is('admin/web/syllabus_title*') || Request::is('admin/web/syllabus*') ? 'display:block' : '' }}">
+
+                                <li class="nav-item"><a href="{{ route('admin.syllabus.index') }}"
+                                        class="nav-link {{ Request::is('admin/web/syllabus_title*') ? 'active' : '' }}">Department</a></li>
+
+                                <li class="nav-item"><a href="{{ route('admin.syllabus.list') }}"
+                                        class="nav-link {{ Request::is('admin/web/syllabus*') ? 'active' : '' }}">Syllabus</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item nav-item-submenu {{ Request::is('admin/web/gyangrah*') || Request::is('admin/web/syllabus*') ? 'nav-item-open' : '' }}">
+                            <a href="#" class="nav-link"> <i class="fas fa-check-circle"></i> <span>Annual Magazine</span></a>
+
+                            <ul class="nav nav-group-sub" data-submenu-title="Layouts"
+                                style="{{ Request::is('admin/web/gyangrah*') || Request::is('admin/web/syllabus*') ? 'display:block' : '' }}">
+
+                                <li class="nav-item"><a href="{{ route('admin.gyangrah.list') }}"
+                                        class="nav-link {{ Request::is('admin/web/gyangrah*') ? 'active' : '' }}">Gyanagrah</a></li>
+
+                                <li class="nav-item"><a href="{{ route('admin.harmony.list') }}"
+                                        class="nav-link {{ Request::is('admin/web/syllabus*') ? 'active' : '' }}">Harmony</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ route('admin.proceedings.list') }}"
+                                class="nav-link {{ Request::is('admin/web/proceedings*') ? 'active' : '' }}">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <span>Proceedings</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ route('admin.grievances_list') }}"
+                                class="nav-link {{ Request::is('admin/web/grievances_list*') ? 'active' : '' }}">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <span>Student Grievance Redressal Form</span>
+                            </a>
+                        </li>
+
                         <li class="nav-item">
                             <a href="{{ route('admin.studentGrievance.list') }}"
                                 class="nav-link {{ Request::is('admin/web/student_grievance*') ? 'active' : '' }}">

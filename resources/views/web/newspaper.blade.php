@@ -46,7 +46,7 @@
                     <div class="single-imgs relative">
                         <div class="overlay overlay-bg"></div>
                         <div class="relative">
-                            <img class="img-fluid" src=" {{asset('uploads/news/'. $data->image)}} " alt="Photos">
+                            <img class="img-fluid" src=" {{asset('uploads/news/'. $data->image)}} " style="height: 250px; object-fit:cover; width:100%;">
                         </div>
                     </div>
                 </a>

@@ -34,6 +34,7 @@ use App\Http\Controllers\Web\LogoController;
 use App\Http\Controllers\Web\MissionVisionController;
 use App\Http\Controllers\Web\NotificationsController;
 use App\Http\Controllers\Web\OrdinancesController;
+use App\Http\Controllers\Web\PublicationsController;
 use App\Http\Controllers\Web\VcController;
 use App\Http\Controllers\Web\WebFacultyController;
 
@@ -133,6 +134,19 @@ Route::middleware(['XSS'])->namespace('Web')->group(function () {
     //Grievance
     Route::get('/grievances', [GrievancesController::class, 'grievances'])->name('grievances');
     Route::get('/reload-captcha', [GrievancesController::class, 'reloadCaptcha'])->name('reloadCaptcha');
+    Route::post('/store_grievances', [GrievancesController::class, 'storeGrievances'])->name('storeGrievances');
+
+    //Syllabus
+    Route::get('/syllabus', [IqacController::class, 'syllabus'])->name('syllabus');
+
+    //proceedings
+    Route::get('/proceedings', [PublicationsController::class, 'proceedings'])->name('proceedings');
+
+    //documentation
+    Route::get('/documentation', [PublicationsController::class, 'documentation'])->name('documentation');
+
+    //annual_magazine
+    Route::get('/annual_magazine', [PublicationsController::class, 'annualMagazine'])->name('annualMagazine');
 
     //Team
     Route::get('/view-team/{id}', [TeamController::class, 'viewTeam'])->name('viewTeam');

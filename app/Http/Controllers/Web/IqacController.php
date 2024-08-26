@@ -17,6 +17,8 @@ use App\Models\Minute;
 use App\Models\Mou;
 use App\Models\Policy;
 use App\Models\StudentGrievance;
+use App\Models\Syllabus;
+use App\Models\SyllabusTitle;
 use Illuminate\Http\Request;
 
 class IqacController extends Controller
@@ -76,5 +78,10 @@ class IqacController extends Controller
         $grievanceRedressal = StudentGrievance::all();
         return view('web.student_grievance', compact('grievanceRedressal'));
     }
-    
+    public function syllabus(){
+        $titles = SyllabusTitle::all();
+        $syllabus = Syllabus::all();
+        return view('web.syllabus', compact('titles','syllabus'));
+    }
+
 }

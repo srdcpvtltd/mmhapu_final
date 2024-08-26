@@ -48,6 +48,9 @@ use App\Http\Controllers\Admin\MouController;
 use App\Http\Controllers\Admin\AttendanceController;
 use App\Http\Controllers\Admin\ElearningController;
 use App\Http\Controllers\Admin\StudentGrievanceController;
+use App\Http\Controllers\Admin\SyllabusController;
+use App\Http\Controllers\Admin\ProceedingsController;
+use App\Http\Controllers\Admin\AnnualMagazineController;
 use App\Http\Controllers\Admin\OverviewController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ShiftController;
@@ -439,6 +442,45 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
         Route::get('/student_grievance/edit/{id}',[StudentGrievanceController::class,'edit'])->name('studentGrievance.edit');
         Route::post('/student_grievance/update',[StudentGrievanceController::class,'update'])->name('studentGrievance.update');
         Route::get('/student_grievance/delete/{id}',[StudentGrievanceController::class,'delete'])->name('studentGrievance.delete');
+
+        Route::get('/grievances_list',[StudentGrievanceController::class,'grievances'])->name('grievances_list');
+        Route::get('/grievances_view/{id}',[StudentGrievanceController::class,'viewGrievances'])->name('viewGrievances');
+
+        //Syllabus title
+        Route::get('/syllabus_title/index',[SyllabusController::class,'index'])->name('syllabus.index');
+        Route::post('/syllabus_title/insert',[SyllabusController::class,'insert'])->name('syllabus.insert');
+        Route::post('/syllabus_title/update/{id}',[SyllabusController::class,'updateTitle'])->name('syllabus.updateTitle');
+        Route::get('/syllabus_title/destory/{id}',[SyllabusController::class,'destory'])->name('syllabus.destory');
+
+        //Syllabus
+        Route::get('/syllabus/list',[SyllabusController::class,'list'])->name('syllabus.list');
+        Route::get('/syllabus/add',[SyllabusController::class,'add'])->name('syllabus.add');
+        Route::post('/syllabus/store',[SyllabusController::class,'store'])->name('syllabus.store');
+        Route::get('/syllabus/edit/{id}',[SyllabusController::class,'edit'])->name('syllabus.edit');
+        Route::post('/syllabus/update',[SyllabusController::class,'update'])->name('syllabus.update');
+        Route::get('/syllabus/delete/{id}',[SyllabusController::class,'delete'])->name('syllabus.delete');
+
+        //proceedings
+        Route::get('/proceedings/list',[ProceedingsController::class,'list'])->name('proceedings.list');
+        Route::get('/proceedings/add',[ProceedingsController::class,'add'])->name('proceedings.add');
+        Route::post('/proceedings/store',[ProceedingsController::class,'store'])->name('proceedings.store');
+        Route::get('/proceedings/edit/{id}',[ProceedingsController::class,'edit'])->name('proceedings.edit');
+        Route::post('/proceedings/update',[ProceedingsController::class,'update'])->name('proceedings.update');
+        Route::get('/proceedings/delete/{id}',[ProceedingsController::class,'delete'])->name('proceedings.delete');
+
+        //Gyangrah
+        Route::get('/gyangrah/list',[AnnualMagazineController::class,'gyangrahList'])->name('gyangrah.list');
+        Route::post('/gyangrah/store',[AnnualMagazineController::class,'gyangrahStore'])->name('gyangrah.store');
+        Route::get('/gyangrah/edit/{id}',[AnnualMagazineController::class,'gyangrahEdit'])->name('gyangrah.edit');
+        Route::post('/gyangrah/update',[AnnualMagazineController::class,'gyangrahUpdate'])->name('gyangrah.update');
+        Route::get('/gyangrah/delete/{id}',[AnnualMagazineController::class,'gyangrahDelete'])->name('gyangrah.delete');
+
+        //Harmony
+        Route::get('/harmony/list',[AnnualMagazineController::class,'harmonyList'])->name('harmony.list');
+        Route::post('/harmony/store',[AnnualMagazineController::class,'harmonyStore'])->name('harmony.store');
+        Route::get('/harmony/edit/{id}',[AnnualMagazineController::class,'harmonyEdit'])->name('harmony.edit');
+        Route::post('/harmony/update',[AnnualMagazineController::class,'harmonyUpdate'])->name('harmony.update');
+        Route::get('/harmony/delete/{id}',[AnnualMagazineController::class,'harmonyDelete'])->name('harmony.delete');
 
         //Top Bar
         Route::get('/top_bar/list',[TopbarController::class,'list'])->name('Topbar.list');
