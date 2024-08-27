@@ -311,17 +311,17 @@
                             </ul>
                         </li>
 
-                        <li class="nav-item nav-item-submenu {{ Request::is('admin/web/gyangrah*') || Request::is('admin/web/syllabus*') ? 'nav-item-open' : '' }}">
+                        <li class="nav-item nav-item-submenu {{ Request::is('admin/web/gyangrah*') || Request::is('admin/web/harmony*') ? 'nav-item-open' : '' }}">
                             <a href="#" class="nav-link"> <i class="fas fa-check-circle"></i> <span>Annual Magazine</span></a>
 
                             <ul class="nav nav-group-sub" data-submenu-title="Layouts"
-                                style="{{ Request::is('admin/web/gyangrah*') || Request::is('admin/web/syllabus*') ? 'display:block' : '' }}">
+                                style="{{ Request::is('admin/web/gyangrah*') || Request::is('admin/web/harmony*') ? 'display:block' : '' }}">
 
                                 <li class="nav-item"><a href="{{ route('admin.gyangrah.list') }}"
                                         class="nav-link {{ Request::is('admin/web/gyangrah*') ? 'active' : '' }}">Gyanagrah</a></li>
 
                                 <li class="nav-item"><a href="{{ route('admin.harmony.list') }}"
-                                        class="nav-link {{ Request::is('admin/web/syllabus*') ? 'active' : '' }}">Harmony</a>
+                                        class="nav-link {{ Request::is('admin/web/harmony*') ? 'active' : '' }}">Harmony</a>
                                 </li>
                             </ul>
                         </li>

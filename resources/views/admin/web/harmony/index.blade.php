@@ -64,11 +64,11 @@
                                                     <embed src="{{ asset('uploads/harmony/' . $data->file) }}" type="application/pdf" width="100" height="80">
                                                 </td>
                                                 <td>
-                                                    <a class="btn btn-primary btn-sm" href="{{ route('admin.gyangrah.edit', $data->id) }}">Edit</a>
+                                                    <a class="btn btn-primary btn-sm" href="{{ route('admin.harmony.edit', $data->id) }}">Edit</a>
                                                 </td>
                                                 <td>
                                                     <a class="btn btn-danger btn-sm"
-                                                        onclick="confirmDelete('{{ route('admin.gyangrah.delete', $data->id) }}')">Delete</a>
+                                                        onclick="confirmDelete('{{ route('admin.harmony.delete', $data->id) }}')">Delete</a>
                                                 </td>
                                             </tr>
                                             @php
