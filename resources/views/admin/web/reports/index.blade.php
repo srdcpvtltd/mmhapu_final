@@ -1,7 +1,7 @@
 @extends('admin.layout.index')
 
 @section('title')
-    ज्ञानग्रह
+    Annual Reports
 @endsection
 
 @section('content')
@@ -9,14 +9,24 @@
         <div class="page-wrapper">
             <div class="row">
                 <div class="col-md-5">
-                    <form class="needs-validation" action="{{ route('admin.gyangrah.store') }}" method="post" enctype="multipart/form-data">
+                    <form class="needs-validation" action="{{ route('admin.reports.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="card">
                             <div class="card-header">
-                                <h5>Add New ज्ञानग्रह</h5>
+                                <h5>Add New Annual Report</h5>
                             </div>
                             <div class="card-block pdng">
-                                <!-- Form Start -->
+
+                                <div class="form-group">
+                                    <label for="title" class="form-label">Report Type<span>*</span></label>
+                                    <select name="type" class="form-control" required>
+                                        <option value="">---Select---</option>
+                                        <option value="Bilingual">Bilingual</option>
+                                        <option value="English">English</option>
+                                        <option value="Hindi">Hindi</option>
+                                    </select>
+                                </div>
+
                                 <div class="form-group">
                                     <label for="title" class="form-label">Name<span>*</span></label>
                                     <input type="text" name="name" class="form-control" placeholder="Enter Name"
@@ -37,7 +47,7 @@
                 <div class="col-md-7">
                     <div class="card">
                         <div class="card-header">
-                            <h5>Manage ज्ञानग्रह</h5>
+                            <h5>Manage Annual Reports</h5>
                         </div>
                         <div class="card-block pdng">
                             <div class="table-responsive">
@@ -46,6 +56,7 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
+                                            <th>Report Type</th>
                                             <th>Name</th>
                                             <th>Document</th>
                                             <th>Action</th>
@@ -56,19 +67,20 @@
                                         @php
                                             $i = 1;
                                         @endphp
-                                        @foreach ($gyangrah as $data)
+                                        @foreach ($reports as $data)
                                             <tr>
                                                 <td>{{ $i }}</td>
+                                                <td>{{ $data->type }}</td>
                                                 <td>{{ $data->name }}</td>
                                                 <td>
-                                                    <embed src="{{ asset('uploads/gyangrah/' . $data->file) }}" type="application/pdf" width="100" height="80">
+                                                    <embed src="{{ asset('uploads/reports/' . $data->file) }}" type="application/pdf" width="100" height="80">
                                                 </td>
                                                 <td>
-                                                    <a class="btn btn-primary btn-sm" href="{{ route('admin.gyangrah.edit', $data->id) }}">Edit</a>
+                                                    <a class="btn btn-primary btn-sm" href="{{ route('admin.reports.edit', $data->id) }}">Edit</a>
                                                 </td>
                                                 <td>
                                                     <a class="btn btn-danger btn-sm"
-                                                        onclick="confirmDelete('{{ route('admin.gyangrah.delete', $data->id) }}')">Delete</a>
+                                                        onclick="confirmDelete('{{ route('admin.reports.delete', $data->id) }}')">Delete</a>
                                                 </td>
                                             </tr>
                                             @php

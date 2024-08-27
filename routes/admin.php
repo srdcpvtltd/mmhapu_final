@@ -2,6 +2,7 @@
 
 /****************** ADMIN MIDDLEWARE PAGES ROUTES START****************/
 
+use App\Http\Controllers\Admin\AcademicsController;
 use App\Http\Controllers\Admin\CenterMappingController;
 use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\CollegeController;
@@ -51,6 +52,8 @@ use App\Http\Controllers\Admin\StudentGrievanceController;
 use App\Http\Controllers\Admin\SyllabusController;
 use App\Http\Controllers\Admin\ProceedingsController;
 use App\Http\Controllers\Admin\AnnualMagazineController;
+use App\Http\Controllers\Admin\AnnualReportsController;
+use App\Http\Controllers\Admin\EnewsLetterController;
 use App\Http\Controllers\Admin\OverviewController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ShiftController;
@@ -481,6 +484,28 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
         Route::get('/harmony/edit/{id}',[AnnualMagazineController::class,'harmonyEdit'])->name('harmony.edit');
         Route::post('/harmony/update',[AnnualMagazineController::class,'harmonyUpdate'])->name('harmony.update');
         Route::get('/harmony/delete/{id}',[AnnualMagazineController::class,'harmonyDelete'])->name('harmony.delete');
+
+        //Annual Reports
+        Route::get('/reports/list',[AnnualReportsController::class,'list'])->name('reports.list');
+        Route::post('/reports/store',[AnnualReportsController::class,'store'])->name('reports.store');
+        Route::get('/reports/edit/{id}',[AnnualReportsController::class,'edit'])->name('reports.edit');
+        Route::post('/reports/update',[AnnualReportsController::class,'update'])->name('reports.update');
+        Route::get('/reports/delete/{id}',[AnnualReportsController::class,'delete'])->name('reports.delete');
+
+        //E-Newsletter
+        Route::get('/enews_letter/list',[EnewsLetterController::class,'list'])->name('enews_letter.list');
+        Route::post('/enews_letter/store',[EnewsLetterController::class,'store'])->name('enews_letter.store');
+        Route::get('/enews_letter/edit/{id}',[EnewsLetterController::class,'edit'])->name('enews_letter.edit');
+        Route::post('/enews_letter/update',[EnewsLetterController::class,'update'])->name('enews_letter.update');
+        Route::get('/enews_letter/delete/{id}',[EnewsLetterController::class,'delete'])->name('enews_letter.delete');
+
+        //Fazil
+        Route::get('/fazil/list',[AcademicsController::class,'fazilList'])->name('fazil.list');
+        Route::get('/fazil/add',[AcademicsController::class,'fazilAdd'])->name('fazil.add');
+        Route::post('/fazil/store',[AcademicsController::class,'fazilStore'])->name('fazil.store');
+        Route::get('/fazil/edit/{id}',[AcademicsController::class,'fazilEdit'])->name('fazil.edit');
+        Route::post('/fazil/update',[AcademicsController::class,'fazilUpdate'])->name('fazil.update');
+        Route::get('/fazil/delete/{id}',[AcademicsController::class,'fazilDelete'])->name('fazil.delete');
 
         //Top Bar
         Route::get('/top_bar/list',[TopbarController::class,'list'])->name('Topbar.list');

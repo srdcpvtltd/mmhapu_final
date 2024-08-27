@@ -1,7 +1,7 @@
 @extends('admin.layout.index')
 
 @section('title')
-    ज्ञानग्रह
+    E-NEWS LETTER
 @endsection
 
 @section('content')
@@ -9,21 +9,23 @@
         <div class="page-wrapper">
             <div class="row">
                 <div class="col-md-5">
-                    <form class="needs-validation" action="{{ route('admin.gyangrah.store') }}" method="post" enctype="multipart/form-data">
+                    <form class="needs-validation" action="{{ route('admin.enews_letter.store') }}" method="post"
+                        enctype="multipart/form-data">
                         @csrf
                         <div class="card">
                             <div class="card-header">
-                                <h5>Add New ज्ञानग्रह</h5>
+                                <h5>Add New E-News Letter</h5>
                             </div>
                             <div class="card-block pdng">
                                 <!-- Form Start -->
                                 <div class="form-group">
-                                    <label for="title" class="form-label">Name<span>*</span></label>
+                                    <label for="name" class="form-label">Name<span>*</span></label>
                                     <input type="text" name="name" class="form-control" placeholder="Enter Name"
                                         required>
                                 </div>
+
                                 <div class="form-group">
-                                    <label for="title" class="form-label">Document<span>*</span></label>
+                                    <label for="document" class="form-label">Document<span>*</span></label>
                                     <input type="file" name="file" class="form-control" accept=".pdf" required>
                                 </div>
                             </div>
@@ -37,7 +39,7 @@
                 <div class="col-md-7">
                     <div class="card">
                         <div class="card-header">
-                            <h5>Manage ज्ञानग्रह</h5>
+                            <h5>Manage E-News Letter</h5>
                         </div>
                         <div class="card-block pdng">
                             <div class="table-responsive">
@@ -47,7 +49,7 @@
                                         <tr>
                                             <th>#</th>
                                             <th>Name</th>
-                                            <th>Document</th>
+                                            <th>File</th>
                                             <th>Action</th>
                                             <th>Action</th>
                                         </tr>
@@ -56,19 +58,21 @@
                                         @php
                                             $i = 1;
                                         @endphp
-                                        @foreach ($gyangrah as $data)
+                                        @foreach ($newsletter as $data)
                                             <tr>
                                                 <td>{{ $i }}</td>
                                                 <td>{{ $data->name }}</td>
                                                 <td>
-                                                    <embed src="{{ asset('uploads/gyangrah/' . $data->file) }}" type="application/pdf" width="100" height="80">
+                                                    <embed src="{{ asset('uploads/enews-letter/' . $data->file) }}"
+                                                        type="application/pdf" width="100" height="80">
                                                 </td>
                                                 <td>
-                                                    <a class="btn btn-primary btn-sm" href="{{ route('admin.gyangrah.edit', $data->id) }}">Edit</a>
+                                                    <a class="btn btn-primary btn-sm"
+                                                        href="{{ route('admin.enews_letter.edit', $data->id) }}">Edit</a>
                                                 </td>
                                                 <td>
                                                     <a class="btn btn-danger btn-sm"
-                                                        onclick="confirmDelete('{{ route('admin.gyangrah.delete', $data->id) }}')">Delete</a>
+                                                        onclick="confirmDelete('{{ route('admin.enews_letter.delete', $data->id) }}')">Delete</a>
                                                 </td>
                                             </tr>
                                             @php

@@ -147,6 +147,18 @@ Route::middleware(['XSS'])->namespace('Web')->group(function () {
 
     //annual_magazine
     Route::get('/annual_magazine', [PublicationsController::class, 'annualMagazine'])->name('annualMagazine');
+    Route::get('/gyangrah', [PublicationsController::class, 'gyangrah'])->name('gyangrah');
+    Route::get('/hramony', [PublicationsController::class, 'hramony'])->name('hramony');
+
+    //annual_reports
+    Route::get('/reports', [PublicationsController::class, 'annualReports'])->name('annualReports');
+
+    //E-news Letter
+    Route::get('/enews_letter', [PublicationsController::class, 'enewsLetter'])->name('enewsLetter');
+
+    //E-news Letter
+    Route::get('/books_research_publication', [PublicationsController::class, 'booksResearchPublication'])->name('booksResearchPublication');
+
 
     //Team
     Route::get('/view-team/{id}', [TeamController::class, 'viewTeam'])->name('viewTeam');

@@ -28,7 +28,8 @@
                         <ul class="custom-list-style text-justify">
                             @foreach ($proceedings as $data)
                                 <li class="mb-10"><i class="fa fa-check"></i> <a
-                                        href="{{ asset('uploads/proceedings/' . $data->file) }}"> {!! $data->title !!} </a></li>
+                                        href="{{ asset('uploads/proceedings/' . $data->file) }}">
+                                        {!! $data->title !!} </a></li>
                             @endforeach
                         </ul>
                     </div>

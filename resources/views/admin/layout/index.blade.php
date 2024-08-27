@@ -327,6 +327,30 @@
                         </li>
 
                         <li class="nav-item">
+                            <a href="{{ route('admin.fazil.list') }}"
+                                class="nav-link {{ Request::is('admin/web/fazil*') ? 'active' : '' }}">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <span>FAZIL</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ route('admin.enews_letter.list') }}"
+                                class="nav-link {{ Request::is('admin/web/enews_letter*') ? 'active' : '' }}">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <span>E-News Letter</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ route('admin.reports.list') }}"
+                                class="nav-link {{ Request::is('admin/web/reports*') ? 'active' : '' }}">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <span>Annual Reports</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
                             <a href="{{ route('admin.proceedings.list') }}"
                                 class="nav-link {{ Request::is('admin/web/proceedings*') ? 'active' : '' }}">
                                 <i class="fas fa-exclamation-triangle"></i>
