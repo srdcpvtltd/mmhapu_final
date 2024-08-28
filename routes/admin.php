@@ -507,6 +507,30 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
         Route::post('/fazil/update',[AcademicsController::class,'fazilUpdate'])->name('fazil.update');
         Route::get('/fazil/delete/{id}',[AcademicsController::class,'fazilDelete'])->name('fazil.delete');
 
+        //alim
+        Route::get('/alim/list',[AcademicsController::class,'alimList'])->name('alim.list');
+        Route::get('/alim/add',[AcademicsController::class,'alimAdd'])->name('alim.add');
+        Route::post('/alim/store',[AcademicsController::class,'alimStore'])->name('alim.store');
+        Route::get('/alim/edit/{id}',[AcademicsController::class,'alimEdit'])->name('alim.edit');
+        Route::post('/alim/update',[AcademicsController::class,'alimUpdate'])->name('alim.update');
+        Route::get('/alim/delete/{id}',[AcademicsController::class,'alimDelete'])->name('alim.delete');
+
+        //KRC with AICTE
+        Route::get('/krc_with_aicte/list',[AcademicsController::class,'WithAicteList'])->name('krcWithAicte.list');
+        Route::get('/krc_with_aicte/add',[AcademicsController::class,'WithAicteAdd'])->name('krcWithAicte.add');
+        Route::post('/krc_with_aicte/store',[AcademicsController::class,'WithAicteStore'])->name('krcWithAicte.store');
+        Route::get('/krc_with_aicte/edit/{id}',[AcademicsController::class,'WithAicteEdit'])->name('krcWithAicte.edit');
+        Route::post('/krc_with_aicte/update',[AcademicsController::class,'WithAicteUpdate'])->name('krcWithAicte.update');
+        Route::get('/krc_with_aicte/delete/{id}',[AcademicsController::class,'WithAicteDelete'])->name('krcWithAicte.delete');
+
+        //KRC without AICTE
+        Route::get('/krc_without_aicte/list',[AcademicsController::class,'WithoutAicteList'])->name('krcWithoutAicte.list');
+        Route::get('/krc_without_aicte/add',[AcademicsController::class,'WithoutAicteAdd'])->name('krcWithoutAicte.add');
+        Route::post('/krc_without_aicte/store',[AcademicsController::class,'WithoutAicteStore'])->name('krcWithoutAicte.store');
+        Route::get('/krc_without_aicte/edit/{id}',[AcademicsController::class,'WithoutAicteEdit'])->name('krcWithoutAicte.edit');
+        Route::post('/krc_without_aicte/update',[AcademicsController::class,'WithoutAicteUpdate'])->name('krcWithoutAicte.update');
+        Route::get('/krc_without_aicte/delete/{id}',[AcademicsController::class,'WithoutAicteDelete'])->name('krcWithoutAicte.delete');
+
         //Top Bar
         Route::get('/top_bar/list',[TopbarController::class,'list'])->name('Topbar.list');
         Route::get('/top_bar/add',[TopbarController::class,'add'])->name('Topbar.add');

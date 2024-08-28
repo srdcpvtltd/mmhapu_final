@@ -327,6 +327,30 @@
                         </li>
 
                         <li class="nav-item">
+                            <a href="{{ route('admin.krcWithAicte.list') }}"
+                                class="nav-link {{ Request::is('admin/web/krc_with_aicte*') ? 'active' : '' }}">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <span>KRC With AICTE Recognition</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ route('admin.krcWithoutAicte.list') }}"
+                                class="nav-link {{ Request::is('admin/web/krc_without_aicte*') ? 'active' : '' }}">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <span>KRC Without AICTE Recognition</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ route('admin.alim.list') }}"
+                                class="nav-link {{ Request::is('admin/web/alim*') ? 'active' : '' }}">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <span>ALIM</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
                             <a href="{{ route('admin.fazil.list') }}"
                                 class="nav-link {{ Request::is('admin/web/fazil*') ? 'active' : '' }}">
                                 <i class="fas fa-exclamation-triangle"></i>

@@ -21,6 +21,7 @@ use App\Http\Controllers\Frontwebuser\DashbController;
 use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\FacultyController;
 use App\Http\Controllers\Web\AboutController;
+use App\Http\Controllers\Web\AcademicController;
 use App\Http\Controllers\Web\AcademicsController;
 use App\Http\Controllers\Web\ActStatuesController;
 use App\Http\Controllers\Web\AdministrationController;
@@ -159,6 +160,13 @@ Route::middleware(['XSS'])->namespace('Web')->group(function () {
     //E-news Letter
     Route::get('/books_research_publication', [PublicationsController::class, 'booksResearchPublication'])->name('booksResearchPublication');
 
+    //Fazil
+    Route::get('/fazil', [AcademicController::class, 'fazil'])->name('fazil');
+    Route::get('/alim', [AcademicController::class, 'alim'])->name('alim');
+
+    //KRC
+    Route::get('/krc_with_aicte', [AcademicController::class, 'with_aicte'])->name('with_aicte');
+    Route::get('/krc_without_aicte', [AcademicController::class, 'without_aicte'])->name('without_aicte');
 
     //Team
     Route::get('/view-team/{id}', [TeamController::class, 'viewTeam'])->name('viewTeam');
