@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Alim;
+use App\Models\Bed;
 use App\Models\Fazil;
 use App\Models\KrcWithAicte;
 use App\Models\KrcWithoutAicte;
@@ -248,6 +249,67 @@ class AcademicsController extends Controller
                 unlink(public_path('uploads/krc/'. $WithoutAicteDelete->resume));
             }
             $WithoutAicteDelete->delete();
+            toastr()->success('Deleted Successfully');
+            return redirect()->back();
+        }
+        toastr()->error('Something wents wrong.');
+        return redirect()->back();
+    }
+
+    //B.Ed
+    public function bedList(){
+        $Bed = Bed::all();
+        return view('admin.web.bed.list', compact('Bed'));
+    }
+    public function bedAdd(){
+        return view('admin.web.bed.add');
+    }
+    public function bedStore(Request $request){
+        $bedStore =new Bed;
+        $bedStore->designation = $request->designation;
+        $bedStore->name = $request->name;
+        $bedStore->email = $request->email;
+        $bedStore->contact = $request->contact;
+        if($request->hasFile('resume')){
+            $resume = $request->file('resume');
+            $resumeName = time(). '_' . $resume->getClientOriginalName();
+            $resume->move(public_path('uploads/bed'), $resumeName);
+            $bedStore->resume = $resumeName;
+        }
+        $bedStore->save();
+        toastr()->success('New B.Ed Added Successfully.');
+        return redirect()->route('admin.bed.list');
+    }
+    public function bedEdit($id){
+        $bedEdit = Bed::find($id);
+        return view('admin.web.bed.edit', compact('bedEdit'));
+    }
+    public function bedUpdate(Request $request){
+        $bedUpdate = Bed::find($request->id);
+        $bedUpdate->designation = $request->designation;
+        $bedUpdate->name = $request->name;
+        $bedUpdate->email = $request->email;
+        $bedUpdate->contact = $request->contact;
+        if($request->hasFile('resume')){
+            if($bedUpdate->resume && file_exists(public_path('uploads/bed/'. $bedUpdate->resume))){
+                unlink(public_path('uploads/bed/'.  $bedUpdate->resume));
+            }
+            $resume = $request->file('resume');
+            $resumeName = time(). '_' . $resume->getClientOriginalName();
+            $resume->move(public_path('uploads/bed'), $resumeName);
+            $bedUpdate->resume = $resumeName;
+        }
+        $bedUpdate->save();
+        toastr()->success('B.Ed Updated Successfully');
+        return redirect()->route('admin.bed.list');
+    }
+    public function bedDelete($id){
+        $bedDelete = Bed::find($id);
+        if($bedDelete){
+            if($bedDelete->resume && file_exists(public_path('uploads/bed/'.$bedDelete->resume))){
+                unlink(public_path('uploads/bed/'. $bedDelete->resume));
+            }
+            $bedDelete->delete();
             toastr()->success('Deleted Successfully');
             return redirect()->back();
         }

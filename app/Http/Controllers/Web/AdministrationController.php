@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Models\AdministrativeOfficer;
 use Illuminate\Http\Request;
 
 class AdministrationController extends Controller
@@ -20,7 +21,8 @@ class AdministrationController extends Controller
     }
 
     public function statutoryBodies(){
-        return view('web.statutory_bodies');
+        $administativeOfficers = AdministrativeOfficer::all();
+        return view('web.statutory_bodies', compact('administativeOfficers'));
     }
 
     public function universityOfficers(){

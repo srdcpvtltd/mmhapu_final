@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Models\Alim;
+use App\Models\Bed;
 use App\Models\Fazil;
 use App\Models\KrcWithAicte;
 use App\Models\KrcWithoutAicte;
@@ -26,5 +27,9 @@ class AcademicController extends Controller
     public function without_aicte(){
         $krc_without_aicte = KrcWithoutAicte::all();
         return view('web.krc_without_aicte', compact('krc_without_aicte'));
+    }
+    public function bed(){
+        $Bed = Bed::all();
+        return view('web.bed', compact('Bed'));
     }
 }

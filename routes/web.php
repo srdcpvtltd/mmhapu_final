@@ -168,6 +168,9 @@ Route::middleware(['XSS'])->namespace('Web')->group(function () {
     Route::get('/krc_with_aicte', [AcademicController::class, 'with_aicte'])->name('with_aicte');
     Route::get('/krc_without_aicte', [AcademicController::class, 'without_aicte'])->name('without_aicte');
 
+    //B.Ed
+    Route::get('/bed', [AcademicController::class, 'bed'])->name('bed');
+
     //Team
     Route::get('/view-team/{id}', [TeamController::class, 'viewTeam'])->name('viewTeam');
 

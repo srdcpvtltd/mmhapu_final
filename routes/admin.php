@@ -54,6 +54,7 @@ use App\Http\Controllers\Admin\ProceedingsController;
 use App\Http\Controllers\Admin\AnnualMagazineController;
 use App\Http\Controllers\Admin\AnnualReportsController;
 use App\Http\Controllers\Admin\EnewsLetterController;
+use App\Http\Controllers\Admin\AdministrativeController;
 use App\Http\Controllers\Admin\OverviewController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ShiftController;
@@ -125,19 +126,19 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
     Route::post('status_update', [ProspectController::class, 'statusUpdate'])->name('prospect.status_update');
     Route::post('get_admit_content', [ProspectController::class, 'getAdmitContent'])->name('prospect.get_admit_content');
     Route::resource('prospect', ProspectController::class);
-    Route::resource('center_mapping',CenterMappingController::class);
+    Route::resource('center_mapping', CenterMappingController::class);
     /*******************PROSPECT ROUTE END*************/
     /*******************TEACHER ROUTE START*************/
     Route::resource('teacher', TeacherController::class);
     /*******************TEACHER ROUTE END*************/
 
     /*******************ADMIN USER ROUTE START*************/
-    Route::get('adminuser/list',[AdminUserController::class,'list'])->name('AdminUser.list');
-    Route::get('adminuser/add',[AdminUserController::class,'add'])->name('AdminUser.add');
-    Route::post('adminuser/store',[AdminUserController::class,'store'])->name('AdminUser.store');
-    Route::get('adminuser/edit{id}',[AdminUserController::class,'edit'])->name('AdminUser.edit');
-    Route::post('adminuser/update',[AdminUserController::class,'update'])->name('AdminUser.update');
-    Route::get('adminuser/delete{id}',[AdminUserController::class,'delete'])->name('AdminUser.delete');
+    Route::get('adminuser/list', [AdminUserController::class, 'list'])->name('AdminUser.list');
+    Route::get('adminuser/add', [AdminUserController::class, 'add'])->name('AdminUser.add');
+    Route::post('adminuser/store', [AdminUserController::class, 'store'])->name('AdminUser.store');
+    Route::get('adminuser/edit{id}', [AdminUserController::class, 'edit'])->name('AdminUser.edit');
+    Route::post('adminuser/update', [AdminUserController::class, 'update'])->name('AdminUser.update');
+    Route::get('adminuser/delete{id}', [AdminUserController::class, 'delete'])->name('AdminUser.delete');
     /*******************ADMIN USER ROUTE END*************/
 
     /*******************COURSE ROUTE START*************/
@@ -169,20 +170,20 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
     Route::resource('roles', RolesController::class);
     /*******************ROLE END*************/
     /*******************Notice Type Start*************/
-    Route::get('/noticetype/list',[NoticeTypeController::class,'list'])->name('NoticeType.list');
-    Route::get('/noticetype/add',[NoticeTypeController::class,'add'])->name('NoticeType.add');
-    Route::post('/noticetype/add',[NoticeTypeController::class,'store'])->name('NoticeType.store');
-    Route::get('/noticetype/edit{id}',[NoticeTypeController::class,'edit'])->name('NoticeType.edit');
-    Route::post('/noticetype/update',[NoticeTypeController::class,'update'])->name('NoticeType.update');
-    Route::get('/noticetype/delete{id}',[NoticeTypeController::class,'delete'])->name('NoticeType.delete');
+    Route::get('/noticetype/list', [NoticeTypeController::class, 'list'])->name('NoticeType.list');
+    Route::get('/noticetype/add', [NoticeTypeController::class, 'add'])->name('NoticeType.add');
+    Route::post('/noticetype/add', [NoticeTypeController::class, 'store'])->name('NoticeType.store');
+    Route::get('/noticetype/edit{id}', [NoticeTypeController::class, 'edit'])->name('NoticeType.edit');
+    Route::post('/noticetype/update', [NoticeTypeController::class, 'update'])->name('NoticeType.update');
+    Route::get('/noticetype/delete{id}', [NoticeTypeController::class, 'delete'])->name('NoticeType.delete');
     /*******************Notice Type END*************/
     /*******************Notice  Start*************/
-    Route::get('/notice/list',[noticeController::class,'list'])->name('Notice.list');
-    Route::get('/notice/add',[noticeController::class,'add'])->name('Notice.add');
-    Route::post('/notice/add',[noticeController::class,'store'])->name('Notice.store');
-    Route::get('/notice/edit{id}',[noticeController::class,'edit'])->name('Notice.edit');
-    Route::post('/notice/update',[noticeController::class,'update'])->name('Notice.update');
-    Route::get('/notice/delete{id}',[noticeController::class,'delete'])->name('Notice.delete');
+    Route::get('/notice/list', [noticeController::class, 'list'])->name('Notice.list');
+    Route::get('/notice/add', [noticeController::class, 'add'])->name('Notice.add');
+    Route::post('/notice/add', [noticeController::class, 'store'])->name('Notice.store');
+    Route::get('/notice/edit{id}', [noticeController::class, 'edit'])->name('Notice.edit');
+    Route::post('/notice/update', [noticeController::class, 'update'])->name('Notice.update');
+    Route::get('/notice/delete{id}', [noticeController::class, 'delete'])->name('Notice.delete');
 
     /*******************Notice END*************/
     // Route::resource('team', TeamController::class);
@@ -250,334 +251,364 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
         Route::resource('about-us', AboutUsController::class);
         // Route::resource('course', WebCourseController::class);
         Route::resource('web-event', WebEventController::class);
-        Route::post('/getsubmenu',[MenuController::class,'getSubmenu'])->name('get_submenu');
+        Route::post('/getsubmenu', [MenuController::class, 'getSubmenu'])->name('get_submenu');
 
         //Overview
-        Route::get('/overview/list',[OverviewController::class,'list'])->name('Overview.list');
-        Route::post('/overview/store',[OverviewController::class,'store'])->name('Overview.store');
+        Route::get('/overview/list', [OverviewController::class, 'list'])->name('Overview.list');
+        Route::post('/overview/store', [OverviewController::class, 'store'])->name('Overview.store');
 
         //team
-        Route::get('/team/list',[TeamController::class,'list'])->name('Team.list');
-        Route::get('/team/add',[TeamController::class,'add'])->name('Team.add');
-        Route::post('/team/store',[TeamController::class,'store'])->name('Team.store');
-        Route::get('/team/edit{id}',[TeamController::class,'edit'])->name('Team.edit');
-        Route::post('/team/update',[TeamController::class,'update'])->name('Team.update');
-        Route::get('/team/delete{id}',[TeamController::class,'delete'])->name('Team.delete');
+        Route::get('/team/list', [TeamController::class, 'list'])->name('Team.list');
+        Route::get('/team/add', [TeamController::class, 'add'])->name('Team.add');
+        Route::post('/team/store', [TeamController::class, 'store'])->name('Team.store');
+        Route::get('/team/edit{id}', [TeamController::class, 'edit'])->name('Team.edit');
+        Route::post('/team/update', [TeamController::class, 'update'])->name('Team.update');
+        Route::get('/team/delete{id}', [TeamController::class, 'delete'])->name('Team.delete');
 
         //department info
-        Route::get('/info/list',[AdminDepartmentinfoController::class,'list'])->name('Info.list');
-        Route::get('/info/add',[AdminDepartmentinfoController::class,'add'])->name('Info.add');
-        Route::post('/info/store',[AdminDepartmentinfoController::class,'store'])->name('Info.store');
-        Route::get('/info/edit{id}',[AdminDepartmentinfoController::class,'edit'])->name('Info.edit');
-        Route::post('/info/update',[AdminDepartmentinfoController::class,'update'])->name('Info.update');
-        Route::get('/info/delete{id}',[AdminDepartmentinfoController::class,'delete'])->name('Info.delete');
+        Route::get('/info/list', [AdminDepartmentinfoController::class, 'list'])->name('Info.list');
+        Route::get('/info/add', [AdminDepartmentinfoController::class, 'add'])->name('Info.add');
+        Route::post('/info/store', [AdminDepartmentinfoController::class, 'store'])->name('Info.store');
+        Route::get('/info/edit{id}', [AdminDepartmentinfoController::class, 'edit'])->name('Info.edit');
+        Route::post('/info/update', [AdminDepartmentinfoController::class, 'update'])->name('Info.update');
+        Route::get('/info/delete{id}', [AdminDepartmentinfoController::class, 'delete'])->name('Info.delete');
 
         //faculty category
-        Route::get('/faculty/category/list',[FacultyController::class,'list'])->name('faculty.category.list');
-        Route::get('/faculty/category/add',[FacultyController::class,'add'])->name('faculty.category.add');
-        Route::post('/faculty/category/store',[FacultyController::class,'store'])->name('faculty.category.store');
-        Route::get('/faculty/category/edit{id}',[FacultyController::class,'edit'])->name('faculty.category.edit');
-        Route::post('/faculty/category/update',[FacultyController::class,'update'])->name('faculty.category.update');
-        Route::get('/faculty/category/delete{id}',[FacultyController::class,'delete'])->name('faculty.category.delete');
+        Route::get('/faculty/category/list', [FacultyController::class, 'list'])->name('faculty.category.list');
+        Route::get('/faculty/category/add', [FacultyController::class, 'add'])->name('faculty.category.add');
+        Route::post('/faculty/category/store', [FacultyController::class, 'store'])->name('faculty.category.store');
+        Route::get('/faculty/category/edit{id}', [FacultyController::class, 'edit'])->name('faculty.category.edit');
+        Route::post('/faculty/category/update', [FacultyController::class, 'update'])->name('faculty.category.update');
+        Route::get('/faculty/category/delete{id}', [FacultyController::class, 'delete'])->name('faculty.category.delete');
 
-        Route::post('faculty/getsubcategory',[FacultyController::class,'getSubcategory'])->name('faculty.getsubcategory');
+        Route::post('faculty/getsubcategory', [FacultyController::class, 'getSubcategory'])->name('faculty.getsubcategory');
 
         //faculty subcategory
-        Route::get('/faculty/subcategory/list',[FacultySubcategoryController::class,'list'])->name('faculty.subcategory.list');
-        Route::get('/faculty/subcategory/add',[FacultySubcategoryController::class,'add'])->name('faculty.subcategory.add');
-        Route::post('/faculty/subcategory/store',[FacultySubcategoryController::class,'store'])->name('faculty.subcategory.store');
-        Route::get('/faculty/subcategory/edit{id}',[FacultySubcategoryController::class,'edit'])->name('faculty.subcategory.edit');
-        Route::post('/faculty/subcategory/update',[FacultySubcategoryController::class,'update'])->name('faculty.subcategory.update');
-        Route::get('/faculty/subcategory/delete{id}',[FacultySubcategoryController::class,'delete'])->name('faculty.subcategory.delete');
+        Route::get('/faculty/subcategory/list', [FacultySubcategoryController::class, 'list'])->name('faculty.subcategory.list');
+        Route::get('/faculty/subcategory/add', [FacultySubcategoryController::class, 'add'])->name('faculty.subcategory.add');
+        Route::post('/faculty/subcategory/store', [FacultySubcategoryController::class, 'store'])->name('faculty.subcategory.store');
+        Route::get('/faculty/subcategory/edit{id}', [FacultySubcategoryController::class, 'edit'])->name('faculty.subcategory.edit');
+        Route::post('/faculty/subcategory/update', [FacultySubcategoryController::class, 'update'])->name('faculty.subcategory.update');
+        Route::get('/faculty/subcategory/delete{id}', [FacultySubcategoryController::class, 'delete'])->name('faculty.subcategory.delete');
 
         //Facility
-        Route::get('/facility/list',[FacilityController::class,'list'])->name('facility.list');
-        Route::get('/facility/add',[FacilityController::class,'add'])->name('facility.add');
-        Route::post('/facility/store',[FacilityController::class,'store'])->name('facility.store');
-        Route::get('/facility/edit{id}',[FacilityController::class,'edit'])->name('facility.edit');
-        Route::post('/facility/update',[FacilityController::class,'update'])->name('facility.update');
-        Route::get('/facility/delete{id}',[FacilityController::class,'delete'])->name('facility.delete');
+        Route::get('/facility/list', [FacilityController::class, 'list'])->name('facility.list');
+        Route::get('/facility/add', [FacilityController::class, 'add'])->name('facility.add');
+        Route::post('/facility/store', [FacilityController::class, 'store'])->name('facility.store');
+        Route::get('/facility/edit{id}', [FacilityController::class, 'edit'])->name('facility.edit');
+        Route::post('/facility/update', [FacilityController::class, 'update'])->name('facility.update');
+        Route::get('/facility/delete{id}', [FacilityController::class, 'delete'])->name('facility.delete');
 
 
         //Media Path
-        Route::get('media_path/list',[MediapathController::class,'list'])->name('Mediapath.list');
-        Route::post('media_path/store',[MediapathController::class,'store'])->name('Mediapath.store');
-        Route::get('media_path/delete/{id}',[MediapathController::class,'delete'])->name('Mediapath.delete');
+        Route::get('media_path/list', [MediapathController::class, 'list'])->name('Mediapath.list');
+        Route::post('media_path/store', [MediapathController::class, 'store'])->name('Mediapath.store');
+        Route::get('media_path/delete/{id}', [MediapathController::class, 'delete'])->name('Mediapath.delete');
 
         //Quick-link-title
-        Route::get('/quicklink_title/list',[QuicklinktitleController::class,'list'])->name('qtitle.list');
-        Route::post('/quicklink_title/store',[QuicklinktitleController::class,'store'])->name('qtitle.store');
-        Route::get('/quicklink_title/edit/{id}',[QuicklinktitleController::class,'edit'])->name('qtitle.edit');
-        Route::post('/quicklink_title/update',[QuicklinktitleController::class,'update'])->name('qtitle.update');
-        Route::get('/quicklink_title/delete/{id}',[QuicklinktitleController::class,'delete'])->name('qtitle.delete');
+        Route::get('/quicklink_title/list', [QuicklinktitleController::class, 'list'])->name('qtitle.list');
+        Route::post('/quicklink_title/store', [QuicklinktitleController::class, 'store'])->name('qtitle.store');
+        Route::get('/quicklink_title/edit/{id}', [QuicklinktitleController::class, 'edit'])->name('qtitle.edit');
+        Route::post('/quicklink_title/update', [QuicklinktitleController::class, 'update'])->name('qtitle.update');
+        Route::get('/quicklink_title/delete/{id}', [QuicklinktitleController::class, 'delete'])->name('qtitle.delete');
 
         //Quick-links
-        Route::get('/quick_link/list',[QuicklinkController::class,'list'])->name('Quicklink.list');
-        Route::get('/quick_link/add',[QuicklinkController::class,'add'])->name('Quicklink.add');
-        Route::post('/quick_link/store',[QuicklinkController::class,'store'])->name('Quicklink.store');
-        Route::get('/quick_link/edit{id}',[QuicklinkController::class,'edit'])->name('Quicklink.edit');
-        Route::post('/quick_link/update',[QuicklinkController::class,'update'])->name('Quicklink.update');
-        Route::get('/quick_link/delete{id}',[QuicklinkController::class,'delete'])->name('Quicklink.delete');
+        Route::get('/quick_link/list', [QuicklinkController::class, 'list'])->name('Quicklink.list');
+        Route::get('/quick_link/add', [QuicklinkController::class, 'add'])->name('Quicklink.add');
+        Route::post('/quick_link/store', [QuicklinkController::class, 'store'])->name('Quicklink.store');
+        Route::get('/quick_link/edit{id}', [QuicklinkController::class, 'edit'])->name('Quicklink.edit');
+        Route::post('/quick_link/update', [QuicklinkController::class, 'update'])->name('Quicklink.update');
+        Route::get('/quick_link/delete{id}', [QuicklinkController::class, 'delete'])->name('Quicklink.delete');
 
         //iqac event title
-        Route::get('iqac_eventtitle/list',[IqaceventTitleController::class,'list'])->name('IqacEventTitle.list');
-        Route::get('iqac_eventtitle/add',[IqaceventTitleController::class,'add'])->name('IqacEventTitle.add');
-        Route::post('iqac_eventtitle/store',[IqaceventTitleController::class,'store'])->name('IqacEventTitle.store');
-        Route::get('iqac_eventtitle/edit{id}',[IqaceventTitleController::class,'edit'])->name('IqacEventTitle.edit');
-        Route::post('iqac_eventtitle/update',[IqaceventTitleController::class,'update'])->name('IqacEventTitle.update');
-        Route::get('iqac_eventtitle/delete{id}',[IqaceventTitleController::class,'delete'])->name('IqacEventTitle.delete');
+        Route::get('iqac_eventtitle/list', [IqaceventTitleController::class, 'list'])->name('IqacEventTitle.list');
+        Route::get('iqac_eventtitle/add', [IqaceventTitleController::class, 'add'])->name('IqacEventTitle.add');
+        Route::post('iqac_eventtitle/store', [IqaceventTitleController::class, 'store'])->name('IqacEventTitle.store');
+        Route::get('iqac_eventtitle/edit{id}', [IqaceventTitleController::class, 'edit'])->name('IqacEventTitle.edit');
+        Route::post('iqac_eventtitle/update', [IqaceventTitleController::class, 'update'])->name('IqacEventTitle.update');
+        Route::get('iqac_eventtitle/delete{id}', [IqaceventTitleController::class, 'delete'])->name('IqacEventTitle.delete');
 
         //iqac event
-        Route::get('iqac_event/list',[IqaceventController::class,'list'])->name('IqacEvent.list');
-        Route::post('iqac_event/store',[IqaceventController::class,'store'])->name('IqacEvent.store');
-        Route::get('iqac_event/edit{id}',[IqaceventController::class,'edit'])->name('IqacEvent.edit');
-        Route::post('iqac_event/update',[IqaceventController::class,'update'])->name('IqacEvent.update');
-        Route::get('iqac_event/delete{id}',[IqaceventController::class,'delete'])->name('IqacEvent.delete');
+        Route::get('iqac_event/list', [IqaceventController::class, 'list'])->name('IqacEvent.list');
+        Route::post('iqac_event/store', [IqaceventController::class, 'store'])->name('IqacEvent.store');
+        Route::get('iqac_event/edit{id}', [IqaceventController::class, 'edit'])->name('IqacEvent.edit');
+        Route::post('iqac_event/update', [IqaceventController::class, 'update'])->name('IqacEvent.update');
+        Route::get('iqac_event/delete{id}', [IqaceventController::class, 'delete'])->name('IqacEvent.delete');
 
         //iqac Collabration
-        Route::get('/collabration/list',[IqacCollabrationController::class,'list'])->name('Collabration.list');
-        Route::get('/collabration/add',[IqacCollabrationController::class,'add'])->name('Collabration.add');
-        Route::post('/collabration/store',[IqacCollabrationController::class,'store'])->name('Collabration.store');
-        Route::get('/collabration/edit/{id}',[IqacCollabrationController::class,'edit'])->name('Collabration.edit');
-        Route::post('/collabration/update',[IqacCollabrationController::class,'update'])->name('Collabration.update');
-        Route::get('/collabration/delete/{id}',[IqacCollabrationController::class,'delete'])->name('Collabration.delete');
+        Route::get('/collabration/list', [IqacCollabrationController::class, 'list'])->name('Collabration.list');
+        Route::get('/collabration/add', [IqacCollabrationController::class, 'add'])->name('Collabration.add');
+        Route::post('/collabration/store', [IqacCollabrationController::class, 'store'])->name('Collabration.store');
+        Route::get('/collabration/edit/{id}', [IqacCollabrationController::class, 'edit'])->name('Collabration.edit');
+        Route::post('/collabration/update', [IqacCollabrationController::class, 'update'])->name('Collabration.update');
+        Route::get('/collabration/delete/{id}', [IqacCollabrationController::class, 'delete'])->name('Collabration.delete');
 
         //Feedback
-        Route::get('/feedback/index',[IqacFeedbackController::class,'index'])->name('Feedback.index');
-        Route::post('/feedback/store',[IqacFeedbackController::class,'store'])->name('Feedback.store');
-        Route::get('/feedback/edit/{id}',[IqacFeedbackController::class,'edit'])->name('Feedback.edit');
-        Route::post('/feedback/update',[IqacFeedbackController::class,'update'])->name('Feedback.update');
-        Route::get('/feedback/delete/{id}',[IqacFeedbackController::class,'delete'])->name('Feedback.delete');
+        Route::get('/feedback/index', [IqacFeedbackController::class, 'index'])->name('Feedback.index');
+        Route::post('/feedback/store', [IqacFeedbackController::class, 'store'])->name('Feedback.store');
+        Route::get('/feedback/edit/{id}', [IqacFeedbackController::class, 'edit'])->name('Feedback.edit');
+        Route::post('/feedback/update', [IqacFeedbackController::class, 'update'])->name('Feedback.update');
+        Route::get('/feedback/delete/{id}', [IqacFeedbackController::class, 'delete'])->name('Feedback.delete');
 
         //Evalutions-title
-        Route::get('/evaluation_title/index',[EvaluationController::class,'index'])->name('Evaluation.index');
-        Route::post('/evaluation_title/store',[EvaluationController::class,'store'])->name('Evaluation.store');
-        Route::post('/evaluation_title/update',[EvaluationController::class,'update'])->name('Evaluation.update');
-        Route::get('/evaluation_title/delete/{id}',[EvaluationController::class,'delete'])->name('Evaluation.delete');
+        Route::get('/evaluation_title/index', [EvaluationController::class, 'index'])->name('Evaluation.index');
+        Route::post('/evaluation_title/store', [EvaluationController::class, 'store'])->name('Evaluation.store');
+        Route::post('/evaluation_title/update', [EvaluationController::class, 'update'])->name('Evaluation.update');
+        Route::get('/evaluation_title/delete/{id}', [EvaluationController::class, 'delete'])->name('Evaluation.delete');
 
         //Evalutions
-        Route::get('/evaluation_report/list',[EvaluationController::class,'list'])->name('evaluation_report.list');
-        Route::get('/evaluation_report/add',[EvaluationController::class,'add'])->name('evaluation_report.add');
-        Route::post('/evaluation_report/insert',[EvaluationController::class,'insert'])->name('evaluation_report.insert');
-        Route::get('/evaluation_report/edit/{id}',[EvaluationController::class,'edit'])->name('evaluation_report.edit');
-        Route::post('/evaluation_report/update',[EvaluationController::class,'Eupdate'])->name('evaluation_report.update');
-        Route::get('/evaluation_report/destory/{id}',[EvaluationController::class,'destory'])->name('evaluation_report.destory');
+        Route::get('/evaluation_report/list', [EvaluationController::class, 'list'])->name('evaluation_report.list');
+        Route::get('/evaluation_report/add', [EvaluationController::class, 'add'])->name('evaluation_report.add');
+        Route::post('/evaluation_report/insert', [EvaluationController::class, 'insert'])->name('evaluation_report.insert');
+        Route::get('/evaluation_report/edit/{id}', [EvaluationController::class, 'edit'])->name('evaluation_report.edit');
+        Route::post('/evaluation_report/update', [EvaluationController::class, 'Eupdate'])->name('evaluation_report.update');
+        Route::get('/evaluation_report/destory/{id}', [EvaluationController::class, 'destory'])->name('evaluation_report.destory');
 
         //Committees
-        Route::get('/committees/list',[IqacCommitteesController::class,'list'])->name('committees.list');
-        Route::get('/committees/add',[IqacCommitteesController::class,'add'])->name('committees.add');
-        Route::post('/committees/store',[IqacCommitteesController::class,'store'])->name('committees.store');
-        Route::get('/committees/edit/{id}',[IqacCommitteesController::class,'edit'])->name('committees.edit');
-        Route::post('/committees/update',[IqacCommitteesController::class,'update'])->name('committees.update');
-        Route::get('/committees/delete/{id}',[IqacCommitteesController::class,'delete'])->name('committees.delete');
+        Route::get('/committees/list', [IqacCommitteesController::class, 'list'])->name('committees.list');
+        Route::get('/committees/add', [IqacCommitteesController::class, 'add'])->name('committees.add');
+        Route::post('/committees/store', [IqacCommitteesController::class, 'store'])->name('committees.store');
+        Route::get('/committees/edit/{id}', [IqacCommitteesController::class, 'edit'])->name('committees.edit');
+        Route::post('/committees/update', [IqacCommitteesController::class, 'update'])->name('committees.update');
+        Route::get('/committees/delete/{id}', [IqacCommitteesController::class, 'delete'])->name('committees.delete');
 
         //Policy
-        Route::get('/policies/list',[IqacPolicyController::class,'list'])->name('policies.list');
-        Route::get('/policies/add',[IqacPolicyController::class,'add'])->name('policies.add');
-        Route::post('/policies/store',[IqacPolicyController::class,'store'])->name('policies.store');
-        Route::get('/policies/edit/{id}',[IqacPolicyController::class,'edit'])->name('policies.edit');
-        Route::post('/policies/update',[IqacPolicyController::class,'update'])->name('policies.update');
-        Route::get('/policies/delete/{id}',[IqacPolicyController::class,'delete'])->name('policies.delete');
+        Route::get('/policies/list', [IqacPolicyController::class, 'list'])->name('policies.list');
+        Route::get('/policies/add', [IqacPolicyController::class, 'add'])->name('policies.add');
+        Route::post('/policies/store', [IqacPolicyController::class, 'store'])->name('policies.store');
+        Route::get('/policies/edit/{id}', [IqacPolicyController::class, 'edit'])->name('policies.edit');
+        Route::post('/policies/update', [IqacPolicyController::class, 'update'])->name('policies.update');
+        Route::get('/policies/delete/{id}', [IqacPolicyController::class, 'delete'])->name('policies.delete');
 
         //minutes
-        Route::get('/minutes/list',[IqacMinutesController::class,'list'])->name('minutes.list');
-        Route::get('/minutes/add',[IqacMinutesController::class,'add'])->name('minutes.add');
-        Route::post('/minutes/store',[IqacMinutesController::class,'store'])->name('minutes.store');
-        Route::get('/minutes/edit/{id}',[IqacMinutesController::class,'edit'])->name('minutes.edit');
-        Route::post('/minutes/update',[IqacMinutesController::class,'update'])->name('minutes.update');
-        Route::get('/minutes/delete/{id}',[IqacMinutesController::class,'delete'])->name('minutes.delete');
+        Route::get('/minutes/list', [IqacMinutesController::class, 'list'])->name('minutes.list');
+        Route::get('/minutes/add', [IqacMinutesController::class, 'add'])->name('minutes.add');
+        Route::post('/minutes/store', [IqacMinutesController::class, 'store'])->name('minutes.store');
+        Route::get('/minutes/edit/{id}', [IqacMinutesController::class, 'edit'])->name('minutes.edit');
+        Route::post('/minutes/update', [IqacMinutesController::class, 'update'])->name('minutes.update');
+        Route::get('/minutes/delete/{id}', [IqacMinutesController::class, 'delete'])->name('minutes.delete');
 
         //committees & cells title
-        Route::get('/committes_title/list',[CommitteesCellsController::class,'index'])->name('CommitteesCellsTitle.list');
-        Route::post('/committes_title/store',[CommitteesCellsController::class,'storeTitle'])->name('CommitteesCellsTitle.store');
-        Route::post('/committes_title/update',[CommitteesCellsController::class,'update'])->name('CommitteesCellsTitle.update');
-        Route::get('/committes_title/delete/{id}',[CommitteesCellsController::class,'delete'])->name('CommitteesCellsTitle.delete');
+        Route::get('/committes_title/list', [CommitteesCellsController::class, 'index'])->name('CommitteesCellsTitle.list');
+        Route::post('/committes_title/store', [CommitteesCellsController::class, 'storeTitle'])->name('CommitteesCellsTitle.store');
+        Route::post('/committes_title/update', [CommitteesCellsController::class, 'update'])->name('CommitteesCellsTitle.update');
+        Route::get('/committes_title/delete/{id}', [CommitteesCellsController::class, 'delete'])->name('CommitteesCellsTitle.delete');
 
         //committees & cells
-        Route::get('/committes_cells/list',[CommitteesCellsController::class,'list'])->name('committesCells.list');
-        Route::get('/committes_cells/add',[CommitteesCellsController::class,'add'])->name('committesCells.add');
-        Route::post('/committes_cells/store',[CommitteesCellsController::class,'store'])->name('committesCells.store');
-        Route::get('/committes_cells/edit/{id}',[CommitteesCellsController::class,'edit'])->name('committesCells.edit');
-        Route::post('/committes_cells/update',[CommitteesCellsController::class,'updateCommittee'])->name('committesCells.update');
-        Route::get('/committes_cells/delete/{id}',[CommitteesCellsController::class,'deleteCommittee'])->name('committesCells.delete');
-        Route::post('/gettitle',[CommitteesCellsController::class,'getTitle'])->name('getTitle');
+        Route::get('/committes_cells/list', [CommitteesCellsController::class, 'list'])->name('committesCells.list');
+        Route::get('/committes_cells/add', [CommitteesCellsController::class, 'add'])->name('committesCells.add');
+        Route::post('/committes_cells/store', [CommitteesCellsController::class, 'store'])->name('committesCells.store');
+        Route::get('/committes_cells/edit/{id}', [CommitteesCellsController::class, 'edit'])->name('committesCells.edit');
+        Route::post('/committes_cells/update', [CommitteesCellsController::class, 'updateCommittee'])->name('committesCells.update');
+        Route::get('/committes_cells/delete/{id}', [CommitteesCellsController::class, 'deleteCommittee'])->name('committesCells.delete');
+        Route::post('/gettitle', [CommitteesCellsController::class, 'getTitle'])->name('getTitle');
 
         //MOUs
-        Route::get('/mous/list',[MouController::class,'list'])->name('mous.list');
-        Route::get('/mous/add',[MouController::class,'add'])->name('mous.add');
-        Route::post('/mous/store',[MouController::class,'store'])->name('mous.store');
-        Route::get('/mous/edit/{id}',[MouController::class,'edit'])->name('mous.edit');
-        Route::post('/mous/update',[MouController::class,'update'])->name('mous.update');
-        Route::get('/mous/delete/{id}',[MouController::class,'delete'])->name('mous.delete');
+        Route::get('/mous/list', [MouController::class, 'list'])->name('mous.list');
+        Route::get('/mous/add', [MouController::class, 'add'])->name('mous.add');
+        Route::post('/mous/store', [MouController::class, 'store'])->name('mous.store');
+        Route::get('/mous/edit/{id}', [MouController::class, 'edit'])->name('mous.edit');
+        Route::post('/mous/update', [MouController::class, 'update'])->name('mous.update');
+        Route::get('/mous/delete/{id}', [MouController::class, 'delete'])->name('mous.delete');
 
         //Attendance Title
-        Route::get('/attendance_title/list',[AttendanceController::class,'title'])->name('attendanceTitle.list');
-        Route::post('/attendance_title/store',[AttendanceController::class,'storeTitle'])->name('attendanceTitle.store');
-        Route::post('/attendance_title/update',[AttendanceController::class,'updateTitle'])->name('attendanceTitle.update');
-        Route::get('/attendance_title/delete/{id}',[AttendanceController::class,'deleteTitle'])->name('attendanceTitle.delete');
+        Route::get('/attendance_title/list', [AttendanceController::class, 'title'])->name('attendanceTitle.list');
+        Route::post('/attendance_title/store', [AttendanceController::class, 'storeTitle'])->name('attendanceTitle.store');
+        Route::post('/attendance_title/update', [AttendanceController::class, 'updateTitle'])->name('attendanceTitle.update');
+        Route::get('/attendance_title/delete/{id}', [AttendanceController::class, 'deleteTitle'])->name('attendanceTitle.delete');
 
         //Attendance
-        Route::get('/attendance/list',[AttendanceController::class,'list'])->name('attendance.list');
-        Route::get('/attendance/add',[AttendanceController::class,'add'])->name('attendance.add');
-        Route::post('/attendance/store',[AttendanceController::class,'store'])->name('attendance.store');
-        Route::get('/attendance/edit/{id}',[AttendanceController::class,'edit'])->name('attendance.edit');
-        Route::post('/attendance/update',[AttendanceController::class,'update'])->name('attendance.update');
-        Route::get('/attendance/delete/{id}',[AttendanceController::class,'delete'])->name('attendance.delete');
+        Route::get('/attendance/list', [AttendanceController::class, 'list'])->name('attendance.list');
+        Route::get('/attendance/add', [AttendanceController::class, 'add'])->name('attendance.add');
+        Route::post('/attendance/store', [AttendanceController::class, 'store'])->name('attendance.store');
+        Route::get('/attendance/edit/{id}', [AttendanceController::class, 'edit'])->name('attendance.edit');
+        Route::post('/attendance/update', [AttendanceController::class, 'update'])->name('attendance.update');
+        Route::get('/attendance/delete/{id}', [AttendanceController::class, 'delete'])->name('attendance.delete');
 
         //e-Learning Title
-        Route::get('/elearning_title/list',[ElearningController::class,'title'])->name('elearningTitle.list');
-        Route::post('/elearning_title/store',[ElearningController::class,'storeTitle'])->name('elearningTitle.store');
-        Route::post('/elearning_title/update',[ElearningController::class,'updateTitle'])->name('elearningTitle.update');
-        Route::get('/elearning_title/delete/{id}',[ElearningController::class,'deleteTitle'])->name('elearningTitle.delete');
+        Route::get('/elearning_title/list', [ElearningController::class, 'title'])->name('elearningTitle.list');
+        Route::post('/elearning_title/store', [ElearningController::class, 'storeTitle'])->name('elearningTitle.store');
+        Route::post('/elearning_title/update', [ElearningController::class, 'updateTitle'])->name('elearningTitle.update');
+        Route::get('/elearning_title/delete/{id}', [ElearningController::class, 'deleteTitle'])->name('elearningTitle.delete');
 
         //e-Learning
-        Route::get('/elearning/list',[ElearningController::class,'list'])->name('elearning.list');
-        Route::get('/elearning/add',[ElearningController::class,'add'])->name('elearning.add');
-        Route::post('/elearning/store',[ElearningController::class,'store'])->name('elearning.store');
-        Route::get('/elearning/edit/{id}',[ElearningController::class,'edit'])->name('elearning.edit');
-        Route::post('/elearning/update',[ElearningController::class,'update'])->name('elearning.update');
-        Route::get('/elearning/delete/{id}',[ElearningController::class,'delete'])->name('elearning.delete');
+        Route::get('/elearning/list', [ElearningController::class, 'list'])->name('elearning.list');
+        Route::get('/elearning/add', [ElearningController::class, 'add'])->name('elearning.add');
+        Route::post('/elearning/store', [ElearningController::class, 'store'])->name('elearning.store');
+        Route::get('/elearning/edit/{id}', [ElearningController::class, 'edit'])->name('elearning.edit');
+        Route::post('/elearning/update', [ElearningController::class, 'update'])->name('elearning.update');
+        Route::get('/elearning/delete/{id}', [ElearningController::class, 'delete'])->name('elearning.delete');
 
         //Student Grievance Redressal Committee
-        Route::get('/student_grievance/list',[StudentGrievanceController::class,'list'])->name('studentGrievance.list');
-        Route::get('/student_grievance/add',[StudentGrievanceController::class,'add'])->name('studentGrievance.add');
-        Route::post('/student_grievance/store',[StudentGrievanceController::class,'store'])->name('studentGrievance.store');
-        Route::get('/student_grievance/edit/{id}',[StudentGrievanceController::class,'edit'])->name('studentGrievance.edit');
-        Route::post('/student_grievance/update',[StudentGrievanceController::class,'update'])->name('studentGrievance.update');
-        Route::get('/student_grievance/delete/{id}',[StudentGrievanceController::class,'delete'])->name('studentGrievance.delete');
+        Route::get('/student_grievance/list', [StudentGrievanceController::class, 'list'])->name('studentGrievance.list');
+        Route::get('/student_grievance/add', [StudentGrievanceController::class, 'add'])->name('studentGrievance.add');
+        Route::post('/student_grievance/store', [StudentGrievanceController::class, 'store'])->name('studentGrievance.store');
+        Route::get('/student_grievance/edit/{id}', [StudentGrievanceController::class, 'edit'])->name('studentGrievance.edit');
+        Route::post('/student_grievance/update', [StudentGrievanceController::class, 'update'])->name('studentGrievance.update');
+        Route::get('/student_grievance/delete/{id}', [StudentGrievanceController::class, 'delete'])->name('studentGrievance.delete');
 
-        Route::get('/grievances_list',[StudentGrievanceController::class,'grievances'])->name('grievances_list');
-        Route::get('/grievances_view/{id}',[StudentGrievanceController::class,'viewGrievances'])->name('viewGrievances');
+        Route::get('/grievances_list', [StudentGrievanceController::class, 'grievances'])->name('grievances_list');
+        Route::get('/grievances_view/{id}', [StudentGrievanceController::class, 'viewGrievances'])->name('viewGrievances');
 
         //Syllabus title
-        Route::get('/syllabus_title/index',[SyllabusController::class,'index'])->name('syllabus.index');
-        Route::post('/syllabus_title/insert',[SyllabusController::class,'insert'])->name('syllabus.insert');
-        Route::post('/syllabus_title/update/{id}',[SyllabusController::class,'updateTitle'])->name('syllabus.updateTitle');
-        Route::get('/syllabus_title/destory/{id}',[SyllabusController::class,'destory'])->name('syllabus.destory');
+        Route::get('/syllabus_title/index', [SyllabusController::class, 'index'])->name('syllabus.index');
+        Route::post('/syllabus_title/insert', [SyllabusController::class, 'insert'])->name('syllabus.insert');
+        Route::post('/syllabus_title/update/{id}', [SyllabusController::class, 'updateTitle'])->name('syllabus.updateTitle');
+        Route::get('/syllabus_title/destory/{id}', [SyllabusController::class, 'destory'])->name('syllabus.destory');
 
         //Syllabus
-        Route::get('/syllabus/list',[SyllabusController::class,'list'])->name('syllabus.list');
-        Route::get('/syllabus/add',[SyllabusController::class,'add'])->name('syllabus.add');
-        Route::post('/syllabus/store',[SyllabusController::class,'store'])->name('syllabus.store');
-        Route::get('/syllabus/edit/{id}',[SyllabusController::class,'edit'])->name('syllabus.edit');
-        Route::post('/syllabus/update',[SyllabusController::class,'update'])->name('syllabus.update');
-        Route::get('/syllabus/delete/{id}',[SyllabusController::class,'delete'])->name('syllabus.delete');
+        Route::get('/syllabus/list', [SyllabusController::class, 'list'])->name('syllabus.list');
+        Route::get('/syllabus/add', [SyllabusController::class, 'add'])->name('syllabus.add');
+        Route::post('/syllabus/store', [SyllabusController::class, 'store'])->name('syllabus.store');
+        Route::get('/syllabus/edit/{id}', [SyllabusController::class, 'edit'])->name('syllabus.edit');
+        Route::post('/syllabus/update', [SyllabusController::class, 'update'])->name('syllabus.update');
+        Route::get('/syllabus/delete/{id}', [SyllabusController::class, 'delete'])->name('syllabus.delete');
 
         //proceedings
-        Route::get('/proceedings/list',[ProceedingsController::class,'list'])->name('proceedings.list');
-        Route::get('/proceedings/add',[ProceedingsController::class,'add'])->name('proceedings.add');
-        Route::post('/proceedings/store',[ProceedingsController::class,'store'])->name('proceedings.store');
-        Route::get('/proceedings/edit/{id}',[ProceedingsController::class,'edit'])->name('proceedings.edit');
-        Route::post('/proceedings/update',[ProceedingsController::class,'update'])->name('proceedings.update');
-        Route::get('/proceedings/delete/{id}',[ProceedingsController::class,'delete'])->name('proceedings.delete');
+        Route::get('/proceedings/list', [ProceedingsController::class, 'list'])->name('proceedings.list');
+        Route::get('/proceedings/add', [ProceedingsController::class, 'add'])->name('proceedings.add');
+        Route::post('/proceedings/store', [ProceedingsController::class, 'store'])->name('proceedings.store');
+        Route::get('/proceedings/edit/{id}', [ProceedingsController::class, 'edit'])->name('proceedings.edit');
+        Route::post('/proceedings/update', [ProceedingsController::class, 'update'])->name('proceedings.update');
+        Route::get('/proceedings/delete/{id}', [ProceedingsController::class, 'delete'])->name('proceedings.delete');
 
         //Gyangrah
-        Route::get('/gyangrah/list',[AnnualMagazineController::class,'gyangrahList'])->name('gyangrah.list');
-        Route::post('/gyangrah/store',[AnnualMagazineController::class,'gyangrahStore'])->name('gyangrah.store');
-        Route::get('/gyangrah/edit/{id}',[AnnualMagazineController::class,'gyangrahEdit'])->name('gyangrah.edit');
-        Route::post('/gyangrah/update',[AnnualMagazineController::class,'gyangrahUpdate'])->name('gyangrah.update');
-        Route::get('/gyangrah/delete/{id}',[AnnualMagazineController::class,'gyangrahDelete'])->name('gyangrah.delete');
+        Route::get('/gyangrah/list', [AnnualMagazineController::class, 'gyangrahList'])->name('gyangrah.list');
+        Route::post('/gyangrah/store', [AnnualMagazineController::class, 'gyangrahStore'])->name('gyangrah.store');
+        Route::get('/gyangrah/edit/{id}', [AnnualMagazineController::class, 'gyangrahEdit'])->name('gyangrah.edit');
+        Route::post('/gyangrah/update', [AnnualMagazineController::class, 'gyangrahUpdate'])->name('gyangrah.update');
+        Route::get('/gyangrah/delete/{id}', [AnnualMagazineController::class, 'gyangrahDelete'])->name('gyangrah.delete');
 
         //Harmony
-        Route::get('/harmony/list',[AnnualMagazineController::class,'harmonyList'])->name('harmony.list');
-        Route::post('/harmony/store',[AnnualMagazineController::class,'harmonyStore'])->name('harmony.store');
-        Route::get('/harmony/edit/{id}',[AnnualMagazineController::class,'harmonyEdit'])->name('harmony.edit');
-        Route::post('/harmony/update',[AnnualMagazineController::class,'harmonyUpdate'])->name('harmony.update');
-        Route::get('/harmony/delete/{id}',[AnnualMagazineController::class,'harmonyDelete'])->name('harmony.delete');
+        Route::get('/harmony/list', [AnnualMagazineController::class, 'harmonyList'])->name('harmony.list');
+        Route::post('/harmony/store', [AnnualMagazineController::class, 'harmonyStore'])->name('harmony.store');
+        Route::get('/harmony/edit/{id}', [AnnualMagazineController::class, 'harmonyEdit'])->name('harmony.edit');
+        Route::post('/harmony/update', [AnnualMagazineController::class, 'harmonyUpdate'])->name('harmony.update');
+        Route::get('/harmony/delete/{id}', [AnnualMagazineController::class, 'harmonyDelete'])->name('harmony.delete');
 
         //Annual Reports
-        Route::get('/reports/list',[AnnualReportsController::class,'list'])->name('reports.list');
-        Route::post('/reports/store',[AnnualReportsController::class,'store'])->name('reports.store');
-        Route::get('/reports/edit/{id}',[AnnualReportsController::class,'edit'])->name('reports.edit');
-        Route::post('/reports/update',[AnnualReportsController::class,'update'])->name('reports.update');
-        Route::get('/reports/delete/{id}',[AnnualReportsController::class,'delete'])->name('reports.delete');
+        Route::get('/reports/list', [AnnualReportsController::class, 'list'])->name('reports.list');
+        Route::post('/reports/store', [AnnualReportsController::class, 'store'])->name('reports.store');
+        Route::get('/reports/edit/{id}', [AnnualReportsController::class, 'edit'])->name('reports.edit');
+        Route::post('/reports/update', [AnnualReportsController::class, 'update'])->name('reports.update');
+        Route::get('/reports/delete/{id}', [AnnualReportsController::class, 'delete'])->name('reports.delete');
 
         //E-Newsletter
-        Route::get('/enews_letter/list',[EnewsLetterController::class,'list'])->name('enews_letter.list');
-        Route::post('/enews_letter/store',[EnewsLetterController::class,'store'])->name('enews_letter.store');
-        Route::get('/enews_letter/edit/{id}',[EnewsLetterController::class,'edit'])->name('enews_letter.edit');
-        Route::post('/enews_letter/update',[EnewsLetterController::class,'update'])->name('enews_letter.update');
-        Route::get('/enews_letter/delete/{id}',[EnewsLetterController::class,'delete'])->name('enews_letter.delete');
+        Route::get('/enews_letter/list', [EnewsLetterController::class, 'list'])->name('enews_letter.list');
+        Route::post('/enews_letter/store', [EnewsLetterController::class, 'store'])->name('enews_letter.store');
+        Route::get('/enews_letter/edit/{id}', [EnewsLetterController::class, 'edit'])->name('enews_letter.edit');
+        Route::post('/enews_letter/update', [EnewsLetterController::class, 'update'])->name('enews_letter.update');
+        Route::get('/enews_letter/delete/{id}', [EnewsLetterController::class, 'delete'])->name('enews_letter.delete');
 
         //Fazil
-        Route::get('/fazil/list',[AcademicsController::class,'fazilList'])->name('fazil.list');
-        Route::get('/fazil/add',[AcademicsController::class,'fazilAdd'])->name('fazil.add');
-        Route::post('/fazil/store',[AcademicsController::class,'fazilStore'])->name('fazil.store');
-        Route::get('/fazil/edit/{id}',[AcademicsController::class,'fazilEdit'])->name('fazil.edit');
-        Route::post('/fazil/update',[AcademicsController::class,'fazilUpdate'])->name('fazil.update');
-        Route::get('/fazil/delete/{id}',[AcademicsController::class,'fazilDelete'])->name('fazil.delete');
+        Route::get('/fazil/list', [AcademicsController::class, 'fazilList'])->name('fazil.list');
+        Route::get('/fazil/add', [AcademicsController::class, 'fazilAdd'])->name('fazil.add');
+        Route::post('/fazil/store', [AcademicsController::class, 'fazilStore'])->name('fazil.store');
+        Route::get('/fazil/edit/{id}', [AcademicsController::class, 'fazilEdit'])->name('fazil.edit');
+        Route::post('/fazil/update', [AcademicsController::class, 'fazilUpdate'])->name('fazil.update');
+        Route::get('/fazil/delete/{id}', [AcademicsController::class, 'fazilDelete'])->name('fazil.delete');
 
         //alim
-        Route::get('/alim/list',[AcademicsController::class,'alimList'])->name('alim.list');
-        Route::get('/alim/add',[AcademicsController::class,'alimAdd'])->name('alim.add');
-        Route::post('/alim/store',[AcademicsController::class,'alimStore'])->name('alim.store');
-        Route::get('/alim/edit/{id}',[AcademicsController::class,'alimEdit'])->name('alim.edit');
-        Route::post('/alim/update',[AcademicsController::class,'alimUpdate'])->name('alim.update');
-        Route::get('/alim/delete/{id}',[AcademicsController::class,'alimDelete'])->name('alim.delete');
+        Route::get('/alim/list', [AcademicsController::class, 'alimList'])->name('alim.list');
+        Route::get('/alim/add', [AcademicsController::class, 'alimAdd'])->name('alim.add');
+        Route::post('/alim/store', [AcademicsController::class, 'alimStore'])->name('alim.store');
+        Route::get('/alim/edit/{id}', [AcademicsController::class, 'alimEdit'])->name('alim.edit');
+        Route::post('/alim/update', [AcademicsController::class, 'alimUpdate'])->name('alim.update');
+        Route::get('/alim/delete/{id}', [AcademicsController::class, 'alimDelete'])->name('alim.delete');
 
         //KRC with AICTE
-        Route::get('/krc_with_aicte/list',[AcademicsController::class,'WithAicteList'])->name('krcWithAicte.list');
-        Route::get('/krc_with_aicte/add',[AcademicsController::class,'WithAicteAdd'])->name('krcWithAicte.add');
-        Route::post('/krc_with_aicte/store',[AcademicsController::class,'WithAicteStore'])->name('krcWithAicte.store');
-        Route::get('/krc_with_aicte/edit/{id}',[AcademicsController::class,'WithAicteEdit'])->name('krcWithAicte.edit');
-        Route::post('/krc_with_aicte/update',[AcademicsController::class,'WithAicteUpdate'])->name('krcWithAicte.update');
-        Route::get('/krc_with_aicte/delete/{id}',[AcademicsController::class,'WithAicteDelete'])->name('krcWithAicte.delete');
+        Route::get('/krc_with_aicte/list', [AcademicsController::class, 'WithAicteList'])->name('krcWithAicte.list');
+        Route::get('/krc_with_aicte/add', [AcademicsController::class, 'WithAicteAdd'])->name('krcWithAicte.add');
+        Route::post('/krc_with_aicte/store', [AcademicsController::class, 'WithAicteStore'])->name('krcWithAicte.store');
+        Route::get('/krc_with_aicte/edit/{id}', [AcademicsController::class, 'WithAicteEdit'])->name('krcWithAicte.edit');
+        Route::post('/krc_with_aicte/update', [AcademicsController::class, 'WithAicteUpdate'])->name('krcWithAicte.update');
+        Route::get('/krc_with_aicte/delete/{id}', [AcademicsController::class, 'WithAicteDelete'])->name('krcWithAicte.delete');
 
         //KRC without AICTE
-        Route::get('/krc_without_aicte/list',[AcademicsController::class,'WithoutAicteList'])->name('krcWithoutAicte.list');
-        Route::get('/krc_without_aicte/add',[AcademicsController::class,'WithoutAicteAdd'])->name('krcWithoutAicte.add');
-        Route::post('/krc_without_aicte/store',[AcademicsController::class,'WithoutAicteStore'])->name('krcWithoutAicte.store');
-        Route::get('/krc_without_aicte/edit/{id}',[AcademicsController::class,'WithoutAicteEdit'])->name('krcWithoutAicte.edit');
-        Route::post('/krc_without_aicte/update',[AcademicsController::class,'WithoutAicteUpdate'])->name('krcWithoutAicte.update');
-        Route::get('/krc_without_aicte/delete/{id}',[AcademicsController::class,'WithoutAicteDelete'])->name('krcWithoutAicte.delete');
+        Route::get('/krc_without_aicte/list', [AcademicsController::class, 'WithoutAicteList'])->name('krcWithoutAicte.list');
+        Route::get('/krc_without_aicte/add', [AcademicsController::class, 'WithoutAicteAdd'])->name('krcWithoutAicte.add');
+        Route::post('/krc_without_aicte/store', [AcademicsController::class, 'WithoutAicteStore'])->name('krcWithoutAicte.store');
+        Route::get('/krc_without_aicte/edit/{id}', [AcademicsController::class, 'WithoutAicteEdit'])->name('krcWithoutAicte.edit');
+        Route::post('/krc_without_aicte/update', [AcademicsController::class, 'WithoutAicteUpdate'])->name('krcWithoutAicte.update');
+        Route::get('/krc_without_aicte/delete/{id}', [AcademicsController::class, 'WithoutAicteDelete'])->name('krcWithoutAicte.delete');
+
+        //B.Ed
+        Route::get('/bed/list', [AcademicsController::class, 'bedList'])->name('bed.list');
+        Route::get('/bed/add', [AcademicsController::class, 'bedAdd'])->name('bed.add');
+        Route::post('/bed/store', [AcademicsController::class, 'bedStore'])->name('bed.store');
+        Route::get('/bed/edit/{id}', [AcademicsController::class, 'bedEdit'])->name('bed.edit');
+        Route::post('/bed/update', [AcademicsController::class, 'bedUpdate'])->name('bed.update');
+        Route::get('/bed/delete/{id}', [AcademicsController::class, 'bedDelete'])->name('bed.delete');
+
+        //Administrative Officers
+        Route::get('/administrative_officers/list', [AdministrativeController::class, 'officersList'])->name('administrative_officers.list');
+        Route::get('/administrative_officers/add', [AdministrativeController::class, 'officersAdd'])->name('administrative_officers.add');
+        Route::post('/administrative_officers/store', [AdministrativeController::class, 'officersStore'])->name('administrative_officers.store');
+        Route::get('/administrative_officers/edit/{id}', [AdministrativeController::class, 'officersEdit'])->name('administrative_officers.edit');
+        Route::post('/administrative_officers/update', [AdministrativeController::class, 'officersUpdate'])->name('administrative_officers.update');
+        Route::get('/administrative_officers/delete/{id}', [AdministrativeController::class, 'officersDelete'])->name('administrative_officers.delete');
+
+        //University Officers Title
+        Route::get('/university_officers_title/list', [AdministrativeController::class, 'university_officers_titleList'])->name('university_officers_title.list');
+
+        Route::post('/university_officers_title/store', [AdministrativeController::class,  'university_officers_titleStore'])->name('university_officers_title.store');
+
+        Route::post('/university_officers_title/update', [AdministrativeController::class, 'university_officers_titleUpdate'])->name('university_officers_title.update');
+
+        Route::get('/university_officers_title/delete/{id}', [AdministrativeController::class, 'university_officers_titleDelete'])->name('university_officers_title.delete');
+
+        //University Officers
+        Route::get('/university_officers/list', [AdministrativeController::class, 'university_officersList']) ->name('university_officers.list');
+        Route::get('/university_officers/add', [AdministrativeController::class, 'university_officersAdd'])->name('university_officers.add');
+        Route::get('/university_officers/store', [AdministrativeController::class, 'university_officersStore'])->name('university_officers.store');
 
         //Top Bar
-        Route::get('/top_bar/list',[TopbarController::class,'list'])->name('Topbar.list');
-        Route::get('/top_bar/add',[TopbarController::class,'add'])->name('Topbar.add');
-        Route::post('/top_bar/store',[TopbarController::class,'store'])->name('Topbar.store');
-        Route::get('/top_bar/edit{id}',[TopbarController::class,'edit'])->name('Topbar.edit');
-        Route::post('/top_bar/update',[TopbarController::class,'update'])->name('Topbar.update');
-        Route::get('/top_bar/delete{id}',[TopbarController::class,'delete'])->name('Topbar.delete');
+        Route::get('/top_bar/list', [TopbarController::class, 'list'])->name('Topbar.list');
+        Route::get('/top_bar/add', [TopbarController::class, 'add'])->name('Topbar.add');
+        Route::post('/top_bar/store', [TopbarController::class, 'store'])->name('Topbar.store');
+        Route::get('/top_bar/edit{id}', [TopbarController::class, 'edit'])->name('Topbar.edit');
+        Route::post('/top_bar/update', [TopbarController::class, 'update'])->name('Topbar.update');
+        Route::get('/top_bar/delete{id}', [TopbarController::class, 'delete'])->name('Topbar.delete');
 
         //View-Gallery
-        Route::get('galleries/list',[ViewgalleryController::class,'list'])->name('Viewgalleries.list');
-        Route::get('galleries/add',[ViewgalleryController::class,'add'])->name('Viewgalleries.add');
-        Route::post('galleries/store',[ViewgalleryController::class,'store'])->name('Viewgalleries.store');
-        Route::get('galleries/edit{id}',[ViewgalleryController::class,'edit'])->name('Viewgalleries.edit');
-        Route::post('galleries/update',[ViewgalleryController::class,'update'])->name('Viewgalleries.update');
-        Route::get('galleries/delete{id}',[ViewgalleryController::class,'delete'])->name('Viewgalleries.delete');
+        Route::get('galleries/list', [ViewgalleryController::class, 'list'])->name('Viewgalleries.list');
+        Route::get('galleries/add', [ViewgalleryController::class, 'add'])->name('Viewgalleries.add');
+        Route::post('galleries/store', [ViewgalleryController::class, 'store'])->name('Viewgalleries.store');
+        Route::get('galleries/edit{id}', [ViewgalleryController::class, 'edit'])->name('Viewgalleries.edit');
+        Route::post('galleries/update', [ViewgalleryController::class, 'update'])->name('Viewgalleries.update');
+        Route::get('galleries/delete{id}', [ViewgalleryController::class, 'delete'])->name('Viewgalleries.delete');
 
         //View-Newspaper
-        Route::get('view_news/list',[ViewnewsController::class,'list'])->name('view_news.list');
-        Route::get('view_news/add',[ViewnewsController::class,'add'])->name('view_news.add');
-        Route::post('view_news/store',[ViewnewsController::class,'store'])->name('view_news.store');
-        Route::get('view_news/edit{id}',[ViewnewsController::class,'edit'])->name('view_news.edit');
-        Route::post('view_news/update',[ViewnewsController::class,'update'])->name('view_news.update');
-        Route::get('view_news/delete{id}',[ViewnewsController::class,'delete'])->name('view_news.delete');
+        Route::get('view_news/list', [ViewnewsController::class, 'list'])->name('view_news.list');
+        Route::get('view_news/add', [ViewnewsController::class, 'add'])->name('view_news.add');
+        Route::post('view_news/store', [ViewnewsController::class, 'store'])->name('view_news.store');
+        Route::get('view_news/edit{id}', [ViewnewsController::class, 'edit'])->name('view_news.edit');
+        Route::post('view_news/update', [ViewnewsController::class, 'update'])->name('view_news.update');
+        Route::get('view_news/delete{id}', [ViewnewsController::class, 'delete'])->name('view_news.delete');
 
         //Campus
-        Route::get('/campus/list',[CampusController::class,'list'])->name('campus.list');
-        Route::get('/campus/add',[CampusController::class,'add'])->name('campus.add');
-        Route::post('/campus/store',[CampusController::class,'store'])->name('campus.store');
-        Route::get('/campus/edit{id}',[CampusController::class,'edit'])->name('campus.edit');
-        Route::post('/campus/update',[CampusController::class,'update'])->name('campus.update');
-        Route::get('/campus/delete{id}',[CampusController::class,'delete'])->name('campus.delete');
+        Route::get('/campus/list', [CampusController::class, 'list'])->name('campus.list');
+        Route::get('/campus/add', [CampusController::class, 'add'])->name('campus.add');
+        Route::post('/campus/store', [CampusController::class, 'store'])->name('campus.store');
+        Route::get('/campus/edit{id}', [CampusController::class, 'edit'])->name('campus.edit');
+        Route::post('/campus/update', [CampusController::class, 'update'])->name('campus.update');
+        Route::get('/campus/delete{id}', [CampusController::class, 'delete'])->name('campus.delete');
 
         //Administration
-        Route::get('/administration/list',[AdministrationController::class,'list'])->name('administration.list');
-        Route::get('/administration/add',[AdministrationController::class,'add'])->name('administration.add');
-        Route::post('/administration/store',[AdministrationController::class,'store'])->name('administration.store');
-        Route::get('/administration/edit{id}',[AdministrationController::class,'edit'])->name('administration.edit');
-        Route::post('/administration/update',[AdministrationController::class,'update'])->name('administration.update');
-        Route::get('/administration/delete{id}',[AdministrationController::class,'delete'])->name('administration.delete');
+        Route::get('/administration/list', [AdministrationController::class, 'list'])->name('administration.list');
+        Route::get('/administration/add', [AdministrationController::class, 'add'])->name('administration.add');
+        Route::post('/administration/store', [AdministrationController::class, 'store'])->name('administration.store');
+        Route::get('/administration/edit{id}', [AdministrationController::class, 'edit'])->name('administration.edit');
+        Route::post('/administration/update', [AdministrationController::class, 'update'])->name('administration.update');
+        Route::get('/administration/delete{id}', [AdministrationController::class, 'delete'])->name('administration.delete');
 
         //STUDENT Section
-        Route::get('/student/list',[StudentsectionController::class,'list'])->name('student.list');
-        Route::get('/student/add',[StudentsectionController::class,'add'])->name('student.add');
-        Route::post('/student/store',[StudentsectionController::class,'store'])->name('student.store');
-        Route::get('/student/edit{id}',[StudentsectionController::class,'edit'])->name('student.edit');
-        Route::post('/student/update',[StudentsectionController::class,'update'])->name('student.update');
-        Route::get('/student/delete{id}',[StudentsectionController::class,'delete'])->name('student.delete');
+        Route::get('/student/list', [StudentsectionController::class, 'list'])->name('student.list');
+        Route::get('/student/add', [StudentsectionController::class, 'add'])->name('student.add');
+        Route::post('/student/store', [StudentsectionController::class, 'store'])->name('student.store');
+        Route::get('/student/edit{id}', [StudentsectionController::class, 'edit'])->name('student.edit');
+        Route::post('/student/update', [StudentsectionController::class, 'update'])->name('student.update');
+        Route::get('/student/delete{id}', [StudentsectionController::class, 'delete'])->name('student.delete');
 
         Route::resource('news', WebNewsController::class);
         Route::resource('gallery', WebGalleryController::class);

@@ -32,7 +32,7 @@
                     </div>
                     <div class="col-lg-6 mb-3">
                         <label for="document" class="form-label">Document<span style="color: red">*</span></label>
-                        <input type="file" class="form-control" name="resume" accept=".pdf" required>
+                        <input type="file" class="form-control" name="resume" accept=".pdf">
                     </div>
                 </div>
                 <div class="mb-3">
