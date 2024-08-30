@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Models\AdministrativeOfficer;
+use App\Models\AuthoritiesTitle;
+use App\Models\UniversityAdministration;
+use App\Models\UniversityAdministrationTitle;
 use Illuminate\Http\Request;
 
 class AdministrationController extends Controller
@@ -17,7 +20,8 @@ class AdministrationController extends Controller
     }
 
     public function universityAuthority(){
-        return view('web.university_authority');
+        $titles = AuthoritiesTitle::all();
+        return view('web.university_authority', compact('titles'));
     }
 
     public function statutoryBodies(){
@@ -26,7 +30,9 @@ class AdministrationController extends Controller
     }
 
     public function universityOfficers(){
-        return view('web.university_officers');
+        $title = UniversityAdministrationTitle::all();
+        $officers = UniversityAdministration::all();
+        return view('web.university_officers', compact('title','officers'));
     }
 
     public function directory(){

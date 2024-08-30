@@ -12,6 +12,7 @@ use App\Models\Elearning;
 use App\Models\ElearningTitle;
 use App\Models\Evaluation;
 use App\Models\EvaluationTitle;
+use App\Models\Facility;
 use App\Models\Feedback;
 use App\Models\Minute;
 use App\Models\Mou;
@@ -82,6 +83,11 @@ class IqacController extends Controller
         $titles = SyllabusTitle::all();
         $syllabus = Syllabus::all();
         return view('web.syllabus', compact('titles','syllabus'));
+    }
+
+    public function facilities(){
+        $facilities = Facility::all();
+        return view('web.facilities', compact('facilities'));
     }
 
 }

@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class UniversityAdministration extends Model
 {
     use HasFactory;
+    public function getTitle(){
+        return $this->belongsTo(UniversityAdministrationTitle::class, 'title_id');
+    }
 }

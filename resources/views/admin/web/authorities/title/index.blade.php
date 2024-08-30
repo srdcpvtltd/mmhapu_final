@@ -1,7 +1,7 @@
 @extends('admin.layout.index')
 
 @section('title')
-    IQAC EVALUATION OF REPORT
+    University Authorities
 @endsection
 
 @section('content')
@@ -9,11 +9,11 @@
         <div class="page-wrapper">
             <div class="row">
                 <div class="col-md-5">
-                    <form class="needs-validation" action="{{ route('admin.Evaluation.store') }}" method="post">
+                    <form class="needs-validation" action="{{ route('admin.authorities.store') }}" method="post">
                         @csrf
                         <div class="card">
                             <div class="card-header">
-                                <h5>Add New Evaluation of Report</h5>
+                                <h5>Add New University Authority</h5>
                             </div>
                             <div class="card-block pdng">
                                 <!-- Form Start -->
@@ -33,7 +33,7 @@
                 <div class="col-md-7">
                     <div class="card">
                         <div class="card-header">
-                            <h5>Manage Evaluation of Report</h5>
+                            <h5>Manage University Authorities</h5>
                         </div>
                         <div class="card-block pdng">
                             <div class="table-responsive">
@@ -51,7 +51,7 @@
                                         @php
                                             $i = 1;
                                         @endphp
-                                        @foreach ($evaluations as $data)
+                                        @foreach ($authorities as $data)
                                             <tr>
                                                 <td>{{ $i }}</td>
                                                 <td>{{ $data->title }}</td>
@@ -64,7 +64,7 @@
                                                 </td>
                                                 <td>
                                                     <a class="btn btn-danger btn-sm"
-                                                        onclick="confirmDelete('{{ route('admin.Evaluation.delete', $data->id) }}')">Delete</a>
+                                                        onclick="confirmDelete('{{ route('admin.authorities.delete', $data->id) }}')">Delete</a>
                                                 </td>
                                             </tr>
 
@@ -79,7 +79,7 @@
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                                 aria-label="Close">X</button>
                                                         </div>
-                                                        <form action="{{ route('admin.Evaluation.update', $data->id) }}"
+                                                        <form action="{{ route('admin.authorities.update', $data->id) }}"
                                                             method="POST">
                                                             @csrf
                                                             <input type="hidden" name="id"

@@ -58,7 +58,7 @@
 
     <script>
         function confirmDelete(deleteUrl) {
-            var isConfirmed = confirm("Are you sure you want to delete Faculty Subcategory?");
+            var isConfirmed = confirm("Are you sure you want to delete this item?");
             if (isConfirmed) {
                 window.location.href = deleteUrl;
             } else {

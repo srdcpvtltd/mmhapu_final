@@ -560,8 +560,19 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
         //University Officers
         Route::get('/university_officers/list', [AdministrativeController::class, 'university_officersList']) ->name('university_officers.list');
         Route::get('/university_officers/add', [AdministrativeController::class, 'university_officersAdd'])->name('university_officers.add');
-        Route::get('/university_officers/store', [AdministrativeController::class, 'university_officersStore'])->name('university_officers.store');
+        Route::post('/university_officers/store', [AdministrativeController::class, 'university_officersStore'])->name('university_officers.store');
+        Route::get('/university_officers/edit/{id}', [AdministrativeController::class, 'university_officersEdit'])->name('university_officers.edit');
+        Route::post('/university_officers/update', [AdministrativeController::class, 'university_officersUpdate'])->name('university_officers.update');
+        Route::get('/university_officers/delete/{id}', [AdministrativeController::class, 'university_officersDelete'])->name('university_officers.delete');
 
+        //university Authorities title
+        Route::get('/authorities/list', [AdministrativeController::class, 'authoritiesList']) ->name('authorities.list');
+        Route::post('/authorities/store', [AdministrativeController::class, 'authoritiesStore']) ->name('authorities.store');
+        Route::post('/authorities/update', [AdministrativeController::class, 'authoritiesUpdate']) ->name('authorities.update');
+        Route::get('/authorities/delete/{id}', [AdministrativeController::class, 'authoritiesDelete']) ->name('authorities.delete');
+
+        //university Authorities title
+        
         //Top Bar
         Route::get('/top_bar/list', [TopbarController::class, 'list'])->name('Topbar.list');
         Route::get('/top_bar/add', [TopbarController::class, 'add'])->name('Topbar.add');

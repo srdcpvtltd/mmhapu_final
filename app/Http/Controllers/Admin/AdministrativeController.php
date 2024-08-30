@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\AdministrativeOfficer;
+use App\Models\AuthoritiesTitle;
 use App\Models\UniversityAdministration;
 use App\Models\UniversityAdministrationTitle;
 use Illuminate\Http\Request;
@@ -95,6 +96,7 @@ class AdministrativeController extends Controller
         $university_officers_titleDelete = UniversityAdministrationTitle::find($id);
         if($university_officers_titleDelete){
             $university_officers_titleDelete->delete();
+            UniversityAdministration::where('title_id',$id)->delete();
             toastr()->success('Deleted Successfully');
             return redirect()->back();
         }
@@ -104,7 +106,8 @@ class AdministrativeController extends Controller
 
     //University Adminstative
     public function university_officersList(){
-        return view('admin.web.university-officers.officers.list');
+        $university_officersList = UniversityAdministration::all();
+        return view('admin.web.university-officers.officers.list', compact('university_officersList'));
     }
     public function university_officersAdd(){
         $add = UniversityAdministrationTitle::all();
@@ -124,6 +127,90 @@ class AdministrativeController extends Controller
         if($request->hasFile('resume')){
             $resume = $request->file('resume');
             $resumeName = time() . '_' . $resume->getClientOriginalName();
+            $resume->move(public_path('uploads/universityOfficer'), $resumeName);
+            $university_officersStore->resume = $resumeName;
         }
+        $university_officersStore->save();
+        toastr()->success('New University Administration Added Successfully.');
+        return redirect()->route('admin.university_officers.list');
+    }
+    public function university_officersEdit($id){
+        $edit = UniversityAdministrationTitle::all();
+        $university_officersEdit = UniversityAdministration::find($id);
+        return view('admin.web.university-officers.officers.edit', compact('university_officersEdit', 'edit'));
+    }
+    public function university_officersUpdate(Request $request){
+        $university_officersUpdate = UniversityAdministration::find($request->id);
+        $university_officersUpdate->title_id = $request->title_id;
+        $university_officersUpdate->designation = $request->designation;
+        $university_officersUpdate->name = $request->name;
+        if($request->hasFile('image')){
+            if($university_officersUpdate->image && file_exists(public_path('uploads/universityOfficer/'. $university_officersUpdate->image))){
+                unlink(public_path('uploads/universityOfficer/'. $university_officersUpdate->image));
+            }
+            $image = $request->file('image');
+            $imageName = time() . '_' . $image->getClientOriginalName();
+            $image->move(public_path('uploads/universityOfficer'),$imageName);
+            $university_officersUpdate->image = $imageName;
+        }
+        if($request->hasFile('resume')){
+            if($university_officersUpdate->resume && file_exists(public_path('uploads/universityOfficer/'. $university_officersUpdate->resume))){
+                unlink(public_path('uploads/universityOfficer/'. $university_officersUpdate->resume));
+            }
+            $resume = $request->file('resume');
+            $resumeName = time() . '_' . $resume->getClientOriginalName();
+            $resume->move(public_path('uploads/universityOfficer'), $resumeName);
+            $university_officersUpdate->resume = $resumeName;
+        }
+        $university_officersUpdate->save();
+
+        toastr()->success('University Administration Updated Successfully');
+        return redirect()->route('admin.university_officers.list');
+    }
+    public function university_officersDelete($id){
+        $university_officersDelete = UniversityAdministration::find($id);
+        if($university_officersDelete){
+            if($university_officersDelete->image && file_exists(public_path('uploads/universityOfficer/' . $university_officersDelete->image))){
+                unlink(public_path('uploads/universityOfficer/' . $university_officersDelete->image));
+            }
+            if($university_officersDelete->resume && file_exists(public_path('uploads/universityOfficer/' . $university_officersDelete->resume))){
+                unlink(public_path('uploads/universityOfficer/' . $university_officersDelete->resume));
+            }
+            $university_officersDelete->delete();
+            toastr()->success('Deleted Successfully');
+            return redirect()->back();
+        }
+        toastr()->error('Something wents wrong.');
+        return redirect()->back();
+    }
+
+    //Authorities
+    public function authoritiesList(){
+        $authorities = AuthoritiesTitle::all();
+        return view('admin.web.authorities.title.index', compact('authorities'));
+    }
+    public function authoritiesStore(Request $request){
+        $authoritiesStore = new AuthoritiesTitle();
+        $authoritiesStore->title = $request->title;
+        $authoritiesStore->save();
+        toastr()->success('New University Authorities Added Successfully');
+        return redirect()->back();
+    }
+    public function authoritiesUpdate(Request $request){
+        $authoritiesUpdate = AuthoritiesTitle::find($request->id);
+        $authoritiesUpdate->title = $request->title;
+        $authoritiesUpdate->save();
+        toastr()->success('University Authorities Updated Successfully.');
+        return redirect()->back();
+    }
+    public function authoritiesDelete($id){
+        $authoritiesDelete = AuthoritiesTitle::find($id);
+        if($authoritiesDelete){
+            $authoritiesDelete->delete();
+            toastr()->success('Deleted Successfully.');
+            return redirect()->back();
+        }
+        toastr()->error('Something wents wrong.');
+        return redirect()->back();
     }
 }

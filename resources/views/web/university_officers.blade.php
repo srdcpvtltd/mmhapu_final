@@ -68,35 +68,40 @@
                     <h2><span>University</span> Officers</h2>
                 </div>
                 <dl class="accordion full-width">
-                    <dt>
-                        <a href="">Administration</a>
-                    </dt>
-                    <dd>
-                        <div class="executive-table">
-                            <div class="table-responsive">
-                                <table class="table table-bordered table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th class="text-center">Designation</th>
-                                            <th class="text-center">Name</th>
-                                            <th class="text-center">Image</th>
-                                            <th class="text-center">Resume</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Vice-Chancellor</td>
-                                            <td> Dr. Mohammad Alamgeer </td>
-                                            <td> <img class="rotate-image" src="web/images/4444.jpg" /></td>
-                                            <td>
-                                                <center><a href="#" class="resume-icon"><i class="fa fa-file-pdf-o"></i></a></center>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                    @foreach ($title as $data)
+                        <dt>
+                            <a href="">{{ $data->title }}</a>
+                        </dt>
+                        <dd>
+                            <div class="executive-table">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center">Designation</th>
+                                                <th class="text-center">Name</th>
+                                                <th class="text-center">Image</th>
+                                                <th class="text-center">Resume</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($officers->where('title_id', $data->id) as $officer)
+                                                <tr>
+                                                    <td> {{ $officer->designation }} </td>
+                                                    <td> {{ $officer->name }} </td>
+                                                    <td> <img class="rotate-image" src="{{ asset('uploads/universityOfficer/'. $officer->image) }}" /></td>
+                                                    <td>
+                                                        <center><a href=" {{asset('uploads/universityOfficer/'. $officer->resume)}} " target="blank" class="resume-icon"><i
+                                                                    class="fa fa-file-pdf-o"></i></a></center>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
-                        </div>
-                    </dd>
+                        </dd>
+                    @endforeach
                 </dl>
             </div>
             @include('web.layouts.quick-link-about')

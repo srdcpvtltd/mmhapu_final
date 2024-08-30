@@ -122,6 +122,9 @@ Route::middleware(['XSS'])->namespace('Web')->group(function () {
     //MOUs
     Route::get('/mou', [IqacController::class, 'mou'])->name('Mous');
 
+    //Facilities
+    Route::get('/facilities', [IqacController::class, 'facilities'])->name('facilities');
+
     //Attendance
     Route::get('/attendance', [IqacController::class, 'attendance'])->name('attendance');
 

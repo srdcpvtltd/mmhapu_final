@@ -326,17 +326,32 @@
                             </ul>
                         </li>
 
-                        <li class="nav-item nav-item-submenu {{ Request::is('admin/web/university_officers*') || Request::is('admin/web/harmony*') ? 'nav-item-open' : '' }}">
+                        <li class="nav-item nav-item-submenu {{ Request::is('admin/web/authorities*') || Request::is('admin/web/harmony*') ? 'nav-item-open' : '' }}">
+                            <a href="#" class="nav-link"> <i class="fas fa-check-circle"></i> <span>University Authorities</span></a>
+
+                            <ul class="nav nav-group-sub" data-submenu-title="Layouts"
+                                style="{{ Request::is('admin/web/authorities*') || Request::is('admin/web/harmony*') ? 'display:block' : '' }}">
+
+                                <li class="nav-item"><a href="{{ route('admin.authorities.list') }}"
+                                        class="nav-link {{ Request::is('admin/web/authorities*') ? 'active' : '' }}">Title</a></li>
+
+                                <li class="nav-item"><a href="{{ route('admin.university_officers.list') }}"
+                                        class="nav-link {{ Request::is('admin/web/harmony*') ? 'active' : '' }}">Authorities</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item nav-item-submenu {{ Request::is('admin/web/university_officers*') || Request::is('admin/web/university_officers*') ? 'nav-item-open' : '' }}">
                             <a href="#" class="nav-link"> <i class="fas fa-check-circle"></i> <span>University Administrations</span></a>
 
                             <ul class="nav nav-group-sub" data-submenu-title="Layouts"
-                                style="{{ Request::is('admin/web/university_officers*') || Request::is('admin/web/harmony*') ? 'display:block' : '' }}">
+                                style="{{ Request::is('admin/web/university_officers*') || Request::is('admin/web/university_officers*') ? 'display:block' : '' }}">
 
                                 <li class="nav-item"><a href="{{ route('admin.university_officers_title.list') }}"
                                         class="nav-link {{ Request::is('admin/web/university_officers*') ? 'active' : '' }}">Title</a></li>
 
                                 <li class="nav-item"><a href="{{ route('admin.university_officers.list') }}"
-                                        class="nav-link {{ Request::is('admin/web/harmony*') ? 'active' : '' }}">Officers</a>
+                                        class="nav-link {{ Request::is('admin/web/university_officers*') ? 'active' : '' }}">Officers</a>
                                 </li>
                             </ul>
                         </li>
