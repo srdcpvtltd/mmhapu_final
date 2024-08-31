@@ -571,8 +571,22 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
         Route::post('/authorities/update', [AdministrativeController::class, 'authoritiesUpdate']) ->name('authorities.update');
         Route::get('/authorities/delete/{id}', [AdministrativeController::class, 'authoritiesDelete']) ->name('authorities.delete');
 
-        //university Authorities title
-        
+        //university Authorities Position
+        Route::get('/position/list', [AdministrativeController::class, 'positionList']) ->name('position.list');
+        Route::post('/position/store', [AdministrativeController::class, 'positionStore']) ->name('position.store');
+        Route::post('/position/update', [AdministrativeController::class, 'positionUpdate']) ->name('position.update');
+        Route::get('/position/delete/{id}', [AdministrativeController::class, 'positionDelete']) ->name('position.delete');
+
+        //university Authorities
+        Route::get('/authority/list', [AdministrativeController::class, 'authorityList']) ->name('authority.list');
+        Route::get('/authority/add', [AdministrativeController::class, 'authorityAdd']) ->name('authority.add');
+        Route::post('/authority/store', [AdministrativeController::class, 'authorityStore']) ->name('authority.store');
+        Route::get('/authority/edit/{id}', [AdministrativeController::class, 'authorityEdit']) ->name('authority.edit');
+        Route::post('/authority/update', [AdministrativeController::class, 'authorityUpdate']) ->name('authority.update');
+        Route::get('/authority/delete/{id}', [AdministrativeController::class, 'authorityDelete']) ->name('authority.delete');
+        Route::post('/get_position', [AdministrativeController::class, 'getPosition']) ->name('authority.getPosition');
+
+
         //Top Bar
         Route::get('/top_bar/list', [TopbarController::class, 'list'])->name('Topbar.list');
         Route::get('/top_bar/add', [TopbarController::class, 'add'])->name('Topbar.add');

@@ -1,16 +1,16 @@
 @extends('admin.layout.index')
 
 @section('title')
-    IQAC EVALUAION REPORT
+    UNIVERSITY AUTHORITIES
 @endsection
 
 @section('content')
     <div class="card">
         <div class="card-header header-elements-inline">
-            <h5 class="card-title">Manage Evaluation Report</h5>
+            <h5 class="card-title">Manage University Authorities</h5>
             <div class="header-elements">
                 <div class="list-icons">
-                    <a class="btn btn-primary" href="{{ route('admin.evaluation_report.add') }}">Add Evaluation Report</a>
+                    <a class="btn btn-primary" href="{{ route('admin.authority.add') }}">Add New Authority</a>
 
                 </div>
             </div>
@@ -19,40 +19,46 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Title</th>
+                    <th>Ttile</th>
+                    <th>Position</th>
                     <th>Name</th>
-                    <th>File</th>
+                    <th>Designation</th>
                     <th>Action</th>
                     <th>Action</th>
                 </tr>
             </thead>
-            {{-- <tbody>
+            <tbody>
                 @php
                     $i = 1;
                 @endphp
-                @foreach ($evaluation as $data)
+                @foreach ($authorityList as $data)
                     <tr>
                         <td>{{ $i }}</td>
-                        <td>{{ $data->title->title }}</td>
-                        <td>{{ $data->name }}</td>
                         <td>
-                            <embed src="{{ asset('uploads/evaluation/' . $data->file) }}" type="application/pdf" width="100" height="80">
+                            @if ($data->getTitle)
+                                {{ $data->getTitle->title }}
+                            @endif
                         </td>
                         <td>
-                            <a class="btn btn-icon btn-primary" href="{{ route('admin.evaluation_report.edit', $data->id) }}"><i
-                                    class="far fa-edit"></i> Edit</a>
+                            @if ($data->Position)
+                                {{ $data->Position->position }}
+                            @endif
+                        </td>
+                        <td>{{ $data->name }}</td>
+                        <td>{{ $data->designation }}</td>
+                        <td>
+                            <a class="btn btn-icon btn-primary" href="{{ route('admin.authority.edit', $data->id) }}">Edit</a>
                         </td>
                         <td>
                             <a class="btn btn-icon btn-danger"
-                                onclick="confirmDelete('{{ route('admin.evaluation_report.destory', $data->id) }}')"><i
-                                    class="fas fa-trash-alt"></i> Delete</a>
+                                onclick="confirmDelete('{{ route('admin.authority.delete', $data->id) }}')">Delete</a>
                         </td>
                     </tr>
                     @php
                         $i++;
                     @endphp
                 @endforeach
-            </tbody> --}}
+            </tbody>
         </table>
     </div>
 

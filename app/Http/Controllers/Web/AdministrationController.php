@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use App\Models\AdministrativeOfficer;
 use App\Models\AuthoritiesTitle;
+use App\Models\Authority;
 use App\Models\UniversityAdministration;
 use App\Models\UniversityAdministrationTitle;
 use Illuminate\Http\Request;
@@ -20,7 +21,7 @@ class AdministrationController extends Controller
     }
 
     public function universityAuthority(){
-        $titles = AuthoritiesTitle::all();
+        $titles = AuthoritiesTitle::with('positions.authorities')->get();
         return view('web.university_authority', compact('titles'));
     }
 

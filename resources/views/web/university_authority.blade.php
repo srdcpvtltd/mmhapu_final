@@ -25,9 +25,9 @@
                 </div>
                 <div class="desc-wrap marquee_text">
                     <dl class="accordion full-width">
-                        @foreach ($titles as $data)
+                        @foreach ($titles as $title)
                             <dt>
-                                <a href=""> {{ $data->title }} </a>
+                                <a href="">{{ $title->title }}</a>
                             </dt>
                             <dd>
                                 <div class="executive-table">
@@ -41,54 +41,25 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td><b>Chairman</b></td>
-                                                    <td>Prof. Sanjay Srivastava</td>
-                                                    <td>Vice-Chancellor, Mahatma Gandhi Central University, Motihari,
-                                                        Bihar
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td><b>Member</b><br>(One person to be nominated by the Court)</td>
-                                                    <td>Vacant</td>
-                                                    <td>Court of the University yet to be reconstituted</td>
-
-                                                </tr>
-                                                <tr>
-                                                    <td rowspan="3" style="vertical-align: middle;">
-                                                        <b>Member</b><br>(Three persons to be nominated by the Visitor)
-                                                    </td>
-                                                    <td>Joint Secretary </td>
-                                                    <td>(Central University & L) (or his/her nominee) MHRD, Government
-                                                        of
-                                                        India, New Delhi</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Joint Secretary & Financial Advisor (or his/her nominee)</td>
-                                                    <td>MHRD, Government of India, New Delhi</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Joint Secretary (Central University) (or his/her nominee) </td>
-                                                    <td>University Grants Commission, New Delhi</td>
-                                                </tr>
-                                                <tr>
-                                                    <td rowspan="3" style="vertical-align: middle;">
-                                                        <b>Member</b><br>(Three persons to be nominated by the Executive
-                                                        Council, out of whom at least one shall be a member of the
-                                                        Executive
-                                                        Council)
-                                                    </td>
-                                                    <td>Prof. Prasoon Dutta Singh</td>
-                                                    <td>Member of the Executive Council</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Shri Parag Prakash</td>
-                                                    <td>Deputy CAG (Retd.), CAG, New Delhi</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Shri R.D. Sahay</td>
-                                                    <td>Joint Secretary (Retd.), Ministry of Education, New Delhi</td>
-                                                </tr>
+                                                @foreach ($title->positions as $position)
+                                                    @foreach ($position->authorities as $index => $authority)
+                                                        @if ($index == 0)
+                                                            <tr>
+                                                                <td rowspan="{{ $position->authorities->count() }}"
+                                                                    style="vertical-align: middle;">
+                                                                    <b>{{ $position->position }}</b>
+                                                                </td>
+                                                                <td>{{ $authority->name }}</td>
+                                                                <td>{{ $authority->designation }}</td>
+                                                            </tr>
+                                                        @else
+                                                            <tr>
+                                                                <td>{{ $authority->name }}</td>
+                                                                <td>{{ $authority->designation }}</td>
+                                                            </tr>
+                                                        @endif
+                                                    @endforeach
+                                                @endforeach
                                             </tbody>
                                         </table>
                                     </div>

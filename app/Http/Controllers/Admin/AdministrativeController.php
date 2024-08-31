@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\AdministrativeOfficer;
 use App\Models\AuthoritiesTitle;
+use App\Models\Authority;
+use App\Models\Position;
 use App\Models\UniversityAdministration;
 use App\Models\UniversityAdministrationTitle;
 use Illuminate\Http\Request;
@@ -184,7 +186,7 @@ class AdministrativeController extends Controller
         return redirect()->back();
     }
 
-    //Authorities
+    //Authorities title
     public function authoritiesList(){
         $authorities = AuthoritiesTitle::all();
         return view('admin.web.authorities.title.index', compact('authorities'));
@@ -207,10 +209,96 @@ class AdministrativeController extends Controller
         $authoritiesDelete = AuthoritiesTitle::find($id);
         if($authoritiesDelete){
             $authoritiesDelete->delete();
+            Position::where('title_id', $id)->delete();
+            Authority::where('title_id', $id)->delete();
             toastr()->success('Deleted Successfully.');
             return redirect()->back();
         }
         toastr()->error('Something wents wrong.');
         return redirect()->back();
+    }
+
+    //Authorities Position
+    public function positionList(){
+        $titles = AuthoritiesTitle::all();
+        $positionList = Position::all();
+        return view('admin.web.authorities.position.index', compact('titles', 'positionList'));
+    }
+    public function positionStore(Request $request){
+        $positionStore = new Position();
+        $positionStore->title_id = $request->title_id;
+        $positionStore->position = $request->position;
+        $positionStore->save();
+        toastr()->success('New Authorities Position Added Successfully');
+        return redirect()->back();
+    }
+    public function positionUpdate(Request $request){
+        $positionUpdate = Position::find($request->id);
+        $positionUpdate->title_id = $request->title_id;
+        $positionUpdate->position = $request->position;
+        $positionUpdate->save();
+        toastr()->success('Authorities Position Updated Successfully');
+        return redirect()->back();
+    }
+    public function positionDelete($id){
+        $positionDelete = Position::find($id);
+        if($positionDelete){
+            $positionDelete->delete();
+            Authority::where('position_id', $id)->delete();
+            toastr()->success('Deleted Successfully');
+            return redirect()->back();
+        }
+        toastr()->error('Something wents wrong.');
+        return redirect()->back();
+    }
+
+    public function authorityList(){
+        $authorityList = Authority::all();
+        return view('admin.web.authorities.authority.list', compact('authorityList'));
+    }
+    public function authorityAdd(){
+        $add = Position::all();
+        $titles = AuthoritiesTitle::all();
+        return view('admin.web.authorities.authority.add', compact('add','titles'));
+    }
+    public function authorityStore(Request $request){
+        $authorityStore =new Authority;
+        $authorityStore->title_id = $request->title_id;
+        $authorityStore->position_id = $request->position_id;
+        $authorityStore->name = $request->name;
+        $authorityStore->designation = $request->designation;
+        $authorityStore->save();
+        toastr()->success('New University Autherity Added Successfully');
+        return redirect()->route('admin.authority.list');
+    }
+    public function authorityEdit($id){
+        $authorityEdit = Authority::find($id);
+        $titles = AuthoritiesTitle::all();
+        $edit = Position::where('title_id', $id)->get();
+        return view('admin.web.authorities.authority.edit', compact('authorityEdit', 'edit', 'titles'));
+    }
+    public function authorityUpdate(Request $request){
+        $authorityUpdate = Authority::find($request->id);
+        $authorityUpdate->title_id = $request->title_id;
+        $authorityUpdate->position_id  =$request->position_id;
+        $authorityUpdate->name  =$request->name;
+        $authorityUpdate->designation  =$request->designation;
+        $authorityUpdate->save();
+        toastr()->success('University Autherity Updated Successfully');
+        return redirect()->route('admin.authority.list');
+    }
+    public function authorityDelete($id){
+        $authorityDelete = Authority::find($id);
+        if($authorityDelete){
+            $authorityDelete->delete();
+            toastr()->success('Deleted Successfully.');
+            return redirect()->back();
+        }
+        toastr()->error('Someting wents wrong.');
+        return redirect()->back();
+    }
+    public function getPosition(Request $request){
+        $getPosition = Position::where('title_id', $request->title_id)->get();
+        return response()->json($getPosition);
     }
 }
