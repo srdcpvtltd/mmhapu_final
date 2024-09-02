@@ -360,6 +360,14 @@
                         </li>
 
                         <li class="nav-item">
+                            <a href="{{ route('admin.actStatus.list') }}"
+                                class="nav-link {{ Request::is('admin/web/act_status*') ? 'active' : '' }}">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <span>Act & Status</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
                             <a href="{{ route('admin.administrative_officers.list') }}"
                                 class="nav-link {{ Request::is('admin/web/administrative_officers*') ? 'active' : '' }}">
                                 <i class="fas fa-exclamation-triangle"></i>

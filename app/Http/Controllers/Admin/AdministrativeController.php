@@ -274,7 +274,7 @@ class AdministrativeController extends Controller
     public function authorityEdit($id){
         $authorityEdit = Authority::find($id);
         $titles = AuthoritiesTitle::all();
-        $edit = Position::where('title_id', $id)->get();
+        $edit = Position::where('title_id', $authorityEdit->title_id)->get();
         return view('admin.web.authorities.authority.edit', compact('authorityEdit', 'edit', 'titles'));
     }
     public function authorityUpdate(Request $request){

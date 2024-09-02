@@ -1,5 +1,11 @@
 @include('web.layouts.header')
 
+<style>
+    .table thead tr th {
+        background-color: #0B416F;
+        color: white;
+    }
+</style>
 
 <section class="banner-area relative about-banner" id="home">
     <div class="overlay overlay-bg"></div>
@@ -9,7 +15,9 @@
                 <h1 class="text-white">
                     Act & Statutes
                 </h1>
-                <p class="text-white link-nav"><a href="index.php">Home </a> <span class="lnr lnr-arrow-right"></span> <a href=""> About</a> <span class="lnr lnr-arrow-right"></span> <a href="act_statutes.php" class="orange-text"> Act & Statutes</a></p>
+                <p class="text-white link-nav"><a href="index.php">Home </a> <span class="lnr lnr-arrow-right"></span> <a
+                        href=""> About</a> <span class="lnr lnr-arrow-right"></span> <a href="act_statutes.php"
+                        class="orange-text"> Act & Statutes</a></p>
             </div>
         </div>
     </div>
@@ -22,53 +30,53 @@
                 <div class="page-title">
                     <h2><span>Act & Statutes</span></h2>
                 </div>
-                <div class="mb-20">
-                    <div class="detials">
-                        <ul class="custom-list-style">
-                            <li class="mb-10"><i class="fa fa-check"></i> <a href="pdf/Central Universities Act 2014.pdf" >CU (Amendment) Act 2014</a></li>
-                            <li class="mb-10"><i class="fa fa-check"></i> <a href="pdf/Central Universities Act 2009.pdf" >CU Act 2009</a></li>
-                        </ul>
+                <div class="desc-wrap marquee_text">
+                    <div class="executive-table">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">Title</th>
+                                        <th class="text-center">Date</th>
+                                        <th class="text-center">View/Download</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @php
+                                        $i = 1;
+                                    @endphp
+                                    @foreach ($act_statutes as $data)
+                                        <tr>
+                                            <td> <a target="blank"
+                                                    href=" {{ asset('uploads/ActStatus/' . $data->file) }} "
+                                                    target="_blank"> {{ $data->title }} </a></td>
+                                            <td> {{ \Carbon\Carbon::parse($data->date)->format('jS F Y') }} </td>
+                                            <td style="padding: 15px">
+                                                <center><a target="blank"
+                                                        href=" {{ asset('uploads/ActStatus/' . $data->file) }} "
+                                                        target="_blank" class="resume-icon"> <i
+                                                            class="fa fa-file-pdf-o"></i></a></center>
+                                            </td>
+                                        </tr>
+                                        @php
+                                            $i++;
+                                        @endphp
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-3 col-md-3 col-xs-12">
-    <div class="single-feature">
-        <div class="title MGCUB_bg">
-            <h4>Quick Links</h4>
+            @include('web.layouts.quick-link-about')
         </div>
-        <div class="desc-wrap marquee_text">
-            <ul class="custom-list-style">
-                <li><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> <a href="{{route('about')}}"> History of MGCU</a></li>
-                <hr>
-                <li><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> <a href="{{route('missionVision')}}"> Vision & Mission</a></li>
-                <hr>
-                <li><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> <a href=""> Hon'ble Visitor</a></li>
-                <hr>
-                <li><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> <a href="{{route('chancellor')}}"> Chancellor</a></li>
-                <hr>
-                <li><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> <a href="{{route('vc')}}"> Vice Chancellor</a></li>
-                <hr>
-<!--                <li><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> <a href="pro_vc.php"> Pro Vice-Chancellor</a></li>
-                <hr>-->
-                <li><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> <a href="{{route('legacy')}}"> Legacy of Champaran</a></li>
-                <hr>
-                <li><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> <a href="{{route('logo')}}"> Logo</a></li>
-                <hr>
-                <li><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> <a href="{{route('actStatutes')}}"> Act & Statutes</a></li>
-                <hr>
-                <li><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> <a href="{{route('ordinances')}}"> Ordinance</a></li>
-            </ul>
-        </div>
-    </div>
-</div>        </div>
-    </div>
 </section>
 
- @include('web.layouts.footer')
+@include('web.layouts.footer')
 
 
 <script type="text/javascript">
-    $(document).ready(function () {
+    $(document).ready(function() {
         document.title = "Act & Statutes - Mahatma Gandhi Central University, Motihari (Bihar)";
     });
 </script>

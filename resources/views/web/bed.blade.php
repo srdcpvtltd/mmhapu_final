@@ -45,7 +45,7 @@
                                 </thead>
                                 <tbody>
                                     @php
-                                        $i =1;
+                                        $i = 1;
                                     @endphp
                                     @foreach ($Bed as $data)
                                         <tr>
@@ -54,7 +54,10 @@
                                             <td> {{ $data->email }} </td>
                                             <td> {{ $data->contact }} </td>
                                             <td style="padding: 15px">
-                                                <center><a target="blank" href=" {{ asset('uploads/bed/'. $data->resume) }} " target="_blank"  class="resume-icon"> <i class="fa fa-file-pdf-o"></i></a></center>
+                                                <center><a target="blank"
+                                                        href=" {{ asset('uploads/bed/' . $data->resume) }} "
+                                                        target="_blank" class="resume-icon"> <i
+                                                            class="fa fa-file-pdf-o"></i></a></center>
                                             </td>
                                         </tr>
                                         @php

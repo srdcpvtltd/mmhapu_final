@@ -55,6 +55,7 @@ use App\Http\Controllers\Admin\AnnualMagazineController;
 use App\Http\Controllers\Admin\AnnualReportsController;
 use App\Http\Controllers\Admin\EnewsLetterController;
 use App\Http\Controllers\Admin\AdministrativeController;
+use App\Http\Controllers\Admin\ActStatusController;
 use App\Http\Controllers\Admin\OverviewController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ShiftController;
@@ -586,6 +587,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
         Route::get('/authority/delete/{id}', [AdministrativeController::class, 'authorityDelete']) ->name('authority.delete');
         Route::post('/get_position', [AdministrativeController::class, 'getPosition']) ->name('authority.getPosition');
 
+        //Act & Status
+        Route::get('/act_status/list',[ActStatusController::class, 'list']) ->name('actStatus.list');
+        Route::get('/act_status/add',[ActStatusController::class, 'add']) ->name('actStatus.add');
+        Route::post('/act_status/store',[ActStatusController::class, 'store']) ->name('actStatus.store');
+        Route::get('/act_status/edit/{id}',[ActStatusController::class, 'edit']) ->name('actStatus.edit');
+        Route::post('/act_status/update',[ActStatusController::class, 'update']) ->name('actStatus.update');
+        Route::get('/act_status/delete/{id}',[ActStatusController::class, 'delete']) ->name('actStatus.delete');
 
         //Top Bar
         Route::get('/top_bar/list', [TopbarController::class, 'list'])->name('Topbar.list');
