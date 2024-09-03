@@ -19,7 +19,13 @@
                                 <!-- Form Start -->
                                 <div class="form-group">
                                     <label for="title" class="form-label">Title<span>*</span></label>
-                                    <input type="text" class="form-control" name="title" required>
+                                    {{-- <input type="text" class="form-control" name="title" required> --}}
+                                    <select name="title" class="form-control">
+                                        <option value="">Select Title</option>
+                                        @foreach ($manus as $menu)
+                                            <option value="{{ $menu->id }}"> {{ $menu->name }} </option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                             <div class="card-footer">
@@ -53,9 +59,14 @@
                                         @foreach ($title as $data)
                                             <tr>
                                                 <td>{{ $i }}</td>
-                                                <td>{{ $data->title }}</td>
                                                 <td>
-                                                    <a class="btn btn-sm btn-primary" href="{{ route('admin.qtitle.edit',$data->id)}}">Edit</a>
+                                                    @if ($data->Menus)
+                                                        {{ $data->Menus->name }}
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    <a class="btn btn-sm btn-primary"
+                                                        href="{{ route('admin.qtitle.edit', $data->id) }}">Edit</a>
                                                 </td>
                                                 <td>
                                                     <a class="btn btn-danger btn-sm"

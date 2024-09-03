@@ -318,7 +318,10 @@
                                                         </a>
                                                     @endif
 
-                                                    <img src="{{ asset('web/images/new.gif') }}" alt="new image" />
+                                                    @if ($admission->created_at->isSameYear())
+                                                        <img src="{{ asset('web/images/new.gif') }}"
+                                                            alt="new image" />
+                                                    @endif
                                                 </li>
                                                 <hr>
                                             @endforeach

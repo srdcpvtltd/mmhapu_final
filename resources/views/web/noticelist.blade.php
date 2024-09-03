@@ -31,14 +31,17 @@
                                 <li class="text-justify mb-10">
                                     <i class="fa fa-arrow-circle-right orange-text" aria-hidden="true"></i>
                                     @if ($notification->type == 'file')
-                                    <a href="{{ asset('file/' . $notification->file) }}" target="_blank">
-                                        {{ $notification->title }} </a>
+                                        <a href="{{ asset('file/' . $notification->file) }}" target="_blank">
+                                            {{ $notification->title }} </a>
                                     @elseif ($notification->type == 'link')
                                         <a target="blank" href="{{ $notification->url }}">
                                             <span>{{ $notification->title }}</span>
                                         </a>
                                     @endif
-                                    <img src="{{ asset('web/images/new.gif') }}" alt="new image" />
+
+                                    @if ($notification->created_at->isSameYear())
+                                        <img src="{{ asset('web/images/new.gif') }}" alt="new image" />
+                                    @endif
                                 </li>
                             @endforeach
                         </ul>

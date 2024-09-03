@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Menu;
 use App\Models\Quicklink;
 use App\Models\QuicklinkTitle;
 use Illuminate\Http\Request;
@@ -10,8 +11,9 @@ use Illuminate\Http\Request;
 class QuicklinktitleController extends Controller
 {
     public function list(){
+        $manus = Menu::whereNull('menu_id')->whereNull('submenu_id')->orderBy('display_order')->get();
         $title = QuicklinkTitle::all();
-        return view('admin.web.quick-link-title.list',compact('title'));
+        return view('admin.web.quick-link-title.list',compact('title','manus'));
     }
     public function store(Request $request){
         $store =new QuicklinkTitle;

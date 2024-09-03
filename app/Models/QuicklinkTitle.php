@@ -9,4 +9,8 @@ class QuicklinkTitle extends Model
 {
     use HasFactory;
     protected $table = 'quick_link_titles';
+
+    public function Menus(){
+        return $this->belongsTo(Menu::class,'title');
+    }
 }
