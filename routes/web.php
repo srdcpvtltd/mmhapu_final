@@ -160,8 +160,9 @@ Route::middleware(['XSS'])->namespace('Web')->group(function () {
     //E-news Letter
     Route::get('/enews_letter', [PublicationsController::class, 'enewsLetter'])->name('enewsLetter');
 
-    //E-news Letter
+    //booksResearchPublication
     Route::get('/books_research_publication', [PublicationsController::class, 'booksResearchPublication'])->name('booksResearchPublication');
+    Route::get('/monograph', [PublicationsController::class, 'monograph'])->name('monograph');
 
     //Fazil
     Route::get('/fazil', [AcademicController::class, 'fazil'])->name('fazil');

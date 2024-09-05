@@ -27,7 +27,7 @@
                     <th>Action</th>
                 </tr>
             </thead>
-            {{-- <tbody>
+            <tbody>
                 @php
                     $i = 1;
                 @endphp
@@ -56,7 +56,7 @@
                         $i++;
                     @endphp
                 @endforeach
-            </tbody> --}}
+            </tbody>
         </table>
     </div>
 

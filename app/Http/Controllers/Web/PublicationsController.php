@@ -7,6 +7,7 @@ use App\Models\AnnualReport;
 use App\Models\EnewsLetter;
 use App\Models\Gyangrah;
 use App\Models\Harmony;
+use App\Models\Monograph;
 use App\Models\Proceeding;
 use Illuminate\Http\Request;
 
@@ -44,5 +45,9 @@ class PublicationsController extends Controller
     }
     public function booksResearchPublication(){
         return view('web.books_research_publication');
+    }
+    public function monograph(){
+        $monograph = Monograph::all();
+        return view('web.monograph', compact('monograph'));
     }
 }

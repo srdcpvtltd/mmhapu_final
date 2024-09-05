@@ -32,7 +32,7 @@
                             class="btn book_research_btn book_research_btn1 mb-50">Books</a></li>
                     <li class=""><a href="journals.php"
                             class="btn book_research_btn book_research_btn2 mb-50">Journals</a></li>
-                    <li><a href="monograph.php" class="btn book_research_btn book_research_btn3">Monograph</a></li>
+                    <li><a href=" {{ route('monograph') }}" class="btn book_research_btn book_research_btn3">Monograph</a></li>
                 </ul>
             </div>
             <div class="col-sm-8 col-md-8 col-xs-8">

@@ -188,6 +188,507 @@
                             </a>
                         </li>
 
+                        <li class="nav-item nav-item-submenu {{ Request::is('admin/web/student_grievance*') || Request::is('admin/web/social-setting') || Request::is('admin/web/topbar-setting') || Request::is('admin/web/slider') || Request::is('admin/web/overview*') || Request::is('admin/web/student*') || Request::is('admin/web/administration*') || Request::is('admin/web/campus*') || Request::is('admin/web/team/list') || Request::is('admin/web/web-event') ||  Request::is('admin/web/gallery') || Request::is('admin/web/galleries*') ? 'nav-item-open' : '' }}">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Home Page</span>
+                            </a>
+
+                            <ul class="nav nav-group-sub" data-submenu-title="Layouts" style="{{ Request::is('admin/web/student_grievance*') || Request::is('admin/web/social-setting') || Request::is('admin/web/topbar-setting') || Request::is('admin/web/slider') || Request::is('admin/web/overview*') || Request::is('admin/web/student*') || Request::is('admin/web/administration*') || Request::is('admin/web/campus*') || Request::is('admin/web/team/list') || Request::is('admin/web/web-event') ||  Request::is('admin/web/gallery') || Request::is('admin/web/galleries*') ? 'display:block' : '' }}">
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.slider.index') }}"
+                                        class="nav-link {{ Request::is('admin/web/slider') ? 'active' : '' }}">
+                                        <span>Sliders</span>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.Overview.list') }}"
+                                        class="nav-link {{ Request::is('admin/web/overview*') ? 'active' : '' }}">
+                                        <span>Institution Overview</span>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.Team.list') }}"
+                                        class="nav-link {{ Request::is('admin/web/team/list') ? 'active' : '' }}">
+                                        <span>Team</span>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.web-event.index') }}"
+                                        class="nav-link {{ Request::is('admin/web/web-event') ? 'active' : '' }}">
+                                        <span>Event</span>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.campus.list') }}"
+                                        class="nav-link {{ Request::is('admin/web/campus*') ? 'active' : '' }}">
+                                        <span>Campus Section</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.administration.list') }}"
+                                        class="nav-link {{ Request::is('admin/web/administration*') ? 'active' : '' }}">
+                                        <span>Administration Section</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.student.list') }}"
+                                        class="nav-link {{ Request::is('admin/web/student*') ? 'active' : '' }}">
+                                        <span>Student Section</span>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.studentGrievance.list') }}"
+                                        class="nav-link {{ Request::is('admin/web/student_grievance*') ? 'active' : '' }}">
+                                        <span>Student Grievance Redressal Committee</span>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.topbar-setting.index') }}"
+                                        class="nav-link {{ Request::is('admin/web/topbar-setting') ? 'active' : '' }}">
+                                        <span>Contact Setting</span>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.social-setting.index') }}"
+                                        class="nav-link {{ Request::is('admin/web/social-setting') ? 'active' : '' }}">
+                                        <span>Social Setting</span>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item nav-item-submenu {{ Request::is('admin/web/gallery') || Request::is('admin/web/galleries*') ? 'nav-item-open' : '' }}">
+                                    <a href="#" class="nav-link"><span>Gallery</span></a>
+
+                                    <ul class="nav nav-group-sub" data-submenu-title="Layouts"
+                                        style="{{ Request::is('admin/web/gallery') || Request::is('admin/web/galleries*') ? 'display:block' : '' }}">
+
+                                        <li class="nav-item"><a href="{{ route('admin.gallery.index') }}"
+                                                class="nav-link {{ Request::is('admin/web/gallery') ? 'active' : '' }}">Gallery
+                                                Title</a></li>
+
+                                        <li class="nav-item"><a href="{{ route('admin.Viewgalleries.list') }}"
+                                                class="nav-link {{ Request::is('admin/web/galleries*') ? 'active' : '' }}">Gallery</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item nav-item-submenu {{ Request::is('admin/web/act_status*') || Request::is('admin/web/about-us') ? 'nav-item-open' : '' }}">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-check-circle"></i>
+                                <span>About Us</span>
+                            </a>
+
+                            <ul class="nav nav-group-sub" data-submenu-title="Layouts" style="{{ Request::is('admin/web/act_status*') || Request::is('admin/web/about-us') ? 'display:block' : '' }}">
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.about-us.index') }}"
+                                        class="nav-link {{ Request::is('admin/web/about-us') ? 'active' : '' }}">
+                                        <span>About</span>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.actStatus.list') }}"
+                                        class="nav-link {{ Request::is('admin/web/act_status*') ? 'active' : '' }}">
+                                        <span>Act & Status</span>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item nav-item-submenu {{ Request::is('admin/web/university_officers_submenu*') ? 'nav-item-open' : '' }}">
+                                    <a href="#" class="nav-link {{ Request::is('admin/web/university_officers*') ? 'active' : '' }}">
+                                        Officers
+                                    </a>
+
+                                    <ul class="nav nav-group-sub" style="{{ Request::is('admin/web/university_officers_submenu*') ? 'display:block' : '' }}">
+                                        <li class="nav-item">
+                                            <a href="" class="nav-link {{ Request::is('admin/web/university_officers_reports*') ? 'active' : '' }}">
+                                                Reports
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="" class="nav-link {{ Request::is('admin/web/university_officers_activities*') ? 'active' : '' }}">
+                                                Activities
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item nav-item-submenu {{ Request::is('admin/web/iqac_eventtitle*') || Request::is('admin/web/iqac_event*') || Request::is('admin/web/evaluation_title*') || Request::is('admin/web/evaluation_report*') || Request::is('admin/web/committes_title*') || Request::is('admin/web/committes_cells*') || Request::is('admin/web/collabration*') || Request::is('admin/web/minutes*') || Request::is('admin/web/policies*') || Request::is('admin/web/feedback*') || Request::is('admin/web/committees*') ? 'nav-item-open' : '' }}">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-check-circle"></i>
+                                <span>IQAC</span>
+                            </a>
+
+                            <ul class="nav nav-group-sub" data-submenu-title="Layouts"
+                                style="{{ Request::is('admin/web/iqac_eventtitle*') || Request::is('admin/web/iqac_event*') || Request::is('admin/web/evaluation_title*') || Request::is('admin/web/evaluation_report*') || Request::is('admin/web/committes_title*') || Request::is('admin/web/committes_cells*') || Request::is('admin/web/collabration*') || Request::is('admin/web/minutes*') || Request::is('admin/web/policies*') || Request::is('admin/web/feedback*') || Request::is('admin/web/committees*') ? 'display:block' : '' }}">
+
+                                <li
+                                    class="nav-item nav-item-submenu {{ Request::is('admin/web/iqac_eventtitle*') || Request::is('admin/web/iqac_event*') ? 'nav-item-open' : '' }}">
+                                    <a href="#" class="nav-link"><span> Event</span></a>
+
+                                    <ul class="nav nav-group-sub" data-submenu-title="Layouts"
+                                        style="{{ Request::is('admin/web/iqac_eventtitle*') || Request::is('admin/web/iqac_event*') ? 'display:block' : '' }}">
+
+                                        <li class="nav-item"><a href="{{ route('admin.IqacEventTitle.list') }}"
+                                                class="nav-link {{ Request::is('admin/web/iqac_eventtitle*') ? 'active' : '' }}">Title</a>
+                                        </li>
+
+                                        <li class="nav-item"><a href="{{ route('admin.IqacEvent.list') }}"
+                                                class="nav-link {{ Request::is('admin/web/iqac_event*') ? 'active' : '' }}">Event</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li
+                                    class="nav-item nav-item-submenu {{ Request::is('admin/web/evaluation_title*') || Request::is('admin/web/evaluation_report*') ? 'nav-item-open' : '' }}">
+                                    <a href="#" class="nav-link"></i> <span> Evaluation Report</span></a>
+
+                                    <ul class="nav nav-group-sub" data-submenu-title="Layouts"
+                                        style="{{ Request::is('admin/web/evaluation_title*') || Request::is('admin/web/evaluation_report*') ? 'display:block' : '' }}">
+
+                                        <li class="nav-item"><a href="{{ route('admin.Evaluation.index') }}"
+                                                class="nav-link {{ Request::is('admin/web/evaluation_title*') ? 'active' : '' }}">Title</a>
+                                        </li>
+
+                                        <li class="nav-item"><a href="{{ route('admin.evaluation_report.list') }}"
+                                                class="nav-link {{ Request::is('admin/web/evaluation_report*') ? 'active' : '' }}">Evaluation
+                                                Report</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li
+                                    class="nav-item nav-item-submenu {{ Request::is('admin/web/committes_title*') || Request::is('admin/web/committes_cells*') ? 'nav-item-open' : '' }}">
+                                    <a href="#" class="nav-link"><span> Committees & Cells</span></a>
+
+                                    <ul class="nav nav-group-sub" data-submenu-title="Layouts"
+                                        style="{{ Request::is('admin/web/committes_title*') || Request::is('admin/web/committes_cells*') ? 'display:block' : '' }}">
+
+                                        <li class="nav-item"><a href="{{ route('admin.CommitteesCellsTitle.list') }}"
+                                                class="nav-link {{ Request::is('admin/web/committes_title*') ? 'active' : '' }}">Title</a>
+                                        </li>
+
+                                        <li class="nav-item"><a href="{{ route('admin.committesCells.list') }}"
+                                                class="nav-link {{ Request::is('admin/web/committes_cells*') ? 'active' : '' }}">Committees
+                                                & Cells</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.Collabration.list') }}"
+                                        class="nav-link {{ Request::is('admin/web/collabration*') ? 'active' : '' }}">
+                                        <span>Collabration</span>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.minutes.list') }}"
+                                        class="nav-link {{ Request::is('admin/web/minutes*') ? 'active' : '' }}">
+                                        <span>Minutes</span>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.policies.list') }}"
+                                        class="nav-link {{ Request::is('admin/web/policies*') ? 'active' : '' }}">
+                                        <span>Policies</span>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.Feedback.index') }}"
+                                        class="nav-link {{ Request::is('admin/web/feedback*') ? 'active' : '' }}">
+                                        <span>IQAC Feedback</span>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.committees.list') }}"
+                                        class="nav-link {{ Request::is('admin/web/committees*') ? 'active' : '' }}">
+                                        <span>IQAC Committees</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                        <li
+                            class="nav-item nav-item-submenu {{ Request::is('admin/web/attendance*') || Request::is('admin/web/attendance_title*') || Request::is('admin/web/elearning*') || Request::is('admin/web/elearning_title*') || Request::is('admin/web/grievances_list*') || Request::is('admin/web/syllabus_title*') || Request::is('admin/web/syllabus*') ? 'nav-item-open' : '' }}">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Students Section</span>
+                            </a>
+
+                            <ul class="nav nav-group-sub" data-submenu-title="Layouts"
+                                style="{{ Request::is('admin/web/attendance*') || Request::is('admin/web/attendance_title*') || Request::is('admin/web/elearning*') || Request::is('admin/web/elearning_title*') || Request::is('admin/web/grievances_list*') || Request::is('admin/web/syllabus_title*') || Request::is('admin/web/syllabus*') ? 'display:block' : '' }}">
+
+                                <li
+                                    class="nav-item nav-item-submenu {{ Request::is('admin/web/attendance*') || Request::is('admin/web/attendance_title*') ? 'nav-item-open' : '' }}">
+                                    <a href="#" class="nav-link"><span>Attendance</span></a>
+
+                                    <ul class="nav nav-group-sub" data-submenu-title="Layouts"
+                                        style="{{ Request::is('admin/web/attendance*') || Request::is('admin/web/attendance_title*') ? 'display:block' : '' }}">
+
+                                        <li class="nav-item"><a href="{{ route('admin.attendanceTitle.list') }}"
+                                                class="nav-link {{ Request::is('admin/web/attendance_title*') ? 'active' : '' }}">Title</a>
+                                        </li>
+
+                                        <li class="nav-item"><a href="{{ route('admin.attendance.list') }}"
+                                                class="nav-link {{ Request::is('admin/web/attendance*') ? 'active' : '' }}">Attendance</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li
+                                    class="nav-item nav-item-submenu {{ Request::is('admin/web/elearning*') || Request::is('admin/web/elearning_title*') ? 'nav-item-open' : '' }}">
+                                    <a href="#" class="nav-link"><span>e-Learning</span></a>
+
+                                    <ul class="nav nav-group-sub" data-submenu-title="Layouts"
+                                        style="{{ Request::is('admin/web/elearning*') || Request::is('admin/web/elearning_title*') ? 'display:block' : '' }}">
+
+                                        <li class="nav-item"><a href="{{ route('admin.elearningTitle.list') }}"
+                                                class="nav-link {{ Request::is('admin/web/elearning_title*') ? 'active' : '' }}">Title</a>
+                                        </li>
+
+                                        <li class="nav-item"><a href="{{ route('admin.elearning.list') }}"
+                                                class="nav-link {{ Request::is('admin/web/elearning*') ? 'active' : '' }}">e-Learning</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li
+                                    class="nav-item nav-item-submenu {{ Request::is('admin/web/syllabus_title*') || Request::is('admin/web/syllabus*') ? 'nav-item-open' : '' }}">
+                                    <a href="#" class="nav-link"></i> <span>Syllabus</span></a>
+
+                                    <ul class="nav nav-group-sub" data-submenu-title="Layouts"
+                                        style="{{ Request::is('admin/web/syllabus_title*') || Request::is('admin/web/syllabus*') ? 'display:block' : '' }}">
+
+                                        <li class="nav-item"><a href="{{ route('admin.syllabus.index') }}"
+                                                class="nav-link {{ Request::is('admin/web/syllabus_title*') ? 'active' : '' }}">Department</a>
+                                        </li>
+
+                                        <li class="nav-item"><a href="{{ route('admin.syllabus.list') }}"
+                                                class="nav-link {{ Request::is('admin/web/syllabus*') ? 'active' : '' }}">Syllabus</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.grievances_list') }}"
+                                        class="nav-link {{ Request::is('admin/web/grievances_list*') ? 'active' : '' }}">
+                                        <span>Grievances Form</span>
+                                    </a>
+                                </li>
+
+
+                            </ul>
+                        </li>
+
+                        <li class="nav-item nav-item-submenu {{ Request::is('admin/web/proceedings*') || Request::is('admin/web/news') || Request::is('admin/web/view_news*') || Request::is('admin/web/gyangrah*') || Request::is('admin/web/harmony*') || Request::is('admin/web/reports*') || Request::is('admin/web/enews_letter*') || Request::is('admin/web/monograph*') || Request::is('admin/web/documentation*') ? 'nav-item-open' : '' }}">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Publications</span>
+                            </a>
+
+                            <ul class="nav nav-group-sub" data-submenu-title="Layouts"
+                                style="{{ Request::is('admin/web/proceedings*') || Request::is('admin/web/news') || Request::is('admin/web/view_news*') || Request::is('admin/web/gyangrah*') || Request::is('admin/web/harmony*') || Request::is('admin/web/reports*') || Request::is('admin/web/enews_letter*') || Request::is('admin/web/monograph*') || Request::is('admin/web/documentation*') ? 'display:block' : '' }}">
+
+                                <li class="nav-item nav-item-submenu {{ Request::is('admin/web/news') || Request::is('admin/web/view_news*') ? 'nav-item-open' : '' }}">
+                                    <a href="#" class="nav-link"><span>News Paper Clipping</span></a>
+                                    <ul class="nav nav-group-sub" data-submenu-title="Layouts"
+                                        style="{{ Request::is('admin/web/news') || Request::is('admin/web/view_news*') ? 'display:block' : '' }}">
+                                        <li class="nav-item"><a href="{{ route('admin.news.index') }}"
+                                                class="nav-link {{ Request::is('admin/web/news') ? 'active' : '' }}">News
+                                                Title</a></li>
+                                        <li class="nav-item"><a href="{{ route('admin.view_news.list') }}"
+                                                class="nav-link {{ Request::is('admin/web/view_news*') ? 'active' : '' }}">News</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li class="nav-item nav-item-submenu {{ Request::is('admin/web/gyangrah*') || Request::is('admin/web/harmony*') ? 'nav-item-open' : '' }}">
+                                    <a href="#" class="nav-link"><span>Annual Magazine</span></a>
+
+                                    <ul class="nav nav-group-sub" data-submenu-title="Layouts"
+                                        style="{{ Request::is('admin/web/gyangrah*') || Request::is('admin/web/harmony*') ? 'display:block' : '' }}">
+
+                                        <li class="nav-item"><a href="{{ route('admin.gyangrah.list') }}"
+                                                class="nav-link {{ Request::is('admin/web/gyangrah*') ? 'active' : '' }}">Gyanagrah</a>
+                                        </li>
+
+                                        <li class="nav-item"><a href="{{ route('admin.harmony.list') }}"
+                                                class="nav-link {{ Request::is('admin/web/harmony*') ? 'active' : '' }}">Harmony</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.monograph.list') }}"
+                                        class="nav-link {{ Request::is('admin/web/monograph*') ? 'active' : '' }}">
+                                        <span>Monograph</span>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.documentation.list') }}"
+                                        class="nav-link {{ Request::is('admin/web/documentation*') ? 'active' : '' }}">
+                                        <span>Documentation</span>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.enews_letter.list') }}"
+                                        class="nav-link {{ Request::is('admin/web/enews_letter*') ? 'active' : '' }}">
+                                        <span>E-News Letter</span>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.reports.list') }}"
+                                        class="nav-link {{ Request::is('admin/web/reports*') ? 'active' : '' }}">
+                                        <span>Annual Reports</span>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.proceedings.list') }}"
+                                        class="nav-link {{ Request::is('admin/web/proceedings*') ? 'active' : '' }}">
+                                        <span>Proceedings</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                        <li class="nav-item nav-item-submenu {{ Request::is('admin/web/fazil*') || Request::is('admin/web/alim*') || Request::is('admin/web/krc_without_aicte*') || Request::is('admin/web/krc_with_aicte*') || Request::is('admin/web/bed*') ? 'nav-item-open' : '' }}">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Academic</span>
+                            </a>
+
+                            <ul class="nav nav-group-sub" data-submenu-title="Layouts" style="{{ Request::is('admin/web/fazil*') || Request::is('admin/web/alim*') || Request::is('admin/web/krc_without_aicte*') || Request::is('admin/web/krc_with_aicte*') || Request::is('admin/web/bed*') ? 'display:block' : '' }}">
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.bed.list') }}"
+                                        class="nav-link {{ Request::is('admin/web/bed*') ? 'active' : '' }}">
+                                        <span>B.Ed</span>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.krcWithAicte.list') }}"
+                                        class="nav-link {{ Request::is('admin/web/krc_with_aicte*') ? 'active' : '' }}">
+                                        <span>KRC With AICTE Recognition</span>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.krcWithoutAicte.list') }}"
+                                        class="nav-link {{ Request::is('admin/web/krc_without_aicte*') ? 'active' : '' }}">
+                                        <span>KRC Without AICTE Recognition</span>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.alim.list') }}"
+                                        class="nav-link {{ Request::is('admin/web/alim*') ? 'active' : '' }}">
+                                        <span>ALIM</span>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.fazil.list') }}"
+                                        class="nav-link {{ Request::is('admin/web/fazil*') ? 'active' : '' }}">
+                                        <span>FAZIL</span>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item nav-item-submenu {{ Request::is('admin/web/university_officers_submenu*') ? 'nav-item-open' : '' }}">
+                                    <a href="#" class="nav-link {{ Request::is('admin/web/university_officers*') ? 'active' : '' }}">Officers</a>
+
+                                    <ul class="nav nav-group-sub" style="{{ Request::is('admin/web/university_officers_submenu*') ? 'display:block' : '' }}">
+                                        <li class="nav-item">
+                                            <a href="" class="nav-link {{ Request::is('admin/web/university_officers_reports*') ? 'active' : '' }}">
+                                                Reports
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="" class="nav-link {{ Request::is('admin/web/university_officers_activities*') ? 'active' : '' }}">
+                                                Activities
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item nav-item-submenu {{ Request::is('admin/web/university_officers*') || Request::is('admin/web/university_officers*') || Request::is('admin/web/administrative_officers*') || Request::is('admin/web/authorities*') || Request::is('admin/web/position*') || Request::is('admin/web/authority*') ? 'nav-item-open' : '' }}">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Administrations</span>
+                            </a>
+
+                            <ul class="nav nav-group-sub" data-submenu-title="Layouts" style="{{ Request::is('admin/web/university_officers*') || Request::is('admin/web/university_officers*') || Request::is('admin/web/administrative_officers*') || Request::is('admin/web/authorities*') || Request::is('admin/web/position*') || Request::is('admin/web/authority*') ? 'display:block' : '' }}">
+
+                                <li class="nav-item nav-item-submenu {{ Request::is('admin/web/authorities*') || Request::is('admin/web/position*') || Request::is('admin/web/authority*') ? 'nav-item-open' : '' }}">
+                                    <a href="#" class="nav-link"><span>University Authorities</span></a>
+
+                                    <ul class="nav nav-group-sub" data-submenu-title="Layouts"
+                                        style="{{ Request::is('admin/web/authorities*') || Request::is('admin/web/position*') || Request::is('admin/web/authority*') ? 'display:block' : '' }}">
+
+                                        <li class="nav-item"><a href="{{ route('admin.authorities.list') }}"
+                                                class="nav-link {{ Request::is('admin/web/authorities*') ? 'active' : '' }}">Title</a>
+                                        </li>
+
+                                        <li class="nav-item"><a href="{{ route('admin.position.list') }}"
+                                                class="nav-link {{ Request::is('admin/web/position*') ? 'active' : '' }}">Position</a>
+                                        </li>
+
+                                        <li class="nav-item"><a href="{{ route('admin.authority.list') }}"
+                                                class="nav-link {{ Request::is('admin/web/authority*') ? 'active' : '' }}">Authorities</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li class="nav-item nav-item-submenu {{ Request::is('admin/web/university_officers*') || Request::is('admin/web/university_officers*') ? 'nav-item-open' : '' }}">
+                                    <a href="#" class="nav-link"><span>University Administrations</span></a>
+
+                                    <ul class="nav nav-group-sub" data-submenu-title="Layouts"
+                                        style="{{ Request::is('admin/web/university_officers*') || Request::is('admin/web/university_officers*') ? 'display:block' : '' }}">
+
+                                        <li class="nav-item"><a href="{{ route('admin.university_officers_title.list') }}"
+                                                class="nav-link {{ Request::is('admin/web/university_officers*') ? 'active' : '' }}">Title</a>
+                                        </li>
+
+                                        <li class="nav-item"><a href="{{ route('admin.university_officers.list') }}"
+                                                class="nav-link {{ Request::is('admin/web/university_officers*') ? 'active' : '' }}">Officers</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.administrative_officers.list') }}"
+                                        class="nav-link {{ Request::is('admin/web/administrative_officers*') ? 'active' : '' }}">
+                                        <span>Administrative Officers</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
                         <li
                             class="nav-item nav-item-submenu {{ Request::is('admin/noticetype*') || Request::is('admin/notice*') ? 'nav-item-open' : '' }}">
                             <a href="#" class="nav-link"><i class="fas fa-bullhorn"></i> <span>Notice
@@ -206,293 +707,22 @@
                             </ul>
                         </li>
 
-                        <li class="nav-item nav-item-submenu {{ Request::is('admin/web/attendance*') || Request::is('admin/web/attendance_title*') ? 'nav-item-open' : '' }}">
-                            <a href="#" class="nav-link"><i class="fa fa-calendar-check"></i> <span>Attendance</span></a>
-
-                            <ul class="nav nav-group-sub" data-submenu-title="Layouts"
-                                style="{{ Request::is('admin/web/attendance*') || Request::is('admin/web/attendance_title*') ? 'display:block' : '' }}">
-
-                                <li class="nav-item"><a href="{{ route('admin.attendanceTitle.list') }}"
-                                        class="nav-link {{ Request::is('admin/web/attendance_title*') ? 'active' : '' }}">Title</a></li>
-
-                                <li class="nav-item"><a href="{{ route('admin.attendance.list') }}"
-                                        class="nav-link {{ Request::is('admin/web/attendance*') ? 'active' : '' }}">Attendance</a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li class="nav-item nav-item-submenu {{ Request::is('admin/web/elearning*') || Request::is('admin/web/elearning_title*') ? 'nav-item-open' : '' }}">
-                            <a href="#" class="nav-link"><i class="fa fa-calendar-check"></i> <span>e-Learning</span></a>
-
-                            <ul class="nav nav-group-sub" data-submenu-title="Layouts"
-                                style="{{ Request::is('admin/web/elearning*') || Request::is('admin/web/elearning_title*') ? 'display:block' : '' }}">
-
-                                <li class="nav-item"><a href="{{ route('admin.elearningTitle.list') }}"
-                                        class="nav-link {{ Request::is('admin/web/elearning_title*') ? 'active' : '' }}">Title</a></li>
-
-                                <li class="nav-item"><a href="{{ route('admin.elearning.list') }}"
-                                        class="nav-link {{ Request::is('admin/web/elearning*') ? 'active' : '' }}">e-Learning</a>
-                                </li>
-                            </ul>
-                        </li>
-
                         <li class="nav-item nav-item-submenu {{ Request::is('admin/web/quick_link*') || Request::is('admin/web/quicklink_title*') ? 'nav-item-open' : '' }}">
-                            <a href="#" class="nav-link"><i class="fa fa-external-link"></i> <span>Quick Link</span></a>
+                            <a href="#" class="nav-link"><i class="fa fa-external-link"></i> <span>Quick
+                                    Link</span></a>
 
                             <ul class="nav nav-group-sub" data-submenu-title="Layouts"
                                 style="{{ Request::is('admin/web/quick_link*') || Request::is('admin/web/quicklink_title*') ? 'display:block' : '' }}">
 
                                 <li class="nav-item"><a href="{{ route('admin.qtitle.list') }}"
-                                        class="nav-link {{ Request::is('admin/web/quicklink_title*') ? 'active' : '' }}">Title</a></li>
+                                        class="nav-link {{ Request::is('admin/web/quicklink_title*') ? 'active' : '' }}">Title</a>
+                                </li>
 
                                 <li class="nav-item"><a href="{{ route('admin.Quicklink.list') }}"
-                                        class="nav-link {{ Request::is('admin/web/quick_link*') ? 'active' : '' }}">Quick Link</a>
+                                        class="nav-link {{ Request::is('admin/web/quick_link*') ? 'active' : '' }}">Quick
+                                        Link</a>
                                 </li>
                             </ul>
-                        </li>
-
-                        <li class="nav-item nav-item-submenu {{ Request::is('admin/web/iqac_eventtitle*') || Request::is('admin/web/iqac_event*') ? 'nav-item-open' : '' }}">
-                            <a href="#" class="nav-link"><i class="fa fa-certificate"></i> <span>IQAC Event</span></a>
-
-                            <ul class="nav nav-group-sub" data-submenu-title="Layouts"
-                                style="{{ Request::is('admin/web/iqac_eventtitle*') || Request::is('admin/web/iqac_event*') ? 'display:block' : '' }}">
-
-                                <li class="nav-item"><a href="{{ route('admin.IqacEventTitle.list') }}"
-                                        class="nav-link {{ Request::is('admin/web/iqac_eventtitle*') ? 'active' : '' }}">Title</a></li>
-
-                                <li class="nav-item"><a href="{{ route('admin.IqacEvent.list') }}"
-                                        class="nav-link {{ Request::is('admin/web/iqac_event*') ? 'active' : '' }}">Event</a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li class="nav-item nav-item-submenu {{ Request::is('admin/web/evaluation_title*') || Request::is('admin/web/evaluation_report*') ? 'nav-item-open' : '' }}">
-                            <a href="#" class="nav-link"> <i class="fas fa-clipboard-check"></i> <span>IQAC Evaluation Report</span></a>
-
-                            <ul class="nav nav-group-sub" data-submenu-title="Layouts"
-                                style="{{ Request::is('admin/web/evaluation_title*') || Request::is('admin/web/evaluation_report*') ? 'display:block' : '' }}">
-
-                                <li class="nav-item"><a href="{{ route('admin.Evaluation.index') }}"
-                                        class="nav-link {{ Request::is('admin/web/evaluation_title*') ? 'active' : '' }}">Title</a></li>
-
-                                <li class="nav-item"><a href="{{ route('admin.evaluation_report.list') }}"
-                                        class="nav-link {{ Request::is('admin/web/evaluation_report*') ? 'active' : '' }}">Evaluation Report</a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li class="nav-item nav-item-submenu {{ Request::is('admin/web/committes_title*') || Request::is('admin/web/committes_cells*') ? 'nav-item-open' : '' }}">
-                            <a href="#" class="nav-link"> <i class="fas fa-check-circle"></i> <span>IQAC Committees & Cells</span></a>
-
-                            <ul class="nav nav-group-sub" data-submenu-title="Layouts"
-                                style="{{ Request::is('admin/web/committes_title*') || Request::is('admin/web/committes_cells*') ? 'display:block' : '' }}">
-
-                                <li class="nav-item"><a href="{{ route('admin.CommitteesCellsTitle.list') }}"
-                                        class="nav-link {{ Request::is('admin/web/committes_title*') ? 'active' : '' }}">Title</a></li>
-
-                                <li class="nav-item"><a href="{{ route('admin.committesCells.list') }}"
-                                        class="nav-link {{ Request::is('admin/web/committes_cells*') ? 'active' : '' }}">Committees & Cells</a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li class="nav-item nav-item-submenu {{ Request::is('admin/web/syllabus_title*') || Request::is('admin/web/syllabus*') ? 'nav-item-open' : '' }}">
-                            <a href="#" class="nav-link"> <i class="fas fa-check-circle"></i> <span>Syllabus</span></a>
-
-                            <ul class="nav nav-group-sub" data-submenu-title="Layouts"
-                                style="{{ Request::is('admin/web/syllabus_title*') || Request::is('admin/web/syllabus*') ? 'display:block' : '' }}">
-
-                                <li class="nav-item"><a href="{{ route('admin.syllabus.index') }}"
-                                        class="nav-link {{ Request::is('admin/web/syllabus_title*') ? 'active' : '' }}">Department</a></li>
-
-                                <li class="nav-item"><a href="{{ route('admin.syllabus.list') }}"
-                                        class="nav-link {{ Request::is('admin/web/syllabus*') ? 'active' : '' }}">Syllabus</a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li class="nav-item nav-item-submenu {{ Request::is('admin/web/gyangrah*') || Request::is('admin/web/harmony*') ? 'nav-item-open' : '' }}">
-                            <a href="#" class="nav-link"> <i class="fas fa-check-circle"></i> <span>Annual Magazine</span></a>
-
-                            <ul class="nav nav-group-sub" data-submenu-title="Layouts"
-                                style="{{ Request::is('admin/web/gyangrah*') || Request::is('admin/web/harmony*') ? 'display:block' : '' }}">
-
-                                <li class="nav-item"><a href="{{ route('admin.gyangrah.list') }}"
-                                        class="nav-link {{ Request::is('admin/web/gyangrah*') ? 'active' : '' }}">Gyanagrah</a></li>
-
-                                <li class="nav-item"><a href="{{ route('admin.harmony.list') }}"
-                                        class="nav-link {{ Request::is('admin/web/harmony*') ? 'active' : '' }}">Harmony</a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li class="nav-item nav-item-submenu {{ Request::is('admin/web/authorities*') || Request::is('admin/web/position*') || Request::is('admin/web/authority*') ? 'nav-item-open' : '' }}">
-                            <a href="#" class="nav-link"> <i class="fas fa-check-circle"></i> <span>University Authorities</span></a>
-
-                            <ul class="nav nav-group-sub" data-submenu-title="Layouts"
-                                style="{{ Request::is('admin/web/authorities*') || Request::is('admin/web/position*') || Request::is('admin/web/authority*') ? 'display:block' : '' }}">
-
-                                <li class="nav-item"><a href="{{ route('admin.authorities.list') }}"
-                                        class="nav-link {{ Request::is('admin/web/authorities*') ? 'active' : '' }}">Title</a></li>
-
-                                <li class="nav-item"><a href="{{ route('admin.position.list') }}"
-                                        class="nav-link {{ Request::is('admin/web/position*') ? 'active' : '' }}">Position</a></li>
-
-                                <li class="nav-item"><a href="{{ route('admin.authority.list') }}"
-                                        class="nav-link {{ Request::is('admin/web/authority*') ? 'active' : '' }}">Authorities</a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li class="nav-item nav-item-submenu {{ Request::is('admin/web/university_officers*') || Request::is('admin/web/university_officers*') ? 'nav-item-open' : '' }}">
-                            <a href="#" class="nav-link"> <i class="fas fa-check-circle"></i> <span>University Administrations</span></a>
-
-                            <ul class="nav nav-group-sub" data-submenu-title="Layouts"
-                                style="{{ Request::is('admin/web/university_officers*') || Request::is('admin/web/university_officers*') ? 'display:block' : '' }}">
-
-                                <li class="nav-item"><a href="{{ route('admin.university_officers_title.list') }}"
-                                        class="nav-link {{ Request::is('admin/web/university_officers*') ? 'active' : '' }}">Title</a></li>
-
-                                <li class="nav-item"><a href="{{ route('admin.university_officers.list') }}"
-                                        class="nav-link {{ Request::is('admin/web/university_officers*') ? 'active' : '' }}">Officers</a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="{{ route('admin.actStatus.list') }}"
-                                class="nav-link {{ Request::is('admin/web/act_status*') ? 'active' : '' }}">
-                                <i class="fas fa-exclamation-triangle"></i>
-                                <span>Act & Status</span>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="{{ route('admin.administrative_officers.list') }}"
-                                class="nav-link {{ Request::is('admin/web/administrative_officers*') ? 'active' : '' }}">
-                                <i class="fas fa-exclamation-triangle"></i>
-                                <span>Administrative Officers</span>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="{{ route('admin.bed.list') }}"
-                                class="nav-link {{ Request::is('admin/web/bed*') ? 'active' : '' }}">
-                                <i class="fas fa-exclamation-triangle"></i>
-                                <span>B.Ed</span>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="{{ route('admin.krcWithAicte.list') }}"
-                                class="nav-link {{ Request::is('admin/web/krc_with_aicte*') ? 'active' : '' }}">
-                                <i class="fas fa-exclamation-triangle"></i>
-                                <span>KRC With AICTE Recognition</span>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="{{ route('admin.krcWithoutAicte.list') }}"
-                                class="nav-link {{ Request::is('admin/web/krc_without_aicte*') ? 'active' : '' }}">
-                                <i class="fas fa-exclamation-triangle"></i>
-                                <span>KRC Without AICTE Recognition</span>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="{{ route('admin.alim.list') }}"
-                                class="nav-link {{ Request::is('admin/web/alim*') ? 'active' : '' }}">
-                                <i class="fas fa-exclamation-triangle"></i>
-                                <span>ALIM</span>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="{{ route('admin.fazil.list') }}"
-                                class="nav-link {{ Request::is('admin/web/fazil*') ? 'active' : '' }}">
-                                <i class="fas fa-exclamation-triangle"></i>
-                                <span>FAZIL</span>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="{{ route('admin.enews_letter.list') }}"
-                                class="nav-link {{ Request::is('admin/web/enews_letter*') ? 'active' : '' }}">
-                                <i class="fas fa-exclamation-triangle"></i>
-                                <span>E-News Letter</span>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="{{ route('admin.reports.list') }}"
-                                class="nav-link {{ Request::is('admin/web/reports*') ? 'active' : '' }}">
-                                <i class="fas fa-exclamation-triangle"></i>
-                                <span>Annual Reports</span>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="{{ route('admin.proceedings.list') }}"
-                                class="nav-link {{ Request::is('admin/web/proceedings*') ? 'active' : '' }}">
-                                <i class="fas fa-exclamation-triangle"></i>
-                                <span>Proceedings</span>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="{{ route('admin.grievances_list') }}"
-                                class="nav-link {{ Request::is('admin/web/grievances_list*') ? 'active' : '' }}">
-                                <i class="fas fa-exclamation-triangle"></i>
-                                <span>Student Grievance Redressal Form</span>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="{{ route('admin.studentGrievance.list') }}"
-                                class="nav-link {{ Request::is('admin/web/student_grievance*') ? 'active' : '' }}">
-                                <i class="fas fa-exclamation-triangle"></i>
-                                <span>Student Grievance Redressal Committee</span>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="{{ route('admin.committees.list') }}"
-                                class="nav-link {{ Request::is('admin/web/committees*') ? 'active' : '' }}">
-                                <i class="fas fa-handshake"></i>
-                                <span>IQAC Committees</span>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="{{ route('admin.policies.list') }}"
-                                class="nav-link {{ Request::is('admin/web/policies*') ? 'active' : '' }}">
-                                <i class="fas fa-shield-alt"></i>
-                                <span>IQAC Policies</span>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="{{ route('admin.minutes.list') }}"
-                                class="nav-link {{ Request::is('admin/web/minutes*') ? 'active' : '' }}">
-                                <i class="fas fa-book"></i>
-                                <span>IQAC Minutes</span>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="{{ route('admin.Collabration.list') }}"
-                                class="nav-link {{ Request::is('admin/web/collabration*') ? 'active' : '' }}">
-                                <i class="fas fa-envelope"></i>
-                                <span>IQAC Collabration</span>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="{{ route('admin.Feedback.index') }}"
-                                class="nav-link {{ Request::is('admin/web/feedback*') ? 'active' : '' }}">
-                                <i class="fas fa-comments"></i>
-                                <span>IQAC Feedback</span>
-                            </a>
                         </li>
 
                         <li class="nav-item">
@@ -500,38 +730,6 @@
                                 class="nav-link {{ Request::is('admin/web/mous*') ? 'active' : '' }}">
                                 <i class="fas fa-file-signature"></i>
                                 <span>MOUs</span>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="{{ route('admin.topbar-setting.index') }}"
-                                class="nav-link {{ Request::is('admin/web/topbar-setting') ? 'active' : '' }}">
-                                <i class="fas fa-envelope"></i>
-                                <span>Contact Setting</span>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="{{ route('admin.social-setting.index') }}"
-                                class="nav-link {{ Request::is('admin/web/social-setting') ? 'active' : '' }}">
-                                <i class="fas fa-globe"></i>
-                                <span>Social Setting</span>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="{{ route('admin.slider.index') }}"
-                                class="nav-link {{ Request::is('admin/web/slider') ? 'active' : '' }}">
-                                <i class="fas fa-sliders-h"></i>
-                                <span>Sliders</span>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="{{ route('admin.about-us.index') }}"
-                                class="nav-link {{ Request::is('admin/web/about-us') ? 'active' : '' }}">
-                                <i class="fas fa-info-circle"></i>
-                                <span>About Us</span>
                             </a>
                         </li>
 
@@ -548,22 +746,6 @@
                                 class="nav-link {{ Request::is('admin/web/feature') ? 'active' : '' }}">
                                 <i class="fas fa-cogs"></i>
                                 <span>Features</span>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="{{ route('admin.web-event.index') }}"
-                                class="nav-link {{ Request::is('admin/web/web-event') ? 'active' : '' }}">
-                                <i class="fas fa-calendar-alt"></i>
-                                <span>Event</span>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="{{ route('admin.Overview.list') }}"
-                                class="nav-link {{ Request::is('admin/web/overview*') ? 'active' : '' }}">
-                                <i class="fas fa-chart-pie"></i>
-                                <span>Institution Overview</span>
                             </a>
                         </li>
 
@@ -592,64 +774,7 @@
                             </a>
                         </li>
 
-                        <li class="nav-item">
-                            <a href="{{ route('admin.Team.list') }}"
-                                class="nav-link {{ Request::is('admin/web/team/list') ? 'active' : '' }}">
-                                <i class="fas fa-users"></i>
-                                <span>Team</span>
-                            </a>
-                        </li>
-
-                        <li
-                            class="nav-item nav-item-submenu {{ Request::is('admin/web/news') || Request::is('admin/web/view_news*') ? 'nav-item-open' : '' }}">
-                            <a href="#" class="nav-link"><i class="fas fa-images"></i> <span>News Paper
-                                    Clipping</span></a>
-
-                            <ul class="nav nav-group-sub" data-submenu-title="Layouts"
-                                style="{{ Request::is('admin/web/news') || Request::is('admin/web/view_news*') ? 'display:block' : '' }}">
-
-                                <li class="nav-item"><a href="{{ route('admin.news.index') }}"
-                                        class="nav-link {{ Request::is('admin/web/news') ? 'active' : '' }}">News
-                                        Title</a></li>
-
-                                <li class="nav-item"><a href="{{ route('admin.view_news.list') }}"
-                                        class="nav-link {{ Request::is('admin/web/view_news*') ? 'active' : '' }}">News</a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="{{ route('admin.faq.index') }}"
-                                class="nav-link {{ Request::is('admin/web/faq') ? 'active' : '' }}">
-                                <i class="fas fa-question-circle"></i>
-                                <span>Faqs</span>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="{{ route('admin.campus.list') }}"
-                                class="nav-link {{ Request::is('admin/web/campus*') ? 'active' : '' }}">
-                                <i class="fa fa-graduation-cap"></i>
-                                <span>Campus Section</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.administration.list') }}"
-                                class="nav-link {{ Request::is('admin/web/administration*') ? 'active' : '' }}">
-                                <i class="fa fa-graduation-cap"></i>
-                                <span>Administration Section</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.student.list') }}"
-                                class="nav-link {{ Request::is('admin/web/student*') ? 'active' : '' }}">
-                                <i class="fa fa-graduation-cap"></i>
-                                <span>Student Section</span>
-                            </a>
-                        </li>
-
-                        <li
-                            class="nav-item nav-item-submenu {{ Request::is('admin/web/gallery') || Request::is('admin/web/galleries*') ? 'nav-item-open' : '' }}">
+                        {{-- <li class="nav-item nav-item-submenu {{ Request::is('admin/web/gallery') || Request::is('admin/web/galleries*') ? 'nav-item-open' : '' }}">
                             <a href="#" class="nav-link"><i class="fas fa-images"></i> <span>Gallery</span></a>
 
                             <ul class="nav nav-group-sub" data-submenu-title="Layouts"
@@ -663,15 +788,7 @@
                                         class="nav-link {{ Request::is('admin/web/galleries*') ? 'active' : '' }}">Gallery</a>
                                 </li>
                             </ul>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="{{ route('admin.testimonial.index') }}"
-                                class="nav-link {{ Request::is('admin/web/testimonial') ? 'active' : '' }}">
-                                <i class="fas fa-quote-left"></i>
-                                <span>Testimonial</span>
-                            </a>
-                        </li>
+                        </li> --}}
 
                         <li class="nav-item">
                             <a href="{{ route('admin.Mediapath.list') }}"

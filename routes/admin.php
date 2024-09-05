@@ -56,6 +56,7 @@ use App\Http\Controllers\Admin\AnnualReportsController;
 use App\Http\Controllers\Admin\EnewsLetterController;
 use App\Http\Controllers\Admin\AdministrativeController;
 use App\Http\Controllers\Admin\ActStatusController;
+use App\Http\Controllers\Admin\MonographController;
 use App\Http\Controllers\Admin\OverviewController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ShiftController;
@@ -486,6 +487,20 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
         Route::get('/harmony/edit/{id}', [AnnualMagazineController::class, 'harmonyEdit'])->name('harmony.edit');
         Route::post('/harmony/update', [AnnualMagazineController::class, 'harmonyUpdate'])->name('harmony.update');
         Route::get('/harmony/delete/{id}', [AnnualMagazineController::class, 'harmonyDelete'])->name('harmony.delete');
+
+        //Monograph
+        Route::get('/monograph/list', [MonographController::class, 'List'])->name('monograph.list');
+        Route::post('/monograph/store', [MonographController::class, 'Store'])->name('monograph.store');
+        Route::get('/monograph/edit/{id}', [MonographController::class, 'Edit'])->name('monograph.edit');
+        Route::post('/monograph/update', [MonographController::class, 'Update'])->name('monograph.update');
+        Route::get('/monograph/delete/{id}', [MonographController::class, 'Delete'])->name('monograph.delete');
+
+        //Documentation
+        Route::get('/documentation/list', [MonographController::class, 'documentationList'])->name('documentation.list');
+        Route::post('/documentation/store', [MonographController::class, 'documentationStore'])->name('documentation.store');
+        Route::get('/documentation/edit/{id}', [MonographController::class, 'documentationEdit'])->name('documentation.edit');
+        Route::post('/documentation/update', [MonographController::class, 'documentationUpdate'])->name('documentation.update');
+        Route::get('/documentation/delete/{id}', [MonographController::class, 'documentationDelete'])->name('documentation.delete');
 
         //Annual Reports
         Route::get('/reports/list', [AnnualReportsController::class, 'list'])->name('reports.list');

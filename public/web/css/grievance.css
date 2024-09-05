@@ -95,7 +95,7 @@ textarea {
 }
 
 .container {
-    padding: 15px 15px;
+    /* padding: 15px 15px; */
     margin: 0 auto;
     width: 100%;
     box-sizing: border-box;
@@ -120,10 +120,10 @@ textarea {
 }
 
 @media (max-width: 767.98px) {
-    .container {
+    /* .container {
         padding: 0 20px;
         padding-left: 30px;
-    }
+    } */
 }
 
 element.style {
