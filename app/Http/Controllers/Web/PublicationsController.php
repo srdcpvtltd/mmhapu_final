@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Models\AnnualReport;
+use App\Models\Documentation;
 use App\Models\EnewsLetter;
 use App\Models\Gyangrah;
 use App\Models\Harmony;
@@ -18,7 +19,8 @@ class PublicationsController extends Controller
         return view('web.proceedings', compact('proceedings'));
     }
     public function documentation(){
-        return view('web.documentation');
+        $documentation = Documentation::all();
+        return view('web.documentation', compact('documentation'));
     }
     public function annualMagazine(){
         return view('web.annual_magazine');

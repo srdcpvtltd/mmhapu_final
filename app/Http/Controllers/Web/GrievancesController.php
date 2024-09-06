@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Models\AntiRaging;
 use App\Models\Grievance;
 use App\Models\State;
 use Illuminate\Http\Request;
@@ -61,5 +62,10 @@ class GrievancesController extends Controller
         $storeGrievances->save();
         toastr()->success('Your Grievance From Submitted');
         return redirect()->back();
+    }
+
+    public function antiRaging(){
+        $antiRaging = AntiRaging::all();
+        return view('web.anti_raging', compact('antiRaging'));
     }
 }

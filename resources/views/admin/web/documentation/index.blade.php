@@ -52,32 +52,33 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Name</th>
+                                            <th>Button Text</th>
                                             <th>Color</th>
                                             <th>Document</th>
                                             <th>Action</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
-                                    {{-- <tbody>
+                                    <tbody>
                                         @php
                                             $i = 1;
                                         @endphp
-                                        @foreach ($monograph as $data)
+                                        @foreach ($documentation as $data)
                                             <tr>
                                                 <td>{{ $i }}</td>
-                                                <td>{{ $data->name }}</td>
+                                                <td>{{ $data->btn_text }}</td>
+                                                <td>{{ $data->color }}</td>
                                                 <td>
-                                                    <embed src="{{ asset('uploads/Monograph/' . $data->file) }}"
+                                                    <embed src="{{ asset('uploads/Documentation/' . $data->file) }}"
                                                         type="application/pdf" width="100" height="80">
                                                 </td>
                                                 <td>
                                                     <a class="btn btn-primary btn-sm"
-                                                        href="{{ route('admin.monograph.edit', $data->id) }}">Edit</a>
+                                                        href="{{ route('admin.documentation.edit', $data->id) }}">Edit</a>
                                                 </td>
                                                 <td>
                                                     <a class="btn btn-danger btn-sm"
-                                                        onclick="confirmDelete('{{ route('admin.monograph.delete', $data->id) }}')">Delete</a>
+                                                        onclick="confirmDelete('{{ route('admin.documentation.delete', $data->id) }}')">Delete</a>
                                                 </td>
                                             </tr>
                                             @php
@@ -85,7 +86,7 @@
                                             @endphp
                                         @endforeach
 
-                                    </tbody> --}}
+                                    </tbody>
                                 </table>
                             </div>
                         </div>

@@ -80,32 +80,33 @@ class MonographController extends Controller
         return redirect()->back();
     }
     public function documentationEdit($id){
-        $Edit = Documentation::find($id);
-        return view('admin.web.monograph.edit', compact('Edit'));
+        $documentationEdit = Documentation::find($id);
+        return view('admin.web.documentation.edit', compact('documentationEdit'));
     }
     public function documentationUpdate(Request $request){
-        $Update = Documentation::find($request->id);
-        $Update->name = $request->name;
+        $documentationUpdate = Documentation::find($request->id);
+        $documentationUpdate->btn_text = $request->btn_text;
+        $documentationUpdate->color = $request->color;
         if($request->hasFile('file')){
-            if($Update->file && file_exists(public_path('uploads/Monograph/'. $Update->file))){
-                unlink(public_path('uploads/Monograph/' . $Update->file));
+            if($documentationUpdate->file && file_exists(public_path('uploads/Documentation/'. $documentationUpdate->file))){
+                unlink(public_path('uploads/Documentation/' . $documentationUpdate->file));
             }
             $pdf= $request->file('file');
             $pdfName = time() . '_' . $pdf->getClientOriginalName();
-            $pdf->move(public_path('uploads/Monograph'), $pdfName);
-            $Update->file = $pdfName;
+            $pdf->move(public_path('uploads/Documentation'), $pdfName);
+            $documentationUpdate->file = $pdfName;
         }
-        $Update->save();
-        toastr()->success('Monograph Updated Successfully');
-        return redirect()->route('admin.monograph.list');
+        $documentationUpdate->save();
+        toastr()->success('Documentation Updated Successfully');
+        return redirect()->route('admin.documentation.list');
     }
     public function documentationDelete($id){
-        $Delete = Documentation::find($id);
-        if($Delete){
-            if ($Delete->file && file_exists(public_path('uploads/Monograph/' . $Delete->file))) {
-                unlink(public_path('uploads/Monograph/' . $Delete->file));
+        $documentationDelete = Documentation::find($id);
+        if($documentationDelete){
+            if ($documentationDelete->file && file_exists(public_path('uploads/Documentation/' . $documentationDelete->file))) {
+                unlink(public_path('uploads/Documentation/' . $documentationDelete->file));
             }
-            $Delete->delete();
+            $documentationDelete->delete();
             toastr()->success('Deleted Successfully');
             return redirect()->back();
         }

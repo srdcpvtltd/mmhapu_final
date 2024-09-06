@@ -73,7 +73,6 @@ class AcademicsController extends Controller
     }
 
     //Alim
-
     public function alimList(){
         $Alim = Alim::all();
         return view('admin.web.alim.list', compact('Alim'));

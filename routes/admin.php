@@ -56,6 +56,7 @@ use App\Http\Controllers\Admin\AnnualReportsController;
 use App\Http\Controllers\Admin\EnewsLetterController;
 use App\Http\Controllers\Admin\AdministrativeController;
 use App\Http\Controllers\Admin\ActStatusController;
+use App\Http\Controllers\Admin\AntiragingController;
 use App\Http\Controllers\Admin\MonographController;
 use App\Http\Controllers\Admin\OverviewController;
 use App\Http\Controllers\Admin\UserController;
@@ -501,6 +502,14 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
         Route::get('/documentation/edit/{id}', [MonographController::class, 'documentationEdit'])->name('documentation.edit');
         Route::post('/documentation/update', [MonographController::class, 'documentationUpdate'])->name('documentation.update');
         Route::get('/documentation/delete/{id}', [MonographController::class, 'documentationDelete'])->name('documentation.delete');
+
+         //Anti-Raging
+         Route::get('/anti_raging/list', [AntiragingController::class, 'list'])->name('antiRaging.list');
+         Route::get('/anti_raging/add', [AntiragingController::class, 'add'])->name('antiRaging.add');
+         Route::post('/anti_raging/store', [AntiragingController::class, 'store'])->name('antiRaging.store');
+         Route::get('/anti_raging/edit/{id}', [AntiragingController::class, 'edit'])->name('antiRaging.edit');
+         Route::post('/anti_raging/update', [AntiragingController::class, 'update'])->name('antiRaging.update');
+         Route::get('/anti_raging/delete/{id}', [AntiragingController::class, 'delete'])->name('antiRaging.delete');
 
         //Annual Reports
         Route::get('/reports/list', [AnnualReportsController::class, 'list'])->name('reports.list');

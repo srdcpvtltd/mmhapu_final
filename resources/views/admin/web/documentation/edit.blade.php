@@ -1,22 +1,26 @@
 @extends('admin.layout.index')
 
 @section('title')
-    MONOGRAPH
+    DOCUMENTATION
 @endsection
 
 @section('content')
     <div class="card">
         <div class="card-header header-elements-inline">
-            <h5 class="card-title">Edit Monograph</h5>
+            <h5 class="card-title">Edit Documentation</h5>
         </div>
         <div class="col-lg-12">
-            <form action="{{ route('admin.monograph.update') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('admin.documentation.update') }}" method="post" enctype="multipart/form-data">
                 @csrf
-                <input type="hidden" name="id" value="{{ $Edit->id }}">
+                <input type="hidden" name="id" value="{{ $documentationEdit->id }}">
                 <div class="row">
                     <div class="col-lg-6 mb-3">
-                        <label for="name" class="form-label">Name<span style="color: red">*</span></label>
-                        <input type="text" class="form-control" name="name" value=" {{ $Edit->name }} " required>
+                        <label for="name" class="form-label">Button Text<span style="color: red">*</span></label>
+                        <input type="text" class="form-control" name="btn_text" value="{{ $documentationEdit->btn_text }}" required>
+                    </div>
+                    <div class="col-lg-6 mb-3">
+                        <label for="Color" class="form-label">Color<span style="color: red">*</span></label>
+                        <input type="color" class="form-control" name="color" value="{{ $documentationEdit->color }}" required>
                     </div>
                     <div class="col-lg-6 mb-3">
                         <label for="file" class="form-label">File<span style="color: red">*</span></label>

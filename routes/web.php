@@ -149,6 +149,9 @@ Route::middleware(['XSS'])->namespace('Web')->group(function () {
     //documentation
     Route::get('/documentation', [PublicationsController::class, 'documentation'])->name('documentation');
 
+    //documentation
+    Route::get('/anti_raging', [GrievancesController::class, 'antiRaging'])->name('antiRaging');
+
     //annual_magazine
     Route::get('/annual_magazine', [PublicationsController::class, 'annualMagazine'])->name('annualMagazine');
     Route::get('/gyangrah', [PublicationsController::class, 'gyangrah'])->name('gyangrah');
