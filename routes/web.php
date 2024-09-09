@@ -36,6 +36,7 @@ use App\Http\Controllers\Web\MissionVisionController;
 use App\Http\Controllers\Web\NotificationsController;
 use App\Http\Controllers\Web\OrdinancesController;
 use App\Http\Controllers\Web\PublicationsController;
+use App\Http\Controllers\Web\StudentSectionController;
 use App\Http\Controllers\Web\VcController;
 use App\Http\Controllers\Web\WebFacultyController;
 
@@ -177,6 +178,9 @@ Route::middleware(['XSS'])->namespace('Web')->group(function () {
 
     //B.Ed
     Route::get('/bed', [AcademicController::class, 'bed'])->name('bed');
+
+    //Application for Online Certificate
+    Route::get('/online_certificate', [StudentSectionController::class, 'onlineCertificate'])->name('onlineCertificate');
 
     //Team
     Route::get('/view-team/{id}', [TeamController::class, 'viewTeam'])->name('viewTeam');
