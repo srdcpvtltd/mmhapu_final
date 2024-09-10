@@ -181,6 +181,7 @@ Route::middleware(['XSS'])->namespace('Web')->group(function () {
 
     //Application for Online Certificate
     Route::get('/online_certificate', [StudentSectionController::class, 'onlineCertificate'])->name('onlineCertificate');
+    Route::post('/certificate_store', [StudentSectionController::class, 'certificateStore'])->name('certificateStore');
 
     //Team
     Route::get('/view-team/{id}', [TeamController::class, 'viewTeam'])->name('viewTeam');
