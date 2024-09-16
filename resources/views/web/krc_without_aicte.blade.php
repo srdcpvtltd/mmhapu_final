@@ -36,11 +36,20 @@
                             <table class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th class="text-center">Designation</th>
-                                        <th class="text-center">Name</th>
+                                        <th class="text-center">File No.</th>
+                                        <th class="text-center">Name of the KRCN</th>
+                                        <th class="text-center">Management</th>
+                                        <th class="text-center">Affiliating Body</th>
+                                        <th class="text-center">Course Name</th>
+                                        <th class="text-center">Intake</th>
+                                        <th class="text-center">Session</th>
+                                        <th class="text-center">District</th>
+                                        <th class="text-center">Address</th>
                                         <th class="text-center">Email</th>
+                                        <th class="text-center">Incharge of KRCN</th>
                                         <th class="text-center">Contact</th>
-                                        <th class="text-center">Resume</th>
+                                        <th class="text-center">Code</th>
+                                        <th class="text-center">AICTE</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -49,10 +58,19 @@
                                     @endphp
                                     @foreach ($krc_without_aicte as $data)
                                         <tr>
-                                            <td> {{ $data->designation }} </td>
+                                            <td> {{ $data->file_no }} </td>
                                             <td> {{ $data->name }} </td>
+                                            <td> {{ $data->management }} </td>
+                                            <td> {{ $data->affiliating }} </td>
+                                            <td> {{ $data->course_name }} </td>
+                                            <td> {{ $data->intake }} </td>
+                                            <td> {{ $data->session }} </td>
+                                            <td> {{ $data->district }} </td>
+                                            <td> {{ $data->address }} </td>
                                             <td> {{ $data->email }} </td>
+                                            <td> {{ $data->incharge }} </td>
                                             <td> {{ $data->contact }} </td>
+                                            <td> {{ $data->code }} </td>
                                             <td style="padding: 15px">
                                                 <center><a target="blank" href=" {{ asset('uploads/krc/'. $data->resume) }} " target="_blank"  class="resume-icon"> <i class="fa fa-file-pdf-o"></i></a></center>
                                             </td>

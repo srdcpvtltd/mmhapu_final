@@ -239,6 +239,7 @@ return array(
     'App\\Models\\Monograph' => $baseDir . '/app/Models/Monograph.php',
     'App\\Models\\Mou' => $baseDir . '/app/Models/Mou.php',
     'App\\Models\\NoticetypeModel' => $baseDir . '/app/Models/NoticetypeModel.php',
+    'App\\Models\\OnlineCertificate' => $baseDir . '/app/Models/OnlineCertificate.php',
     'App\\Models\\Overview' => $baseDir . '/app/Models/Overview.php',
     'App\\Models\\Passed_exam' => $baseDir . '/app/Models/Passed_exam.php',
     'App\\Models\\PaymentHistory' => $baseDir . '/app/Models/PaymentHistory.php',

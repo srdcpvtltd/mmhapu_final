@@ -858,6 +858,7 @@ class ComposerStaticInit82db1da0ac2180b77f0583029e904a94
         'App\\Models\\Monograph' => __DIR__ . '/../..' . '/app/Models/Monograph.php',
         'App\\Models\\Mou' => __DIR__ . '/../..' . '/app/Models/Mou.php',
         'App\\Models\\NoticetypeModel' => __DIR__ . '/../..' . '/app/Models/NoticetypeModel.php',
+        'App\\Models\\OnlineCertificate' => __DIR__ . '/../..' . '/app/Models/OnlineCertificate.php',
         'App\\Models\\Overview' => __DIR__ . '/../..' . '/app/Models/Overview.php',
         'App\\Models\\Passed_exam' => __DIR__ . '/../..' . '/app/Models/Passed_exam.php',
         'App\\Models\\PaymentHistory' => __DIR__ . '/../..' . '/app/Models/PaymentHistory.php',

@@ -14,50 +14,71 @@
                 </div>
             </div>
         </div>
-        <table class="table datatable-save-state">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Designation</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Contact</th>
-                    <th>Document</th>
-                    <th>Action</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                @php
-                    $i = 1;
-                @endphp
-                @foreach ($WithoutAicte as $data)
+        <div style="max-width: 100%; overflow-x: auto;">
+            <table class="table datatable-save-state">
+                <thead>
                     <tr>
-                        <td>{{ $i }}</td>
-                        <td>{{ $data->designation }}</td>
-                        <td>{{ $data->name }}</td>
-                        <td>{{ $data->email }}</td>
-                        <td>{{ $data->contact }}</td>
-                        <td>
-                            <embed src="{{ asset('uploads/krc/' . $data->resume) }}" type="application/pdf" width="100"
-                                height="80">
-                        </td>
-                        <td>
-                            <a class="btn btn-icon btn-primary btn-sm"
-                                href="{{ route('admin.krcWithoutAicte.edit', $data->id) }}"><i class="far fa-edit"></i></a>
-                        </td>
-                        <td>
-                            <a class="btn btn-icon btn-danger btn-sm"
-                                onclick="confirmDelete('{{ route('admin.krcWithoutAicte.delete', $data->id) }}')"><i
-                                    class="fas fa-trash-alt"></i></a>
-                        </td>
+                        <th>#</th>
+                        <th>File No.</th>
+                        <th>Name of the KRCN</th>
+                        <th>Management</th>
+                        <th>Affiliating Body</th>
+                        <th>Course Name</th>
+                        <th>Intake</th>
+                        <th>Session</th>
+                        <th>District</th>
+                        <th>Address</th>
+                        <th>Email</th>
+                        <th>Incharge of KRCN</th>
+                        <th>Contact</th>
+                        <th>Code</th>
+                        <th>Document</th>
+                        <th>Action</th>
+                        <th>Action</th>
                     </tr>
+                </thead>
+                <tbody>
                     @php
-                        $i++;
+                        $i = 1;
                     @endphp
-                @endforeach
-            </tbody>
-        </table>
+                    @foreach ($WithoutAicte as $data)
+                        <tr>
+                            <td>{{ $i }}</td>
+                            <td>{{ $data->file_no }}</td>
+                            <td>{{ $data->name }}</td>
+                            <td>{{ $data->management }}</td>
+                            <td>{{ $data->affiliating }}</td>
+                            <td>{{ $data->course_name }}</td>
+                            <td>{{ $data->intake }}</td>
+                            <td>{{ $data->session }}</td>
+                            <td>{{ $data->district }}</td>
+                            <td>{{ $data->address }}</td>
+                            <td>{{ $data->email }}</td>
+                            <td>{{ $data->incharge }}</td>
+                            <td>{{ $data->contact }}</td>
+                            <td>{{ $data->code }}</td>
+                            <td>
+                                <embed src="{{ asset('uploads/krc/' . $data->resume) }}" type="application/pdf"
+                                    width="100" height="80">
+                            </td>
+                            <td>
+                                <a class="btn btn-icon btn-primary btn-sm"
+                                    href="{{ route('admin.krcWithoutAicte.edit', $data->id) }}"><i
+                                        class="far fa-edit"></i></a>
+                            </td>
+                            <td>
+                                <a class="btn btn-icon btn-danger btn-sm"
+                                    onclick="confirmDelete('{{ route('admin.krcWithoutAicte.delete', $data->id) }}')"><i
+                                        class="fas fa-trash-alt"></i></a>
+                            </td>
+                        </tr>
+                        @php
+                            $i++;
+                        @endphp
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <script>

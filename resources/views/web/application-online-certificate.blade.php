@@ -124,21 +124,21 @@
                                     No. :</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" name="reg_no"
-                                        placeholder="University Registration Number">
+                                        placeholder="University Registration Number" required>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="roll_number" class="col-sm-2 col-form-label text-right">Roll No. :</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" name="roll_no"
-                                        placeholder="University Roll Number">
+                                        placeholder="University Roll Number" required>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="name" class="col-sm-2 col-form-label text-right">Name:</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" name="name"
-                                        placeholder="Full Name In English">
+                                        placeholder="Full Name In English" required>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -151,7 +151,7 @@
                             <div class="form-group row">
                                 <label for="gender" class="col-sm-2 col-form-label text-right">Gender:</label>
                                 <div class="col-sm-10">
-                                    <select class="form-control" name="gender">
+                                    <select class="form-control" name="gender" required>
                                         <option value="Male">Male</option>
                                         <option value="Female">Female</option>
                                         <option value="Other">Other</option>
@@ -162,7 +162,7 @@
                                 <label for="email" class="col-sm-2 col-form-label text-right">Email:</label>
                                 <div class="col-sm-10">
                                     <input type="email" class="form-control" name="email"
-                                        placeholder="Email For Any Type Of Notification">
+                                        placeholder="Email For Any Type Of Notification" required>
                                 </div>
                             </div>
 
@@ -170,7 +170,7 @@
                                 <label for="mobile" class="col-sm-2 col-form-label text-right">Mobile:</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" name="number"
-                                        placeholder="10 digit Mobile Number">
+                                        placeholder="10 digit Mobile Number" required>
                                 </div>
                             </div>
 
@@ -192,7 +192,7 @@
                                     class="col-sm-2 col-form-label text-right">College/Dept.:</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" name="college"
-                                        placeholder="Name of the College / University Department">
+                                        placeholder="Name of the College / University Department" required>
                                 </div>
                             </div>
 
@@ -201,7 +201,7 @@
                                 </label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" name="session"
-                                        placeholder="Session in the format 2014-2017">
+                                        placeholder="Session in the format 2014-2017" required>
                                 </div>
                             </div>
 
@@ -210,7 +210,7 @@
                                     :</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" name="passing_year"
-                                        placeholder="Year of Passing">
+                                        placeholder="Year of Passing" required>
                                 </div>
                             </div>
 
@@ -219,7 +219,7 @@
                                     Degree :</label>
                                 <div class="col-sm-10">
                                     <input type="date" class="form-control" name="recive_degree"
-                                        placeholder="Date after 30 Days from Today">
+                                        placeholder="Date after 30 Days from Today" required>
                                 </div>
                             </div>
 

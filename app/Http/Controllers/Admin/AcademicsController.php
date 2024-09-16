@@ -143,10 +143,20 @@ class AcademicsController extends Controller
     }
     public function WithAicteStore(Request $request){
         $WithAicteStore =new KrcWithAicte;
-        $WithAicteStore->designation = $request->designation;
+        // $WithAicteStore->designation = $request->designation;
+        $WithAicteStore->file_no = $request->file_no;
         $WithAicteStore->name = $request->name;
+        $WithAicteStore->management = $request->management;
+        $WithAicteStore->affiliating = $request->affiliating;
+        $WithAicteStore->course_name = $request->course_name;
+        $WithAicteStore->intake = $request->intake;
+        $WithAicteStore->session = $request->session;
+        $WithAicteStore->district = $request->district;
         $WithAicteStore->email = $request->email;
+        $WithAicteStore->incharge = $request->incharge;
         $WithAicteStore->contact = $request->contact;
+        $WithAicteStore->code = $request->code;
+        $WithAicteStore->address = $request->address;
         if($request->hasFile('resume')){
             $resume = $request->file('resume');
             $resumeName = time(). '_' . $resume->getClientOriginalName();
@@ -163,10 +173,19 @@ class AcademicsController extends Controller
     }
     public function WithAicteUpdate(Request $request){
         $WithAicteUpdate = KrcWithAicte::find($request->id);
-        $WithAicteUpdate->designation = $request->designation;
+        $WithAicteUpdate->file_no = $request->file_no;
         $WithAicteUpdate->name = $request->name;
+        $WithAicteUpdate->management = $request->management;
+        $WithAicteUpdate->affiliating = $request->affiliating;
+        $WithAicteUpdate->course_name = $request->course_name;
+        $WithAicteUpdate->intake = $request->intake;
+        $WithAicteUpdate->session = $request->session;
+        $WithAicteUpdate->district = $request->district;
         $WithAicteUpdate->email = $request->email;
+        $WithAicteUpdate->incharge = $request->incharge;
         $WithAicteUpdate->contact = $request->contact;
+        $WithAicteUpdate->code = $request->code;
+        $WithAicteUpdate->address = $request->address;
         if($request->hasFile('resume')){
             if($WithAicteUpdate->resume && file_exists(public_path('uploads/krc/'. $WithAicteUpdate->resume))){
                 unlink(public_path('uploads/krc/'.  $WithAicteUpdate->resume));
@@ -204,10 +223,19 @@ class AcademicsController extends Controller
     }
     public function WithoutAicteStore(Request $request){
         $WithoutAicteStore =new KrcWithoutAicte;
-        $WithoutAicteStore->designation = $request->designation;
+        $WithoutAicteStore->file_no = $request->file_no;
         $WithoutAicteStore->name = $request->name;
+        $WithoutAicteStore->management = $request->management;
+        $WithoutAicteStore->affiliating = $request->affiliating;
+        $WithoutAicteStore->course_name = $request->course_name;
+        $WithoutAicteStore->intake = $request->intake;
+        $WithoutAicteStore->session = $request->session;
+        $WithoutAicteStore->district = $request->district;
         $WithoutAicteStore->email = $request->email;
+        $WithoutAicteStore->incharge = $request->incharge;
         $WithoutAicteStore->contact = $request->contact;
+        $WithoutAicteStore->code = $request->code;
+        $WithoutAicteStore->address = $request->address;
         if($request->hasFile('resume')){
             $resume = $request->file('resume');
             $resumeName = time(). '_' . $resume->getClientOriginalName();
@@ -224,10 +252,19 @@ class AcademicsController extends Controller
     }
     public function WithoutAicteUpdate(Request $request){
         $WithoutAicteUpdate = KrcWithoutAicte::find($request->id);
-        $WithoutAicteUpdate->designation = $request->designation;
+        $WithoutAicteUpdate->file_no = $request->file_no;
         $WithoutAicteUpdate->name = $request->name;
+        $WithoutAicteUpdate->management = $request->management;
+        $WithoutAicteUpdate->affiliating = $request->affiliating;
+        $WithoutAicteUpdate->course_name = $request->course_name;
+        $WithoutAicteUpdate->intake = $request->intake;
+        $WithoutAicteUpdate->session = $request->session;
+        $WithoutAicteUpdate->district = $request->district;
         $WithoutAicteUpdate->email = $request->email;
+        $WithoutAicteUpdate->incharge = $request->incharge;
         $WithoutAicteUpdate->contact = $request->contact;
+        $WithoutAicteUpdate->code = $request->code;
+        $WithoutAicteUpdate->address = $request->address;
         if($request->hasFile('resume')){
             if($WithoutAicteUpdate->resume && file_exists(public_path('uploads/krc/'. $WithoutAicteUpdate->resume))){
                 unlink(public_path('uploads/krc/'.  $WithoutAicteUpdate->resume));
