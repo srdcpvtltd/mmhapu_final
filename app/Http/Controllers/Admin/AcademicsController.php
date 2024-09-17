@@ -302,10 +302,17 @@ class AcademicsController extends Controller
     }
     public function bedStore(Request $request){
         $bedStore =new Bed;
-        $bedStore->designation = $request->designation;
+        $bedStore->management = $request->management;
+        $bedStore->affiliting = $request->affiliting;
+        $bedStore->intake = $request->intake;
         $bedStore->name = $request->name;
+        $bedStore->district = $request->district;
+        $bedStore->address = $request->address;
         $bedStore->email = $request->email;
+        $bedStore->website = $request->website;
+        $bedStore->director = $request->director;
         $bedStore->contact = $request->contact;
+        $bedStore->code = $request->code;
         if($request->hasFile('resume')){
             $resume = $request->file('resume');
             $resumeName = time(). '_' . $resume->getClientOriginalName();
@@ -322,10 +329,17 @@ class AcademicsController extends Controller
     }
     public function bedUpdate(Request $request){
         $bedUpdate = Bed::find($request->id);
-        $bedUpdate->designation = $request->designation;
+        $bedUpdate->management = $request->management;
+        $bedUpdate->affiliting = $request->affiliting;
+        $bedUpdate->intake = $request->intake;
         $bedUpdate->name = $request->name;
+        $bedUpdate->district = $request->district;
+        $bedUpdate->address = $request->address;
         $bedUpdate->email = $request->email;
+        $bedUpdate->website = $request->website;
+        $bedUpdate->director = $request->director;
         $bedUpdate->contact = $request->contact;
+        $bedUpdate->code = $request->code;
         if($request->hasFile('resume')){
             if($bedUpdate->resume && file_exists(public_path('uploads/bed/'. $bedUpdate->resume))){
                 unlink(public_path('uploads/bed/'.  $bedUpdate->resume));

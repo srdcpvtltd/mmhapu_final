@@ -26,7 +26,7 @@
 <section class="events-list-area section-gap event-page-lists">
     <div class="container">
         <div class="row">
-            <div class="col-sm-9 col-md-9 col-xs-12">
+            <div class="col-sm-9 col-md-12 col-xs-12">
                 <div class="page-title">
                     <h2><span>B.Ed</span></h2>
                 </div>
@@ -36,11 +36,18 @@
                             <table class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th class="text-center">Designation</th>
-                                        <th class="text-center">Name</th>
+                                        <th class="text-center">Management</th>
+                                        <th class="text-center">Affiliting Body</th>
+                                        <th class="text-center">Course Name</th>
+                                        <th class="text-center">Intake</th>
+                                        <th class="text-center">District</th>
+                                        <th class="text-center">Address</th>
                                         <th class="text-center">Email</th>
-                                        <th class="text-center">Contact</th>
-                                        <th class="text-center">Resume</th>
+                                        <th class="text-center">Website</th>
+                                        <th class="text-center">Director/Princepal</th>
+                                        <th class="text-center">Contact No.</th>
+                                        <th class="text-center">Code</th>
+                                        <th class="text-center">AICTE</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -49,10 +56,17 @@
                                     @endphp
                                     @foreach ($Bed as $data)
                                         <tr>
-                                            <td> {{ $data->designation }} </td>
+                                            <td> {{ $data->management }} </td>
+                                            <td> {{ $data->affiliting }} </td>
                                             <td> {{ $data->name }} </td>
+                                            <td> {{ $data->intake }} </td>
+                                            <td> {{ $data->district }} </td>
+                                            <td> {{ $data->address }} </td>
                                             <td> {{ $data->email }} </td>
+                                            <td> {{ $data->website }} </td>
+                                            <td> {{ $data->director }} </td>
                                             <td> {{ $data->contact }} </td>
+                                            <td> {{ $data->code }} </td>
                                             <td style="padding: 15px">
                                                 <center><a target="blank"
                                                         href=" {{ asset('uploads/bed/' . $data->resume) }} "
@@ -70,7 +84,7 @@
                     </div>
                 </div>
             </div>
-            @include('web.layouts.quick-link-about')
+            {{-- @include('web.layouts.quick-link-about') --}}
         </div>
 </section>
 

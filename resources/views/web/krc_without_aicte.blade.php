@@ -26,7 +26,7 @@
 <section class="events-list-area section-gap event-page-lists">
     <div class="container">
         <div class="row">
-            <div class="col-sm-9 col-md-9 col-xs-12">
+            <div class="col-sm-12 col-md-12 col-xs-12">
                 <div class="page-title">
                     <h2><span>KRC </span>Without AICTE Recognition</h2>
                 </div>
@@ -85,7 +85,7 @@
                     </div>
                 </div>
             </div>
-            @include('web.layouts.quick-link-about')
+            {{-- @include('web.layouts.quick-link-about') --}}
         </div>
 </section>
 

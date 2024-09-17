@@ -15,20 +15,48 @@
                 <div class="row">
                     <input type="hidden" name="id" value="{{ $bedEdit->id }}">
                     <div class="col-lg-6 mb-3">
-                        <label for="designation" class="form-label">Designation<span style="color: red">*</span></label>
-                        <input type="text" class="form-control" name="designation" value="{{ $bedEdit->designation }}" required>
+                        <label for="management" class="form-label">Management<span style="color: red">*</span></label>
+                        <input type="text" class="form-control" name="management" value="{{ $bedEdit->management }}" required>
                     </div>
                     <div class="col-lg-6 mb-3">
-                        <label for="name" class="form-label">Name<span style="color: red">*</span></label>
+                        <label for="Affiliting" class="form-label">Affiliting Body<span style="color: red">*</span></label>
+                        <input type="text" class="form-control" name="affiliting" value="{{ $bedEdit->affiliting }}" required>
+                    </div>
+                    <div class="col-lg-6 mb-3">
+                        <label for="name" class="form-label">Course Name<span style="color: red">*</span></label>
                         <input type="text" class="form-control" name="name" value="{{ $bedEdit->name }}" required>
+                    </div>
+                    <div class="col-lg-6 mb-3">
+                        <label for="intake" class="form-label">Intake<span style="color: red">*</span></label>
+                        <input type="text" class="form-control" name="intake" value="{{ $bedEdit->intake }}" required>
+                    </div>
+                    <div class="col-lg-6 mb-3">
+                        <label for="district" class="form-label">District<span style="color: red">*</span></label>
+                        <input type="text" class="form-control" name="district" value="{{ $bedEdit->district }}" required>
+                    </div>
+                    <div class="col-lg-6 mb-3">
+                        <label for="address" class="form-label">Address<span style="color: red">*</span></label>
+                        <input type="text" class="form-control" name="address" value="{{ $bedEdit->address }}" required>
                     </div>
                     <div class="col-lg-6 mb-3">
                         <label for="email" class="form-label">Email<span style="color: red">*</span></label>
                         <input type="email" class="form-control" name="email" value="{{ $bedEdit->email }}" required>
                     </div>
                     <div class="col-lg-6 mb-3">
+                        <label for="website" class="form-label">Website<span style="color: red">*</span></label>
+                        <input type="text" class="form-control" name="website"value="{{ $bedEdit->website }}"  required>
+                    </div>
+                    <div class="col-lg-6 mb-3">
+                        <label for="director" class="form-label">Director/Princepal<span style="color: red">*</span></label>
+                        <input type="text" class="form-control" name="director" value="{{ $bedEdit->director }}" required>
+                    </div>
+                    <div class="col-lg-6 mb-3">
                         <label for="contact" class="form-label">Contact<span style="color: red">*</span></label>
                         <input type="number" class="form-control" name="contact" value="{{ $bedEdit->contact }}" required>
+                    </div>
+                    <div class="col-lg-6 mb-3">
+                        <label for="code" class="form-label">Code<span style="color: red">*</span></label>
+                        <input type="number" class="form-control" name="code" value="{{ $bedEdit->code }}" required>
                     </div>
                     <div class="col-lg-6 mb-3">
                         <label for="document" class="form-label">Document<span style="color: red">*</span></label>

@@ -14,50 +14,66 @@
                 </div>
             </div>
         </div>
-        <table class="table datatable-save-state">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Designation</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Contact</th>
-                    <th>Document</th>
-                    <th>Action</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                @php
-                    $i = 1;
-                @endphp
-                @foreach ($Bed as $data)
+        <div style="max-width: 100%; overflow-x: auto;">
+            <table class="table datatable-save-state">
+                <thead>
                     <tr>
-                        <td>{{ $i }}</td>
-                        <td>{{ $data->designation }}</td>
-                        <td>{{ $data->name }}</td>
-                        <td>{{ $data->email }}</td>
-                        <td>{{ $data->contact }}</td>
-                        <td>
-                            <embed src="{{ asset('uploads/bed/' . $data->resume) }}" type="application/pdf"
-                                width="100" height="80">
-                        </td>
-                        <td>
-                            <a class="btn btn-icon btn-primary btn-sm"
-                                href="{{ route('admin.bed.edit', $data->id) }}"><i class="far fa-edit"></i></a>
-                        </td>
-                        <td>
-                            <a class="btn btn-icon btn-danger btn-sm"
-                                onclick="confirmDelete('{{ route('admin.bed.delete', $data->id) }}')"><i
-                                    class="fas fa-trash-alt"></i></a>
-                        </td>
+                        <th>#</th>
+                        <th>Management</th>
+                        <th>Affiliting Body</th>
+                        <th>Course Name</th>
+                        <th>Intake</th>
+                        <th>District</th>
+                        <th>Address</th>
+                        <th>Email</th>
+                        <th>Website</th>
+                        <th>Director/Princepal</th>
+                        <th>Contact No.</th>
+                        <th>Code</th>
+                        <th>AICTE</th>
+                        <th>Action</th>
+                        <th>Action</th>
                     </tr>
+                </thead>
+                <tbody>
                     @php
-                        $i++;
+                        $i = 1;
                     @endphp
-                @endforeach
-            </tbody>
-        </table>
+                    @foreach ($Bed as $data)
+                        <tr>
+                            <td>{{ $i }}</td>
+                            <td>{{ $data->management }}</td>
+                            <td>{{ $data->affiliting }}</td>
+                            <td>{{ $data->name }}</td>
+                            <td>{{ $data->intake }}</td>
+                            <td>{{ $data->district }}</td>
+                            <td>{{ $data->address }}</td>
+                            <td>{{ $data->email }}</td>
+                            <td>{{ $data->website }}</td>
+                            <td>{{ $data->director }}</td>
+                            <td>{{ $data->contact }}</td>
+                            <td>{{ $data->code }}</td>
+                            <td>
+                                <embed src="{{ asset('uploads/bed/' . $data->resume) }}" type="application/pdf"
+                                    width="100" height="80">
+                            </td>
+                            <td>
+                                <a class="btn btn-icon btn-primary btn-sm"
+                                    href="{{ route('admin.bed.edit', $data->id) }}"><i class="far fa-edit"></i></a>
+                            </td>
+                            <td>
+                                <a class="btn btn-icon btn-danger btn-sm"
+                                    onclick="confirmDelete('{{ route('admin.bed.delete', $data->id) }}')"><i
+                                        class="fas fa-trash-alt"></i></a>
+                            </td>
+                        </tr>
+                        @php
+                            $i++;
+                        @endphp
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <script>
