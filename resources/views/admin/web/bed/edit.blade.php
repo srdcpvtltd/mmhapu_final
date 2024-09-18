@@ -15,6 +15,14 @@
                 <div class="row">
                     <input type="hidden" name="id" value="{{ $bedEdit->id }}">
                     <div class="col-lg-6 mb-3">
+                        <label for="File No." class="form-label">File No.<span style="color: red">*</span></label>
+                        <input type="text" class="form-control" name="file_no" value="{{ $bedEdit->file_no }}" required>
+                    </div>
+                    <div class="col-lg-6 mb-3">
+                        <label for="Name of B.Ed Colleges" class="form-label">Name of B.Ed Colleges<span style="color: red">*</span></label>
+                        <input type="text" class="form-control" name="college_name" value="{{ $bedEdit->college_name }}" required>
+                    </div>
+                    <div class="col-lg-6 mb-3">
                         <label for="management" class="form-label">Management<span style="color: red">*</span></label>
                         <input type="text" class="form-control" name="management" value="{{ $bedEdit->management }}" required>
                     </div>

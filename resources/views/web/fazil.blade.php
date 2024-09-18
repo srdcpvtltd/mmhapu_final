@@ -26,7 +26,7 @@
 <section class="events-list-area section-gap event-page-lists">
     <div class="container">
         <div class="row">
-            <div class="col-sm-9 col-md-9 col-xs-12">
+            <div class="col-sm-12 col-md-12 col-xs-12">
                 <div class="page-title">
                     <h2><span>FAZIL</span></h2>
                 </div>
@@ -36,11 +36,17 @@
                             <table class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th class="text-center">Designation</th>
-                                        <th class="text-center">Name</th>
+                                        <th class="text-center">Name of the Madrasa</th>
+                                        <th class="text-center">Management</th>
+                                        <th class="text-center">Regulating Body</th>
+                                        <th class="text-center">Subject</th>
+                                        <th class="text-center">Intake</th>
+                                        <th class="text-center">District</th>
+                                        <th class="text-center">Address</th>
                                         <th class="text-center">Email</th>
+                                        <th class="text-center">Incharge of Madrasa</th>
                                         <th class="text-center">Contact</th>
-                                        <th class="text-center">Resume</th>
+                                        <th class="text-center">Code</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -49,13 +55,17 @@
                                     @endphp
                                     @foreach ($fazil as $data)
                                         <tr>
-                                            <td> {{ $data->designation }} </td>
-                                            <td> {{ $data->name }} </td>
-                                            <td> {{ $data->email }} </td>
-                                            <td> {{ $data->contact }} </td>
-                                            <td style="padding: 15px">
-                                                <center><a target="blank" href=" {{ asset('uploads/fazil/'. $data->resume) }} " target="_blank"  class="resume-icon"> <i class="fa fa-file-pdf-o"></i></a></center>
-                                            </td>
+                                            <td>{{ $data->name }}</td>
+                                            <td>{{ $data->managment }}</td>
+                                            <td>{{ $data->regulating }}</td>
+                                            <td>{{ $data->course }}</td>
+                                            <td>{{ $data->intake }}</td>
+                                            <td>{{ $data->district }}</td>
+                                            <td>{{ $data->address }}</td>
+                                            <td>{{ $data->email }}</td>
+                                            <td>{{ $data->incharge }}</td>
+                                            <td>{{ $data->contact }}</td>
+                                            <td>{{ $data->code }}</td>
                                         </tr>
                                         @php
                                             $i++;
@@ -67,7 +77,7 @@
                     </div>
                 </div>
             </div>
-            @include('web.layouts.quick-link-about')
+            {{-- @include('web.layouts.quick-link-about') --}}
         </div>
 </section>
 

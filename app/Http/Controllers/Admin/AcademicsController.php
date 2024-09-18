@@ -21,16 +21,23 @@ class AcademicsController extends Controller
     }
     public function fazilStore(Request $request){
         $fazilStore = new Fazil();
-        $fazilStore->designation = $request->designation;
         $fazilStore->name = $request->name;
+        $fazilStore->managment = $request->managment;
+        $fazilStore->regulating = $request->regulating;
+        $fazilStore->course = $request->course;
+        $fazilStore->intake = $request->intake;
+        $fazilStore->district = $request->district;
+        $fazilStore->address = $request->address;
         $fazilStore->email = $request->email;
+        $fazilStore->incharge = $request->incharge;
         $fazilStore->contact = $request->contact;
-        if($request->hasFile('resume')){
-            $resume = $request->file('resume');
-            $resumeName = time(). '_' . $resume->getClientOriginalName();
-            $resume->move(public_path('uploads/fazil'), $resumeName);
-            $fazilStore->resume = $resumeName;
-        }
+        $fazilStore->code = $request->code;
+        // if($request->hasFile('resume')){
+        //     $resume = $request->file('resume');
+        //     $resumeName = time(). '_' . $resume->getClientOriginalName();
+        //     $resume->move(public_path('uploads/fazil'), $resumeName);
+        //     $fazilStore->resume = $resumeName;
+        // }
         $fazilStore->save();
         toastr()->success('New Fazil Added Successfully.');
         return redirect()->route('admin.fazil.list');
@@ -41,19 +48,26 @@ class AcademicsController extends Controller
     }
     public function fazilUpdate(Request $request){
         $fazilUpdate = Fazil::find($request->id);
-        $fazilUpdate->designation = $request->designation;
         $fazilUpdate->name = $request->name;
+        $fazilUpdate->managment = $request->managment;
+        $fazilUpdate->regulating = $request->regulating;
+        $fazilUpdate->course = $request->course;
+        $fazilUpdate->intake = $request->intake;
+        $fazilUpdate->district = $request->district;
+        $fazilUpdate->address = $request->address;
         $fazilUpdate->email = $request->email;
+        $fazilUpdate->incharge = $request->incharge;
         $fazilUpdate->contact = $request->contact;
-        if($request->hasFile('resume')){
-            if($fazilUpdate->resume && file_exists(public_path('uploads/fazil/'. $fazilUpdate->resume))){
-                unlink(public_path('uploads/fazil/'.  $fazilUpdate->resume));
-            }
-            $resume = $request->file('resume');
-            $resumeName = time(). '_' . $resume->getClientOriginalName();
-            $resume->move(public_path('uploads/fazil'), $resumeName);
-            $fazilUpdate->resume = $resumeName;
-        }
+        $fazilUpdate->code = $request->code;
+        // if($request->hasFile('resume')){
+        //     if($fazilUpdate->resume && file_exists(public_path('uploads/fazil/'. $fazilUpdate->resume))){
+        //         unlink(public_path('uploads/fazil/'.  $fazilUpdate->resume));
+        //     }
+        //     $resume = $request->file('resume');
+        //     $resumeName = time(). '_' . $resume->getClientOriginalName();
+        //     $resume->move(public_path('uploads/fazil'), $resumeName);
+        //     $fazilUpdate->resume = $resumeName;
+        // }
         $fazilUpdate->save();
         toastr()->success('Fazil Updated Successfully');
         return redirect()->route('admin.fazil.list');
@@ -82,16 +96,23 @@ class AcademicsController extends Controller
     }
     public function alimStore(Request $request){
         $alimStore = new Alim();
-        $alimStore->designation = $request->designation;
         $alimStore->name = $request->name;
+        $alimStore->managment = $request->managment;
+        $alimStore->regulating = $request->regulating;
+        $alimStore->course = $request->course;
+        $alimStore->intake = $request->intake;
+        $alimStore->district = $request->district;
+        $alimStore->address = $request->address;
         $alimStore->email = $request->email;
+        $alimStore->incharge = $request->incharge;
         $alimStore->contact = $request->contact;
-        if($request->hasFile('resume')){
-            $resume = $request->file('resume');
-            $resumeName = time(). '_' . $resume->getClientOriginalName();
-            $resume->move(public_path('uploads/alim'), $resumeName);
-            $alimStore->resume = $resumeName;
-        }
+        $alimStore->code = $request->code;
+        // if($request->hasFile('resume')){
+        //     $resume = $request->file('resume');
+        //     $resumeName = time(). '_' . $resume->getClientOriginalName();
+        //     $resume->move(public_path('uploads/alim'), $resumeName);
+        //     $alimStore->resume = $resumeName;
+        // }
         $alimStore->save();
         toastr()->success('New Alim Added Successfully.');
         return redirect()->route('admin.alim.list');
@@ -102,19 +123,26 @@ class AcademicsController extends Controller
     }
     public function alimUpdate(Request $request){
         $alimUpdate = Alim::find($request->id);
-        $alimUpdate->designation = $request->designation;
         $alimUpdate->name = $request->name;
+        $alimUpdate->managment = $request->managment;
+        $alimUpdate->regulating = $request->regulating;
+        $alimUpdate->course = $request->course;
+        $alimUpdate->intake = $request->intake;
+        $alimUpdate->district = $request->district;
+        $alimUpdate->address = $request->address;
         $alimUpdate->email = $request->email;
+        $alimUpdate->incharge = $request->incharge;
         $alimUpdate->contact = $request->contact;
-        if($request->hasFile('resume')){
-            if($alimUpdate->resume && file_exists(public_path('uploads/alim/'. $alimUpdate->resume))){
-                unlink(public_path('uploads/alim/'.  $alimUpdate->resume));
-            }
-            $resume = $request->file('resume');
-            $resumeName = time(). '_' . $resume->getClientOriginalName();
-            $resume->move(public_path('uploads/alim'), $resumeName);
-            $alimUpdate->resume = $resumeName;
-        }
+        $alimUpdate->code = $request->code;
+        // if($request->hasFile('resume')){
+        //     if($alimUpdate->resume && file_exists(public_path('uploads/alim/'. $alimUpdate->resume))){
+        //         unlink(public_path('uploads/alim/'.  $alimUpdate->resume));
+        //     }
+        //     $resume = $request->file('resume');
+        //     $resumeName = time(). '_' . $resume->getClientOriginalName();
+        //     $resume->move(public_path('uploads/alim'), $resumeName);
+        //     $alimUpdate->resume = $resumeName;
+        // }
         $alimUpdate->save();
         toastr()->success('Alim Updated Successfully');
         return redirect()->route('admin.alim.list');
@@ -302,6 +330,8 @@ class AcademicsController extends Controller
     }
     public function bedStore(Request $request){
         $bedStore =new Bed;
+        $bedStore->file_no = $request->file_no;
+        $bedStore->college_name = $request->college_name;
         $bedStore->management = $request->management;
         $bedStore->affiliting = $request->affiliting;
         $bedStore->intake = $request->intake;
@@ -329,6 +359,8 @@ class AcademicsController extends Controller
     }
     public function bedUpdate(Request $request){
         $bedUpdate = Bed::find($request->id);
+        $bedUpdate->file_no = $request->file_no;
+        $bedUpdate->college_name = $request->college_name;
         $bedUpdate->management = $request->management;
         $bedUpdate->affiliting = $request->affiliting;
         $bedUpdate->intake = $request->intake;

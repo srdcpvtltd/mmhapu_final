@@ -19,6 +19,8 @@
                 <thead>
                     <tr>
                         <th>#</th>
+                        <th>File No.</th>
+                        <th>Name of B.Ed Colleges</th>
                         <th>Management</th>
                         <th>Affiliting Body</th>
                         <th>Course Name</th>
@@ -30,7 +32,7 @@
                         <th>Director/Princepal</th>
                         <th>Contact No.</th>
                         <th>Code</th>
-                        <th>AICTE</th>
+                        <th>NCTE</th>
                         <th>Action</th>
                         <th>Action</th>
                     </tr>
@@ -42,6 +44,8 @@
                     @foreach ($Bed as $data)
                         <tr>
                             <td>{{ $i }}</td>
+                            <td>{{ $data->file_no }}</td>
+                            <td>{{ $data->college_name }}</td>
                             <td>{{ $data->management }}</td>
                             <td>{{ $data->affiliting }}</td>
                             <td>{{ $data->name }}</td>

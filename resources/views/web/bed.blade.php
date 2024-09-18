@@ -36,6 +36,8 @@
                             <table class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
+                                        <th class="text-center">File No.</th>
+                                        <th class="text-center">Name of B.Ed Colleges</th>
                                         <th class="text-center">Management</th>
                                         <th class="text-center">Affiliting Body</th>
                                         <th class="text-center">Course Name</th>
@@ -56,6 +58,8 @@
                                     @endphp
                                     @foreach ($Bed as $data)
                                         <tr>
+                                            <td> {{ $data->file_no }} </td>
+                                            <td> {{ $data->college_name }} </td>
                                             <td> {{ $data->management }} </td>
                                             <td> {{ $data->affiliting }} </td>
                                             <td> {{ $data->name }} </td>

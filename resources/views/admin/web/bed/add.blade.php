@@ -14,6 +14,14 @@
                 @csrf
                 <div class="row">
                     <div class="col-lg-6 mb-3">
+                        <label for="File No." class="form-label">File No.<span style="color: red">*</span></label>
+                        <input type="text" class="form-control" name="file_no" placeholder="Enter File No." required>
+                    </div>
+                    <div class="col-lg-6 mb-3">
+                        <label for="Name of B.Ed Colleges" class="form-label">Name of B.Ed Colleges<span style="color: red">*</span></label>
+                        <input type="text" class="form-control" name="college_name" placeholder="Enter Name of B.Ed Colleges" required>
+                    </div>
+                    <div class="col-lg-6 mb-3">
                         <label for="management" class="form-label">Management<span style="color: red">*</span></label>
                         <input type="text" class="form-control" name="management" placeholder="Enter Management" required>
                     </div>
