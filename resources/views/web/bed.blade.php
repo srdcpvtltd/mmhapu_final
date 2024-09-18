@@ -49,7 +49,7 @@
                                         <th class="text-center">Director/Princepal</th>
                                         <th class="text-center">Contact No.</th>
                                         <th class="text-center">Code</th>
-                                        <th class="text-center">AICTE</th>
+                                        <th class="text-center">NCTE</th>
                                     </tr>
                                 </thead>
                                 <tbody>
