@@ -83,6 +83,7 @@ use App\Http\Controllers\Admin\QuestionController;
 use App\Http\Controllers\Admin\QuicklinkController;
 use App\Http\Controllers\Admin\QuicklinktitleController;
 use App\Http\Controllers\Admin\QuizController;
+use App\Http\Controllers\Admin\CommitteeController;
 use App\Http\Controllers\Admin\TopbarController;
 use App\Http\Controllers\Admin\Web\AdministrationController;
 use App\Http\Controllers\Admin\Web\CampusController;
@@ -610,6 +611,23 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
         Route::post('/authority/update', [AdministrativeController::class, 'authorityUpdate']) ->name('authority.update');
         Route::get('/authority/delete/{id}', [AdministrativeController::class, 'authorityDelete']) ->name('authority.delete');
         Route::post('/get_position', [AdministrativeController::class, 'getPosition']) ->name('authority.getPosition');
+
+        //Committes Title
+        Route::get('/committe_title/list', [CommitteeController::class, 'committe_titleList'])->name('committe_title.list');
+
+        Route::post('/committe_title/store', [CommitteeController::class,  'committe_titleStore'])->name('committe_title.store');
+
+        Route::post('/committe_title/update', [CommitteeController::class, 'committe_titleUpdate'])->name('committe_title.update');
+
+        Route::get('/committe_title/delete/{id}', [CommitteeController::class, 'committe_titleDelete'])->name('committe_title.delete');
+
+        //Committes
+        Route::get('/committe/list', [CommitteeController::class, 'committeList']) ->name('committe.list');
+        Route::get('/committe/add', [CommitteeController::class, 'committeAdd'])->name('committe.add');
+        Route::post('/committe/store', [CommitteeController::class, 'committeStore'])->name('committe.store');
+        Route::get('/committe/edit/{id}', [CommitteeController::class, 'committeEdit'])->name('committe.edit');
+        Route::post('/committe/update', [CommitteeController::class, 'committeUpdate'])->name('committe.update');
+        Route::get('/committe/delete/{id}', [CommitteeController::class, 'committeDelete'])->name('committe.delete');
 
         //Act & Status
         Route::get('/act_status/list',[ActStatusController::class, 'list']) ->name('actStatus.list');

@@ -62,7 +62,7 @@ class AuthController extends Controller
                 }else{
                     Auth::logout();
                     toastr()->error('User is Inactive By Admin.');
-                    return redirect()->back();
+                    return redirect()->back(); 
                 }
             }
             else  if($user->is_verified && $user->is_active)

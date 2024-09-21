@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Cookie;
 use App\Http\Controllers\Controller;
 use App\Models\Administration;
 use App\Models\Campus;
+use App\Models\Committe;
+use App\Models\CommittesTitle;
 use App\Models\Web\CallToAction;
 use App\Models\Web\Testimonial;
 use Illuminate\Http\Request;
@@ -115,4 +117,10 @@ class IndexController extends Controller
     public function fitIndia(){
         return view('web.fit_india_movement');
     }
+    public function committe(){
+        $title = CommittesTitle::all();
+        $committes = Committe::all();
+        return view('web.committe', compact('title','committes'));
+    }
+
 }

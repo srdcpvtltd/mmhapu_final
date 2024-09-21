@@ -189,14 +189,32 @@
                         </li>
 
                         <li
-                            class="nav-item nav-item-submenu {{ Request::is('admin/web/student_grievance*') || Request::is('admin/web/social-setting') || Request::is('admin/web/topbar-setting') || Request::is('admin/web/slider') || Request::is('admin/web/overview*') || Request::is('admin/web/student*') || Request::is('admin/web/administration*') || Request::is('admin/web/campus*') || Request::is('admin/web/team/list') || Request::is('admin/web/web-event') || Request::is('admin/web/gallery') || Request::is('admin/web/galleries*') ? 'nav-item-open' : '' }}">
+                            class="nav-item nav-item-submenu {{ Request::is('admin/web/student_grievance*') || Request::is('admin/web/social-setting') || Request::is('admin/web/topbar-setting') || Request::is('admin/web/slider') || Request::is('admin/web/overview*') || Request::is('admin/web/student*') || Request::is('admin/web/administration*') || Request::is('admin/web/campus*') || Request::is('admin/web/team/list') || Request::is('admin/web/web-event') || Request::is('admin/web/gallery') || Request::is('admin/web/galleries*') || Request::is('admin/web/committe_title*') || Request::is('admin/web/committe*') ? 'nav-item-open' : '' }}">
                             <a href="#" class="nav-link">
                                 <i class="fas fa-check-circle"></i>
                                 <span>Home Page</span>
                             </a>
 
                             <ul class="nav nav-group-sub" data-submenu-title="Layouts"
-                                style="{{ Request::is('admin/web/student_grievance*') || Request::is('admin/web/social-setting') || Request::is('admin/web/topbar-setting') || Request::is('admin/web/slider') || Request::is('admin/web/overview*') || Request::is('admin/web/student*') || Request::is('admin/web/administration*') || Request::is('admin/web/campus*') || Request::is('admin/web/team/list') || Request::is('admin/web/web-event') || Request::is('admin/web/gallery') || Request::is('admin/web/galleries*') ? 'display:block' : '' }}">
+                                style="{{ Request::is('admin/web/student_grievance*') || Request::is('admin/web/social-setting') || Request::is('admin/web/topbar-setting') || Request::is('admin/web/slider') || Request::is('admin/web/overview*') || Request::is('admin/web/student*') || Request::is('admin/web/administration*') || Request::is('admin/web/campus*') || Request::is('admin/web/team/list') || Request::is('admin/web/web-event') || Request::is('admin/web/gallery') || Request::is('admin/web/galleries*') || Request::is('admin/web/committe_title*') || Request::is('admin/web/committe*') ? 'display:block' : '' }}">
+
+                                <li
+                                    class="nav-item nav-item-submenu {{ Request::is('admin/web/committe_title*') || Request::is('admin/web/committe*') ? 'nav-item-open' : '' }}">
+                                    <a href="#" class="nav-link"><span>Committees</span></a>
+
+                                    <ul class="nav nav-group-sub" data-submenu-title="Layouts"
+                                        style="{{ Request::is('admin/web/committe_title*') || Request::is('admin/web/committe*') ? 'display:block' : '' }}">
+
+                                        <li class="nav-item"><a
+                                                href="{{ route('admin.committe_title.list') }}"
+                                                class="nav-link {{ Request::is('admin/web/committe_title*') ? 'active' : '' }}">Title</a>
+                                        </li>
+
+                                        <li class="nav-item"><a href="{{ route('admin.committe.list') }}"
+                                                class="nav-link {{ Request::is('admin/web/committe*') ? 'active' : '' }}">Committees</a>
+                                        </li>
+                                    </ul>
+                                </li>
 
                                 <li class="nav-item">
                                     <a href="{{ route('admin.slider.index') }}"

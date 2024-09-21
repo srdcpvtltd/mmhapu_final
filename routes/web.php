@@ -206,6 +206,9 @@ Route::middleware(['XSS'])->namespace('Web')->group(function () {
     //fit-india-movement
     Route::get('/fit_india_movement', [IndexController::class, 'fitIndia'])->name('fitIndia');
 
+    //Committe
+    Route::get('/committe', [IndexController::class, 'committe'])->name('committe');
+
 
     // Course Route
     Route::get('/course', [CourseController::class, 'index'])->name('course');
