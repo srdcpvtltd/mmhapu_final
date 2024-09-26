@@ -410,7 +410,7 @@
                                                 <a target="blank"
                                                     href="{{ asset('uploads/web-event/' . $event->attach) }}">
                                                     <img src="{{ asset('uploads/web-event/' . $event->attach) }}"
-                                                        style="height: 6rem; width:10rem">
+                                                        style="height: 10rem; width:15.5rem">
                                                     <h6>{{ $event->title }}<br>[ {{ $event->date }} ]
                                                         <img src="{{ asset('web/images/new.gif') }}"
                                                             style="height: auto !important; width: unset; border: none;" />

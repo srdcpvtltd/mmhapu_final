@@ -35,6 +35,12 @@ class TeamController extends Controller
         $store_team->instagram = $request->instagram;
         $store_team->x = $request->x;
         $store_team->s_description = $request->s_description;
+        if($request->hasFile('resume')){
+            $resume = $request->file('resume');
+            $resumeName = time(). '_' . $resume->getClientOriginalName();
+            $resume->move(public_path('Resume'),$resumeName);
+            $store_team->resume = $resumeName;
+        }
         $store_team->details = $request->details;
 
         $store_team->save();
@@ -64,6 +70,15 @@ class TeamController extends Controller
         $update_team->instagram = $request->instagram;
         $update_team->x = $request->x;
         $update_team->s_description = $request->s_description;
+        if($request->hasFile('resume')){
+            if ($update_team->resume && file_exists(public_path('resume/' . $update_team->resume))) {
+                unlink(public_path('resume/' . $update_team->resume));
+            }
+            $resume = $request->file('resume');
+            $resumeName = time(). '_' . $resume->getClientOriginalName();
+            $resume->move(public_path('Resume'),$resumeName);
+            $update_team->resume = $resumeName;
+        }
         $update_team->details = $request->details;
 
         $update_team->save();

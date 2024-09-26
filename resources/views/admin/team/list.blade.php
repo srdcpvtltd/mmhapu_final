@@ -25,6 +25,7 @@
                     <th>Designation</th>
                     <th>Photo</th>
                     <th>Short description</th>
+                    <th>Resume</th>
                     <th>Action</th>
                     <th>Action</th>
                 </tr>
@@ -42,6 +43,10 @@
                         <td>{{ $team->designation }}</td>
                         <td><img src="{{ asset('Team/' . $team->photo) }}" alt="" width="100"></td>
                         <td>{{ $team->s_description }}</td>
+                        <td>
+                            <embed src="{{ asset('resume/' . $team->resume) }}" type="application/pdf"
+                                width="100" height="80">
+                        </td>
                         <td>
                             <a class="btn btn-icon btn-primary btn-sm" href="{{ route('admin.Team.edit', $team->id) }}"><i
                                     class="far fa-edit"></i></a>

@@ -120,7 +120,6 @@ class IndexController extends Controller
     public function committe(){
         $title = CommittesTitle::all();
         $committes = Committe::all();
-        return view('web.committe', compact('title','committes'));
+        return view('web.committe_topbar', compact('title','committes'));
     }
-
 }

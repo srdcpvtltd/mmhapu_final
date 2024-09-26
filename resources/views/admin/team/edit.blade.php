@@ -59,10 +59,15 @@
                     <label for="notice_type" class="form-label">X ID<span style="color: red">*</span></label>
                     <input type="text" class="form-control" name="x" value="{{ $edit_team->x }}">
                 </div>
-                <div class="col-lg-12 mb-3">
+                <div class="col-lg-6 mb-3">
                     <label for="notice_type" class="form-label">Short description<span style="color: red">*</span></label>
                     <input type="text" class="form-control" name="s_description"
                         value="{{ $edit_team->s_description }}">
+                </div>
+                <div class="col-lg-6 mb-3">
+                    <label for="notice_type" class="form-label">Resume<span
+                            style="color: red">*</span></label>
+                    <input type="file" class="form-control" name="resume" accept=".pdf">
                 </div>
             </div>
             <div class="mb-3">
