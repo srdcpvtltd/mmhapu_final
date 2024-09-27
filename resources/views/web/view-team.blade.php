@@ -1,5 +1,21 @@
 @include('web.layouts.header')
 
+<style>
+    .accordion>dt>a::after {
+        content: "\25BA";
+        /* Unicode for a right-pointing arrow */
+        float: right;
+        /* Position the arrow on the right */
+        transition: transform 0.2s ease;
+        /* Smooth transition for rotation */
+    }
+
+    .accordion>dt>a.open::after {
+        transform: rotate(90deg);
+        /* Rotate the arrow when the section is open */
+    }
+</style>
+
 <section class="banner-area relative about-banner" id="home">
     <div class="overlay overlay-bg"></div>
     <div class="container">
@@ -73,6 +89,32 @@
                             </div>
                         </div>
                     </div>
+                    <hr>
+                    <div class="desc-wrap marquee_text">
+                        <dl class="accordion full-width">
+                            <dt>
+                                <a href="javascript:void(0)">PROFILE</a>
+                            </dt>
+                            <dd style="display: none;">
+                                <div class="executive-table">
+                                    <div class="table-responsive">
+                                        {!! $view_team->details !!}
+                                    </div>
+                                </div>
+                            </dd>
+                            <hr>
+                            <dt>
+                                <a href="javascript:void(0)">STUDY MATERIAL</a>
+                            </dt>
+                            <dd style="display: none;">
+                                <div class="executive-table">
+                                    <div class="table-responsive">
+                                        {!! $view_team->details !!}
+                                    </div>
+                                </div>
+                            </dd>
+                        </dl>
+                    </div>
                 </div>
 
 
@@ -91,5 +133,20 @@
 <script type="text/javascript">
     $(document).ready(function() {
         document.title = "Vice-Chancellor of MGCUB - Mahatma Gandhi Central University, Motihari (Bihar)";
+    });
+</script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('dl.accordion dt').click(function() {
+            const currentDd = $(this).next('dd');
+
+            if (currentDd.is(':visible')) {
+                currentDd.slideUp(); // Close the section if it's already open
+            } else {
+                $('dl.accordion dd').slideUp(); // Close all sections
+                currentDd.slideDown(); // Open the clicked section
+            }
+        });
     });
 </script>
