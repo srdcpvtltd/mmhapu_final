@@ -44,6 +44,21 @@
                     <input type="text" class="form-control" name="designation" value="{{ $edit_team->designation }}">
                 </div>
                 <div class="col-lg-6 mb-3">
+                    <label for="notice_type" class="form-label">Qualification<span style="color: red">*</span></label>
+                    <input type="text" class="form-control" name="qualification" value="{{ $edit_team->qualification }}" placeholder="Enter Qualification"
+                        required>
+                </div>
+                <div class="col-lg-6 mb-3">
+                    <label for="notice_type" class="form-label">Email<span style="color: red">*</span></label>
+                    <input type="email" class="form-control" name="email" value="{{ $edit_team->email }}" placeholder="Enter Email"
+                        required>
+                </div>
+                <div class="col-lg-6 mb-3">
+                    <label for="notice_type" class="form-label">Phone<span style="color: red">*</span></label>
+                    <input type="number" class="form-control" name="phone" value="{{ $edit_team->phone }}" placeholder="Enter Phone"
+                        required>
+                </div>
+                <div class="col-lg-6 mb-3">
                     <label for="notice_type" class="form-label">Photo<span style="color: red">*</span></label>
                     <input type="file" class="form-control" name="photo">
                 </div>
@@ -60,14 +75,14 @@
                     <input type="text" class="form-control" name="x" value="{{ $edit_team->x }}">
                 </div>
                 <div class="col-lg-6 mb-3">
-                    <label for="notice_type" class="form-label">Short description<span style="color: red">*</span></label>
-                    <input type="text" class="form-control" name="s_description"
-                        value="{{ $edit_team->s_description }}">
-                </div>
-                <div class="col-lg-6 mb-3">
                     <label for="notice_type" class="form-label">Resume<span
                             style="color: red">*</span></label>
                     <input type="file" class="form-control" name="resume" accept=".pdf">
+                </div>
+                <div class="col-lg-12 mb-3">
+                    <label for="notice_type" class="form-label">Short description<span style="color: red">*</span></label>
+                    <input type="text" class="form-control" name="s_description"
+                        value="{{ $edit_team->s_description }}">
                 </div>
             </div>
             <div class="mb-3">

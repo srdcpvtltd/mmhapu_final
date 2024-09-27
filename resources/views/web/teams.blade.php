@@ -255,40 +255,41 @@
                             aria-labelledby="pills-info-tab">
 
                             <div class="info">
-                            @if($departmentInfo)
-                                <div class="icon">
-                                    <i class="fa fa-user"></i>
-                                    <span>Head</span>
-                                </div>
-                                <h6> {{ $departmentInfo->head }} </h6>
+                                @if ($departmentInfo)
+                                    <div class="icon">
+                                        <i class="fa fa-user"></i>
+                                        <span>Head</span>
+                                    </div>
+                                    <h6> {{ $departmentInfo->head }} </h6>
 
-                                <div class="icon mt-2">
-                                    <i class="fa fa-map-marker"></i>
-                                    <span>Address</span>
-                                </div>
-                                <h6>{{ $departmentInfo->address }}</h6>
+                                    <div class="icon mt-2">
+                                        <i class="fa fa-map-marker"></i>
+                                        <span>Address</span>
+                                    </div>
+                                    <h6>{{ $departmentInfo->address }}</h6>
 
-                                <div class="icon mt-2">
-                                    <i class="fa fa-phone"></i>
-                                    <span>Phone</span>
-                                </div>
-                                <h6>{{ $departmentInfo->phone }}</h6>
+                                    <div class="icon mt-2">
+                                        <i class="fa fa-phone"></i>
+                                        <span>Phone</span>
+                                    </div>
+                                    <h6>{{ $departmentInfo->phone }}</h6>
 
-                                <div class="icon mt-2">
-                                    <i class="fa fa-envelope"></i>
-                                    <span>Email</span>
-                                </div>
-                                <h6>{{ $departmentInfo->email }}</h6>
+                                    <div class="icon mt-2">
+                                        <i class="fa fa-envelope"></i>
+                                        <span>Email</span>
+                                    </div>
+                                    <h6>{{ $departmentInfo->email }}</h6>
 
-                                <div class="icon mt-2">
-                                    <i class="fa fa-globe"></i>
-                                    <span>Website</span>
-                                </div>
-                                <h6><a href="{{ $departmentInfo->website }}" target="_blank">{{ $departmentInfo->website }}</a></h6>
+                                    <div class="icon mt-2">
+                                        <i class="fa fa-globe"></i>
+                                        <span>Website</span>
+                                    </div>
+                                    <h6><a href="{{ $departmentInfo->website }}"
+                                            target="_blank">{{ $departmentInfo->website }}</a></h6>
                             </div>
-                            @else
+                        @else
                             <h6>No Info Available</h6>
-                         @endif
+                            @endif
                         </div>
 
                         <div class="tab-pane fade" id="pills-profile" role="tabpanel"

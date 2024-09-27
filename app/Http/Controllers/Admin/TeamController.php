@@ -25,6 +25,9 @@ class TeamController extends Controller
         $store_team->faculty_subcat_id = $request->faculty_subcat_id;
         $store_team->name = $request->name;
         $store_team->designation = $request->designation;
+        $store_team->qualification = $request->qualification;
+        $store_team->email = $request->email;
+        $store_team->phone = $request->phone;
         if($request->hasFile('photo')){
             $photo = $request->file('photo');
             $photoName = time(). '_' . $photo->getClientOriginalName();
@@ -60,6 +63,9 @@ class TeamController extends Controller
         $update_team->faculty_subcat_id = $request->faculty_subcat_id;
         $update_team->name = $request->name;
         $update_team->designation = $request->designation;
+        $update_team->qualification = $request->qualification;
+        $update_team->email = $request->email;
+        $update_team->phone = $request->phone;
         if($request->hasFile('photo')){
             $photo = $request->file('photo');
             $photoName = time(). '_' . $photo->getClientOriginalName();

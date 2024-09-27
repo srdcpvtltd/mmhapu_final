@@ -1,6 +1,5 @@
 @include('web.layouts.header')
 
-
 <section class="banner-area relative about-banner" id="home">
     <div class="overlay overlay-bg"></div>
     <div class="container">
@@ -24,7 +23,7 @@
                 <div class="page-title">
                     <h2><span>University </span>Administrators</h2>
                 </div>
-                <div class="mb-20">
+                {{-- <div class="mb-20">
                     <div class="detials">
                         <div class="desc-wrap marquee_text">
                             <div class="whiteBox" style="float: none;">
@@ -33,7 +32,6 @@
                                 <div class="vcBox-content text-justify">
                                     <h5>{{ $view_team->name }}</h5>
                                     <h5>{{$view_team->designation}}</h5>
-                                    {{-- <h5>Mahatma Gandhi Central University, Bihar</h5> --}}
                                     <h5>{{$view_team->s_description}}</h5>
                                     <br />
                                     <p class="text-justify">{!!$view_team->details!!}</p>
@@ -46,7 +44,38 @@
                             </div>
                         </div>
                     </div>
+                </div> --}}
+                <div class="faculty-member mb-20" style="padding: 20px;">
+                    <div class="details" style="display: flex; align-items: flex-start;">
+                        <div class="image" style="flex-shrink: 0; margin-right: 40px; text-align: center;">
+                            <img src="{{ asset('Team/' . $view_team->photo) }}" class="img img-responsive"
+                                style="width: 200px; height:220px; object-fit: cover; border: 1px solid #ddd; border-radius:5% ;">
+                            <div class="name-box"
+                                style="margin-top: 10px; background-color: #0B416F; padding: 10px; border: 1px solid #ccc; display: inline-block;">
+                                <h5 style="margin: 0; color:#fff;"> {{ $view_team->name }}</h5>
+                            </div>
+                        </div>
+                        <div class="info">
+                            <p><strong style="min-width: 90px; display: inline-block;">Designation</strong>:
+                                {{ $view_team->designation }}</p>
+                            <p><strong style="min-width: 90px; display: inline-block;">Qualification</strong>:
+                                {{ $view_team->qualification }}</p>
+                            <p><strong style="min-width: 90px; display: inline-block;">Short Desc.</strong>:
+                                {{ $view_team->s_description }}</p>
+                            <p><strong style="min-width: 90px; display: inline-block;">Mobile</strong>:
+                                {{ $view_team->phone }}</p>
+                            <p><strong style="min-width: 90px; display: inline-block;">Email</strong>:
+                                {{ $view_team->email }}</p>
+                            {{-- <p><strong style="min-width: 90px; display: inline-block;">Time Table</strong>: <a href="{{ $view_team->time_table_link }}" style="color: #d9534f;">M.Sc, B.Sc</a></p> --}}
+                            <div style="margin-top: 10px;">
+                                <a href="{{ asset('Resume/' . $view_team->resume) }}" class="btn btn-primary"
+                                    target="blank">Complete CV</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
+
             </div>
 
             @include('web.layouts.quick-link-about')

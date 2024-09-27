@@ -39,6 +39,21 @@
                             required>
                     </div>
                     <div class="col-lg-6 mb-3">
+                        <label for="notice_type" class="form-label">Qualification<span style="color: red">*</span></label>
+                        <input type="text" class="form-control" name="qualification" placeholder="Enter Qualification"
+                            required>
+                    </div>
+                    <div class="col-lg-6 mb-3">
+                        <label for="notice_type" class="form-label">Email<span style="color: red">*</span></label>
+                        <input type="email" class="form-control" name="email" placeholder="Enter Email"
+                            required>
+                    </div>
+                    <div class="col-lg-6 mb-3">
+                        <label for="notice_type" class="form-label">Phone<span style="color: red">*</span></label>
+                        <input type="number" class="form-control" name="phone" placeholder="Enter Phone"
+                            required>
+                    </div>
+                    <div class="col-lg-6 mb-3">
                         <label for="notice_type" class="form-label">Photo<span style="color: red">*</span></label>
                         <input type="file" class="form-control" name="photo" required>
                     </div>
@@ -56,15 +71,15 @@
                         <input type="text" class="form-control" name="x" placeholder="Enter X ID URL">
                     </div>
                     <div class="col-lg-6 mb-3">
+                        <label for="notice_type" class="form-label">Resume<span
+                                style="color: red">*</span></label>
+                        <input type="file" class="form-control" name="resume" accept=".pdf" required>
+                    </div>
+                    <div class="col-lg-12 mb-3">
                         <label for="notice_type" class="form-label">Short description<span
                                 style="color: red">*</span></label>
                         <input type="text" class="form-control" name="s_description"
                             placeholder="Enter Short description" required>
-                    </div>
-                    <div class="col-lg-6 mb-3">
-                        <label for="notice_type" class="form-label">Resume<span
-                                style="color: red">*</span></label>
-                        <input type="file" class="form-control" name="resume" accept=".pdf" required>
                     </div>
                 </div>
                 <div class="mb-3">
