@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Models\StudyMaterial;
 use App\Models\Team;
 use Illuminate\Request;
 
@@ -14,6 +15,7 @@ class TeamController extends Controller
     }
     public function viewTeam($id){
         $view_team = Team::find($id);
-        return view('web.view-team', compact('view_team'));
+        $study_material = StudyMaterial::where('team_id', $id)->get();
+        return view('web.view-team', compact('view_team','study_material'));
     }
 }

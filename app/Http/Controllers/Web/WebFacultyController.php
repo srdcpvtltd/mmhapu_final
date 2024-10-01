@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\DepartmentInfo;
 use App\Models\FacultyCategory;
 use App\Models\FacultySubcategory;
+use App\Models\StudyMaterial;
 use App\Models\Team;
 use Illuminate\Http\Request;
 
@@ -31,6 +32,7 @@ class WebFacultyController extends Controller
     }
     public function viewfaculty($id){
         $view_team = Team::find($id);
-        return view('web.view-team', compact('view_team'));
+        $study_material = StudyMaterial::where('team_id', $id)->get();
+        return view('web.view-team', compact('view_team','study_material'));
     }
 }

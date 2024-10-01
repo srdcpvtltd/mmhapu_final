@@ -85,6 +85,7 @@ use App\Http\Controllers\Admin\QuicklinktitleController;
 use App\Http\Controllers\Admin\QuizController;
 use App\Http\Controllers\Admin\CommitteeController;
 use App\Http\Controllers\Admin\TopbarController;
+use App\Http\Controllers\Admin\StudymaterialController;
 use App\Http\Controllers\Admin\Web\AdministrationController;
 use App\Http\Controllers\Admin\Web\CampusController;
 use App\Http\Controllers\Admin\Web\MediapathController;
@@ -684,6 +685,14 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
         Route::get('/student/edit{id}', [StudentsectionController::class, 'edit'])->name('student.edit');
         Route::post('/student/update', [StudentsectionController::class, 'update'])->name('student.update');
         Route::get('/student/delete{id}', [StudentsectionController::class, 'delete'])->name('student.delete');
+
+        //Study Material
+        Route::get('study_material/list', [StudymaterialController::class, 'list'])->name('studyMaterial.list');
+        Route::get('study_material/add', [StudymaterialController::class, 'add'])->name('studyMaterial.add');
+        Route::post('study_material/store', [StudymaterialController::class, 'insert'])->name('studyMaterial.insert');
+        Route::get('study_material/edit/{id}', [StudymaterialController::class, 'edit'])->name('studyMaterial.edit');
+        Route::post('study_material/update', [StudymaterialController::class, 'update'])->name('studyMaterial.update');
+        Route::get('study_material/delete/{id}', [StudymaterialController::class, 'delete'])->name('studyMaterial.delete');
 
         Route::resource('news', WebNewsController::class);
         Route::resource('gallery', WebGalleryController::class);

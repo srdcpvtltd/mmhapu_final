@@ -1,18 +1,33 @@
 @include('web.layouts.header')
 
 <style>
-    .accordion>dt>a::after {
-        content: "\25BA";
-        /* Unicode for a right-pointing arrow */
-        float: right;
-        /* Position the arrow on the right */
-        transition: transform 0.2s ease;
-        /* Smooth transition for rotation */
+    .accordion details {
+        margin-bottom: 3px;
+        margin-top: 3px;
     }
 
-    .accordion>dt>a.open::after {
+    .accordion summary {
+        cursor: pointer;
+        /* padding: 10px; */
+        font-weight: bold;
+        position: relative;
+        list-style: none;
+    }
+
+    .accordion summary::after {
+        content: "\f054";
+        font-family: FontAwesome;
+        position: absolute;
+        right: 10px;
+        transition: transform 0.2s ease;
+    }
+
+    .accordion details[open] summary::after {
         transform: rotate(90deg);
-        /* Rotate the arrow when the section is open */
+    }
+
+    .accordion hr {
+        margin: 0;
     }
 </style>
 
@@ -92,27 +107,44 @@
                     <hr>
                     <div class="desc-wrap marquee_text">
                         <dl class="accordion full-width">
-                            <dt>
-                                <a href="javascript:void(0)">PROFILE</a>
-                            </dt>
-                            <dd style="display: none;">
+                            <details>
+                                <summary>PROFILE</summary>
                                 <div class="executive-table">
                                     <div class="table-responsive">
                                         {!! $view_team->details !!}
                                     </div>
                                 </div>
-                            </dd>
+                            </details>
                             <hr>
-                            <dt>
-                                <a href="javascript:void(0)">STUDY MATERIAL</a>
-                            </dt>
-                            <dd style="display: none;">
+                            <details>
+                                <summary>STUDY MATERIAL</summary>
                                 <div class="executive-table">
-                                    <div class="table-responsive">
-                                        {!! $view_team->details !!}
-                                    </div>
+                                    <table class="table table-striped table-bordered">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th>LIST</th>
+                                                <th style="text-align: center;">DOWNLOAD</th>
+                                                <th style="text-align: center;">UPLOADED DATE</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($study_material as $data)
+                                                <tr>
+                                                    <td><b>{{ $data->list }}</b></td>
+                                                    <td style="text-align: center;">
+                                                        <a href="{{ asset('Team/' . $data->pdf) }}" target="_blank"
+                                                            style="font-size: 20px;">
+                                                            <i class="fa fa-download"></i>
+                                                        </a>
+                                                    </td>
+                                                    <td style="text-align: center;">
+                                                        {{ date('m/d/Y', strtotime($data->created_at)) }}</td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
                                 </div>
-                            </dd>
+                            </details>
                         </dl>
                     </div>
                 </div>

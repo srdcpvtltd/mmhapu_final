@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\FacultyCategory;
 use App\Models\FacultySubcategory;
+use App\Models\StudyMaterial;
 use App\Models\Team;
 use Illuminate\Http\Request;
 
@@ -102,4 +103,5 @@ class TeamController extends Controller
         toastr()->error('Something Went Wrong');
         return redirect()->back();
     }
+    
 }
