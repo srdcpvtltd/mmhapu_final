@@ -20,7 +20,7 @@ class StudymaterialController extends Controller
     public function insert(Request $request){
         $request->validate([
             'team_id' => 'required',
-            'list' => 'required|unique:study_materials',
+            'list' => 'required',
             'pdf' => 'required',
         ]);
         $insert = new StudyMaterial();
@@ -44,7 +44,7 @@ class StudymaterialController extends Controller
     public function update(Request $request){
         $request->validate([
             'team_id' => 'required',
-            'list' => 'required|unique:study_materials,list,' . $request->id,
+            'list' => 'required',
         ]);
         $update = StudyMaterial::find($request->id);
         $update->team_id = $request->team_id;

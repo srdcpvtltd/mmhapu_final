@@ -19,6 +19,10 @@ class StudentsectionController extends Controller
     }
     public function store(Request $request)
     {
+        $request->validate([
+            'heading' => 'required',
+            'url' => 'required',
+        ]);
         $store = new Student;
         $store->icon = $request->icon;
         $store->heading = $request->heading;
@@ -35,6 +39,10 @@ class StudentsectionController extends Controller
     }
     public function update(Request $request)
     {
+        $request->validate([
+            'heading' => 'required',
+            'url' => 'required',
+        ]);
         $update = Student::find($request->id);
         $update->icon = $request->icon;
         $update->heading = $request->heading;
@@ -43,14 +51,15 @@ class StudentsectionController extends Controller
         toastr()->success('Edited Successfully!');
         return redirect()->route('admin.student.list');
     }
-    public function delete($id){
+    public function delete($id)
+    {
         $delete = Student::find($id);
-        if($delete){
+        if ($delete) {
             $delete->delete();
             toastr()->success('Deleted Successfully!');
             return redirect()->back();
         }
         toastr()->success('Something Wents Wrong !');
-            return redirect()->back();
+        return redirect()->back();
     }
 }

@@ -17,6 +17,10 @@ class IqaceventController extends Controller
     }
     public function store(Request $request)
     {
+        $request->validate([
+            'title_id'=>'required',
+            'image'=>'required',
+        ]);
         $store = new IqacEvent;
         $store->title_id = $request->title_id;
         if ($request->hasFile('image')) {

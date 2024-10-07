@@ -21,6 +21,20 @@ class TeamController extends Controller
     }
     public function store(Request $request)
     {
+        $request->validate([
+            'faculty_cat_id' => 'required',
+            'faculty_subcat_id' => 'required',
+            'name' => 'required',
+            'designation' => 'required',
+            'qualification' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+            'photo' => 'required',
+            's_description' => 'required',
+            'resume' => 'required',
+            'details' => 'required',
+
+        ]);
         $store_team = new Team;
         $store_team->faculty_cat_id = $request->faculty_cat_id;
         $store_team->faculty_subcat_id = $request->faculty_subcat_id;
@@ -59,6 +73,20 @@ class TeamController extends Controller
     }
     public function update(Request $request)
     {
+        $request->validate([
+            'faculty_cat_id' => 'required',
+            'faculty_subcat_id' => 'required',
+            'name' => 'required',
+            'designation' => 'required',
+            'qualification' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+            'photo' => 'required',
+            's_description' => 'required',
+            'resume' => 'required',
+            'details' => 'required',
+
+        ]);
         $update_team = Team::find($request->id);
         $update_team->faculty_cat_id = $request->faculty_cat_id;
         $update_team->faculty_subcat_id = $request->faculty_subcat_id;
@@ -103,5 +131,4 @@ class TeamController extends Controller
         toastr()->error('Something Went Wrong');
         return redirect()->back();
     }
-    
 }

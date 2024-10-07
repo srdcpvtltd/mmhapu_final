@@ -18,6 +18,8 @@ class StudentGrievanceController extends Controller
     }
     public function store(Request $request){
         $request->validate([
+            'designation' =>'required',
+            'name' =>'required',
             'email' => 'required|email|unique:student_grievance,email',
             'contact' => 'required|string|unique:student_grievance,contact',
         ]);
@@ -39,6 +41,8 @@ class StudentGrievanceController extends Controller
         $update = StudentGrievance::find($request->id);
 
         $request->validate([
+            'designation' =>'required',
+            'name' =>'required',
             'email' => 'required|email|unique:student_grievance,email,'. $update->id,
             'contact' => 'required|string|unique:student_grievance,contact,'. $update->id,
         ]);

@@ -18,6 +18,9 @@ class ViewgalleryController extends Controller
     return view('admin.web.gallery.view-gallery.add', compact('add_gallery'));
    }
    public function store(Request $request){
+    $request->validate([
+        'image'=>'required',
+    ]);
     $store_gallery = new Viewgallery;
     $store_gallery->galleries_id = $request->galleries_id;
 
@@ -38,6 +41,9 @@ class ViewgalleryController extends Controller
     return view('admin.web.gallery.view-gallery.edit', compact('edit_gallery','galleris'));
    }
    public function update(Request $request){
+    $request->validate([
+        'image'=>'required',
+    ]);
     $update_gallery = Viewgallery::find($request->id);
 
     $update_gallery->galleries_id = $request->galleries_id;

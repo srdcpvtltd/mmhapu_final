@@ -16,16 +16,22 @@
                 <div class="row">
                     <div class="col-lg-6 mb-3">
                         <label for="title" class="form-label">Title<span style="color: red">*</span></label>
-                        <input type="text" class="form-control" name="title" value="{{$edit->title}}" required>
+                        <input type="text" class="form-control" name="title" value="{{$edit->title}}">
+                        @error('title')
+                            <span class="text-danger"> {{ $message }} </span>
+                        @enderror
                     </div>
                     <div class="col-lg-6 mb-3">
                         <label for="year" class="form-label">Year<span style="color: red">*</span></label>
-                        <select name="year_id" class="form-control" required>
+                        <select name="year_id" class="form-control">
                             <option value="">Select Year</option>
                             @foreach ($years as $year)
                                 <option value="{{ $year->id }} "> {{ $year->year }} </option>
                             @endforeach
                         </select>
+                        @error('title')
+                            <span class="text-danger"> {{ 'Year field is required' }} </span>
+                        @enderror
                     </div>
                     <div class="col-lg-6 mb-3">
                         <label for="image" class="form-label">Image<span style="color: red">*</span></label>

@@ -109,7 +109,7 @@
                         <dl class="accordion full-width">
                             <details>
                                 <summary>PROFILE</summary>
-                                <div class="executive-table">
+                                <div class="executive-table mt-3">
                                     <div class="table-responsive">
                                         {!! $view_team->details !!}
                                     </div>
@@ -118,7 +118,7 @@
                             <hr>
                             <details>
                                 <summary>STUDY MATERIAL</summary>
-                                <div class="executive-table">
+                                <div class="executive-table mt-3">
                                     <table class="table table-striped table-bordered">
                                         <thead class="thead-dark">
                                             <tr>

@@ -14,6 +14,9 @@ class EvaluationController extends Controller
         return view('admin.web.iqac-evaluation.title.index', compact('evaluations'));
     }
     public function store(Request $request){
+        $request->validate([
+            'title'=> 'required',
+        ]);
         $store = new EvaluationTitle();
         $store->title = $request->title;
         $store->save();
@@ -46,6 +49,7 @@ class EvaluationController extends Controller
         return view('admin.web.iqac-evaluation.evaluation.add', compact('add'));
     }
     public function insert(Request $request){
+        
         $insert = new Evaluation();
         $insert->title_id = $request->title_id;
         $insert->name = $request->name;

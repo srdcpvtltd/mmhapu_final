@@ -9,7 +9,7 @@
         <div class="page-wrapper">
             <div class="row">
                 <div class="col-md-5">
-                    <form class="needs-validation" action="{{ route('admin.IqacEvent.store') }}" method="post"
+                    <form action="{{ route('admin.IqacEvent.store') }}" method="post"
                         enctype="multipart/form-data">
                         @csrf
                         <div class="card">
@@ -19,17 +19,23 @@
                             <div class="card-block pdng">
                                 <!-- Form Start -->
                                 <div class="form-group">
-                                    <label for="title" class="form-label">Title<span>*</span></label>
+                                    <label class="form-label">Title<span>*</span></label>
                                     <select class="form-control" name="title_id">
                                         <option value="">Select Title</option>
                                         @foreach ($title as $data)
                                             <option value="{{ $data->id }}"> {{ $data->title }} </option>
                                         @endforeach
                                     </select>
+                                    @error('title_id')
+                                        <span class="text-danger">{{ 'Title field is required' }}</span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="image" class="form-label">Image<span>*</span></label>
-                                    <input type="file" class="form-control" name="image[]" accept="image/*" multiple required>
+                                    <input type="file" class="form-control" name="image[]" accept="image/*" multiple>
+                                    @error('image')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="card-footer">

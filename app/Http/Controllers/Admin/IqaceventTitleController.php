@@ -22,6 +22,11 @@ class IqaceventTitleController extends Controller
     }
     public function store(Request $request)
     {
+        $request->validate([
+            'title'=>'required',
+            'year_id'=>'required',
+            'image'=>'required',
+        ]);
         $store = new IqaceventTitle();
         $store->title = $request->title;
         $store->year_id = $request->year_id;
@@ -43,6 +48,10 @@ class IqaceventTitleController extends Controller
     }
     public function update(Request $request)
     {
+        $request->validate([
+            'title'=>'required',
+            'year_id'=>'required',
+        ]);
         $update = IqaceventTitle::find($request->id);
         $update->title = $request->title;
         $update->year_id = $request->year_id;

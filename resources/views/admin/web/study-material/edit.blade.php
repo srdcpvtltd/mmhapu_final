@@ -19,15 +19,18 @@
                         <select name="team_id" class="form-control">
                             <option value="">Select University Authority</option>
                             @foreach ($team as $data)
-                                <option value=" {{ $data->id }} " {{ ($data->id == $edit->team_id) ? 'selected' : '' }}>
+                                <option value=" {{ $data->id }} " {{ $data->id == $edit->team_id ? 'selected' : '' }}>
                                     {{ $data->name }} </option>
                             @endforeach
                         </select>
+                        @error('team_id')
+                            <span class="text-danger">{{ 'University Authority is Required' }}</span>
+                        @enderror
                     </div>
                     <div class="col-lg-6 mb-3">
                         <label for="notice_type" class="form-label">List<span style="color: red">*</span></label>
                         <input type="text" class="form-control" name="list" placeholder="Enter List"
-                            value="{{ $edit->list }}" required>
+                            value="{{ $edit->list }}">
                         @error('list')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror

@@ -9,8 +9,7 @@
         <div class="page-wrapper">
             <div class="row">
                 <div class="col-md-5">
-                    <form class="needs-validation" action="{{ route('admin.committe_title.store') }}"
-                        method="post">
+                    <form class="needs-validation" action="{{ route('admin.committe_title.store') }}" method="post">
                         @csrf
                         <div class="card">
                             <div class="card-header">
@@ -20,8 +19,10 @@
                                 <!-- Form Start -->
                                 <div class="form-group">
                                     <label for="title" class="form-label">Title<span>*</span></label>
-                                    <input type="text" name="title" class="form-control" placeholder="Enter Title"
-                                        required>
+                                    <input type="text" name="title" class="form-control" placeholder="Enter Title">
+                                    @error('title')
+                                        <span class="text-danger"> {{ $message }} </span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="card-footer">
@@ -92,6 +93,9 @@
                                                                     <input type="text" class="form-control"
                                                                         id="title{{ $data->id }}" name="title"
                                                                         value="{{ $data->title }}">
+                                                                        @error('title')
+                                                                            <span class="text-danger">{{ $message }}</span>
+                                                                        @enderror
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">

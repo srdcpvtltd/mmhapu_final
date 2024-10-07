@@ -25,7 +25,10 @@
                     </div>
                     <div class="col-lg-6 mb-3">
                         <label for="gallery_type" class="form-label">Photo<span style="color: red">*</span></label>
-                        <input type="file" id="imagesUpload" accept="image/*" class="form-control" name="image" required>
+                        <input type="file" id="imagesUpload" accept="image/*" class="form-control" name="image">
+                        @error('image')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                 </div>
                 <div class="mb-3">

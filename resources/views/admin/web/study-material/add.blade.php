@@ -21,10 +21,13 @@
                                 <option value=" {{ $team->id }} " {{ old('team_id') == $team->id ? 'selected' : '' }}> {{ $team->name }} </option>
                             @endforeach
                         </select>
+                        @error('team_id')
+                            <span class="text-danger"> {{ 'University Authority is Required' }} </span>
+                        @enderror
                     </div>
                     <div class="col-lg-6 mb-3">
                         <label for="notice_type" class="form-label">List<span style="color: red">*</span></label>
-                        <input type="text" class="form-control" name="list" placeholder="Enter List" value="{{ old('list') }}" required>
+                        <input type="text" class="form-control" name="list" placeholder="Enter List" value="{{ old('list') }}">
                         @error('list')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror

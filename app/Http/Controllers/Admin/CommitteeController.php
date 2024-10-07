@@ -14,6 +14,9 @@ class CommitteeController extends Controller
         return view('admin.web.committee.title.index', compact('titles'));
     }
     public function committe_titleStore(Request $request){
+        $request->validate([
+            'title' => 'required|unique:committes_title',
+        ]);
         $store_title =new CommittesTitle;
         $store_title->title = $request->title;
         $store_title->save();
@@ -21,6 +24,9 @@ class CommitteeController extends Controller
         return redirect()->back();
     }
     public function committe_titleUpdate(Request $request){
+        $request->validate([
+            'title' => 'required|unique:committes_title,title,' . $request->id,
+        ]);
         $update_title = CommittesTitle::find($request->id);
         $update_title->title = $request->title;
         $update_title->save();
@@ -46,6 +52,13 @@ class CommitteeController extends Controller
         return view('admin.web.committee.committee.add', compact('add'));
     }
     public function committeStore(Request $request){
+        $request->validate([
+            'title_id'=>'required',
+            'name'=>'required',
+            'designation'=>'required',
+            'email'=>'required',
+            'contact'=>'required',
+        ]);
         $store_committe = new Committe;
         $store_committe->title_id = $request->title_id;
         $store_committe->name = $request->name;
@@ -62,6 +75,13 @@ class CommitteeController extends Controller
         return view('admin.web.committee.committee.edit', compact('edit_committe','edit'));
     }
     public function committeUpdate(Request $request){
+        $request->validate([
+            'title_id'=>'required',
+            'name'=>'required',
+            'designation'=>'required',
+            'email'=>'required',
+            'contact'=>'required',
+        ]);
         $update_committe = Committe::find($request->id);
         $update_committe->title_id = $request->title_id;
         $update_committe->name = $request->name;

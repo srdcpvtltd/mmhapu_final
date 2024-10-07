@@ -19,6 +19,10 @@ class CampusController extends Controller
     }
     public function store(Request $request)
     {
+        $request->validate([
+            'heading'=>'required',
+            'url'=>'required',
+        ]);
         $store = new Campus;
         $store->icon = $request->icon;
         $store->heading = $request->heading;
@@ -35,6 +39,10 @@ class CampusController extends Controller
     }
     public function update(Request $request)
     {
+        $request->validate([
+            'heading'=>'required',
+            'url'=>'required',
+        ]);
         $update = Campus::find($request->id);
         $update->icon = $request->icon;
         $update->heading = $request->heading;

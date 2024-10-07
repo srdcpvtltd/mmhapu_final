@@ -16,6 +16,12 @@ class ActStatusController extends Controller
         return view('admin.web.act-status.add');
     }
     public function store(Request $request){
+        $request->validate([
+            'title'=>'required',
+            'date'=>'required',
+            'file'=>'required',
+
+        ]);
         $store =new ActStatus;
         $store->title = $request->title;
         $store->date = $request->date;
@@ -34,6 +40,10 @@ class ActStatusController extends Controller
         return view('admin.web.act-status.edit', compact('edit'));
     }
     public function update(Request $request){
+        $request->validate([
+            'title'=>'required',
+            'date'=>'required',
+        ]);
         $update = ActStatus::find($request->id);
         $update->title = $request->title;
         $update->date = $request->date;

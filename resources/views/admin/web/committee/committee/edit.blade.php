@@ -19,26 +19,43 @@
                         <select class="form-control" name="title_id" required>
                             <option value="">Choose Title</option>
                             @foreach ($edit as $title)
-                                <option value=" {{ $title->id }} " {{( $title->id == $edit_committe->title_id ) ? 'selected' : ''}}> {{ $title->title }} </option>
+                                <option value=" {{ $title->id }} "
+                                    {{ $title->id == $edit_committe->title_id ? 'selected' : '' }}> {{ $title->title }}
+                                </option>
                             @endforeach
                         </select>
                     </div>
                     <div class="col-lg-6 mb-3">
                         <label for="Name" class="form-label">Name<span style="color: red">*</span></label>
-                        <input type="text" class="form-control" name="name" placeholder="Enter Name" value="{{ $edit_committe->name }}" required>
+                        <input type="text" class="form-control" name="name" placeholder="Enter Name"
+                            value="{{ $edit_committe->name }}">
+                        @error('name')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="col-lg-6 mb-3">
                         <label for="Designation" class="form-label">Designation<span style="color: red">*</span></label>
-                        <input type="text" class="form-control" name="designation" placeholder="Enter Designation" value="{{ $edit_committe->designation }}"
-                            required>
+                        <input type="text" class="form-control" name="designation" placeholder="Enter Designation"
+                            value="{{ $edit_committe->designation }}">
+                        @error('designation')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="col-lg-6 mb-3">
                         <label for="Email" class="form-label">Email<span style="color: red">*</span></label>
-                        <input type="email" class="form-control" name="email" placeholder="Enter Email" value="{{ $edit_committe->email }}" required>
+                        <input type="email" class="form-control" name="email" placeholder="Enter Email"
+                            value="{{ $edit_committe->email }}">
+                        @error('email')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="col-lg-6 mb-3">
                         <label for="Contact" class="form-label">Contact<span style="color: red">*</span></label>
-                        <input type="text" class="form-control" name="contact" placeholder="Enter Contact" value="{{ $edit_committe->contact }}" required>
+                        <input type="text" class="form-control" name="contact" placeholder="Enter Contact"
+                            value="{{ $edit_committe->contact }}">
+                        @error('contact')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                 </div>
                 <div class="mb-3">
