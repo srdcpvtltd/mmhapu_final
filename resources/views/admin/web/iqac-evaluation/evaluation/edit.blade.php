@@ -16,16 +16,22 @@
                 <div class="row">
                     <div class="col-lg-6 mb-3">
                         <label for="notice_type" class="form-label">Title<span style="color: red">*</span></label>
-                        <select class="form-control" name="title_id" required>
+                        <select class="form-control" name="title_id">
                             <option value="">Choose Title</option>
                             @foreach ($title as $titles)
                                 <option value=" {{ $titles->id }} " {{($titles->id == $edit->title_id) ? 'selected' : ''}}> {{ $titles->title }} </option>
                             @endforeach
                         </select>
+                        @error('title_id')
+                            <span class="text-danger"> {{ 'Title field is required' }} </span>
+                        @enderror
                     </div>
                     <div class="col-lg-6 mb-3">
                         <label for="notice_type" class="form-label">Name<span style="color: red">*</span></label>
-                        <input type="text" class="form-control" name="name" value=" {{ $edit->name }} " required>
+                        <input type="text" class="form-control" name="name" value=" {{ $edit->name }} ">
+                        @error('name')
+                            <span class="text-danger"> {{ $message }} </span>
+                        @enderror
                     </div>
                     <div class="col-lg-6 mb-3">
                         <label for="notice_type" class="form-label">File<span style="color: red">*</span></label>

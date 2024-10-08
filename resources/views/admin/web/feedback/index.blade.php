@@ -9,7 +9,7 @@
         <div class="page-wrapper">
             <div class="row">
                 <div class="col-md-5">
-                    <form class="needs-validation" action="{{ route('admin.Feedback.store') }}" method="post">
+                    <form action="{{ route('admin.Feedback.store') }}" method="post">
                         @csrf
                         <div class="card">
                             <div class="card-header">
@@ -19,11 +19,17 @@
                                 <!-- Form Start -->
                                 <div class="form-group">
                                     <label for="subject" class="form-label">Subject <span style="color: red">*</span></label>
-                                    <input type="text" class="form-control" name="subject" placeholder="Enter Subject" required>
+                                    <input type="text" class="form-control" name="subject" placeholder="Enter Subject" value="{{ old('subject') }}">
+                                    @error('subject')
+                                        <span class="text-danger"> {{ $message }} </span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="url" class="form-label">URL<span style="color: red">*</span></label>
-                                    <input type="text" class="form-control" name="url" placeholder="Enter Your Form link" required>
+                                    <input type="url" class="form-control" name="url" placeholder="Enter Your Form link" value="{{ old('url') }}">
+                                    @error('url')
+                                        <span class="text-danger"> {{ $message }} </span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="card-footer">

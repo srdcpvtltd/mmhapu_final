@@ -49,7 +49,11 @@ class EvaluationController extends Controller
         return view('admin.web.iqac-evaluation.evaluation.add', compact('add'));
     }
     public function insert(Request $request){
-        
+        $request->validate([
+            'title_id'=>'required',
+            'name'=>'required',
+            'file'=>'required',
+        ]);
         $insert = new Evaluation();
         $insert->title_id = $request->title_id;
         $insert->name = $request->name;
@@ -69,6 +73,10 @@ class EvaluationController extends Controller
         return view('admin.web.iqac-evaluation.evaluation.edit', compact('edit','title'));
     }
     public function Eupdate(Request $request){
+        $request->validate([
+            'title_id'=>'required',
+            'name'=>'required',
+        ]);
         $evaluation_update = Evaluation::find($request->id);
         $evaluation_update->title_id = $request->title_id;
         $evaluation_update->name = $request->name;

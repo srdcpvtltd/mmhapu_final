@@ -19,16 +19,22 @@
                                 <!-- Form Start -->
                                 <div class="form-group">
                                     <label for="title" class="form-label">Title<span>*</span></label>
-                                    <input type="text" name="title" class="form-control" placeholder="Enter Title" required>
+                                    <input type="text" name="title" class="form-control" placeholder="Enter Title">
+                                    @error('title')
+                                        <span class="text-danger"> {{ $message }} </span>
+                                    @enderror
                                 </div>
 
                                 <div class="form-group">
                                     <label for="type" class="form-label">TYPE (Committees/Cells) <span style="color: red">*</span></label>
-                                    <select name="type" class="form-control" required>
+                                    <select name="type" class="form-control">
                                         <option value="">Select Type</option>
-                                        <option value="committees">Committees</option>
-                                        <option value="cells">Cells</option>
+                                        <option value="committees" {{ old('type') == 'committees'? 'selected' : '' }} >Committees</option>
+                                        <option value="cells" {{ old('type') == 'cells'? 'selected' : '' }} >Cells</option>
                                     </select>
+                                    @error('type')
+                                        <span class="text-danger"> {{ $message }} </span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="card-footer">

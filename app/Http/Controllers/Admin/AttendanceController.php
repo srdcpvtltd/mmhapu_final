@@ -14,6 +14,9 @@ class AttendanceController extends Controller
         return view('admin.web.attendance.title.index', compact('titles'));
     }
     public function storeTitle(Request $request){
+        $request->validate([
+            'title'=>'required'
+        ]);
         $storeTitle = new AttendanceTitle();
         $storeTitle->title = $request->title;
 
@@ -51,6 +54,11 @@ class AttendanceController extends Controller
         return view('admin.web.attendance.attendance.add', compact('add'));
     }
     public function store(Request $request){
+        $request->validate([
+            'title_id'=>'required',
+            'name'=>'required',
+            'file'=>'required'
+        ]);
         $store =new Attendance;
         $store->title_id = $request->title_id;
         $store->name = $request->name;
@@ -70,6 +78,10 @@ class AttendanceController extends Controller
         return view('admin.web.attendance.attendance.edit', compact('edit','titles'));
     }
     public function update(Request $request){
+        $request->validate([
+            'title_id'=>'required',
+            'name'=>'required',
+        ]);
         $update = Attendance::find($request->id);
         $update->title_id = $request->title_id;
         $update->name = $request->name;

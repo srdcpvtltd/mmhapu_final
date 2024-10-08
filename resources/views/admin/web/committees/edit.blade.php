@@ -16,12 +16,17 @@
                 <div class="row">
                     <div class="col-lg-12 mb-3">
                         <label for="intitution" class="form-label">Name & Address<span style="color: red">*</span></label>
-                        <input type="text" class="form-control" name="name_address" value="{{ $edit->name_address }}" required>
+                        <input type="text" class="form-control" name="name_address" value="{{ $edit->name_address }}">
+                        @error('name_address')
+                            <span class="text-danger"> {{ 'Name & Address field is required' }} </span>
+                        @enderror
                     </div>
                     <div class="col-lg-12 mb-3">
                         <label for="intitution" class="form-label">Designation<span style="color: red">*</span></label>
-                        <input type="text" class="form-control" name="designation" value="{{ $edit->designation }}"
-                            required>
+                        <input type="text" class="form-control" name="designation" value="{{ $edit->designation }}">
+                        @error('name_address')
+                            <span class="text-danger"> {{ $message }} </span>
+                        @enderror
                     </div>
                 </div>
                 <div class="mb-3">

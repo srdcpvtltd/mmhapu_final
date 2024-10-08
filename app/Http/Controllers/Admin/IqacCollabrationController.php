@@ -16,6 +16,11 @@ class IqacCollabrationController extends Controller
         return view('admin.web.collabration.add');
     }
     public function store(Request $request){
+        $request->validate([
+            'intitution'=>'required',
+            'description'=>'required',
+            'document'=>'required',
+        ]);
         $store = new Collabration();
         $store->intitution = $request->intitution;
         $store->description = $request->description;
@@ -34,6 +39,10 @@ class IqacCollabrationController extends Controller
         return view('admin.web.collabration.edit', compact('edit'));
     }
     public function update(Request $request){
+        $request->validate([
+            'intitution'=>'required',
+            'description'=>'required',
+        ]);
         $update = Collabration::find($request->id);
         $update->intitution = $request->intitution;
         $update->description = $request->description;

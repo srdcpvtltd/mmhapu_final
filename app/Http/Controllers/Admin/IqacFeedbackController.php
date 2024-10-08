@@ -13,7 +13,10 @@ class IqacFeedbackController extends Controller
         return view('admin.web.feedback.index', compact('feedbacks'));
     }
     public function store(Request $request){
-
+        $request->validate([
+            'subject'=>'required',
+            'url'=>'required|url'
+        ]);
         $store = new Feedback();
         $store->subject = $request->subject;
         $store->url= $request->url;
@@ -26,6 +29,10 @@ class IqacFeedbackController extends Controller
         return view('admin.web.feedback.edit', compact('edit'));
     }
     public function update(Request $request){
+        $request->validate([
+            'subject'=>'required',
+            'url'=>'required|url'
+        ]);
         $update = Feedback::find($request->id);
         $update->subject = $request->subject;
         $update->url= $request->url;

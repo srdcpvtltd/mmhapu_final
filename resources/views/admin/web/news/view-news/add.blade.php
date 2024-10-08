@@ -18,9 +18,12 @@
                         <select class="form-control" name="newspaper_id" required>
                             <option value="">Select Options</option>
                             @foreach ($news as $add)
-                                <option value="{{$add->id}}">{{ $add->title }}</option>
+                                <option value="{{$add->id}}" {{ old('newspaper_id') == $add->id? 'selected' : ''}} >{{ $add->title }}</option>
                             @endforeach
                         </select>
+                        @error('newspaper_id')
+                            <span class="text-danger">{{ 'Newspaper field is required' }}</span>
+                        @enderror
                     </div>
                     <div class="col-lg-6 mb-3">
                         <label for="gallery_type" class="form-label">Photo<span style="color: red">*</span></label>

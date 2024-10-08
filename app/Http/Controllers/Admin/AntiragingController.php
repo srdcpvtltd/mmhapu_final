@@ -16,6 +16,13 @@ class AntiragingController extends Controller
         return view('admin.web.anti-raging.add');
     }
     public function store(Request $request){
+        $request->validate([
+            'designation'=>'required',
+            'name'=>'required',
+            'email'=>'required',
+            'contact'=>'required',
+            'resume'=>'required',
+        ]);
         $store = new AntiRaging();
         $store->designation = $request->designation;
         $store->name = $request->name;
@@ -36,6 +43,12 @@ class AntiragingController extends Controller
         return view('admin.web.anti-raging.edit', compact('edit'));
     }
     public function update(Request $request){
+        $request->validate([
+            'designation'=>'required',
+            'name'=>'required',
+            'email'=>'required',
+            'contact'=>'required'
+        ]);
         $update = AntiRaging::find($request->id);
         $update->designation = $request->designation;
         $update->name = $request->name;

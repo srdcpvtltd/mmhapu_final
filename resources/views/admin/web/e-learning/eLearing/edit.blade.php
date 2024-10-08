@@ -22,6 +22,7 @@
                                 <option value=" {{ $title->id }} " {{ ($title->id == $edit->title_id)? 'selected': '' }} > {{ $title->title }} </option>
                             @endforeach
                         </select>
+                        
                     </div>
                     <div class="col-lg-6 mb-3">
                         <label for="notice_type" class="form-label">Name<span style="color: red">*</span></label>

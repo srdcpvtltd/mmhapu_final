@@ -18,6 +18,10 @@ class ViewnewsController extends Controller
         return view('admin.web.news.view-news.add',compact('news'));
     }
     public function store(Request $request){
+        $request->validate([
+            'newspaper_id'=>'required',
+            'image'=>'required',
+        ]);
         $store = new Viewnewspaper;
 
         $store->newspaper_id = $request->newspaper_id;
@@ -38,6 +42,9 @@ class ViewnewsController extends Controller
         return view('admin.web.news.view-news.edit',compact('edit','news'));
     }
     public function update(Request $request){
+        $request->validate([
+            'newspaper_id'=>'required',
+        ]);
         $update = Viewnewspaper::find($request->id);
 
         $update->newspaper_id = $request->newspaper_id;

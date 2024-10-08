@@ -16,6 +16,10 @@ class IqacPolicyController extends Controller
         return view('admin.web.Policies.add');
     }
     public function store(Request $request){
+        $request->validate([
+            'policy'=>'required',
+            'document'=>'required'
+        ]);
         $store = new Policy();
         $store->policy = $request->policy;
         if($request->hasFile('document')){
@@ -33,6 +37,9 @@ class IqacPolicyController extends Controller
         return view('admin.web.Policies.edit', compact('edit'));
     }
     public function update(Request $request){
+        $request->validate([
+            'policy'=>'required',
+        ]);
         $update = Policy::find($request->id);
         $update->policy = $request->policy;
         if($request->hasFile('document')){

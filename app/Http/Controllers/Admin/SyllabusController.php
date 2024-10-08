@@ -16,6 +16,9 @@ class SyllabusController extends Controller
     }
     public function insert(Request $request)
     {
+        $request->validate([
+            'title'=>'required'
+        ]);
         $insert = new SyllabusTitle();
         $insert->title = $request->title;
         $insert->save();
@@ -24,6 +27,9 @@ class SyllabusController extends Controller
     }
     public function updateTitle(Request $request)
     {
+        $request->validate([
+            'title'=>'required'
+        ]);
         $updateTitle = SyllabusTitle::find($request->id);
         $updateTitle->title = $request->title;
         $updateTitle->save();
@@ -56,6 +62,11 @@ class SyllabusController extends Controller
     }
     public function store(Request $request)
     {
+        $request->validate([
+            'title_id'=>'required',
+            'name'=>'required',
+            'file'=>'required',
+        ]);
         $store = new Syllabus();
         $store->title_id = $request->title_id;
         $store->name = $request->name;
@@ -77,6 +88,10 @@ class SyllabusController extends Controller
     }
     public function update(Request $request)
     {
+        $request->validate([
+            'title_id'=>'required',
+            'name'=>'required',
+        ]);
         $update = Syllabus::find($request->id);
         $update->title_id = $request->title_id;
         $update->name = $request->name;

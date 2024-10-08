@@ -16,8 +16,10 @@
                     <input type="hidden" name="id" value=" {{ $edit->id }} ">
                     <div class="col-lg-12 mb-3">
                         <label for="policy" class="form-label">Policy<span style="color: red">*</span></label>
-                        <textarea class="form-control texteditor" name="policy" cols="30" rows="10"
-                             required> {{ $edit->policy }} </textarea>
+                        <textarea class="form-control texteditor" name="policy" cols="30" rows="10"> {{ $edit->policy }} </textarea>
+                        @error('policy')
+                            <span class="text-danger"> {{ $message }} </span>
+                        @enderror
                     </div>
                     <div class="col-lg-12 mb-3">
                         <label for="document" class="form-label">Document<span style="color: red">*</span></label>

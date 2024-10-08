@@ -14,6 +14,9 @@ class ElearningController extends Controller
         return view('admin.web.e-learning.title.index', compact('titles'));
     }
     public function storeTitle(Request $request){
+        $request->validate([
+            'title'=>'required'
+        ]);
         $storeTitle = new ElearningTitle();
         $storeTitle->title = $request->title;
 
@@ -51,6 +54,11 @@ class ElearningController extends Controller
         return view('admin.web.e-learning.eLearing.add', compact('add'));
     }
     public function store(Request $request){
+        $request->validate([
+            'title_id'=>'required',
+            'name'=>'required',
+            'file'=>'required'
+        ]);
         $store = new Elearning();
         $store->title_id = $request->title_id;
         $store->name = $request->name;
@@ -70,6 +78,10 @@ class ElearningController extends Controller
         return view('admin.web.e-learning.eLearing.edit', compact('edit','titles'));
     }
     public function update(Request $request){
+        $request->validate([
+            'title_id'=>'required',
+            'name'=>'required',
+        ]);
         $update = Elearning::find($request->id);
         $update->title_id = $request->title_id;
         $update->name = $request->name;

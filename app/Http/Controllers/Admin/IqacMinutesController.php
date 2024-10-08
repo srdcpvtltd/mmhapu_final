@@ -16,8 +16,12 @@ class IqacMinutesController extends Controller
         return view('admin.web.iqac-minutes.add');
     }
     public function store(Request $request){
+        $request->validate([
+            'iqac_minute'=>'required',
+            'document'=>'required',
+        ]);
         $store = new Minute;
-        $store->iqac_minute = $request->iqac_minutes;
+        $store->iqac_minute = $request->iqac_minute;
         if($request->hasFile('document')){
             $document = $request->file('document');
             $ducumentName = time() . '_' . $document->getClientOriginalName();
@@ -33,6 +37,9 @@ class IqacMinutesController extends Controller
         return view('admin.web.iqac-minutes.edit', compact('edit'));
     }
     public function update(Request $request){
+        $request->validate([
+            'iqac_minute'=>'required',
+        ]);
         $update = Minute::find($request->id);
         $update->iqac_minute = $request->iqac_minutes;
         if($request->hasFile('document')){

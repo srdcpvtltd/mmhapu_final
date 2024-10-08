@@ -16,6 +16,10 @@ class IqacCommitteesController extends Controller
         return view('admin.web.committees.add');
     }
     public function store(Request $request){
+        $request->validate([
+            'name_address'=>'required',
+            'designation'=>'required',
+        ]);
         $store = new Committee;
         $store->name_address = $request->name_address;
         $store->designation = $request->designation;

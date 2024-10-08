@@ -14,6 +14,10 @@ class CommitteesCellsController extends Controller
         return view('admin.web.committees&cells.title.index', compact('titles'));
     }
     public function storeTitle(Request $request){
+        $request->validate([
+            'title'=>'required',
+            'type'=>'required'
+        ]);
         $storeTitle =new CommitteesCellsTitle;
         $storeTitle->title = $request->title;
         $storeTitle->type = $request->type;
@@ -23,6 +27,10 @@ class CommitteesCellsController extends Controller
         return redirect()->back();
     }
     public function update(Request $request){
+        $request->validate([
+            'title'=>'required',
+            'type'=>'required'
+        ]);
         $updateTitle = CommitteesCellsTitle::find($request->id);
         $updateTitle->title = $request->title;
         $updateTitle->type = $request->type;
@@ -51,6 +59,12 @@ class CommitteesCellsController extends Controller
         return view('admin.web.committees&cells.committees_cells.add');
     }
     public function store(Request $request){
+        $request->validate([
+            'type'=>'required',
+            'title_id'=>'required',
+            'name'=>'required',
+            'designation'=>'required',
+        ]);
         $store =new CommittesCell;
         $store->type = $request->type;
         $store->title_id = $request->title_id;
@@ -67,6 +81,12 @@ class CommitteesCellsController extends Controller
         return view('admin.web.committees&cells.committees_cells.edit', compact('edit','add'));
     }
     public function updateCommittee(Request $request){
+        $request->validate([
+            'type'=>'required',
+            'title_id'=>'required',
+            'name'=>'required',
+            'designation'=>'required',
+        ]);
         $update = CommittesCell::find($request->id);
         $update->type = $request->type;
         $update->title_id = $request->title_id;

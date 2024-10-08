@@ -15,13 +15,18 @@
                 <div class="row">
                     <div class="col-lg-12 mb-3">
                         <label for="policy" class="form-label">Policy<span style="color: red">*</span></label>
-                        <textarea class="form-control texteditor" name="policy" cols="30" rows="10"
-                            placeholder="Enter Policy" arequired></textarea>
+                        <textarea class="form-control texteditor" name="policy" cols="30" rows="10" placeholder="Enter Policy"> {{ old('policy') }} </textarea>
+                        @error('policy')
+                            <span class="text-danger"> {{ $message }} </span>
+                        @enderror
                     </div>
                     <div class="col-lg-12 mb-3">
                         <label for="document" class="form-label">Document<span style="color: red">*</span></label>
                         <input type="file" class="form-control" name="document" placeholder="Enter Document"
-                            accept=".pdf" required>
+                            accept=".pdf">
+                        @error('document')
+                            <span class="text-danger"> {{ $message }} </span>
+                        @enderror
                     </div>
                 </div>
                 <div class="mb-3">

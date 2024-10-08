@@ -19,8 +19,10 @@
                                 <!-- Form Start -->
                                 <div class="form-group">
                                     <label for="title" class="form-label">Title<span>*</span></label>
-                                    <input type="text" name="title" class="form-control" placeholder="Enter Title"
-                                        required>
+                                    <input type="text" name="title" class="form-control" placeholder="Enter Title">
+                                    @error('title')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="card-footer">
