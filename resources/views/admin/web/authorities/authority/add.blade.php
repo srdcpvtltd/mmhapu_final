@@ -15,27 +15,41 @@
                 <div class="row">
                     <div class="col-lg-6 mb-3">
                         <label for="notice_type" class="form-label">Position<span style="color: red">*</span></label>
-                        <select class="form-control" name="title_id" id="title" required>
+                        <select class="form-control" name="title_id" id="title">
                             <option value="">Choose Title</option>
                             @foreach ($titles as $data)
-                                <option value=" {{ $data->id }} "> {{ $data->title }} </option>
+                                <option value=" {{ $data->id }} " {{ old('title_id') == $data->id ? 'selected' : '' }}>
+                                    {{ $data->title }} </option>
                             @endforeach
                         </select>
+                        @error('title_id')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="col-lg-6 mb-3">
                         <label for="notice_type" class="form-label">Position<span style="color: red">*</span></label>
-                        <select class="form-control" name="position_id" id="position" required>
+                        <select class="form-control" name="position_id" id="position">
                             <option value="">Choose Position</option>
                         </select>
+                        @error('position_id')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="col-lg-6 mb-3">
                         <label for="name" class="form-label">Name<span style="color: red">*</span></label>
-                        <input type="text" class="form-control" name="name" placeholder="Enter Name" required>
+                        <input type="text" class="form-control" name="name" placeholder="Enter Name"
+                            value="{{ old('name') }}">
+                        @error('name')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="col-lg-6 mb-3">
                         <label for="designation" class="form-label">Designation<span style="color: red">*</span></label>
                         <input type="text" class="form-control" name="designation" placeholder="Enter Designation"
-                            required>
+                            value="{{ old('designation') }}">
+                        @error('designation')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                 </div>
                 <div class="mb-3">

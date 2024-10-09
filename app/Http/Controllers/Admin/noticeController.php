@@ -18,7 +18,13 @@ class noticeController extends Controller
         return view('admin.noticeboard.notice.add',compact('add_notice'));
     }
     public function store(Request $request){
-
+$request->validate([
+    'title' => 'required',
+    'description' => 'required',
+    'url' => 'required',
+    'file' => 'required',
+    'notice_type' => 'required',
+]);
         date_default_timezone_set('Asia/Kolkata');
         $store_notice = new notice;
         $store_notice->title = $request->title;

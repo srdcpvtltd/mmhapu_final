@@ -16,11 +16,15 @@
                 <div class="row">
                     <div class="col-lg-6 mb-3">
                         <label for="name" class="form-label">Button Text<span style="color: red">*</span></label>
-                        <input type="text" class="form-control" name="btn_text" value="{{ $documentationEdit->btn_text }}" required>
+                        <input type="text" class="form-control" name="btn_text"
+                            value="{{ $documentationEdit->btn_text }}">
+                        @error('btn_text')
+                            <span class="text-danger"> {{ 'Button text field is required' }} </span>
+                        @enderror
                     </div>
                     <div class="col-lg-6 mb-3">
                         <label for="Color" class="form-label">Color<span style="color: red">*</span></label>
-                        <input type="color" class="form-control" name="color" value="{{ $documentationEdit->color }}" required>
+                        <input type="color" class="form-control" name="color" value="{{ $documentationEdit->color }}">
                     </div>
                     <div class="col-lg-6 mb-3">
                         <label for="file" class="form-label">File<span style="color: red">*</span></label>

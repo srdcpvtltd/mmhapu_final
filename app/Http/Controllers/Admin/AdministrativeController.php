@@ -13,22 +13,32 @@ use Illuminate\Http\Request;
 
 class AdministrativeController extends Controller
 {
-    public function officersList(){
+    public function officersList()
+    {
         $officersList = AdministrativeOfficer::all();
         return view('admin.web.administrative-officers.list', compact('officersList'));
     }
-    public function officersAdd(){
+    public function officersAdd()
+    {
         return view('admin.web.administrative-officers.add');
     }
-    public function officersStore(Request $request){
+    public function officersStore(Request $request)
+    {
+        $request->validate([
+            'designation' => 'required',
+            'name' => 'required',
+            'email' => 'required',
+            'contact' => 'required',
+            'resume' => 'required',
+        ]);
         $officersStore = new AdministrativeOfficer;
         $officersStore->designation = $request->designation;
         $officersStore->name = $request->name;
         $officersStore->email = $request->email;
         $officersStore->contact = $request->contact;
-        if($request->hasFile('resume')){
+        if ($request->hasFile('resume')) {
             $resume = $request->file('resume');
-            $resumeName = time(). '_' . $resume->getClientOriginalName();
+            $resumeName = time() . '_' . $resume->getClientOriginalName();
             $resume->move(public_path('uploads/administrative'), $resumeName);
             $officersStore->resume = $resumeName;
         }
@@ -36,22 +46,24 @@ class AdministrativeController extends Controller
         toastr()->success('New Administrative Officers Added Successfully.');
         return redirect()->route('admin.administrative_officers.list');
     }
-    public function officersEdit($id){
+    public function officersEdit($id)
+    {
         $officersEdit = AdministrativeOfficer::find($id);
         return view('admin.web.administrative-officers.edit', compact('officersEdit'));
     }
-    public function officersUpdate(Request $request){
+    public function officersUpdate(Request $request)
+    {
         $officersUpdate = AdministrativeOfficer::find($request->id);
         $officersUpdate->designation = $request->designation;
         $officersUpdate->name = $request->name;
         $officersUpdate->email = $request->email;
         $officersUpdate->contact = $request->contact;
-        if($request->hasFile('resume')){
-            if($officersUpdate->resume && file_exists(public_path('uploads/administrative/'. $officersUpdate->resume))){
-                unlink(public_path('uploads/administrative/'.  $officersUpdate->resume));
+        if ($request->hasFile('resume')) {
+            if ($officersUpdate->resume && file_exists(public_path('uploads/administrative/' . $officersUpdate->resume))) {
+                unlink(public_path('uploads/administrative/' .  $officersUpdate->resume));
             }
             $resume = $request->file('resume');
-            $resumeName = time(). '_' . $resume->getClientOriginalName();
+            $resumeName = time() . '_' . $resume->getClientOriginalName();
             $resume->move(public_path('uploads/administrative'), $resumeName);
             $officersUpdate->resume = $resumeName;
         }
@@ -59,11 +71,12 @@ class AdministrativeController extends Controller
         toastr()->success('Administrative Officers Updated Successfully');
         return redirect()->route('admin.administrative_officers.list');
     }
-    public function officersDelete($id){
+    public function officersDelete($id)
+    {
         $officersDelete = AdministrativeOfficer::find($id);
-        if($officersDelete){
-            if($officersDelete->resume && file_exists(public_path('uploads/administrative/'.$officersDelete->resume))){
-                unlink(public_path('uploads/administrative/'. $officersDelete->resume));
+        if ($officersDelete) {
+            if ($officersDelete->resume && file_exists(public_path('uploads/administrative/' . $officersDelete->resume))) {
+                unlink(public_path('uploads/administrative/' . $officersDelete->resume));
             }
             $officersDelete->delete();
             toastr()->success('Deleted Successfully');
@@ -74,19 +87,25 @@ class AdministrativeController extends Controller
     }
 
     //
-    public function university_officers_titleList(){
+    public function university_officers_titleList()
+    {
         $titles = UniversityAdministrationTitle::all();
         return view('admin.web.university-officers.title.index', compact('titles'));
     }
-    public function university_officers_titleStore(Request $request){
-        $university_officers_titleStore= new UniversityAdministrationTitle;
+    public function university_officers_titleStore(Request $request)
+    {
+        $request->validate([
+            'title' => 'required',
+        ]);
+        $university_officers_titleStore = new UniversityAdministrationTitle;
         $university_officers_titleStore->title = $request->title;
 
         $university_officers_titleStore->save();
         toastr()->success('New University Officer Title Added Successfully');
         return redirect()->route('admin.university_officers_title.list');
     }
-    public function university_officers_titleUpdate(Request $request){
+    public function university_officers_titleUpdate(Request $request)
+    {
         $university_officers_titleUpdate = UniversityAdministrationTitle::find($request->id);
         $university_officers_titleUpdate->title = $request->title;
 
@@ -94,11 +113,12 @@ class AdministrativeController extends Controller
         toastr()->success('University Officer Title Updated Successfully');
         return redirect()->route('admin.university_officers_title.list');
     }
-    public function university_officers_titleDelete($id){
+    public function university_officers_titleDelete($id)
+    {
         $university_officers_titleDelete = UniversityAdministrationTitle::find($id);
-        if($university_officers_titleDelete){
+        if ($university_officers_titleDelete) {
             $university_officers_titleDelete->delete();
-            UniversityAdministration::where('title_id',$id)->delete();
+            UniversityAdministration::where('title_id', $id)->delete();
             toastr()->success('Deleted Successfully');
             return redirect()->back();
         }
@@ -107,26 +127,36 @@ class AdministrativeController extends Controller
     }
 
     //University Adminstative
-    public function university_officersList(){
+    public function university_officersList()
+    {
         $university_officersList = UniversityAdministration::all();
         return view('admin.web.university-officers.officers.list', compact('university_officersList'));
     }
-    public function university_officersAdd(){
+    public function university_officersAdd()
+    {
         $add = UniversityAdministrationTitle::all();
         return view('admin.web.university-officers.officers.add', compact('add'));
     }
-    public function university_officersStore(Request $request){
+    public function university_officersStore(Request $request)
+    {
+        $request->validate([
+            'title_id' => 'required',
+            'designation' => 'required',
+            'name' => 'required',
+            'resume' => 'required',
+            'image' => 'required',
+        ]);
         $university_officersStore = new UniversityAdministration();
         $university_officersStore->title_id = $request->title_id;
         $university_officersStore->designation = $request->designation;
         $university_officersStore->name = $request->name;
-        if($request->hasFile('image')){
+        if ($request->hasFile('image')) {
             $image = $request->file('image');
             $imageName = time() . '_' . $image->getClientOriginalName();
-            $image->move(public_path('uploads/universityOfficer'),$imageName);
+            $image->move(public_path('uploads/universityOfficer'), $imageName);
             $university_officersStore->image = $imageName;
         }
-        if($request->hasFile('resume')){
+        if ($request->hasFile('resume')) {
             $resume = $request->file('resume');
             $resumeName = time() . '_' . $resume->getClientOriginalName();
             $resume->move(public_path('uploads/universityOfficer'), $resumeName);
@@ -136,28 +166,30 @@ class AdministrativeController extends Controller
         toastr()->success('New University Administration Added Successfully.');
         return redirect()->route('admin.university_officers.list');
     }
-    public function university_officersEdit($id){
+    public function university_officersEdit($id)
+    {
         $edit = UniversityAdministrationTitle::all();
         $university_officersEdit = UniversityAdministration::find($id);
         return view('admin.web.university-officers.officers.edit', compact('university_officersEdit', 'edit'));
     }
-    public function university_officersUpdate(Request $request){
+    public function university_officersUpdate(Request $request)
+    {
         $university_officersUpdate = UniversityAdministration::find($request->id);
         $university_officersUpdate->title_id = $request->title_id;
         $university_officersUpdate->designation = $request->designation;
         $university_officersUpdate->name = $request->name;
-        if($request->hasFile('image')){
-            if($university_officersUpdate->image && file_exists(public_path('uploads/universityOfficer/'. $university_officersUpdate->image))){
-                unlink(public_path('uploads/universityOfficer/'. $university_officersUpdate->image));
+        if ($request->hasFile('image')) {
+            if ($university_officersUpdate->image && file_exists(public_path('uploads/universityOfficer/' . $university_officersUpdate->image))) {
+                unlink(public_path('uploads/universityOfficer/' . $university_officersUpdate->image));
             }
             $image = $request->file('image');
             $imageName = time() . '_' . $image->getClientOriginalName();
-            $image->move(public_path('uploads/universityOfficer'),$imageName);
+            $image->move(public_path('uploads/universityOfficer'), $imageName);
             $university_officersUpdate->image = $imageName;
         }
-        if($request->hasFile('resume')){
-            if($university_officersUpdate->resume && file_exists(public_path('uploads/universityOfficer/'. $university_officersUpdate->resume))){
-                unlink(public_path('uploads/universityOfficer/'. $university_officersUpdate->resume));
+        if ($request->hasFile('resume')) {
+            if ($university_officersUpdate->resume && file_exists(public_path('uploads/universityOfficer/' . $university_officersUpdate->resume))) {
+                unlink(public_path('uploads/universityOfficer/' . $university_officersUpdate->resume));
             }
             $resume = $request->file('resume');
             $resumeName = time() . '_' . $resume->getClientOriginalName();
@@ -169,13 +201,14 @@ class AdministrativeController extends Controller
         toastr()->success('University Administration Updated Successfully');
         return redirect()->route('admin.university_officers.list');
     }
-    public function university_officersDelete($id){
+    public function university_officersDelete($id)
+    {
         $university_officersDelete = UniversityAdministration::find($id);
-        if($university_officersDelete){
-            if($university_officersDelete->image && file_exists(public_path('uploads/universityOfficer/' . $university_officersDelete->image))){
+        if ($university_officersDelete) {
+            if ($university_officersDelete->image && file_exists(public_path('uploads/universityOfficer/' . $university_officersDelete->image))) {
                 unlink(public_path('uploads/universityOfficer/' . $university_officersDelete->image));
             }
-            if($university_officersDelete->resume && file_exists(public_path('uploads/universityOfficer/' . $university_officersDelete->resume))){
+            if ($university_officersDelete->resume && file_exists(public_path('uploads/universityOfficer/' . $university_officersDelete->resume))) {
                 unlink(public_path('uploads/universityOfficer/' . $university_officersDelete->resume));
             }
             $university_officersDelete->delete();
@@ -187,27 +220,34 @@ class AdministrativeController extends Controller
     }
 
     //Authorities title
-    public function authoritiesList(){
+    public function authoritiesList()
+    {
         $authorities = AuthoritiesTitle::all();
         return view('admin.web.authorities.title.index', compact('authorities'));
     }
-    public function authoritiesStore(Request $request){
+    public function authoritiesStore(Request $request)
+    {
+        $request->validate([
+            'title' => 'required',
+        ]);
         $authoritiesStore = new AuthoritiesTitle();
         $authoritiesStore->title = $request->title;
         $authoritiesStore->save();
         toastr()->success('New University Authorities Added Successfully');
         return redirect()->back();
     }
-    public function authoritiesUpdate(Request $request){
+    public function authoritiesUpdate(Request $request)
+    {
         $authoritiesUpdate = AuthoritiesTitle::find($request->id);
         $authoritiesUpdate->title = $request->title;
         $authoritiesUpdate->save();
         toastr()->success('University Authorities Updated Successfully.');
         return redirect()->back();
     }
-    public function authoritiesDelete($id){
+    public function authoritiesDelete($id)
+    {
         $authoritiesDelete = AuthoritiesTitle::find($id);
-        if($authoritiesDelete){
+        if ($authoritiesDelete) {
             $authoritiesDelete->delete();
             Position::where('title_id', $id)->delete();
             Authority::where('title_id', $id)->delete();
@@ -219,12 +259,19 @@ class AdministrativeController extends Controller
     }
 
     //Authorities Position
-    public function positionList(){
+    public function positionList()
+    {
+
         $titles = AuthoritiesTitle::all();
         $positionList = Position::all();
         return view('admin.web.authorities.position.index', compact('titles', 'positionList'));
     }
-    public function positionStore(Request $request){
+    public function positionStore(Request $request)
+    {
+        $request->validate([
+            'title_id' => 'required',
+            'position' => 'required',
+        ]);
         $positionStore = new Position();
         $positionStore->title_id = $request->title_id;
         $positionStore->position = $request->position;
@@ -232,7 +279,8 @@ class AdministrativeController extends Controller
         toastr()->success('New Authorities Position Added Successfully');
         return redirect()->back();
     }
-    public function positionUpdate(Request $request){
+    public function positionUpdate(Request $request)
+    {
         $positionUpdate = Position::find($request->id);
         $positionUpdate->title_id = $request->title_id;
         $positionUpdate->position = $request->position;
@@ -240,9 +288,10 @@ class AdministrativeController extends Controller
         toastr()->success('Authorities Position Updated Successfully');
         return redirect()->back();
     }
-    public function positionDelete($id){
+    public function positionDelete($id)
+    {
         $positionDelete = Position::find($id);
-        if($positionDelete){
+        if ($positionDelete) {
             $positionDelete->delete();
             Authority::where('position_id', $id)->delete();
             toastr()->success('Deleted Successfully');
@@ -252,17 +301,26 @@ class AdministrativeController extends Controller
         return redirect()->back();
     }
 
-    public function authorityList(){
+    public function authorityList()
+    {
         $authorityList = Authority::all();
         return view('admin.web.authorities.authority.list', compact('authorityList'));
     }
-    public function authorityAdd(){
+    public function authorityAdd()
+    {
         $add = Position::all();
         $titles = AuthoritiesTitle::all();
-        return view('admin.web.authorities.authority.add', compact('add','titles'));
+        return view('admin.web.authorities.authority.add', compact('add', 'titles'));
     }
-    public function authorityStore(Request $request){
-        $authorityStore =new Authority;
+    public function authorityStore(Request $request)
+    {
+        $request->validate([
+            'title_id' => 'required',
+            'position_id' => 'required',
+            'name' => 'required',
+            'designation' => 'required',
+        ]);
+        $authorityStore = new Authority;
         $authorityStore->title_id = $request->title_id;
         $authorityStore->position_id = $request->position_id;
         $authorityStore->name = $request->name;
@@ -271,25 +329,28 @@ class AdministrativeController extends Controller
         toastr()->success('New University Autherity Added Successfully');
         return redirect()->route('admin.authority.list');
     }
-    public function authorityEdit($id){
+    public function authorityEdit($id)
+    {
         $authorityEdit = Authority::find($id);
         $titles = AuthoritiesTitle::all();
         $edit = Position::where('title_id', $authorityEdit->title_id)->get();
         return view('admin.web.authorities.authority.edit', compact('authorityEdit', 'edit', 'titles'));
     }
-    public function authorityUpdate(Request $request){
+    public function authorityUpdate(Request $request)
+    {
         $authorityUpdate = Authority::find($request->id);
         $authorityUpdate->title_id = $request->title_id;
-        $authorityUpdate->position_id  =$request->position_id;
-        $authorityUpdate->name  =$request->name;
-        $authorityUpdate->designation  =$request->designation;
+        $authorityUpdate->position_id  = $request->position_id;
+        $authorityUpdate->name  = $request->name;
+        $authorityUpdate->designation  = $request->designation;
         $authorityUpdate->save();
         toastr()->success('University Autherity Updated Successfully');
         return redirect()->route('admin.authority.list');
     }
-    public function authorityDelete($id){
+    public function authorityDelete($id)
+    {
         $authorityDelete = Authority::find($id);
-        if($authorityDelete){
+        if ($authorityDelete) {
             $authorityDelete->delete();
             toastr()->success('Deleted Successfully.');
             return redirect()->back();
@@ -297,7 +358,8 @@ class AdministrativeController extends Controller
         toastr()->error('Someting wents wrong.');
         return redirect()->back();
     }
-    public function getPosition(Request $request){
+    public function getPosition(Request $request)
+    {
         $getPosition = Position::where('title_id', $request->title_id)->get();
         return response()->json($getPosition);
     }

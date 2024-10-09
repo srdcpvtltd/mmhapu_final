@@ -20,6 +20,19 @@ class AcademicsController extends Controller
         return view('admin.web.fazil.add');
     }
     public function fazilStore(Request $request){
+        $request->validate([
+            'name'=>'required',
+            'managment'=>'required',
+            'regulating'=>'required',
+            'course'=>'required',
+            'intake'=>'required',
+            'district'=>'required',
+            'address'=>'required',
+            'email'=>'required',
+            'incharge'=>'required',
+            'contact'=>'required',
+            'code'=>'required',
+        ]);
         $fazilStore = new Fazil();
         $fazilStore->name = $request->name;
         $fazilStore->managment = $request->managment;
@@ -95,6 +108,19 @@ class AcademicsController extends Controller
         return view('admin.web.alim.add');
     }
     public function alimStore(Request $request){
+        $request->validate([
+            'name'=>'required',
+            'managment'=>'required',
+            'regulating'=>'required',
+            'course'=>'required',
+            'intake'=>'required',
+            'district'=>'required',
+            'address'=>'required',
+            'email'=>'required',
+            'incharge'=>'required',
+            'contact'=>'required',
+            'code'=>'required',
+        ]);
         $alimStore = new Alim();
         $alimStore->name = $request->name;
         $alimStore->managment = $request->managment;
@@ -170,6 +196,22 @@ class AcademicsController extends Controller
         return view('admin.web.krc-with-aicte.add');
     }
     public function WithAicteStore(Request $request){
+        $request->validate([
+            'file_no'=>'required',
+            'name'=>'required',
+            'management'=>'required',
+            'affiliating'=>'required',
+            'course_name'=>'required',
+            'intake'=>'required',
+            'session'=>'required',
+            'district'=>'required',
+            'email'=>'required',
+            'incharge'=>'required',
+            'contact'=>'required',
+            'code'=>'required',
+            'address'=>'required',
+            'resume'=>'required',
+        ]);
         $WithAicteStore =new KrcWithAicte;
         // $WithAicteStore->designation = $request->designation;
         $WithAicteStore->file_no = $request->file_no;
@@ -250,6 +292,22 @@ class AcademicsController extends Controller
         return view('admin.web.krc-without-aicte.add');
     }
     public function WithoutAicteStore(Request $request){
+        $request->validate([
+            'file_no'=>'required',
+            'name'=>'required',
+            'management'=>'required',
+            'affiliating'=>'required',
+            'course_name'=>'required',
+            'intake'=>'required',
+            'session'=>'required',
+            'district'=>'required',
+            'email'=>'required',
+            'incharge'=>'required',
+            'contact'=>'required',
+            'code'=>'required',
+            'address'=>'required',
+            'resume'=>'required',
+        ]);
         $WithoutAicteStore =new KrcWithoutAicte;
         $WithoutAicteStore->file_no = $request->file_no;
         $WithoutAicteStore->name = $request->name;
@@ -329,6 +387,22 @@ class AcademicsController extends Controller
         return view('admin.web.bed.add');
     }
     public function bedStore(Request $request){
+        $request->validate([
+            'file_no'=>'required',
+            'college_name'=>'required',
+            'management'=>'required',
+            'affiliting'=>'required',
+            'intake'=>'required',
+            'name'=>'required',
+            'district'=>'required',
+            'address'=>'required',
+            'email'=>'required',
+            'website'=>'required',
+            'director'=>'required',
+            'contact'=>'required',
+            'code'=>'required',
+            'resume'=>'required',
+        ]);
         $bedStore =new Bed;
         $bedStore->file_no = $request->file_no;
         $bedStore->college_name = $request->college_name;
@@ -358,6 +432,21 @@ class AcademicsController extends Controller
         return view('admin.web.bed.edit', compact('bedEdit'));
     }
     public function bedUpdate(Request $request){
+        $request->validate([
+            'file_no'=>'required',
+            'college_name'=>'required',
+            'management'=>'required',
+            'affiliting'=>'required',
+            'intake'=>'required',
+            'name'=>'required',
+            'district'=>'required',
+            'address'=>'required',
+            'email'=>'required',
+            'website'=>'required',
+            'director'=>'required',
+            'contact'=>'required',
+            'code'=>'required'
+        ]);
         $bedUpdate = Bed::find($request->id);
         $bedUpdate->file_no = $request->file_no;
         $bedUpdate->college_name = $request->college_name;

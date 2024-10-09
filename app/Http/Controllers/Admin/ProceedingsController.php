@@ -19,6 +19,10 @@ class ProceedingsController extends Controller
     }
     public function store(Request $request)
     {
+        $request->validate([
+            'title'=>'required',
+            'file'=>'required',
+        ]);
         $store = new Proceeding();
         $store->title = $request->title;
         if ($request->hasFile('file')) {
@@ -38,6 +42,9 @@ class ProceedingsController extends Controller
     }
     public function update(Request $request)
     {
+        $request->validate([
+            'title'=>'required'
+        ]);
         $update = Proceeding::find($request->id);
         $update->title = $request->title;
         if ($request->hasFile('file')) {

@@ -20,12 +20,17 @@
                                 <!-- Form Start -->
                                 <div class="form-group">
                                     <label for="title" class="form-label">Name<span>*</span></label>
-                                    <input type="text" name="name" class="form-control" placeholder="Enter Name"
-                                        required>
+                                    <input type="text" name="name" class="form-control" placeholder="Enter Name" value="{{ old('name') }}">
+                                    @error('name')
+                                        <span class="text-danger"> {{ $message }} </span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="title" class="form-label">Document<span>*</span></label>
-                                    <input type="file" name="file" class="form-control" accept=".pdf" required>
+                                    <input type="file" name="file" class="form-control" accept=".pdf">
+                                    @error('file')
+                                        <span class="text-danger"> {{ $message }} </span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="card-footer">

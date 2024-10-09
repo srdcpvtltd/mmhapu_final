@@ -21,12 +21,18 @@
                                 <div class="form-group">
                                     <label for="name" class="form-label">Name<span>*</span></label>
                                     <input type="text" name="name" class="form-control" placeholder="Enter Name"
-                                        required>
+                                        value="{{ old('name') }}">
+                                    @error('name')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
 
                                 <div class="form-group">
                                     <label for="document" class="form-label">Document<span>*</span></label>
-                                    <input type="file" name="file" class="form-control" accept=".pdf" required>
+                                    <input type="file" name="file" class="form-control" accept=".pdf">
+                                    @error('file')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="card-footer">

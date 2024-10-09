@@ -15,7 +15,10 @@
                 <div class="mb-3">
                     <label for="notice_type" class="form-label">Notice Type<span style="color: red">*</span></label>
                     <input type="text" class="form-control" id="notice_type" name="notice_type"
-                        placeholder="Enter Notice Type" required>
+                        placeholder="Enter Notice Type"  value="{{ old('notice_type') }}">
+                        @error('notice_type')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                 </div>
                 <div class="mb-3">
                     <button type="submit" class="btn btn-primary">Submit</button>

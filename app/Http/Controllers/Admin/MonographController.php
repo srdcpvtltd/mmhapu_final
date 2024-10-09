@@ -14,6 +14,10 @@ class MonographController extends Controller
         return view('admin.web.monograph.index', compact('monograph'));
     }
     public function Store(Request $request){
+        $request->validate([
+            'name'=>'required',
+            'file'=>'required',
+        ]);
         $Store = new Monograph();
         $Store->name = $request->name;
         if($request->hasFile('file')){
@@ -31,6 +35,9 @@ class MonographController extends Controller
         return view('admin.web.monograph.edit', compact('Edit'));
     }
     public function Update(Request $request){
+        $request->validate([
+            'name'=>'required'
+        ]);
         $Update = Monograph::find($request->id);
         $Update->name = $request->name;
         if($request->hasFile('file')){
@@ -66,6 +73,10 @@ class MonographController extends Controller
         return view('admin.web.documentation.index', compact('documentation'));
     }
     public function documentationStore(Request $request){
+        $request->validate([
+            'btn_text'=>'required',
+            'file'=>'required'
+        ]);
         $documentationStore = new Documentation();
         $documentationStore->btn_text = $request->btn_text;
         $documentationStore->color = $request->color;
@@ -84,6 +95,9 @@ class MonographController extends Controller
         return view('admin.web.documentation.edit', compact('documentationEdit'));
     }
     public function documentationUpdate(Request $request){
+        $request->validate([
+            'btn_text'=>'required'
+        ]);
         $documentationUpdate = Documentation::find($request->id);
         $documentationUpdate->btn_text = $request->btn_text;
         $documentationUpdate->color = $request->color;

@@ -20,17 +20,22 @@
                                 <!-- Form Start -->
                                 <div class="form-group">
                                     <label for="title" class="form-label">Button Text<span>*</span></label>
-                                    <input type="text" name="btn_text" class="form-control" placeholder="Enter Button Text"
-                                        required>
+                                    <input type="text" name="btn_text" class="form-control" placeholder="Enter Button Text" value="{{ old('btn_text') }}">
+                                    @error('btn_text')
+                                        <span class="text-danger"> {{ 'Button text field is required' }} </span>
+                                    @enderror
                                 </div>
 
                                 <div class="form-group">
                                     <label for="title" class="form-label">Color<span>*</span></label>
-                                    <input type="color" name="color" class="form-control" required>
+                                    <input type="color" name="color" class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label for="title" class="form-label">Document<span>*</span></label>
-                                    <input type="file" name="file" class="form-control" accept=".pdf" required>
+                                    <input type="file" name="file" class="form-control" accept=".pdf">
+                                    @error('file')
+                                        <span class="text-danger"> {{ $message }} </span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="card-footer">

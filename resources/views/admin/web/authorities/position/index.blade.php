@@ -19,17 +19,25 @@
                                 <!-- Form Start -->
                                 <div class="form-group">
                                     <label for="title" class="form-label">Title<span>*</span></label>
-                                    <select name="title_id" class="form-control" required>
+                                    <select name="title_id" class="form-control">
                                         <option value="">---Select---</option>
                                         @foreach ($titles as $data)
-                                            <option value="{{ $data->id }}">{{ $data->title }}</option>
+                                            <option value="{{ $data->id }}"
+                                                {{ old('title_id') == $data->id ? 'selected' : '' }}>{{ $data->title }}
+                                            </option>
                                         @endforeach
                                     </select>
+                                    @error('title_id')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="title" class="form-label">Position<span>*</span></label>
                                     <input type="text" name="position" class="form-control" placeholder="Enter Position"
-                                        required>
+                                        value="{{ old('position') }}">
+                                    @error('position')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="card-footer">

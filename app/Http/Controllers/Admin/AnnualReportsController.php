@@ -13,6 +13,11 @@ class AnnualReportsController extends Controller
         return view('admin.web.reports.index', compact('reports'));
     }
     public function store(Request $request){
+        $request->validate([
+            'type'=>'required',
+            'name'=>'required',
+            'file'=>'required',
+        ]);
         $store =new AnnualReport;
         $store->type = $request->type;
         $store->name = $request->name;
@@ -31,6 +36,10 @@ class AnnualReportsController extends Controller
         return view('admin.web.reports.edit', compact('edit'));
     }
     public function update(Request $request){
+        $request->validate([
+            'type'=>'required',
+            'name'=>'required'
+        ]);
         $update = AnnualReport::find($request->id);
         $update->type = $request->type;
         $update->name = $request->name;

@@ -14,12 +14,18 @@
                 @csrf
                 <div class="mb-3">
                     <label for="notice_type" class="form-label">Title<span style="color: red">*</span></label>
-                    <input type="text" class="form-control" name="title" placeholder="Enter Title" required>
+                    <input type="text" class="form-control" name="title" placeholder="Enter Title"
+                        value="{{ old('title') }}">
+                    @error('title')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="mb-3">
                     <label for="notice_type" class="form-label">Description<span style="color: red">*</span></label>
-                    <textarea class="form-control texteditor" name="description"cols="30" rows="4" placeholder="Enter Description"></textarea>
-
+                    <textarea class="form-control texteditor" name="description"cols="30" rows="4" placeholder="Enter Description">{{ old('description') }}</textarea>
+                    @error('description')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="mb-3">
@@ -40,21 +46,32 @@
                 <div class="mb-3" id="fileField">
                     <label for="notice_type" class="form-label">File</label>
                     <input type="file" class="form-control" name="file">
+                    @error('file')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="mb-3" id="urlField" style="display:none;">
                     <label for="notice_type" class="form-label">Url</label>
                     <input type="text" class="form-control" name="url" placeholder="Enter URL">
+                    @error('url')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="mb-3">
                     <label for="notice_type" class="form-label">Notice Type<span style="color: red">*</span></label>
-                    <select class="form-control" name="notice_type" required>
+                    <select class="form-control" name="notice_type">
                         <option value="">Select Notice Type</option>
                         @foreach ($add_notice as $notice)
-                            <option value="{{ $notice->notice_type }}">{{ $notice->notice_type }}</option>
+                            <option value="{{ $notice->notice_type }}"
+                                {{ old('notice_type') == $notice->notice_type ? 'selected' : '' }}>
+                                {{ $notice->notice_type }}</option>
                         @endforeach
                     </select>
+                    @error('notice_type')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="mb-3">

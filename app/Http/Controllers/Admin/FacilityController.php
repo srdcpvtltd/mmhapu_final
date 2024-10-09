@@ -19,6 +19,11 @@ class FacilityController extends Controller
     }
     public function store(Request $request)
     {
+        $request->validate([
+            'title'=> 'required',
+            'description'=> 'required',
+            'images'=> 'required',
+        ]);
         $store = new Facility;
         $store->title = $request->title;
         $store->description = $request->description;

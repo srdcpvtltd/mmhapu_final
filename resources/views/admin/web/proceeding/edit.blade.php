@@ -17,6 +17,9 @@
                     <div class="col-lg-12 mb-3">
                         <label for="title" class="form-label">Title<span style="color: red">*</span></label>
                         <textarea class="form-control texteditor" name="title" cols="30" rows="10"> {{ $edit->title }} </textarea>
+                        @error('title')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="col-lg-6 mb-3">
                         <label for="notice_type" class="form-label">File<span style="color: red">*</span></label>

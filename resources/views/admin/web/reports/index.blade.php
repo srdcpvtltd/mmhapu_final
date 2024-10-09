@@ -19,22 +19,30 @@
 
                                 <div class="form-group">
                                     <label for="title" class="form-label">Report Type<span>*</span></label>
-                                    <select name="type" class="form-control" required>
+                                    <select name="type" class="form-control">
                                         <option value="">---Select---</option>
-                                        <option value="Bilingual">Bilingual</option>
-                                        <option value="English">English</option>
-                                        <option value="Hindi">Hindi</option>
+                                        <option value="Bilingual" {{ old('type') == 'Bilingual'? 'selected' : '' }} >Bilingual</option>
+                                        <option value="English" {{ old('type') == 'English'? 'selected' : '' }} >English</option>
+                                        <option value="Hindi" {{ old('type') == 'Hindi'? 'selected' : '' }} >Hindi</option>
                                     </select>
+                                    @error('type')
+                                        <span class="text-danger"> {{ $message }} </span>
+                                    @enderror
                                 </div>
 
                                 <div class="form-group">
                                     <label for="title" class="form-label">Name<span>*</span></label>
-                                    <input type="text" name="name" class="form-control" placeholder="Enter Name"
-                                        required>
+                                    <input type="text" name="name" class="form-control" placeholder="Enter Name" value="{{ old('name') }}">
+                                    @error('name')
+                                        <span class="text-danger"> {{ $message }} </span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="title" class="form-label">Document<span>*</span></label>
-                                    <input type="file" name="file" class="form-control" accept=".pdf" required>
+                                    <input type="file" name="file" class="form-control" accept=".pdf">
+                                    @error('file')
+                                        <span class="text-danger"> {{ $message }} </span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="card-footer">

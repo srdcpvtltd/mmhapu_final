@@ -16,55 +16,96 @@
                     <input type="hidden" name="id" value="{{ $bedEdit->id }}">
                     <div class="col-lg-6 mb-3">
                         <label for="File No." class="form-label">File No.<span style="color: red">*</span></label>
-                        <input type="text" class="form-control" name="file_no" value="{{ $bedEdit->file_no }}" required>
+                        <input type="text" class="form-control" name="file_no" value="{{ $bedEdit->file_no }}">
+                        @error('file_no')
+                            <span class="text-danger"> {{ $message }} </span>
+                        @enderror
                     </div>
                     <div class="col-lg-6 mb-3">
-                        <label for="Name of B.Ed Colleges" class="form-label">Name of B.Ed Colleges<span style="color: red">*</span></label>
-                        <input type="text" class="form-control" name="college_name" value="{{ $bedEdit->college_name }}" required>
+                        <label for="Name of B.Ed Colleges" class="form-label">Name of B.Ed Colleges<span
+                                style="color: red">*</span></label>
+                        <input type="text" class="form-control" name="college_name" value="{{ $bedEdit->college_name }}">
+                        @error('college_name')
+                            <span class="text-danger"> {{ $message }} </span>
+                        @enderror
                     </div>
                     <div class="col-lg-6 mb-3">
                         <label for="management" class="form-label">Management<span style="color: red">*</span></label>
-                        <input type="text" class="form-control" name="management" value="{{ $bedEdit->management }}" required>
+                        <input type="text" class="form-control" name="management" value="{{ $bedEdit->management }}">
+                        @error('management')
+                            <span class="text-danger"> {{ $message }} </span>
+                        @enderror
                     </div>
                     <div class="col-lg-6 mb-3">
                         <label for="Affiliting" class="form-label">Affiliting Body<span style="color: red">*</span></label>
-                        <input type="text" class="form-control" name="affiliting" value="{{ $bedEdit->affiliting }}" required>
+                        <input type="text" class="form-control" name="affiliting" value="{{ $bedEdit->affiliting }}">
+                        @error('affiliting')
+                            <span class="text-danger"> {{ $message }} </span>
+                        @enderror
                     </div>
                     <div class="col-lg-6 mb-3">
                         <label for="name" class="form-label">Course Name<span style="color: red">*</span></label>
-                        <input type="text" class="form-control" name="name" value="{{ $bedEdit->name }}" required>
+                        <input type="text" class="form-control" name="name" value="{{ $bedEdit->name }}">
+                        @error('name')
+                            <span class="text-danger"> {{ $message }} </span>
+                        @enderror
                     </div>
                     <div class="col-lg-6 mb-3">
                         <label for="intake" class="form-label">Intake<span style="color: red">*</span></label>
-                        <input type="text" class="form-control" name="intake" value="{{ $bedEdit->intake }}" required>
+                        <input type="text" class="form-control" name="intake" value="{{ $bedEdit->intake }}">
+                        @error('intake')
+                            <span class="text-danger"> {{ $message }} </span>
+                        @enderror
                     </div>
                     <div class="col-lg-6 mb-3">
                         <label for="district" class="form-label">District<span style="color: red">*</span></label>
-                        <input type="text" class="form-control" name="district" value="{{ $bedEdit->district }}" required>
+                        <input type="text" class="form-control" name="district" value="{{ $bedEdit->district }}">
+                        @error('district')
+                            <span class="text-danger"> {{ $message }} </span>
+                        @enderror
                     </div>
                     <div class="col-lg-6 mb-3">
                         <label for="address" class="form-label">Address<span style="color: red">*</span></label>
-                        <input type="text" class="form-control" name="address" value="{{ $bedEdit->address }}" required>
+                        <input type="text" class="form-control" name="address" value="{{ $bedEdit->address }}">
+                        @error('address')
+                            <span class="text-danger"> {{ $message }} </span>
+                        @enderror
                     </div>
                     <div class="col-lg-6 mb-3">
                         <label for="email" class="form-label">Email<span style="color: red">*</span></label>
-                        <input type="email" class="form-control" name="email" value="{{ $bedEdit->email }}" required>
+                        <input type="email" class="form-control" name="email" value="{{ $bedEdit->email }}">
+                        @error('email')
+                            <span class="text-danger"> {{ $message }} </span>
+                        @enderror
                     </div>
                     <div class="col-lg-6 mb-3">
                         <label for="website" class="form-label">Website<span style="color: red">*</span></label>
-                        <input type="text" class="form-control" name="website"value="{{ $bedEdit->website }}"  required>
+                        <input type="text" class="form-control" name="website"value="{{ $bedEdit->website }}">
+                        @error('website')
+                            <span class="text-danger"> {{ $message }} </span>
+                        @enderror
                     </div>
                     <div class="col-lg-6 mb-3">
-                        <label for="director" class="form-label">Director/Princepal<span style="color: red">*</span></label>
-                        <input type="text" class="form-control" name="director" value="{{ $bedEdit->director }}" required>
+                        <label for="director" class="form-label">Director/Princepal<span
+                                style="color: red">*</span></label>
+                        <input type="text" class="form-control" name="director" value="{{ $bedEdit->director }}">
+                        @error('director')
+                            <span class="text-danger"> {{ $message }} </span>
+                        @enderror
                     </div>
                     <div class="col-lg-6 mb-3">
                         <label for="contact" class="form-label">Contact<span style="color: red">*</span></label>
-                        <input type="number" class="form-control" name="contact" value="{{ $bedEdit->contact }}" required>
+                        <input type="number" class="form-control" name="contact" value="{{ $bedEdit->contact }}">
+                        @error('contact')
+                            <span class="text-danger"> {{ $message }} </span>
+                        @enderror
                     </div>
                     <div class="col-lg-6 mb-3">
                         <label for="code" class="form-label">Code<span style="color: red">*</span></label>
-                        <input type="number" class="form-control" name="code" value="{{ $bedEdit->code }}" required>
+                        <input type="number" class="form-control" name="code" value="{{ $bedEdit->code }}">
+                        @error('code')
+                            <span class="text-danger"> {{ $message }} </span>
+                        @enderror
                     </div>
                     <div class="col-lg-6 mb-3">
                         <label for="document" class="form-label">Document<span style="color: red">*</span></label>

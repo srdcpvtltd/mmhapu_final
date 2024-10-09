@@ -13,6 +13,10 @@ class EnewsLetterController extends Controller
         return view('admin.web.e-newsletter.index', compact('newsletter'));
     }
     public function store(Request $request){
+        $request->validate([
+            'name'=>'required',
+            'file'=>'required',
+        ]);
         $store = new EnewsLetter();
         $store->name = $request->name;
         if($request->hasFile('file')){
@@ -30,6 +34,9 @@ class EnewsLetterController extends Controller
         return view('admin.web.e-newsletter.edit', compact('edit'));
     }
     public function update(Request $request){
+        $request->validate([
+            'name'=>'required'
+        ]);
         $update = EnewsLetter::find($request->id);
         $update->name = $request->name;
         if($request->hasFile('file')){

@@ -16,6 +16,12 @@ class MouController extends Controller
         return view('admin.web.mous.add');
     }
     public function store(Request $request){
+        $request->validate([
+            'institute'=>'required',
+            'collaborative'=>'required',
+            'country'=>'required',
+            'dated'=>'required',
+        ]);
         $store = new Mou();
         $store->institute = $request->institute;
         $store->collaborative = $request->collaborative;

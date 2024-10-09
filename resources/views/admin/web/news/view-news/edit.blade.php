@@ -23,13 +23,15 @@
                                     value="{{ $data->id }}">{{ $data->title }}</option>
                             @endforeach
                         </select>
+                        @error('newspaper_id')
+                            <span class="text-danger">{{ 'Newspaper field is required' }}</span>
+                        @enderror
                         <img class="mt-2" src="{{ asset('uploads/news/' . $edit->image) }}" alt=""
                             width="100">
                     </div>
                     <div class="col-lg-6 mb-3">
                         <label for="gallery_type" class="form-label">Photo<span style="color: red">*</span></label>
-                        <input type="file" id="imagesUpload" accept="image/*" class="form-control" name="image"
-                            required>
+                        <input type="file" id="imagesUpload" accept="image/*" class="form-control" name="image">
                         <img class="mt-2" src="gallery.png" alt="" id="gallery-pic" width="100">
                     </div>
                 </div>

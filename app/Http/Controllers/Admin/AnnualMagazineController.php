@@ -14,6 +14,10 @@ class AnnualMagazineController extends Controller
         return view('admin.web.gyangrah.index', compact('gyangrah'));
     }
     public function gyangrahStore(Request $request){
+        $request->validate([
+            'name'=>'required',
+            'file'=>'required',
+        ]);
         $gyangrahStore = new Gyangrah();
         $gyangrahStore->name = $request->name;
         if($request->hasFile('file')){
@@ -66,6 +70,10 @@ class AnnualMagazineController extends Controller
         return view('admin.web.harmony.index', compact('harmony'));
     }
     public function harmonyStore(Request $request){
+        $request->validate([
+            'name'=>'required',
+            'file'=>'required'
+        ]);
         $harmonyStore = new Harmony();
         $harmonyStore->name = $request->name;
         if($request->hasFile('file')){
@@ -83,6 +91,9 @@ class AnnualMagazineController extends Controller
         return view('admin.web.harmony.edit', compact('harmonyEdit'));
     }
     public function harmonyUpdate(Request $request){
+        $request->validate([
+            'name'=>'required'
+        ]);
         $harmonyUpdate = Harmony::find($request->id);
         $harmonyUpdate->name = $request->name;
         if($request->hasFile('file')){
