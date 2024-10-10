@@ -17,6 +17,12 @@ class FacultyController extends Controller
         return view('admin.web.faculty.category.add');
     }
     public function store(Request $request){
+        $request->validate([
+            'name' => 'required',
+            'icon' => 'required',
+            'phone' => 'required',
+            'email' => 'required',
+        ]);
         $store = new FacultyCategory;
         $store->name = $request->name;
         $store->icon = $request->icon;

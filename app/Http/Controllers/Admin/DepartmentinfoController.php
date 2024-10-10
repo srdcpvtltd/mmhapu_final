@@ -24,6 +24,11 @@ class DepartmentinfoController extends Controller
     {
         $request->validate([
             'faculty_subcat_id' => 'required|unique:department_info,faculty_subcat_id',
+            'head' => 'required',
+            'address' => 'required',
+            'phone' => 'required',
+            'email' => 'required',
+            'website' => 'required',
         ], [
             'faculty_subcat_id.unique' => 'The selected faculty subcategory is already in use. Please choose a different one.',
         ]);

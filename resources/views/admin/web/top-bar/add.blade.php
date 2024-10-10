@@ -15,12 +15,18 @@
                 <div class="row">
                     <div class="col-lg-6 mb-3">
                         <label for="notice_type" class="form-label">Title<span style="color: red">*</span></label>
-                        <input type="text" class="form-control" name="title" placeholder="Enter Title" required>
+                        <input type="text" class="form-control" name="title" placeholder="Enter Title" value="{{ old('title') }}">
+                                    @error('title')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                     </div>
                     <div class="col-lg-6 mb-3">
                         <label for="notice_type" class="form-label">Url Name(Example : /home)<span style="color: red">*</span></label>
                         <input type="text" class="form-control" name="url" placeholder="E.g. /Url-name"
-                            required>
+                            value="{{ old('url') }}">
+                                    @error('url')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                     </div>
                 </div>
                 <div class="mb-3">

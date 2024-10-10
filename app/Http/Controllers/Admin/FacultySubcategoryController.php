@@ -19,6 +19,13 @@ class FacultySubcategoryController extends Controller
         return view('admin.web.faculty.subcategory.add',compact('categories'));
     }
     public function store(Request $request){
+        $request->validate([
+            'faculty_id' => 'required',
+            'name' => 'required',
+            'phone' => 'required',
+            'email' => 'required',
+            'description' => 'required',
+        ]);
         $store = new FacultySubcategory;
         $store->faculty_id = $request->faculty_id;
         $store->name = $request->name;

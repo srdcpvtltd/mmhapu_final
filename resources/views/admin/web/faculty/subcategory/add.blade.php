@@ -19,25 +19,42 @@
                         <select class="form-control" name="faculty_id">
                             <option value="">Select Name</option>
                             @foreach ($categories as $category)
-                                <option value="{{ $category->id }}"> {{ $category->name }} </option>
+                                <option value="{{ $category->id }}"
+                                    {{ old('faculty_id') == $category->id ? 'selected' : '' }}> {{ $category->name }}
+                                </option>
                             @endforeach
                         </select>
+                        @error('faculty_id')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="col-lg-6 mb-3">
                         <label for="name" class="form-label">Name<span style="color: red">*</span></label>
-                        <input type="text" class="form-control" name="name" placeholder="Enter Name" required>
+                        <input type="text" class="form-control" name="name" placeholder="Enter Name" value="{{ old('name') }}">
+                        @error('name')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="col-lg-6 mb-3">
                         <label for="phone" class="form-label">Phone<span style="color: red">*</span></label>
-                        <input type="text" class="form-control" name="phone" placeholder="Enter Phone Number" required>
+                        <input type="text" class="form-control" name="phone" placeholder="Enter Phone Number" value="{{ old('phone') }}">
+                        @error('phone')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="col-lg-6 mb-3">
                         <label for="email" class="form-label">Email<span style="color: red">*</span></label>
-                        <input type="text" class="form-control" name="email" placeholder="Enter Email" required>
+                        <input type="text" class="form-control" name="email" placeholder="Enter Email" value="{{ old('email') }}">
+                        @error('email')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="col-lg-12 mb-12">
                         <label for="description" class="form-label">Description<span style="color: red">*</span></label>
-                        <textarea name="description" id="description" class="form-control" cols="30" rows="3" required></textarea>
+                        <textarea name="description" id="description" class="form-control" cols="30" rows="3" >v{{ old('description') }}</textarea>
+                        @error('description')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                 </div>
                 <div class="mb-3">
