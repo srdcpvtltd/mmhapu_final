@@ -20,9 +20,9 @@ class FacilityController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title'=> 'required',
-            'description'=> 'required',
-            'images'=> 'required',
+            'title' => 'required',
+            'description' => 'required',
+            'images' => 'required',
         ]);
         $store = new Facility;
         $store->title = $request->title;
@@ -52,11 +52,16 @@ class FacilityController extends Controller
     public function update(Request $request)
     {
         $update = Facility::find($request->id);
+
+        if (!$update) {
+            toastr()->error('Facility not found.');
+            return redirect()->route('admin.facility.list');
+        }
+
         $update->title = $request->title;
         $update->description = $request->description;
 
         if ($request->hasFile('images')) {
-
             $currentImages = json_decode($update->images, true);
             if (is_array($currentImages)) {
                 foreach ($currentImages as $currentImage) {
@@ -66,7 +71,6 @@ class FacilityController extends Controller
                     }
                 }
             }
-
             $images = $request->file('images');
             $imagesArray = [];
 
@@ -77,12 +81,14 @@ class FacilityController extends Controller
             }
 
             $update->images = json_encode($imagesArray);
-            $update->save();
-
-            toastr()->success('Facility Updated Successfully');
-            return redirect()->route('admin.facility.list');
         }
+
+        $update->save();
+
+        toastr()->success('Facility Updated Successfully');
+        return redirect()->route('admin.facility.list');
     }
+
     public function delete($id)
     {
         $delete = Facility::find($id);
