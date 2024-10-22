@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use App\Models\OnlineCertificate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class StudentSectionController extends Controller
 {
@@ -32,6 +33,8 @@ class StudentSectionController extends Controller
         $certificateStore->address = $request->address;
         $certificateStore->save();
 
-        return redirect()->route('razorpay.payment');
+        $encryptedId = Crypt::encrypt($certificateStore->id);
+
+        return redirect('/payment/'. $encryptedId);
     }
 }

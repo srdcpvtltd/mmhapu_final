@@ -185,7 +185,7 @@ Route::middleware(['XSS'])->namespace('Web')->group(function () {
     Route::post('/certificate_store', [StudentSectionController::class, 'certificateStore'])->name('certificateStore');
 
     //Razorpay
-    Route::get('payment', [RazorpayController::class, 'index'])->name('razorpay.payment');
+    Route::get('payment/{id}', [RazorpayController::class, 'index'])->name('razorpay.payment');
     Route::post('payment', [RazorpayController::class, 'store'])->name('razorpay.store');
 
     //Team

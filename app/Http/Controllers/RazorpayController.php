@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\OnlineCertificate;
+use App\Models\Payment;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Session;
 use Razorpay\Api\Api;
 
@@ -15,9 +18,10 @@ class RazorpayController extends Controller
      *
      * @return response()
      */
-    public function index()
+    public function index($id)
     {
-        return view('web.razorpay');
+        $ID = Crypt::decrypt($id);
+        return view('web.razorpay', compact('ID'));
     }
 
     /**
@@ -28,6 +32,7 @@ class RazorpayController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
+        $certificate = OnlineCertificate::where('id', $request->certificate_id)->first();
         $api = new Api(env('RAZORPAY_KEY'), env('RAZORPAY_SECRET'));
 
         $payment = $api->payment->fetch($input['razorpay_payment_id']);
@@ -35,6 +40,22 @@ class RazorpayController extends Controller
         if (count($input)  && !empty($input['razorpay_payment_id'])) {
             try {
                 $response = $api->payment->fetch($input['razorpay_payment_id'])->capture(array('amount' => $payment['amount']));
+
+                $payment = Payment::create([
+                    'certificate_id' => $certificate->id,
+                    'amount' => $response['amount'] / 100,
+                    'transation_date' => date('Y-m-d H:i:s'),
+                    'transaction_number' => $response['id'],
+                    'method' => $response['method'],
+                    'currency' => $response['currency'],
+                    'json_response' => json_encode((array)$response)
+                ]);
+
+                $certificate->payment = 'completed';
+                $certificate->save();
+
+                Session::put('success', 'Payment successful');
+                return redirect()->route('onlineCertificate');
             } catch (Exception $e) {
                 return  $e->getMessage();
                 Session::put('error', $e->getMessage());

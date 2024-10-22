@@ -98,6 +98,7 @@
                                 <!-- Razorpay Payment Button -->
                                 <form class="razorpay-container" action="{{ route('razorpay.store') }}" method="POST">
                                     @csrf
+                                    <input type="hidden" name="certificate_id" value="{{$ID}}">
                                         <script src="https://checkout.razorpay.com/v1/checkout.js"
                                             data-key="{{ env('RAZORPAY_KEY') }}"
                                             data-amount="150000"
