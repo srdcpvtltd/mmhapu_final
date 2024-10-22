@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontwebuser\DashbController;
 use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\FacultyController;
+use App\Http\Controllers\RazorpayController;
 use App\Http\Controllers\Web\AboutController;
 use App\Http\Controllers\Web\AcademicController;
 use App\Http\Controllers\Web\AcademicsController;
@@ -182,6 +183,10 @@ Route::middleware(['XSS'])->namespace('Web')->group(function () {
     //Application for Online Certificate
     Route::get('/online_certificate', [StudentSectionController::class, 'onlineCertificate'])->name('onlineCertificate');
     Route::post('/certificate_store', [StudentSectionController::class, 'certificateStore'])->name('certificateStore');
+
+    //Razorpay
+    Route::get('payment', [RazorpayController::class, 'index'])->name('razorpay.payment');
+    Route::post('payment', [RazorpayController::class, 'store'])->name('razorpay.store');
 
     //Team
     Route::get('/view-team/{id}', [TeamController::class, 'viewTeam'])->name('viewTeam');

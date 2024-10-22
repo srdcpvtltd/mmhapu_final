@@ -30,8 +30,8 @@ class StudentSectionController extends Controller
         $certificateStore->recive_degree = $request->recive_degree;
         $certificateStore->recive_mode = $request->recive_mode;
         $certificateStore->address = $request->address;
-
         $certificateStore->save();
-        return redirect()->back();
+
+        return redirect()->route('razorpay.payment');
     }
 }

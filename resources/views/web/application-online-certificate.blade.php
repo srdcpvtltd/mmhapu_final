@@ -242,26 +242,11 @@
                                 </div>
                             </div>
                             <div class="text-center">
-                                <button type="submit" class="btn btn-lg btn-primary" onclick="showPopup()">Save &
+                                <button type="submit" class="btn btn-lg btn-primary">Save &
                                     Make Payment</button>
                             </div>
                         </div>
                     </div>
-                    <!-- Custom Popup -->
-                    {{-- <div id="customPopup" class="custom-popup" style="display: none;">
-                        <div class="popup-content">
-                            <h5>Confirmation for Form Submission and Online Payment!</h5>
-                            <p>Your Request for Document in MMHAPU will be Saved with Requester ID:
-                                <strong>99006</strong>.
-                            </p>
-                            <p>Kindly Make Online Payment <strong>50 INR</strong> to Complete the Process!</p>
-                            <p>Do you want to submit?</p>
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-success" onclick="submitForm()">Yes</button>
-                                <button type="button" class="btn btn-danger" onclick="hidePopup()">No</button>
-                            </div>
-                        </div>
-                    </div> --}}
                 </form>
 
             </div>
@@ -287,16 +272,3 @@
         });
     });
 </script>
-{{-- <script>
-    function showPopup() {
-        document.getElementById("customPopup").style.display = "flex";
-    }
-
-    function hidePopup() {
-        document.getElementById("customPopup").style.display = "none";
-    }
-
-    function submitForm() {
-        document.getElementById("paymentForm").submit();
-    }
-</script> --}}
