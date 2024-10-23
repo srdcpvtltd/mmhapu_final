@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class OnlineCertificate extends Model
 {
     use HasFactory;
+
+    public function getPayment(){
+        return $this->hasOne(Payment::class, 'certificate_id', 'id');
+    }
 }

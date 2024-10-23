@@ -9,10 +9,27 @@ use Illuminate\Support\Facades\Crypt;
 
 class StudentSectionController extends Controller
 {
-    public function onlineCertificate(){
+    public function onlineCertificate()
+    {
         return view('web.application-online-certificate');
     }
-    public function certificateStore(Request $request){
+    public function certificateStore(Request $request)
+    {
+        $request->validate([
+            'reg_no' => 'required',
+            'roll_no' => 'required|unique:online_certificates,roll_no',
+            'name' => 'required',
+            'hindi_name' => 'required',
+            'gender' => 'required',
+            'email' => 'required|email',
+            'number' => 'required|numeric|unique:online_certificates,number',
+            'certificate' => 'required',
+            'college' => 'required',
+            'session' => 'required',
+            'passing_year' => 'required',
+            'recive_degree' => 'required',
+            'recive_mode' => 'required',
+        ]);
         $certificateStore = new OnlineCertificate();
 
         $certificateStore->request_id = mt_rand(10000, 99999);
@@ -35,6 +52,34 @@ class StudentSectionController extends Controller
 
         $encryptedId = Crypt::encrypt($certificateStore->id);
 
-        return redirect('/payment/'. $encryptedId);
+        return redirect('/payment/' . $encryptedId);
+    }
+    public function certificateView()
+    {
+        $certificates = OnlineCertificate::all();
+        return view('admin.web.application-certificate.index', compact('certificates'));
+    }
+
+    public function checkMobileNumber(Request $request)
+    {
+        $request->validate([
+            'rollno' => 'required',
+        ]);
+
+        $certificate = OnlineCertificate::where('roll_no', $request->rollno)->first();
+
+        if ($certificate) {
+            return redirect()->route('viewCertificate', ['roll_no' => $request->rollno]);
+        } else {
+            toastr()->error('This Roll No. is not registered.');
+            return redirect()->back();
+        }
+    }
+
+    public function viewCertificate($roll_no)
+    {
+        $certificate = OnlineCertificate::where('roll_no', $roll_no)->firstOrFail();
+
+        return view('web.view-online-certificate', compact('certificate'));
     }
 }

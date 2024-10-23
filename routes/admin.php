@@ -96,6 +96,7 @@ use App\Http\Controllers\Admin\Web\ViewnewsController;
 use App\Http\Controllers\DepartmentinfoController;
 use App\Http\Controllers\Frontwebuser\Web\GalleryController;
 use App\Http\Controllers\Prospect\ResultController;
+use App\Http\Controllers\Web\StudentSectionController as WebStudentSectionController;
 use App\Models\GatewayDetail;
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user', 'admin'], function () {
@@ -693,6 +694,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
         Route::get('study_material/edit/{id}', [StudymaterialController::class, 'edit'])->name('studyMaterial.edit');
         Route::post('study_material/update', [StudymaterialController::class, 'update'])->name('studyMaterial.update');
         Route::get('study_material/delete/{id}', [StudymaterialController::class, 'delete'])->name('studyMaterial.delete');
+
+        //Application for Online Certificate
+        Route::get('/certificate_view', [WebStudentSectionController::class, 'certificateView'])->name('certificateView');
 
         Route::resource('news', WebNewsController::class);
         Route::resource('gallery', WebGalleryController::class);

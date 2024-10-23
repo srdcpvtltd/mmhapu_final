@@ -183,6 +183,8 @@ Route::middleware(['XSS'])->namespace('Web')->group(function () {
     //Application for Online Certificate
     Route::get('/online_certificate', [StudentSectionController::class, 'onlineCertificate'])->name('onlineCertificate');
     Route::post('/certificate_store', [StudentSectionController::class, 'certificateStore'])->name('certificateStore');
+    Route::post('/check-mobile-number', [StudentSectionController::class, 'checkMobileNumber'])->name('checkMobileNumber');
+    Route::get('view_certificate/{roll_no}', [StudentSectionController::class, 'viewCertificate'])->name('viewCertificate');
 
     //Razorpay
     Route::get('payment/{id}', [RazorpayController::class, 'index'])->name('razorpay.payment');

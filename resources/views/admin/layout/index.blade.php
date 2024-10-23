@@ -461,14 +461,14 @@
                         </li>
 
                         <li
-                            class="nav-item nav-item-submenu {{ Request::is('admin/web/attendance*') || Request::is('admin/web/attendance_title*') || Request::is('admin/web/elearning*') || Request::is('admin/web/elearning_title*') || Request::is('admin/web/grievances_list*') || Request::is('admin/web/syllabus_title*') || Request::is('admin/web/syllabus*') || Request::is('admin/web/anti_raging*') ? 'nav-item-open' : '' }}">
+                            class="nav-item nav-item-submenu {{ Request::is('admin/web/attendance*') || Request::is('admin/web/attendance_title*') || Request::is('admin/web/elearning*') || Request::is('admin/web/elearning_title*') || Request::is('admin/web/grievances_list*') || Request::is('admin/web/syllabus_title*') || Request::is('admin/web/syllabus*') ||Request::is('admin/web/certificate_view*') || Request::is('admin/web/anti_raging*') ? 'nav-item-open' : '' }}">
                             <a href="#" class="nav-link">
                                 <i class="fas fa-check-circle"></i>
                                 <span>Students Section</span>
                             </a>
 
                             <ul class="nav nav-group-sub" data-submenu-title="Layouts"
-                                style="{{ Request::is('admin/web/attendance*') || Request::is('admin/web/attendance_title*') || Request::is('admin/web/elearning*') || Request::is('admin/web/elearning_title*') || Request::is('admin/web/grievances_list*') || Request::is('admin/web/syllabus_title*') || Request::is('admin/web/syllabus*') || Request::is('admin/web/anti_raging*') ? 'display:block' : '' }}">
+                                style="{{ Request::is('admin/web/attendance*') || Request::is('admin/web/attendance_title*') || Request::is('admin/web/elearning*') || Request::is('admin/web/elearning_title*') || Request::is('admin/web/grievances_list*') || Request::is('admin/web/syllabus_title*') || Request::is('admin/web/syllabus*') || Request::is('admin/web/certificate_view*') || Request::is('admin/web/anti_raging*') ? 'display:block' : '' }}">
 
                                 <li
                                     class="nav-item nav-item-submenu {{ Request::is('admin/web/attendance*') || Request::is('admin/web/attendance_title*') ? 'nav-item-open' : '' }}">
@@ -530,6 +530,12 @@
 
                                 <li class="nav-item"><a href="{{ route('admin.antiRaging.list') }}"
                                         class="nav-link {{ Request::is('admin/web/anti_raging*') ? 'active' : '' }}">Anti-Raging</a>
+                                </li>
+                                <li class="nav-item"><a href="{{ route('admin.certificateView') }}"
+                                        class="nav-link {{ Request::is('admin/web/certificate_view*') ? 'active' : '' }}">Application Online Certificate</a>
+                                </li>
+                                <li class="nav-item"><a href="{{ route('admin.certificateView') }}"
+                                        class="nav-link {{ Request::is('admin/web/certificate_view*') ? 'active' : '' }}">Degree Certificate</a>
                                 </li>
 
                             </ul>
