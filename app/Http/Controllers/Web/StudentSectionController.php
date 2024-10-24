@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Models\DegreeCertificate;
 use App\Models\OnlineCertificate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
@@ -11,7 +12,8 @@ class StudentSectionController extends Controller
 {
     public function onlineCertificate()
     {
-        return view('web.application-online-certificate');
+        $degree_certificate = DegreeCertificate::all();
+        return view('web.application-online-certificate', compact('degree_certificate'));
     }
     public function certificateStore(Request $request)
     {

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\DegreeCertificate;
 use App\Models\OnlineCertificate;
 use App\Models\Payment;
 use Exception;
@@ -23,7 +24,6 @@ class RazorpayController extends Controller
         $ID = Crypt::decrypt($id);
         return view('web.razorpay', compact('ID'));
     }
-
     /**
      * Write code on Method
      *

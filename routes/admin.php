@@ -686,6 +686,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
         Route::get('/student/edit{id}', [StudentsectionController::class, 'edit'])->name('student.edit');
         Route::post('/student/update', [StudentsectionController::class, 'update'])->name('student.update');
         Route::get('/student/delete{id}', [StudentsectionController::class, 'delete'])->name('student.delete');
+        //degree certificate
+        Route::get('/degree_certificate', [StudentsectionController::class, 'index'])->name('certificate.index');
+        Route::post('/certificate_store', [StudentsectionController::class, 'certificateStore'])->name('certificate.store');
+        Route::post('/certificate_update', [StudentsectionController::class, 'certificateUpdate'])->name('certificate.update');
+        Route::get('/certificate_delete/{id}', [StudentsectionController::class, 'certificateDelete'])->name('certificate.delete');
 
         //Study Material
         Route::get('study_material/list', [StudymaterialController::class, 'list'])->name('studyMaterial.list');

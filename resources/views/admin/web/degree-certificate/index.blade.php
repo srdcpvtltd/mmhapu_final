@@ -9,7 +9,7 @@
         <div class="page-wrapper">
             <div class="row">
                 <div class="col-md-5">
-                    <form class="needs-validation" action="{{ route('admin.attendanceTitle.store') }}" method="post">
+                    <form class="needs-validation" action="{{ route('admin.certificate.store') }}" method="post">
                         @csrf
                         <div class="card">
                             <div class="card-header">
@@ -18,11 +18,12 @@
                             <div class="card-block pdng">
                                 <!-- Form Start -->
                                 <div class="form-group">
-                                    <label for="title" class="form-label">Title<span>*</span></label>
-                                    <input type="text" name="title" class="form-control" placeholder="Enter Title">
-                                    @error('title')
-                                        <span class="text-danger"> {{ $message }} </span>
-                                    @enderror
+                                    <label class="form-label">Degree<span>*</span></label>
+                                    <input type="text" name="degree" class="form-control" placeholder="Enter Degree">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Price<span>*</span></label>
+                                    <input type="number" name="price" class="form-control" placeholder="Enter Price">
                                 </div>
                             </div>
                             <div class="card-footer">
@@ -44,19 +45,21 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Title</th>
+                                            <th>Degree</th>
+                                            <th>Price</th>
                                             <th>Action</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
-                                    {{-- <tbody>
+                                    <tbody>
                                         @php
                                             $i = 1;
                                         @endphp
-                                        @foreach ($titles as $data)
+                                        @foreach ($certificates as $data)
                                             <tr>
                                                 <td>{{ $i }}</td>
-                                                <td>{{ $data->title }}</td>
+                                                <td>{{ $data->degree }}</td>
+                                                <td>{{ $data->price }}</td>
                                                 <td>
                                                     <button type="button" class="btn btn-sm btn-primary"
                                                         data-bs-toggle="modal"
@@ -66,7 +69,7 @@
                                                 </td>
                                                 <td>
                                                     <a class="btn btn-danger btn-sm"
-                                                        onclick="confirmDelete('{{ route('admin.attendanceTitle.delete', $data->id) }}')">Delete</a>
+                                                        onclick="confirmDelete('{{ route('admin.certificate.delete', $data->id) }}')">Delete</a>
                                                 </td>
                                             </tr>
 
@@ -81,7 +84,7 @@
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                                 aria-label="Close">X</button>
                                                         </div>
-                                                        <form action="{{ route('admin.attendanceTitle.update', $data->id) }}"
+                                                        <form action="{{ route('admin.certificate.update', $data->id) }}"
                                                             method="POST">
                                                             @csrf
                                                             <input type="hidden" name="id"
@@ -89,10 +92,17 @@
                                                             <div class="modal-body">
                                                                 <div class="mb-3">
                                                                     <label for="title{{ $data->id }}"
-                                                                        class="form-label">Title</label>
+                                                                        class="form-label">Degree</label>
                                                                     <input type="text" class="form-control"
-                                                                        id="title{{ $data->id }}" name="title"
-                                                                        value="{{ $data->title }}">
+                                                                        id="degree{{ $data->id }}" name="degree"
+                                                                        value="{{ $data->degree }}">
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="title{{ $data->id }}"
+                                                                        class="form-label">Price</label>
+                                                                    <input type="text" class="form-control"
+                                                                        id="price{{ $data->id }}" name="price"
+                                                                        value="{{ $data->price }}">
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">
@@ -110,7 +120,7 @@
                                             @endphp
                                         @endforeach
 
-                                    </tbody> --}}
+                                    </tbody>
                                 </table>
                             </div>
                         </div>

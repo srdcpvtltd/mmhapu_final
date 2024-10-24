@@ -184,9 +184,9 @@
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" name="roll_no"
                                         placeholder="University Roll Number" required value="{{ old('roll_no') }}">
-                                        @error('roll_no')
-                                            <span class="text-danger"> {{ $message }} </span>
-                                        @enderror
+                                    @error('roll_no')
+                                        <span class="text-danger"> {{ $message }} </span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -241,11 +241,9 @@
                                     For:</label>
                                 <div class="col-sm-10">
                                     <select name="certificate" class="form-control">
-                                        <option value="Degree Certificate">Degree Certificate</option>
-                                        <option value="Provisional Certificate">Provisional Certificate</option>
-                                        <option value="Migration Certificate">Migration Certificate</option>
-                                        <option value="Character Certificate">Character Certificate</option>
-                                        <option value="ULC">ULC</option>
+                                        @foreach ($degree_certificate as $data)
+                                            <option value="{{ $data->degree }}">{{ $data->degree }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
