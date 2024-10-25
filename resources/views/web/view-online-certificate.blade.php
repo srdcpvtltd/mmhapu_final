@@ -217,12 +217,10 @@
                             <label for="Certificate" class="col-sm-2 col-form-label text-right">Request
                                 For:</label>
                             <div class="col-sm-10">
-                                <select name="certificate" class="form-control">
-                                    <option value="Degree Certificate">Degree Certificate</option>
-                                    <option value="Provisional Certificate">Provisional Certificate</option>
-                                    <option value="Migration Certificate">Migration Certificate</option>
-                                    <option value="Character Certificate">Character Certificate</option>
-                                    <option value="ULC">ULC</option>
+                                <select name="certificate" class="form-control" disabled>
+                                    @foreach ($degree_certificate as $data)
+                                        <option value="{{ $data->degree }}" {{ ($data->degree  == $certificate->certificate)? 'selected' : '' }}>{{ $data->degree }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -270,10 +268,9 @@
                                 Degree :</label>
                             <div class="col-sm-10">
                                 <Select name="recive_mode" id="recive_mode" class="form-control" disabled>
-                                    <option value="Self Collect"
-                                        {{ old('recive_mode') == 'Self Collect' ? 'selected' : '' }}>Self Collect
+                                    <option value="Self Collect" {{ ($certificate->recive_mode == 'Self Collect') ? 'selected' : '' }}>Self Collect
                                     </option>
-                                    <option value="By Post" {{ old('recive_mode') == 'By Post' ? 'selected' : '' }}>By
+                                    <option value="By Post" {{ ($certificate->recive_mode == 'By Post') ? 'selected' : '' }}>By
                                         Post</option>
                                 </Select>
                             </div>
@@ -283,14 +280,14 @@
                             <label for="address" class="col-sm-2 col-form-label text-right">Address :</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" name="address"
-                                    placeholder="Complete Address with Pin Code" value="{{ old('address') }}">
+                                    placeholder="Complete Address with Pin Code" value="{{ $certificate->address }}" disabled>
                             </div>
                         </div>
                         <form class="razorpay-container" action="{{ route('razorpay.store') }}" method="POST">
                             @csrf
                             <input type="hidden" name="certificate_id" value="{{ $certificate->id }}">
-                            <script src="https://checkout.razorpay.com/v1/checkout.js" data-key="{{ env('RAZORPAY_KEY') }}" data-amount="150000"
-                                data-currency="INR" data-buttontext="Pay ₹1,500.00 Now" data-name="SRDC Pvt. Ltd." data-description="Payment"
+                            <script src="https://checkout.razorpay.com/v1/checkout.js" data-key="{{ env('RAZORPAY_KEY') }}" data-amount="{{ $degree->price *100 }}"
+                                data-currency="INR" data-buttontext="Pay {{ $degree->price }} Now" data-name="SRDC Pvt. Ltd." data-description="Payment"
                                 data-image="http://srdcindia.co.in/wp-content/uploads/2020/08/logo_srdc.png" data-prefill.name="John Doe"
                                 data-prefill.email="john@example.com" data-theme.color="#F37254"></script>
                         </form>
@@ -307,15 +304,22 @@
 
 <script>
     $(document).ready(function() {
-        $('#address').hide();
-
-        $('#recive_mode').on('change', function() {
-            var mode = $(this).val();
+        // Function to show/hide address field based on selected mode
+        function toggleAddressField() {
+            var mode = $('#recive_mode').val();
             if (mode === 'By Post') {
                 $('#address').show();
             } else {
                 $('#address').hide();
             }
+        }
+
+        // Initial check on page load
+        toggleAddressField();
+
+        // Event listener for changes in the dropdown
+        $('#recive_mode').on('change', function() {
+            toggleAddressField();
         });
     });
 </script>

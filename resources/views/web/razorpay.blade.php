@@ -99,8 +99,8 @@
                                 <form class="razorpay-container" action="{{ route('razorpay.store') }}" method="POST">
                                     @csrf
                                     <input type="hidden" name="certificate_id" value="{{ $ID }}">
-                                    <script src="https://checkout.razorpay.com/v1/checkout.js" data-key="{{ env('RAZORPAY_KEY') }}" data-amount="150000"
-                                        data-currency="INR" data-buttontext="Pay 15,000 Now" data-name="SRDC Pvt. Ltd." data-description="Payment"
+                                    <script src="https://checkout.razorpay.com/v1/checkout.js" data-key="{{ env('RAZORPAY_KEY') }}" data-amount="{{ $degreeCertificate->price *100 }}"
+                                        data-currency="INR" data-buttontext="Pay {{ $degreeCertificate->price }} Now" data-name="SRDC Pvt. Ltd." data-description="Payment"
                                         data-image="http://srdcindia.co.in/wp-content/uploads/2020/08/logo_srdc.png" data-prefill.name="John Doe"
                                         data-prefill.email="john@example.com" data-theme.color="#F37254"></script>
                                 </form>

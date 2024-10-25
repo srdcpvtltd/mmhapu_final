@@ -16,6 +16,7 @@
                 <tr>
                     <th>#</th>
                     <th>Name</th>
+                    <th>Roll No.</th>
                     <th>Request No.</th>
                     <th>Applied Certificate</th>
                     <th>Date of Applied</th>
@@ -33,12 +34,16 @@
                     <tr>
                         <td>{{ $i }}</td>
                         <td>{{ $data->name }}</td>
+                        <td>{{ $data->roll_no }}</td>
                         <td>{{ $data->request_id }}</td>
                         <td>{{ $data->certificate }}</td>
                         <td>{{ $data->recive_degree }}</td>
-                        <td>{{ $data->payment }}</td>
+                        <td><span class="badge
+                            {{ $data->payment ? 'bg-success' : 'bg-warning' }}">
+                            {{ $data->payment ?? 'Pending' }}
+                        </span></td>
                         <td>{{ optional($data->getPayment)->transaction_number ?? 'N/A' }}</td>
-                        <td>{{ optional($data->getPayment)->transaction_date ?? 'N/A' }}</td>
+                        <td>{{ optional($data->getPayment)->transation_date ?? 'N/A' }}</td>
                         <td>{{ optional($data->getPayment)->method ?? 'N/A' }}</td>
                     </tr>
                     @php

@@ -71,7 +71,12 @@ class StudentSectionController extends Controller
         $certificate = OnlineCertificate::where('roll_no', $request->rollno)->first();
 
         if ($certificate) {
-            return redirect()->route('viewCertificate', ['roll_no' => $request->rollno]);
+            if ($certificate->payment === 'completed') {
+                toastr()->info('Payment is already completed.');
+                return redirect()->back();
+            } else {
+                return redirect()->route('viewCertificate', ['roll_no' => $request->rollno]);
+            }
         } else {
             toastr()->error('This Roll No. is not registered.');
             return redirect()->back();
@@ -81,7 +86,9 @@ class StudentSectionController extends Controller
     public function viewCertificate($roll_no)
     {
         $certificate = OnlineCertificate::where('roll_no', $roll_no)->firstOrFail();
+        $degree_certificate = DegreeCertificate::all();
+        $degree = DegreeCertificate::where('degree', $certificate->certificate)->first();
 
-        return view('web.view-online-certificate', compact('certificate'));
+        return view('web.view-online-certificate', compact('certificate', 'degree_certificate', 'degree'));
     }
 }

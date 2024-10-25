@@ -121,9 +121,6 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12">
-                {{-- <form id="paymentForm" action="{{ route('certificateStore') }} " method="POST"
-                    enctype="multipart/form-data">
-                    @csrf --}}
                 <div class="panel panel-primary">
                     <div class="panel-heading text-center">
                         <h4 class="panel-title" style="color: #fff">Online Request for Degree
@@ -143,7 +140,7 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="applyModalLabel">Enter Mobile Number</h5>
+                                    <h5 class="modal-title" id="applyModalLabel">Enter Roll Number</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
@@ -152,9 +149,9 @@
                                     <form action="{{ route('checkMobileNumber') }}" method="POST">
                                         @csrf
                                         <div class="mb-3">
-                                            <label for="mobileNumber" class="form-label">Mobile No.</label>
+                                            <label for="mobileNumber" class="form-label">Roll No.</label>
                                             <input type="text" class="form-control" name="rollno"
-                                                placeholder="Enter your mobile number" required>
+                                                placeholder="Enter your roll number" required>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"

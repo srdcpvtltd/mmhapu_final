@@ -22,7 +22,10 @@ class RazorpayController extends Controller
     public function index($id)
     {
         $ID = Crypt::decrypt($id);
-        return view('web.razorpay', compact('ID'));
+        $Certificate = OnlineCertificate::find($ID);
+        $degreeCertificate = DegreeCertificate::where('degree', $Certificate->certificate)->first();
+        // dd($degreeCertificate->price);
+        return view('web.razorpay', compact('ID','degreeCertificate'));
     }
     /**
      * Write code on Method
