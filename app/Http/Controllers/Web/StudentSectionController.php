@@ -21,7 +21,9 @@ class StudentSectionController extends Controller
             'reg_no' => 'required',
             'roll_no' => 'required|unique:online_certificates,roll_no',
             'name' => 'required',
-            'hindi_name' => 'required',
+            'father_name' => 'required',
+            'mother_name' => 'required',
+            'adhar_number' => 'required',
             'gender' => 'required',
             'email' => 'required|email',
             'number' => 'required|numeric|unique:online_certificates,number',
@@ -40,6 +42,9 @@ class StudentSectionController extends Controller
         $certificateStore->roll_no = $request->roll_no;
         $certificateStore->name = $request->name;
         $certificateStore->hindi_name = $request->hindi_name;
+        $certificateStore->father_name = $request->father_name;
+        $certificateStore->mother_name = $request->mother_name;
+        $certificateStore->adhar_number = $request->adhar_number;
         $certificateStore->gender = $request->gender;
         $certificateStore->email = $request->email;
         $certificateStore->number = $request->number;

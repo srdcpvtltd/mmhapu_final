@@ -201,6 +201,27 @@
                                 </div>
                             </div>
                             <div class="form-group row">
+                                <label for="hindi_name" class="col-sm-2 col-form-label text-right">Father Name :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="father_name"
+                                        placeholder="Father Name" value="{{ old('father_name') }}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="hindi_name" class="col-sm-2 col-form-label text-right">Mother Name :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="mother_name"
+                                        placeholder="Mother Name" value="{{ old('mother_name') }}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="hindi_name" class="col-sm-2 col-form-label text-right">Adharcard Number :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="adhar_number"
+                                        placeholder="Adharcard Number" value="{{ old('adhar_number') }}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
                                 <label for="gender" class="col-sm-2 col-form-label text-right">Gender:</label>
                                 <div class="col-sm-10">
                                     <select class="form-control" name="gender" required>
