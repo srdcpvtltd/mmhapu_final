@@ -84,7 +84,7 @@
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                                 aria-label="Close">X</button>
                                                         </div>
-                                                        <form action="{{ route('admin.certificate.update', $data->id) }}"
+                                                        <form action="{{ route('admin.degree.update', $data->id) }}"
                                                             method="POST">
                                                             @csrf
                                                             <input type="hidden" name="id"

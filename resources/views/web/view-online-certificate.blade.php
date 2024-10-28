@@ -121,7 +121,8 @@
     }
 
     .razorpay-payment-button {
-        background-color: #0d6efd; /* Bootstrap Primary Color */
+        background-color: #0d6efd;
+        /* Bootstrap Primary Color */
         color: white;
         border: none;
         padding: 10px 20px;
@@ -161,14 +162,16 @@
                             <label for="roll_number" class="col-sm-2 col-form-label text-right">Roll No. :</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" name="roll_no"
-                                    placeholder="University Roll Number" required value="{{ $certificate->roll_no }}" disabled>
+                                    placeholder="University Roll Number" required value="{{ $certificate->roll_no }}"
+                                    disabled>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="name" class="col-sm-2 col-form-label text-right">Name:</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" name="name"
-                                    placeholder="Full Name In English" required value="{{ $certificate->name }}" disabled>
+                                    placeholder="Full Name In English" required value="{{ $certificate->name }}"
+                                    disabled>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -181,19 +184,20 @@
                         <div class="form-group row">
                             <label for="hindi_name" class="col-sm-2 col-form-label text-right">Father Name :</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" name="father_name"
-                                    placeholder="Father Name" value="{{ $certificate->father_name }}" disabled>
+                                <input type="text" class="form-control" name="father_name" placeholder="Father Name"
+                                    value="{{ $certificate->father_name }}" disabled>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="hindi_name" class="col-sm-2 col-form-label text-right">Mother Name :</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" name="mother_name"
-                                    placeholder="Mother Name" value="{{ $certificate->mother_name }}" disabled>
+                                <input type="text" class="form-control" name="mother_name" placeholder="Mother Name"
+                                    value="{{ $certificate->mother_name }}" disabled>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="hindi_name" class="col-sm-2 col-form-label text-right">Adharcard Number :</label>
+                            <label for="hindi_name" class="col-sm-2 col-form-label text-right">Adharcard Number
+                                :</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" name="adhar_number"
                                     placeholder="Adharcard Number" value="{{ $certificate->adhar_number }}" disabled>
@@ -240,14 +244,17 @@
                             <div class="col-sm-10">
                                 <select name="certificate" class="form-control" disabled>
                                     @foreach ($degree_certificate as $data)
-                                        <option value="{{ $data->degree }}" {{ ($data->degree  == $certificate->certificate)? 'selected' : '' }}>{{ $data->degree }}</option>
+                                        <option value="{{ $data->degree }}"
+                                            {{ $data->degree == $certificate->certificate ? 'selected' : '' }}>
+                                            {{ $data->degree }}</option>
                                     @endforeach
                                 </select>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="College/Dept" class="col-sm-2 col-form-label text-right">College/Dept.:</label>
+                            <label for="College/Dept"
+                                class="col-sm-2 col-form-label text-right">College/Dept.:</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" name="college"
                                     placeholder="Name of the College / University Department" required
@@ -270,7 +277,8 @@
                                 :</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" name="passing_year"
-                                    placeholder="Year of Passing" required value="{{ $certificate->passing_year }}" disabled>
+                                    placeholder="Year of Passing" required value="{{ $certificate->passing_year }}"
+                                    disabled>
                             </div>
                         </div>
 
@@ -289,9 +297,12 @@
                                 Degree :</label>
                             <div class="col-sm-10">
                                 <Select name="recive_mode" id="recive_mode" class="form-control" disabled>
-                                    <option value="Self Collect" {{ ($certificate->recive_mode == 'Self Collect') ? 'selected' : '' }}>Self Collect
+                                    <option value="Self Collect"
+                                        {{ $certificate->recive_mode == 'Self Collect' ? 'selected' : '' }}>Self
+                                        Collect
                                     </option>
-                                    <option value="By Post" {{ ($certificate->recive_mode == 'By Post') ? 'selected' : '' }}>By
+                                    <option value="By Post"
+                                        {{ $certificate->recive_mode == 'By Post' ? 'selected' : '' }}>By
                                         Post</option>
                                 </Select>
                             </div>
@@ -301,14 +312,16 @@
                             <label for="address" class="col-sm-2 col-form-label text-right">Address :</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" name="address"
-                                    placeholder="Complete Address with Pin Code" value="{{ $certificate->address }}" disabled>
+                                    placeholder="Complete Address with Pin Code" value="{{ $certificate->address }}"
+                                    disabled>
                             </div>
                         </div>
                         <form class="razorpay-container" action="{{ route('razorpay.store') }}" method="POST">
                             @csrf
                             <input type="hidden" name="certificate_id" value="{{ $certificate->id }}">
-                            <script src="https://checkout.razorpay.com/v1/checkout.js" data-key="{{ env('RAZORPAY_KEY') }}" data-amount="{{ $degree->price *100 }}"
-                                data-currency="INR" data-buttontext="Pay {{ $degree->price }} Now" data-name="SRDC Pvt. Ltd." data-description="Payment"
+                            <script src="https://checkout.razorpay.com/v1/checkout.js" data-key="{{ env('RAZORPAY_KEY') }}"
+                                data-amount="{{ $degree->price * 100 }}" data-currency="INR" data-buttontext="Pay {{ $degree->price }} Now"
+                                data-name="SRDC Pvt. Ltd." data-description="Payment"
                                 data-image="http://srdcindia.co.in/wp-content/uploads/2020/08/logo_srdc.png" data-prefill.name="John Doe"
                                 data-prefill.email="john@example.com" data-theme.color="#F37254"></script>
                         </form>

@@ -506,13 +506,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
         Route::post('/documentation/update', [MonographController::class, 'documentationUpdate'])->name('documentation.update');
         Route::get('/documentation/delete/{id}', [MonographController::class, 'documentationDelete'])->name('documentation.delete');
 
-         //Anti-Raging
-         Route::get('/anti_raging/list', [AntiragingController::class, 'list'])->name('antiRaging.list');
-         Route::get('/anti_raging/add', [AntiragingController::class, 'add'])->name('antiRaging.add');
-         Route::post('/anti_raging/store', [AntiragingController::class, 'store'])->name('antiRaging.store');
-         Route::get('/anti_raging/edit/{id}', [AntiragingController::class, 'edit'])->name('antiRaging.edit');
-         Route::post('/anti_raging/update', [AntiragingController::class, 'update'])->name('antiRaging.update');
-         Route::get('/anti_raging/delete/{id}', [AntiragingController::class, 'delete'])->name('antiRaging.delete');
+        //Anti-Raging
+        Route::get('/anti_raging/list', [AntiragingController::class, 'list'])->name('antiRaging.list');
+        Route::get('/anti_raging/add', [AntiragingController::class, 'add'])->name('antiRaging.add');
+        Route::post('/anti_raging/store', [AntiragingController::class, 'store'])->name('antiRaging.store');
+        Route::get('/anti_raging/edit/{id}', [AntiragingController::class, 'edit'])->name('antiRaging.edit');
+        Route::post('/anti_raging/update', [AntiragingController::class, 'update'])->name('antiRaging.update');
+        Route::get('/anti_raging/delete/{id}', [AntiragingController::class, 'delete'])->name('antiRaging.delete');
 
         //Annual Reports
         Route::get('/reports/list', [AnnualReportsController::class, 'list'])->name('reports.list');
@@ -586,7 +586,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
         Route::get('/university_officers_title/delete/{id}', [AdministrativeController::class, 'university_officers_titleDelete'])->name('university_officers_title.delete');
 
         //University Officers
-        Route::get('/university_officers/list', [AdministrativeController::class, 'university_officersList']) ->name('university_officers.list');
+        Route::get('/university_officers/list', [AdministrativeController::class, 'university_officersList'])->name('university_officers.list');
         Route::get('/university_officers/add', [AdministrativeController::class, 'university_officersAdd'])->name('university_officers.add');
         Route::post('/university_officers/store', [AdministrativeController::class, 'university_officersStore'])->name('university_officers.store');
         Route::get('/university_officers/edit/{id}', [AdministrativeController::class, 'university_officersEdit'])->name('university_officers.edit');
@@ -594,25 +594,25 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
         Route::get('/university_officers/delete/{id}', [AdministrativeController::class, 'university_officersDelete'])->name('university_officers.delete');
 
         //university Authorities title
-        Route::get('/authorities/list', [AdministrativeController::class, 'authoritiesList']) ->name('authorities.list');
-        Route::post('/authorities/store', [AdministrativeController::class, 'authoritiesStore']) ->name('authorities.store');
-        Route::post('/authorities/update', [AdministrativeController::class, 'authoritiesUpdate']) ->name('authorities.update');
-        Route::get('/authorities/delete/{id}', [AdministrativeController::class, 'authoritiesDelete']) ->name('authorities.delete');
+        Route::get('/authorities/list', [AdministrativeController::class, 'authoritiesList'])->name('authorities.list');
+        Route::post('/authorities/store', [AdministrativeController::class, 'authoritiesStore'])->name('authorities.store');
+        Route::post('/authorities/update', [AdministrativeController::class, 'authoritiesUpdate'])->name('authorities.update');
+        Route::get('/authorities/delete/{id}', [AdministrativeController::class, 'authoritiesDelete'])->name('authorities.delete');
 
         //university Authorities Position
-        Route::get('/position/list', [AdministrativeController::class, 'positionList']) ->name('position.list');
-        Route::post('/position/store', [AdministrativeController::class, 'positionStore']) ->name('position.store');
-        Route::post('/position/update', [AdministrativeController::class, 'positionUpdate']) ->name('position.update');
-        Route::get('/position/delete/{id}', [AdministrativeController::class, 'positionDelete']) ->name('position.delete');
+        Route::get('/position/list', [AdministrativeController::class, 'positionList'])->name('position.list');
+        Route::post('/position/store', [AdministrativeController::class, 'positionStore'])->name('position.store');
+        Route::post('/position/update', [AdministrativeController::class, 'positionUpdate'])->name('position.update');
+        Route::get('/position/delete/{id}', [AdministrativeController::class, 'positionDelete'])->name('position.delete');
 
         //university Authorities
-        Route::get('/authority/list', [AdministrativeController::class, 'authorityList']) ->name('authority.list');
-        Route::get('/authority/add', [AdministrativeController::class, 'authorityAdd']) ->name('authority.add');
-        Route::post('/authority/store', [AdministrativeController::class, 'authorityStore']) ->name('authority.store');
-        Route::get('/authority/edit/{id}', [AdministrativeController::class, 'authorityEdit']) ->name('authority.edit');
-        Route::post('/authority/update', [AdministrativeController::class, 'authorityUpdate']) ->name('authority.update');
-        Route::get('/authority/delete/{id}', [AdministrativeController::class, 'authorityDelete']) ->name('authority.delete');
-        Route::post('/get_position', [AdministrativeController::class, 'getPosition']) ->name('authority.getPosition');
+        Route::get('/authority/list', [AdministrativeController::class, 'authorityList'])->name('authority.list');
+        Route::get('/authority/add', [AdministrativeController::class, 'authorityAdd'])->name('authority.add');
+        Route::post('/authority/store', [AdministrativeController::class, 'authorityStore'])->name('authority.store');
+        Route::get('/authority/edit/{id}', [AdministrativeController::class, 'authorityEdit'])->name('authority.edit');
+        Route::post('/authority/update', [AdministrativeController::class, 'authorityUpdate'])->name('authority.update');
+        Route::get('/authority/delete/{id}', [AdministrativeController::class, 'authorityDelete'])->name('authority.delete');
+        Route::post('/get_position', [AdministrativeController::class, 'getPosition'])->name('authority.getPosition');
 
         //Committes Title
         Route::get('/committe_title/list', [CommitteeController::class, 'committe_titleList'])->name('committe_title.list');
@@ -624,7 +624,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
         Route::get('/committe_title/delete/{id}', [CommitteeController::class, 'committe_titleDelete'])->name('committe_title.delete');
 
         //Committes
-        Route::get('/committe/list', [CommitteeController::class, 'committeList']) ->name('committe.list');
+        Route::get('/committe/list', [CommitteeController::class, 'committeList'])->name('committe.list');
         Route::get('/committe/add', [CommitteeController::class, 'committeAdd'])->name('committe.add');
         Route::post('/committe/store', [CommitteeController::class, 'committeStore'])->name('committe.store');
         Route::get('/committe/edit/{id}', [CommitteeController::class, 'committeEdit'])->name('committe.edit');
@@ -632,12 +632,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
         Route::get('/committe/delete/{id}', [CommitteeController::class, 'committeDelete'])->name('committe.delete');
 
         //Act & Status
-        Route::get('/act_status/list',[ActStatusController::class, 'list']) ->name('actStatus.list');
-        Route::get('/act_status/add',[ActStatusController::class, 'add']) ->name('actStatus.add');
-        Route::post('/act_status/store',[ActStatusController::class, 'store']) ->name('actStatus.store');
-        Route::get('/act_status/edit/{id}',[ActStatusController::class, 'edit']) ->name('actStatus.edit');
-        Route::post('/act_status/update',[ActStatusController::class, 'update']) ->name('actStatus.update');
-        Route::get('/act_status/delete/{id}',[ActStatusController::class, 'delete']) ->name('actStatus.delete');
+        Route::get('/act_status/list', [ActStatusController::class, 'list'])->name('actStatus.list');
+        Route::get('/act_status/add', [ActStatusController::class, 'add'])->name('actStatus.add');
+        Route::post('/act_status/store', [ActStatusController::class, 'store'])->name('actStatus.store');
+        Route::get('/act_status/edit/{id}', [ActStatusController::class, 'edit'])->name('actStatus.edit');
+        Route::post('/act_status/update', [ActStatusController::class, 'update'])->name('actStatus.update');
+        Route::get('/act_status/delete/{id}', [ActStatusController::class, 'delete'])->name('actStatus.delete');
 
         //Top Bar
         Route::get('/top_bar/list', [TopbarController::class, 'list'])->name('Topbar.list');
@@ -686,10 +686,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
         Route::get('/student/edit{id}', [StudentsectionController::class, 'edit'])->name('student.edit');
         Route::post('/student/update', [StudentsectionController::class, 'update'])->name('student.update');
         Route::get('/student/delete{id}', [StudentsectionController::class, 'delete'])->name('student.delete');
+
         //degree certificate
         Route::get('/degree_certificate', [StudentsectionController::class, 'index'])->name('certificate.index');
         Route::post('/certificate_store', [StudentsectionController::class, 'certificateStore'])->name('certificate.store');
-        Route::post('/certificate_update', [StudentsectionController::class, 'certificateUpdate'])->name('certificate.update');
+        Route::post('/degree_update', [StudentsectionController::class, 'degreeUpdate'])->name('degree.update');
         Route::get('/certificate_delete/{id}', [StudentsectionController::class, 'certificateDelete'])->name('certificate.delete');
 
         //Study Material
@@ -702,6 +703,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
 
         //Application for Online Certificate
         Route::get('/certificate_view', [WebStudentSectionController::class, 'certificateView'])->name('certificateView');
+        Route::get('/certificate_edit/{id}', [WebStudentSectionController::class, 'certificateEdit'])->name('certificateEdit');
+        Route::post('/certificate_update', [WebStudentSectionController::class, 'certificateUpdate'])->name('certificateUpdate');
+        Route::post('/get_payment', [WebStudentSectionController::class, 'getPayment'])->name('getPayment');
 
         Route::resource('news', WebNewsController::class);
         Route::resource('gallery', WebGalleryController::class);

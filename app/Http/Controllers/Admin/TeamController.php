@@ -81,9 +81,7 @@ class TeamController extends Controller
             'qualification' => 'required',
             'email' => 'required',
             'phone' => 'required',
-            'photo' => 'required',
             's_description' => 'required',
-            'resume' => 'required',
             'details' => 'required',
 
         ]);

@@ -66,6 +66,28 @@ class StudentSectionController extends Controller
         $certificates = OnlineCertificate::all();
         return view('admin.web.application-certificate.index', compact('certificates'));
     }
+    public function certificateEdit($id)
+    {
+        $certificate = OnlineCertificate::find($id);
+        return view('admin.web.application-certificate.edit', compact('certificate'));
+    }
+    public function certificateUpdate(Request $request)
+    {
+        $update = OnlineCertificate::find($request->id);
+        if ($request->hasFile('file')) {
+            if ($update->file &&  file_exists(public_path('uploads/certificates/' . $update->file))) {
+                unlink(public_path('uploads/certificates/' . $update->file));
+            }
+            $file = $request->file('file');
+            $filename = time() . '.' . $file->getClientOriginalName();
+            $file->move(public_path('uploads/certificates'), $filename);
+            $update->file = $filename;
+            $update->certificate_status = 1;
+        }
+        $update->save();
+        toastr()->success('Certificate Updated Successfully');
+        return redirect()->route('admin.certificateView');
+    }
 
     public function checkMobileNumber(Request $request)
     {
@@ -86,6 +108,45 @@ class StudentSectionController extends Controller
             toastr()->error('This Roll No. is not registered.');
             return redirect()->back();
         }
+    }
+    public function checkCertificate(Request $request)
+    {
+        $request->validate([
+            'rollno' => 'required',
+        ]);
+
+        $certificate = OnlineCertificate::where('roll_no', $request->rollno)->first();
+
+        if ($certificate) {
+            if ($certificate->payment === 'completed') {
+                return redirect()->route('certificate.download', ['rollno' => $request->rollno]);
+            } else {
+                toastr()->info('Please complete the payment first.');
+                return redirect()->back();
+            }
+        } else {
+            toastr()->error('Invalid roll number.');
+            return redirect()->back();
+        }
+    }
+    public function download($rollno)
+    {
+        $certificate = OnlineCertificate::where('roll_no', $rollno)->firstOrFail();
+
+        $pdfPath = public_path('uploads/certificates/' . $certificate->file);
+
+        if (!file_exists($pdfPath)) {
+            return back()->with('error', 'Certificate PDF not found.');
+        }
+
+        return response()->file($pdfPath, [
+            'Content-Disposition' => 'inline; filename="' . $certificate->file . '"',
+        ]);
+    }
+
+    public function getPayment(Request $request){
+        $get_payment = OnlineCertificate::where('payment', $request->payment_type)->get();
+        return response()->json($get_payment);
     }
 
     public function viewCertificate($roll_no)

@@ -131,8 +131,37 @@
                     <div class="mt-2 panel panel-body" style="text-align: center">
                         <a href="#applyModal" data-bs-toggle="modal" class="btn btn-success squeeze-btn">Already
                             Applied</a>
+                        <a href="#dowloadModal" data-bs-toggle="modal" class="btn btn-primary squeeze-btn">Download Certificate</a>
                     </div>
 
+                    <!-- Modal Structure -->
+                    <div class="modal fade" id="dowloadModal" tabindex="-1" aria-labelledby="dowloadModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="dowloadModalLabel">Enter Roll Number</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <!-- Form -->
+                                    <form action="{{ route('checkCertificate') }}" method="POST">
+                                        @csrf
+                                        <div class="mb-3">
+                                            <label for="mobileNumber" class="form-label">Roll No.</label>
+                                            <input type="text" name="rollno" id="rollno" class="form-control"   placeholder="Enter your roll number" required>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <!-- Modal Structure -->
                     <div class="modal fade" id="applyModal" tabindex="-1" aria-labelledby="applyModalLabel"

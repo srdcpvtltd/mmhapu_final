@@ -75,7 +75,7 @@ class StudentsectionController extends Controller
         toastr()->success('Degree Certificate Added Successfully!');
         return redirect()->back();
     }
-    public function certificateUpdate(Request $request){
+    public function degreeUpdate(Request $request){
         $update_degree = DegreeCertificate::find($request->id);
         $update_degree->degree = $request->degree;
         $update_degree->price = $request->price;
