@@ -156,7 +156,11 @@ class StudentSectionController extends Controller
 
     public function getPayment(Request $request)
     {
-        $get_payment = OnlineCertificate::where('payment', $request->payment_type)->get();
+        $query = OnlineCertificate::with('getPayment');
+        if ($request->filled('payment_type')) {
+            $query->where('payment', $request->payment_type);
+        }
+        $get_payment = $query->get();
         return response()->json($get_payment);
     }
 

@@ -17,7 +17,6 @@
             width: 700px;
             margin: 30px auto;
             background-color: #fff;
-            padding: 20px;
             border: 1px solid #ddd;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
@@ -118,7 +117,7 @@
         </table>
 
         <div class="footer">
-            <p>Thank you for your payment!</p>
+            <p style="color: red; font-weight: bold;">Please bring this receipt along with original ID proof to collect your certificate from the university.</p>
         </div>
     </div>
 </body>

@@ -17,7 +17,7 @@
                                 {{-- <h5>Payment Status</h5> --}}
                                 <label for="">Payment Status:</label>
                                 <select class="form-control" name="" id="payment_type">
-                                    <option>Choose</option>
+                                    <option value="">Choose</option>
                                     <option value="completed">Completed</option>
                                     <option value="pending">Pending</option>
                                 </select>
