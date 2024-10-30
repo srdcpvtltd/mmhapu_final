@@ -131,7 +131,39 @@
                     <div class="mt-2 panel panel-body" style="text-align: center">
                         <a href="#applyModal" data-bs-toggle="modal" class="btn btn-success squeeze-btn">Already
                             Applied</a>
-                        <a href="#dowloadModal" data-bs-toggle="modal" class="btn btn-primary squeeze-btn">Download Certificate</a>
+                        <a href="#dowloadModal" data-bs-toggle="modal" class="btn btn-primary squeeze-btn">Download
+                            Certificate</a>
+                        <a href="#reciptModal" data-bs-toggle="modal" class="btn btn-info squeeze-btn">Download Receipt</a>
+                    </div>
+
+                    <!-- receiptModal Structure -->
+                    <div class="modal fade" id="reciptModal" tabindex="-1" aria-labelledby="reciptModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="reciptModalLabel">Enter Roll Number</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <!-- Form -->
+                                    <form action="{{ route('checkReceipt') }}" method="POST">
+                                        @csrf
+                                        <div class="mb-3">
+                                            <label for="mobileNumber" class="form-label">Roll No.</label>
+                                            <input type="text" name="rollno" id="rollno" class="form-control"
+                                                placeholder="Enter your roll number" required>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Modal Structure -->
@@ -150,7 +182,8 @@
                                         @csrf
                                         <div class="mb-3">
                                             <label for="mobileNumber" class="form-label">Roll No.</label>
-                                            <input type="text" name="rollno" id="rollno" class="form-control"   placeholder="Enter your roll number" required>
+                                            <input type="text" name="rollno" id="rollno" class="form-control"
+                                                placeholder="Enter your roll number" required>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
@@ -197,7 +230,8 @@
                         @csrf
                         <div class="panel-body mt-4">
                             <div class="form-group row">
-                                <label for="registration_number" class="col-sm-2 col-form-label text-right">Registration
+                                <label for="registration_number"
+                                    class="col-sm-2 col-form-label text-right">Registration
                                     No. :</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" name="reg_no"
@@ -230,24 +264,44 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="hindi_name" class="col-sm-2 col-form-label text-right">Father Name :</label>
+                                <label for="hindi_name" class="col-sm-2 col-form-label text-right">Father Name
+                                    :</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" name="father_name"
                                         placeholder="Father Name" value="{{ old('father_name') }}">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="hindi_name" class="col-sm-2 col-form-label text-right">Mother Name :</label>
+                                <label for="hindi_name" class="col-sm-2 col-form-label text-right">Mother Name
+                                    :</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" name="mother_name"
                                         placeholder="Mother Name" value="{{ old('mother_name') }}">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="hindi_name" class="col-sm-2 col-form-label text-right">Adharcard Number :</label>
+                                <label for="hindi_name" class="col-sm-2 col-form-label text-right">Adharcard Number
+                                    :</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" name="adhar_number"
                                         placeholder="Adharcard Number" value="{{ old('adhar_number') }}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="hindi_name" class="col-sm-2 col-form-label text-right">Apaar ID
+                                    :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="apaar_id"
+                                        placeholder="APAAR ID" value="{{ old('apaar_id') }}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="document" class="col-sm-2 col-form-label text-right">
+                                    Document :</label>
+                                <div class="col-sm-10">
+                                        <input type="file" class="form-control" name="document"
+                                        placeholder="Enter Document Details" value="{{ old('document') }}">
+                                        <span style="color: red;">(Passport, Aadhaar, PAN Card)</span>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -256,7 +310,8 @@
                                     <select class="form-control" name="gender" required>
                                         <option value="Male" {{ old('gender') == 'Male' ? 'selected' : '' }}>Male
                                         </option>
-                                        <option value="Female" {{ old('gender') == 'Female' ? 'selected' : '' }}>Female
+                                        <option value="Female" {{ old('gender') == 'Female' ? 'selected' : '' }}>
+                                            Female
                                         </option>
                                         <option value="Other" {{ old('gender') == 'Other' ? 'selected' : '' }}>Other
                                         </option>
@@ -267,7 +322,7 @@
                                 <label for="email" class="col-sm-2 col-form-label text-right">Email:</label>
                                 <div class="col-sm-10">
                                     <input type="email" class="form-control" name="email"
-                                        placeholder="Email For Any Type Of Notification" required
+                                        placeholder="Enter Email" required
                                         value="{{ old('email') }}">
                                 </div>
                             </div>

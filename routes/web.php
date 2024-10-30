@@ -187,6 +187,8 @@ Route::middleware(['XSS'])->namespace('Web')->group(function () {
     Route::get('view_certificate/{roll_no}', [StudentSectionController::class, 'viewCertificate'])->name('viewCertificate');
     Route::post('/check-certificate', [StudentSectionController::class, 'checkCertificate'])->name('checkCertificate');
     Route::get('/certificate/download/{rollno}', [StudentSectionController::class, 'download'])->name('certificate.download');
+    Route::post('/check_receipt', [StudentSectionController::class, 'checkReceipt'])->name('checkReceipt');
+    Route::get('/generate_receipt/{rollno}', [StudentSectionController::class, 'generateReceipt'])->name('generateReceipt');
 
     //Razorpay
     Route::get('payment/{id}', [RazorpayController::class, 'index'])->name('razorpay.payment');

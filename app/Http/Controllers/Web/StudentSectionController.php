@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use App\Models\DegreeCertificate;
 use App\Models\OnlineCertificate;
+use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
+use Carbon\Carbon;
+use PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 
@@ -45,6 +48,13 @@ class StudentSectionController extends Controller
         $certificateStore->father_name = $request->father_name;
         $certificateStore->mother_name = $request->mother_name;
         $certificateStore->adhar_number = $request->adhar_number;
+        $certificateStore->apaar_id = $request->apaar_id;
+        if($request->hasFile('document')){
+            $document = $request->file('document');
+            $document_name = $document->getClientOriginalName();
+            $document->move(public_path('uploads/certificates'), $document_name);
+            $certificateStore->document = $document_name;
+        }
         $certificateStore->gender = $request->gender;
         $certificateStore->email = $request->email;
         $certificateStore->number = $request->number;
@@ -144,7 +154,8 @@ class StudentSectionController extends Controller
         ]);
     }
 
-    public function getPayment(Request $request){
+    public function getPayment(Request $request)
+    {
         $get_payment = OnlineCertificate::where('payment', $request->payment_type)->get();
         return response()->json($get_payment);
     }
@@ -156,5 +167,43 @@ class StudentSectionController extends Controller
         $degree = DegreeCertificate::where('degree', $certificate->certificate)->first();
 
         return view('web.view-online-certificate', compact('certificate', 'degree_certificate', 'degree'));
+    }
+
+    public function checkReceipt(Request $request)
+    {
+        $request->validate([
+            'rollno' => 'required',
+        ]);
+        $receipt = OnlineCertificate::where('roll_no', $request->rollno)->first();
+        if ($receipt) {
+            if ($receipt->payment === 'completed') {
+                return redirect()->route('generateReceipt', ['rollno' => $request->rollno]);
+            } else {
+                toastr()->info('Please complete the payment first.');
+                return redirect()->back();
+            }
+        } else {
+            toastr()->error('Invalid roll number.');
+            return redirect()->back();
+        }
+    }
+
+    public function generateReceipt($rollno)
+    {
+        $receipt = OnlineCertificate::where('roll_no', $rollno)->first();
+        $data = [
+            'name' => $receipt->name,
+            'roll_no' => $receipt->roll_no,
+            'father_name' => $receipt->father_name,
+            'certificate' => $receipt->certificate,
+            'recive_degree' => Carbon::parse($receipt->recive_degree)->format('jS F Y'),
+            'method' => $receipt->getPayment->method,
+            // 'payment_status' => $receipt->getPayment->payment_status,
+            'amount' => $receipt->getPayment->amount,
+        ];
+
+        $pdf = FacadePdf::loadView('web.receipt', $data);
+
+        return $pdf->download('payment_receipt.pdf');
     }
 }

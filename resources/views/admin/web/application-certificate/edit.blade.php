@@ -23,6 +23,23 @@
                         <input type="text" class="form-control" value="{{ $certificate->roll_no }}" disabled>
                     </div>
                     <div class="col-lg-6 mb-3">
+                        <label for="managment" class="form-label">Father Name</label>
+                        <input type="text" class="form-control" value="{{ $certificate->father_name }}" disabled>
+                    </div>
+                    <div class="col-lg-6 mb-3">
+                        <label for="managment" class="form-label">Apaar ID</label>
+                        <input type="text" class="form-control" value="{{ $certificate->apaar_id }}" disabled>
+                    </div>
+                    <div class="col-lg-6 mb-3">
+                        <label for="management" class="form-label">
+                            Document <span class="text-danger">(Aadhaar Card, Passport, PAN Card) </span>
+                        </label>
+                        <br>
+                        <a href="{{ asset('uploads/certificates/'. $certificate->document) }}" target="blank" class="">
+                            <i class="fas fa-file-alt fa-3x" style="color: #ff0000; margin-left: 15px;"></i>
+                        </a>
+                    </div>
+                    <div class="col-lg-6 mb-3">
                         <label for="regulating" class="form-label">Request No.</label>
                         <input type="text" class="form-control" value="{{ $certificate->request_id }}" disabled>
                     </div>

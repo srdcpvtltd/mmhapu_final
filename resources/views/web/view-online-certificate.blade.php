@@ -204,6 +204,23 @@
                             </div>
                         </div>
                         <div class="form-group row">
+                            <label for="hindi_name" class="col-sm-2 col-form-label text-right">Apaar ID
+                                :</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="apaar_id"
+                                    placeholder="APAAR ID" value="{{ $certificate->apaar_id }}" disabled>
+                            </div>
+                        </div>
+                        {{-- <div class="form-group row">
+                            <label for="document" class="col-sm-2 col-form-label text-right">
+                                Document :</label>
+                            <div class="col-sm-10">
+                                    <input type="file" class="form-control" name="document"
+                                    placeholder="Enter Document Details" value="{{ old('document') }}">
+                                    <span style="color: red;">(Passport, Aadhaar, PAN Card)</span>
+                            </div>
+                        </div> --}}
+                        <div class="form-group row">
                             <label for="gender" class="col-sm-2 col-form-label text-right">Gender:</label>
                             <div class="col-sm-10">
                                 <select class="form-control" name="gender" required disabled>
