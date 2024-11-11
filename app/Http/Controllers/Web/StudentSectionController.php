@@ -84,19 +84,31 @@ class StudentSectionController extends Controller
     public function certificateUpdate(Request $request)
     {
         $update = OnlineCertificate::find($request->id);
-        if ($request->hasFile('file')) {
-            if ($update->file &&  file_exists(public_path('uploads/certificates/' . $update->file))) {
-                unlink(public_path('uploads/certificates/' . $update->file));
-            }
-            $file = $request->file('file');
-            $filename = time() . '.' . $file->getClientOriginalName();
-            $file->move(public_path('uploads/certificates'), $filename);
-            $update->file = $filename;
-            $update->certificate_status = 1;
-        }
+        $update->certificate_status = $request->certificate_status;
+        // if ($request->hasFile('file')) {
+        //     if ($update->file &&  file_exists(public_path('uploads/certificates/' . $update->file))) {
+        //         unlink(public_path('uploads/certificates/' . $update->file));
+        //     }
+        //     $file = $request->file('file');
+        //     $filename = time() . '.' . $file->getClientOriginalName();
+        //     $file->move(public_path('uploads/certificates'), $filename);
+        //     $update->file = $filename;
+        //     $update->certificate_status = 1;
+        // }
         $update->save();
         toastr()->success('Certificate Updated Successfully');
         return redirect()->route('admin.certificateView');
+    }
+
+    public function applicationDelete($id){
+        $deleteCertificate = OnlineCertificate::find($id);
+        if($deleteCertificate){
+            $deleteCertificate->delete();
+            toastr()->success('Deleted Successfully.');
+            return redirect()->back();
+        }
+        toastr()->error('Something wents wrong.');
+        return redirect()->back();
     }
 
     public function checkMobileNumber(Request $request)
@@ -200,7 +212,7 @@ class StudentSectionController extends Controller
             'roll_no' => $receipt->roll_no,
             'father_name' => $receipt->father_name,
             'certificate' => $receipt->certificate,
-            'recive_degree' => Carbon::parse($receipt->recive_degree)->format('jS F Y'),
+            'created_at' => Carbon::parse($receipt->created_at)->format('jS F Y'),
             'method' => $receipt->getPayment->method,
             // 'payment_status' => $receipt->getPayment->payment_status,
             'amount' => $receipt->getPayment->amount,

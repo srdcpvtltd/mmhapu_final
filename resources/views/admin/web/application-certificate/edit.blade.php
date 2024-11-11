@@ -35,7 +35,8 @@
                             Document <span class="text-danger">(Aadhaar Card, Passport, PAN Card) </span>
                         </label>
                         <br>
-                        <a href="{{ asset('uploads/certificates/'. $certificate->document) }}" target="blank" class="">
+                        <a href="{{ asset('uploads/certificates/' . $certificate->document) }}" target="blank"
+                            class="">
                             <i class="fas fa-file-alt fa-3x" style="color: #ff0000; margin-left: 15px;"></i>
                         </a>
                     </div>
@@ -75,9 +76,20 @@
                         <input type="text" class="form-control"
                             value="{{ optional($certificate->getPayment)->method ?? 'N/A' }}" disabled>
                     </div>
-                    <div class="col-lg-6 mb-3">
-                        <label for="document" class="form-label">Certificate</label>
+                    {{-- <div class="col-lg-6 mb-3">
+                        <label for="document" class="form-label">Certificate Status</label>
                         <input type="file" class="form-control" name="file" accept=".pdf">
+                    </div> --}}
+                    <div class="col-lg-6 mb-3">
+                        <label class="form-label d-block">Certificate Status</label>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="certificate_status" value="0" {{ $certificate->certificate_status == 0 ? 'checked' : '' }}>
+                            <label class="form-check-label" for="pending">Pending</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="certificate_status" value="1" {{ $certificate->certificate_status == 1 ? 'checked' : '' }}>
+                            <label class="form-check-label" for="issued">Issued</label>
+                        </div>
                     </div>
                 </div>
                 <div class="mb-3">

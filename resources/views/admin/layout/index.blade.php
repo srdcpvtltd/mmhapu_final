@@ -360,14 +360,14 @@
                         </li>
 
                         <li
-                            class="nav-item nav-item-submenu {{ Request::is('admin/web/iqac_eventtitle*') || Request::is('admin/web/iqac_event*') || Request::is('admin/web/evaluation_title*') || Request::is('admin/web/evaluation_report*') || Request::is('admin/web/committes_title*') || Request::is('admin/web/committes_cells*') || Request::is('admin/web/collabration*') || Request::is('admin/web/minutes*') || Request::is('admin/web/policies*') || Request::is('admin/web/feedback*') || Request::is('admin/web/committees*') ? 'nav-item-open' : '' }}">
+                            class="nav-item nav-item-submenu {{ Request::is('admin/web/iqac_eventtitle*') || Request::is('admin/web/iqac_event*') || Request::is('admin/web/evaluation_title*') || Request::is('admin/web/evaluation_report*') || Request::is('admin/web/iqac_committes_title*') || Request::is('admin/web/iqac_committes_cells*') || Request::is('admin/web/collabration*') || Request::is('admin/web/minutes*') || Request::is('admin/web/policies*') || Request::is('admin/web/feedback*') || Request::is('admin/web/committees*') ? 'nav-item-open' : '' }}">
                             <a href="#" class="nav-link">
                                 <i class="fas fa-check-circle"></i>
                                 <span>IQAC</span>
                             </a>
 
                             <ul class="nav nav-group-sub" data-submenu-title="Layouts"
-                                style="{{ Request::is('admin/web/iqac_eventtitle*') || Request::is('admin/web/iqac_event*') || Request::is('admin/web/evaluation_title*') || Request::is('admin/web/evaluation_report*') || Request::is('admin/web/committes_title*') || Request::is('admin/web/committes_cells*') || Request::is('admin/web/collabration*') || Request::is('admin/web/minutes*') || Request::is('admin/web/policies*') || Request::is('admin/web/feedback*') || Request::is('admin/web/committees*') ? 'display:block' : '' }}">
+                                style="{{ Request::is('admin/web/iqac_eventtitle*') || Request::is('admin/web/iqac_event*') || Request::is('admin/web/evaluation_title*') || Request::is('admin/web/evaluation_report*') || Request::is('admin/web/iqac_committes_title*') || Request::is('admin/web/iqac_committes_cells*') || Request::is('admin/web/collabration*') || Request::is('admin/web/minutes*') || Request::is('admin/web/policies*') || Request::is('admin/web/feedback*') || Request::is('admin/web/committees*') ? 'display:block' : '' }}">
 
                                 <li
                                     class="nav-item nav-item-submenu {{ Request::is('admin/web/iqac_eventtitle*') || Request::is('admin/web/iqac_event*') ? 'nav-item-open' : '' }}">
@@ -405,18 +405,18 @@
                                 </li>
 
                                 <li
-                                    class="nav-item nav-item-submenu {{ Request::is('admin/web/committes_title*') || Request::is('admin/web/committes_cells*') ? 'nav-item-open' : '' }}">
+                                    class="nav-item nav-item-submenu {{ Request::is('admin/web/iqac_committes_title*') || Request::is('admin/web/iqac_committes_cells*') ? 'nav-item-open' : '' }}">
                                     <a href="#" class="nav-link"><span> Committees & Cells</span></a>
 
                                     <ul class="nav nav-group-sub" data-submenu-title="Layouts"
-                                        style="{{ Request::is('admin/web/committes_title*') || Request::is('admin/web/committes_cells*') ? 'display:block' : '' }}">
+                                        style="{{ Request::is('admin/web/iqac_committes_title*') || Request::is('admin/web/iqac_committes_cells*') ? 'display:block' : '' }}">
 
                                         <li class="nav-item"><a href="{{ route('admin.CommitteesCellsTitle.list') }}"
-                                                class="nav-link {{ Request::is('admin/web/committes_title*') ? 'active' : '' }}">Title</a>
+                                                class="nav-link {{ Request::is('admin/web/iqac_committes_title*') ? 'active' : '' }}">Title</a>
                                         </li>
 
                                         <li class="nav-item"><a href="{{ route('admin.committesCells.list') }}"
-                                                class="nav-link {{ Request::is('admin/web/committes_cells*') ? 'active' : '' }}">Committees
+                                                class="nav-link {{ Request::is('admin/web/iqac_committes_cells*') ? 'active' : '' }}">Committees
                                                 & Cells</a>
                                         </li>
                                     </ul>
@@ -1092,6 +1092,7 @@
             // [ Zero-configuration ] start
             $('#basic-table').DataTable();
             $('#basic-table2').DataTable();
+            $('.table').DataTable();
 
             // [ HTML5-Export ] start
             $('#export-table').DataTable({

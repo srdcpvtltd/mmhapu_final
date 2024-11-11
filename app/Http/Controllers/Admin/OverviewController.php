@@ -16,6 +16,16 @@ class OverviewController extends Controller
     }
     public function store(Request $request)
     {
+        $request->validate([
+            'faculties'=>'required',
+            'departments'=>'required',
+            'centres'=>'required',
+            'programmes'=>'required',
+            'e_resources'=>'required',
+            'mou'=>'required',
+            'students'=>'required',
+            'scholars'=>'required',
+        ]);
 
         $id = $request->id;
         if ($id == -1) {

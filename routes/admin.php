@@ -395,18 +395,18 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
         Route::get('/minutes/delete/{id}', [IqacMinutesController::class, 'delete'])->name('minutes.delete');
 
         //committees & cells title
-        Route::get('/committes_title/list', [CommitteesCellsController::class, 'index'])->name('CommitteesCellsTitle.list');
-        Route::post('/committes_title/store', [CommitteesCellsController::class, 'storeTitle'])->name('CommitteesCellsTitle.store');
-        Route::post('/committes_title/update', [CommitteesCellsController::class, 'update'])->name('CommitteesCellsTitle.update');
-        Route::get('/committes_title/delete/{id}', [CommitteesCellsController::class, 'delete'])->name('CommitteesCellsTitle.delete');
+        Route::get('/iqac_committes_title/list', [CommitteesCellsController::class, 'index'])->name('CommitteesCellsTitle.list');
+        Route::post('/iqac_committes_title/store', [CommitteesCellsController::class, 'storeTitle'])->name('CommitteesCellsTitle.store');
+        Route::post('/iqac_committes_title/update', [CommitteesCellsController::class, 'update'])->name('CommitteesCellsTitle.update');
+        Route::get('/iqac_committes_title/delete/{id}', [CommitteesCellsController::class, 'delete'])->name('CommitteesCellsTitle.delete');
 
         //committees & cells
-        Route::get('/committes_cells/list', [CommitteesCellsController::class, 'list'])->name('committesCells.list');
-        Route::get('/committes_cells/add', [CommitteesCellsController::class, 'add'])->name('committesCells.add');
-        Route::post('/committes_cells/store', [CommitteesCellsController::class, 'store'])->name('committesCells.store');
-        Route::get('/committes_cells/edit/{id}', [CommitteesCellsController::class, 'edit'])->name('committesCells.edit');
-        Route::post('/committes_cells/update', [CommitteesCellsController::class, 'updateCommittee'])->name('committesCells.update');
-        Route::get('/committes_cells/delete/{id}', [CommitteesCellsController::class, 'deleteCommittee'])->name('committesCells.delete');
+        Route::get('/iqac_committes_cells/list', [CommitteesCellsController::class, 'list'])->name('committesCells.list');
+        Route::get('/iqac_committes_cells/add', [CommitteesCellsController::class, 'add'])->name('committesCells.add');
+        Route::post('/iqac_committes_cells/store', [CommitteesCellsController::class, 'store'])->name('committesCells.store');
+        Route::get('/iqac_committes_cells/edit/{id}', [CommitteesCellsController::class, 'edit'])->name('committesCells.edit');
+        Route::post('/iqac_committes_cells/update', [CommitteesCellsController::class, 'updateCommittee'])->name('committesCells.update');
+        Route::get('/iqac_committes_cells/delete/{id}', [CommitteesCellsController::class, 'deleteCommittee'])->name('committesCells.delete');
         Route::post('/gettitle', [CommitteesCellsController::class, 'getTitle'])->name('getTitle');
 
         //MOUs
@@ -705,6 +705,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth:user'
         Route::get('/certificate_view', [WebStudentSectionController::class, 'certificateView'])->name('certificateView');
         Route::get('/certificate_edit/{id}', [WebStudentSectionController::class, 'certificateEdit'])->name('certificateEdit');
         Route::post('/certificate_update', [WebStudentSectionController::class, 'certificateUpdate'])->name('certificateUpdate');
+        Route::get('/application_delete/{id}', [WebStudentSectionController::class, 'applicationDelete'])->name('applicationDelete');
         Route::post('/get_payment', [WebStudentSectionController::class, 'getPayment'])->name('getPayment');
 
         Route::resource('news', WebNewsController::class);

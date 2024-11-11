@@ -100,7 +100,7 @@
             </tr>
             <tr>
                 <th>Application Date</th>
-                <td>{{ $recive_degree }}</td>
+                <td>{{ $created_at }}</td>
             </tr>
             <tr>
                 <th>Payment Mode</th>

@@ -26,7 +26,7 @@
                         <select name="year_id" class="form-control">
                             <option value="">Select Year</option>
                             @foreach ($years as $year)
-                                <option value="{{ $year->id }} "> {{ $year->year }} </option>
+                                <option value="{{ $year->id }} " {{ ($year->id === $edit->year_id)? 'selected' : '' }} > {{ $year->year }} </option>
                             @endforeach
                         </select>
                         @error('title')
@@ -36,6 +36,10 @@
                     <div class="col-lg-6 mb-3">
                         <label for="image" class="form-label">Image<span style="color: red">*</span></label>
                         <input type="file" class="form-control" accept="image/*" name="image">
+                    </div>
+                    <div class="col-lg-6 mb-3">
+                        <label for="image" class="form-label">Image<span style="color: red">*</span></label>
+                        <p> {{ $edit->image }} </p>
                     </div>
                 </div>
                 <div class="mb-3">

@@ -16,12 +16,15 @@
                     <div class="col-lg-6 mb-3">
                         <label for="notice_type" class="form-label">Title<span style="color: red">*</span></label>
                         {{-- <input type="text" class="form-control" name="name" placeholder="Enter Name" required> --}}
-                        <select class="form-control" name="galleries_id" required>
+                        <select class="form-control" name="galleries_id">
                             <option value="">Select Options</option>
                             @foreach ($add_gallery as $gallery)
                                 <option value="{{$gallery->id}}">{{ $gallery->title }}</option>
                             @endforeach
                         </select>
+                        @error('galleries_id')
+                            <span class="text-danger">{{ 'The gallery title is required' }}</span>
+                        @enderror
                     </div>
                     <div class="col-lg-6 mb-3">
                         <label for="gallery_type" class="form-label">Photo<span style="color: red">*</span></label>

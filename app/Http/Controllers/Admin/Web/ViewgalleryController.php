@@ -20,6 +20,7 @@ class ViewgalleryController extends Controller
    public function store(Request $request){
     $request->validate([
         'image'=>'required',
+        'galleries_id'=>'required',
     ]);
     $store_gallery = new Viewgallery;
     $store_gallery->galleries_id = $request->galleries_id;
@@ -42,7 +43,7 @@ class ViewgalleryController extends Controller
    }
    public function update(Request $request){
     $request->validate([
-        'image'=>'required',
+        'galleries_id'=>'required',
     ]);
     $update_gallery = Viewgallery::find($request->id);
 

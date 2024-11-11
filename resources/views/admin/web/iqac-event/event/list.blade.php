@@ -52,7 +52,7 @@
                         </div>
                         <div class="card-block pdng">
                             <div class="table-responsive">
-                                <table id="basic-table" class="display table nowrap table-striped table-hover"
+                                <table class="display table nowrap table-striped table-hover"
                                     style="width:100%">
                                     <thead>
                                         <tr>
@@ -127,5 +127,8 @@
                 alert("Deletion canceled");
             }
         }
+    </script>
+    <script>
+        $('.table').DataTable();
     </script>
 @endsection

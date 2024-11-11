@@ -54,7 +54,7 @@
                                                 <td>{{ $data->roll_no }}</td>
                                                 <td>{{ $data->request_id }}</td>
                                                 <td>{{ $data->certificate }}</td>
-                                                <td>{{ $data->recive_degree }}</td>
+                                                <td>{{ $data->created_at->format('d/m/Y') }}</td>
                                                 <td>
                                                     @if ($data->payment == 'completed')
                                                         <span class="badge bg-success">Completed</span>
@@ -63,7 +63,7 @@
                                                     @endif
                                                 </td>
                                                 <td>{{ optional($data->getPayment)->transaction_number ?? 'N/A' }}</td>
-                                                <td>{{ optional($data->getPayment)->transation_date ?? 'N/A' }}</td>
+                                                <td>{{ optional($data->getPayment)->transation_date ? (new DateTime($data->getPayment->transation_date))->format('d/m/Y') : 'N/A' }}</td>
                                                 <td>{{ optional($data->getPayment)->method ?? 'N/A' }}</td>
                                                 <td>
                                                     @if ($data->certificate_status == 0)
@@ -74,6 +74,7 @@
                                                 </td>
                                                 <td><a class="btn btn-primary btn-sm"
                                                         href="{{ route('admin.certificateEdit', $data->id) }}">Edit</a>
+                                                <a class="btn btn-danger btn-sm" onclick="confirmDelete('{{ route('admin.applicationDelete', $data->id) }}')">delete</a>
                                                 </td>
                                             </tr>
                                             @php
